@@ -5,6 +5,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.Objects;
+import java.util.OptionalDouble;
 import org.locationtech.jts.geom.LineString;
 import org.opentripplanner.routing.core.State;
 import org.opentripplanner.transit.model.basic.I18NString;
@@ -18,6 +19,7 @@ public abstract class Edge implements Serializable {
   protected Vertex fromv;
 
   protected Vertex tov;
+  protected OptionalDouble width;
 
   protected Edge(Vertex v1, Vertex v2) {
     if (v1 == null || v2 == null) {
@@ -133,6 +135,10 @@ public abstract class Edge implements Serializable {
    */
   public int getDistanceIndependentTime() {
     return 0;
+  }
+
+  public void setWidth(OptionalDouble width) {
+    this.width = width;
   }
 
   /* SERIALIZATION */
