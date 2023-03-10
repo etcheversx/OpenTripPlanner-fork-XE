@@ -326,6 +326,18 @@ public class OSMWayTest {
     assertFalse(permissionPair.second.allows(StreetTraversalPermission.CAR));
   }
 
+  @Test
+  public void testHasWidth() {
+    OSMWay way = new OSMWay();
+    assertFalse(way.hasWidth());
+
+    way.addTag("highway", "primary");
+    assertFalse(way.hasWidth());
+
+    way.addTag("width", "2.5")
+    assertTrue(way.hasWidth());
+  }
+
   private P2<StreetTraversalPermission> getWayProperties(OSMWay way) {
     WayPropertySet wayPropertySet = new WayPropertySet();
     WayProperties wayData = wayPropertySet.getDataForWay(way);
