@@ -338,6 +338,7 @@ public class OpenStreetMapModuleTest {
       assertFalse(path.states.isEmpty());
     }
   }
+
   // disabled pending discussion with author (AMB)
   // @Test
   // public void testMultipolygon() throws Exception {
@@ -352,4 +353,44 @@ public class OpenStreetMapModuleTest {
   //
   // assertNotNull(gg.getVertex("way -3535 from 4"));
   // }
+
+  /**
+   * Width is properly parsed on edges when building OSM graph .
+   */
+  @Test
+  public void testBuildGraphWithWidth() {
+    var deduplicator = new Deduplicator();
+    var gg = new Graph(deduplicator);
+
+    File file = new File(
+      URLDecoder.decode(getClass().getResource("map.osm.pbf").getFile(), StandardCharsets.UTF_8)
+    );
+    OpenStreetMapProvider provider = new OpenStreetMapProvider(file, true);
+    OpenStreetMapModule osmModule = new OpenStreetMapModule(
+      List.of(provider),
+      Set.of(),
+      gg,
+      noopIssueStore(),
+      new DefaultMapper()
+    );
+
+    osmModule.buildGraph();
+
+    // These vertices are labeled in the OSM file as having traffic lights.
+    IntersectionVertex iv5 = (IntersectionVertex) gg.getVertex("osm:node:427567945");
+    IntersectionVertex iv7 = (IntersectionVertex) gg.getVertex("osm:node:427567949");
+
+    // 36775129
+    for (Edge edge : gg.getEdges()) {
+      if (
+        (edge.getFromVertex().equals(iv5) && edge.getToVertex().equals(iv7)) ||
+        (edge.getFromVertex().equals(iv7) && edge.getToVertex().equals(iv5))
+      ) {
+        assertTrue(edge.getWidth().isPresent());
+        assertEquals(4.0, edge.getWidth().getAsDouble());
+      } else {
+        assertTrue(edge.getWidth().isEmpty());
+      }
+    }
+  }
 }

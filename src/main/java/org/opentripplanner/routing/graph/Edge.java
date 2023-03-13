@@ -141,6 +141,10 @@ public abstract class Edge implements Serializable {
     this.width = width;
   }
 
+  public OptionalDouble getWidth() {
+    return this.width;
+  }
+
   /* SERIALIZATION */
 
   private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException {
