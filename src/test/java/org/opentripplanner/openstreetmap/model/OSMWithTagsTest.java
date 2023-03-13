@@ -6,7 +6,9 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.List;
+import java.util.OptionalDouble;
 import java.util.Set;
+import java.util.function.Consumer;
 import org.junit.jupiter.api.Test;
 
 public class OSMWithTagsTest {
@@ -179,5 +181,28 @@ public class OSMWithTagsTest {
 
     assertEquals(Set.of(), osm.getMultiTagValues(Set.of()));
     assertEquals(Set.of(), osm.getMultiTagValues(Set.of("ref3")));
+  }
+
+  @Test
+  public void testGetTagAsDouble() {
+    OSMWithTags o = new OSMWithTags();
+    assertEquals(o.getTagAsDouble("foo", null), OptionalDouble.empty());
+
+    o.addTag("foo", "12.5");
+    assertEquals(OptionalDouble.of(12.5), o.getTagAsDouble("foo", null));
+
+    o.addTag("foo", "bar");
+    class ErrorHandlerForTest implements Consumer<String> {
+
+      String invalidValue = null;
+
+      @Override
+      public void accept(String s) {
+        invalidValue = s;
+      }
+    }
+    ErrorHandlerForTest errorHandlerForTest = new ErrorHandlerForTest();
+    o.getTagAsDouble("foo", errorHandlerForTest);
+    assertEquals("bar", errorHandlerForTest.invalidValue);
   }
 }
