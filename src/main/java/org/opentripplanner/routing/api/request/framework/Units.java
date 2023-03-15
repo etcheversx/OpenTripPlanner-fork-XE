@@ -12,6 +12,7 @@ import org.opentripplanner.util.lang.DoubleUtils;
  *   <li>speed - Unit: meters per second (m/s)</li>
  *   <li>acceleration - Unit: meters per second squared (m/s^2)</li>
  *   <li>ratio - Unit: meters per second squared (m/s^2)</li>
+ *   <li>length - Unit: meters (m)t</li> *
  * </ul>
  */
 public class Units {
@@ -141,6 +142,18 @@ public class Units {
     }
     if (value > maxValue) {
       throw new IllegalArgumentException("Max limit(" + maxValue + ") exceeded: " + value);
+    }
+    return value;
+  }
+
+  /**
+   * Sanity check of length.
+   * <p>
+   * Unit: meters (m)
+   */
+  public static double length(double value) {
+    if (value < 0) {
+      throw new IllegalArgumentException("Negative length not supported: " + value);
     }
     return value;
   }

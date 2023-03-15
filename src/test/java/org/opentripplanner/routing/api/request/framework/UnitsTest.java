@@ -62,4 +62,11 @@ class UnitsTest {
     assertThrows(IllegalArgumentException.class, () -> Units.count(-1, 10));
     assertThrows(IllegalArgumentException.class, () -> Units.count(11, 10));
   }
+
+  @Test
+  void length() {
+    assertEquals(0.0, Units.length(0.0));
+    assertEquals(10000.1, Units.length(10000.1));
+    assertThrows(IllegalArgumentException.class, () -> Units.length(-0.01));
+  }
 }
