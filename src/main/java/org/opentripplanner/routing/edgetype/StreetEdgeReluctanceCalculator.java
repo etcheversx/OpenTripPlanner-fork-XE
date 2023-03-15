@@ -24,7 +24,9 @@ class StreetEdgeReluctanceCalculator {
       return pref.walk().stairsReluctance();
     } else {
       return switch (traverseMode) {
-        case WALK -> walkingBike ? pref.bike().walkingReluctance() : pref.walk().reluctance();
+        case WALK -> walkingBike
+          ? pref.bike().walkingReluctance()
+          : computeRegularWalkReluctance(pref, edgeWidth);
         case BICYCLE -> pref.bike().reluctance();
         case CAR -> pref.car().reluctance();
         default -> throw new IllegalArgumentException(
@@ -32,6 +34,17 @@ class StreetEdgeReluctanceCalculator {
         );
       };
     }
+  }
+
+  private static double computeRegularWalkReluctance(
+    RoutingPreferences preferences,
+    OptionalDouble edgeWidth
+  ) {
+    double reluctance = preferences.walk().reluctance();
+    if (edgeWidth.isPresent() && edgeWidth.getAsDouble() < preferences.walk().minimalWidth()) {
+      reluctance *= 2;
+    }
+    return reluctance;
   }
 
   static double computeWheelchairReluctance(

@@ -32,8 +32,10 @@ class StreetEdgeReluctanceCalculatorTest {
 
   @Test
   void onAWideEnoughEdgeComputedReluctanceWithWalkModeDoesNotIncrease() {
+    RoutingPreferences routingPreferences = routingPreferencesWithWidth(0.9);
+
     double walkReluctance = StreetEdgeReluctanceCalculator.computeReluctance(
-      new RoutingPreferences(),
+      routingPreferences,
       TraverseMode.WALK,
       false,
       false,
@@ -41,5 +43,28 @@ class StreetEdgeReluctanceCalculatorTest {
     );
 
     assertEquals(defaultWalkReluctance, walkReluctance);
+  }
+
+  @Test
+  void onAToNarrowEdgeComputedReluctanceWithWalkModeIncreases() {
+    RoutingPreferences routingPreferences = routingPreferencesWithWidth(0.9);
+
+    double walkReluctance = StreetEdgeReluctanceCalculator.computeReluctance(
+      routingPreferences,
+      TraverseMode.WALK,
+      false,
+      false,
+      OptionalDouble.of(0.8)
+    );
+
+    assertEquals(defaultWalkReluctance * 2, walkReluctance);
+  }
+
+  private static RoutingPreferences routingPreferencesWithWidth(double minimalWidth) {
+    RoutingPreferences.Builder routingPreferencesBuilder = new RoutingPreferences.Builder(
+      new RoutingPreferences()
+    );
+    routingPreferencesBuilder.withWalk(w -> w.withMinimalWidth(minimalWidth));
+    return routingPreferencesBuilder.build();
   }
 }
