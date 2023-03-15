@@ -10,8 +10,8 @@ import org.opentripplanner.util.lang.ToStringBuilder;
 
 /**
  * The walk preferences contain all speed, reluctance, cost and factor preferences for walking
- * related to street and transit routing. The values are normalized(rounded) so the class
- * can used as a cache key.
+ * related to street and transit routing. The values are normalized(rounded) so the class can used
+ * as a cache key.
  * <p>
  * See the configuration for documentation of each field.
  * <p>
@@ -27,6 +27,7 @@ public final class WalkPreferences implements Serializable {
   private final double stairsReluctance;
   private final double stairsTimeFactor;
   private final double safetyFactor;
+  private final double minimalWidth;
 
   private WalkPreferences() {
     this.speed = 1.33;
@@ -35,6 +36,7 @@ public final class WalkPreferences implements Serializable {
     this.stairsReluctance = 2.0;
     this.stairsTimeFactor = 3.0;
     this.safetyFactor = 1.0;
+    this.minimalWidth = 0.0;
   }
 
   private WalkPreferences(Builder builder) {
@@ -44,6 +46,7 @@ public final class WalkPreferences implements Serializable {
     this.stairsReluctance = Units.reluctance(builder.stairsReluctance);
     this.stairsTimeFactor = Units.reluctance(builder.stairsTimeFactor);
     this.safetyFactor = Units.reluctance(builder.safetyFactor);
+    this.minimalWidth = Units.length(builder.minimalWidth);
   }
 
   public static Builder of() {
@@ -65,13 +68,12 @@ public final class WalkPreferences implements Serializable {
   }
 
   /**
-   * A multiplier for how bad walking is, compared to being in transit for equal
-   * lengths of time. Empirically, values between 2 and 4 seem to correspond
-   * well to the concept of not wanting to walk too much without asking for
-   * totally ridiculous itineraries, but this observation should in no way be
-   * taken as scientific or definitive. Your mileage may vary. See
-   * https://github.com/opentripplanner/OpenTripPlanner/issues/4090 for impact on
-   * performance with high values. Default value: 2.0
+   * A multiplier for how bad walking is, compared to being in transit for equal lengths of time.
+   * Empirically, values between 2 and 4 seem to correspond well to the concept of not wanting to
+   * walk too much without asking for totally ridiculous itineraries, but this observation should in
+   * no way be taken as scientific or definitive. Your mileage may vary. See
+   * https://github.com/opentripplanner/OpenTripPlanner/issues/4090 for impact on performance with
+   * high values. Default value: 2.0
    */
   public double reluctance() {
     return reluctance;
@@ -103,6 +105,14 @@ public final class WalkPreferences implements Serializable {
     return safetyFactor;
   }
 
+  /*
+   * Minimal width for which an edge can be considered while routing with no extra reluctance.
+   * If the value is set to 0.0, all width are considered to be acceptable.
+   */
+  public double minimalWidth() {
+    return minimalWidth;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;
@@ -114,7 +124,8 @@ public final class WalkPreferences implements Serializable {
       boardCost == that.boardCost &&
       doubleEquals(that.stairsReluctance, stairsReluctance) &&
       doubleEquals(that.stairsTimeFactor, stairsTimeFactor) &&
-      doubleEquals(that.safetyFactor, safetyFactor)
+      doubleEquals(that.safetyFactor, safetyFactor) &&
+      doubleEquals(that.minimalWidth, minimalWidth)
     );
   }
 
@@ -126,7 +137,8 @@ public final class WalkPreferences implements Serializable {
       boardCost,
       stairsReluctance,
       stairsTimeFactor,
-      safetyFactor
+      safetyFactor,
+      minimalWidth
     );
   }
 
@@ -140,6 +152,7 @@ public final class WalkPreferences implements Serializable {
       .addNum("stairsReluctance", stairsReluctance, DEFAULT.stairsReluctance)
       .addNum("stairsTimeFactor", stairsTimeFactor, DEFAULT.stairsTimeFactor)
       .addNum("safetyFactor", safetyFactor, DEFAULT.safetyFactor)
+      .addNum("minimalWidth", minimalWidth, DEFAULT.minimalWidth)
       .toString();
   }
 
@@ -152,6 +165,7 @@ public final class WalkPreferences implements Serializable {
     private double stairsReluctance;
     private double stairsTimeFactor;
     private double safetyFactor;
+    private double minimalWidth = 0.0;
 
     public Builder(WalkPreferences original) {
       this.original = original;
@@ -161,6 +175,7 @@ public final class WalkPreferences implements Serializable {
       this.stairsReluctance = original.stairsReluctance;
       this.stairsTimeFactor = original.stairsTimeFactor;
       this.safetyFactor = original.safetyFactor;
+      this.minimalWidth = original.minimalWidth;
     }
 
     public WalkPreferences original() {
@@ -224,6 +239,11 @@ public final class WalkPreferences implements Serializable {
       } else {
         this.safetyFactor = safetyFactor;
       }
+      return this;
+    }
+
+    public Builder withMinimalWidth(double minimalWidth) {
+      this.minimalWidth = minimalWidth;
       return this;
     }
 
