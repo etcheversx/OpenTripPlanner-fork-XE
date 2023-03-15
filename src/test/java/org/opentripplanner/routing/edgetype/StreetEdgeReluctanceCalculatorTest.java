@@ -2,6 +2,7 @@ package org.opentripplanner.routing.edgetype;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.OptionalDouble;
 import org.junit.jupiter.api.Test;
 import org.opentripplanner.routing.api.request.preference.RoutingPreferences;
 import org.opentripplanner.routing.api.request.preference.WalkPreferences;
@@ -17,7 +18,8 @@ class StreetEdgeReluctanceCalculatorTest {
       new RoutingPreferences(),
       TraverseMode.WALK,
       false,
-      false
+      false,
+      OptionalDouble.empty()
     );
 
     assertEquals(WalkPreferences.DEFAULT.reluctance(), defaultWalkReluctance, doubleAccuracy);

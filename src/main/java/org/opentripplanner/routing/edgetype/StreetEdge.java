@@ -7,6 +7,7 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
+import java.util.OptionalDouble;
 import javax.annotation.Nonnull;
 import org.locationtech.jts.geom.Coordinate;
 import org.locationtech.jts.geom.LineString;
@@ -1094,7 +1095,8 @@ public class StreetEdge
         preferences,
         traverseMode,
         walkingBike,
-        isStairs()
+        isStairs(),
+        OptionalDouble.empty()
       );
     return new TraversalCosts(time, weight);
   }
@@ -1134,7 +1136,8 @@ public class StreetEdge
       pref,
       TraverseMode.BICYCLE,
       false,
-      isStairs()
+      isStairs(),
+      OptionalDouble.empty()
     );
     weight *= reluctance;
     return new TraversalCosts(time, weight);
@@ -1178,7 +1181,8 @@ public class StreetEdge
           preferences,
           traverseMode,
           walkingBike,
-          isStairs()
+          isStairs(),
+          OptionalDouble.empty()
         );
     }
 

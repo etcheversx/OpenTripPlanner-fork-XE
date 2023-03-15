@@ -1,6 +1,7 @@
 package org.opentripplanner.routing.edgetype;
 
 import java.util.Objects;
+import java.util.OptionalDouble;
 import org.locationtech.jts.geom.Coordinate;
 import org.locationtech.jts.geom.LineString;
 import org.opentripplanner.routing.api.request.preference.RoutingPreferences;
@@ -113,7 +114,8 @@ public class PathwayEdge extends Edge implements BikeWalkableEdge, WheelchairTra
             preferences,
             TraverseMode.WALK,
             s0.getNonTransitMode() == TraverseMode.BICYCLE,
-            isStairs()
+            isStairs(),
+            OptionalDouble.empty()
           );
       }
       s1.incrementTimeInSeconds(time);
