@@ -334,6 +334,9 @@ public abstract class RoutingResource {
   @QueryParam("walkSafetyFactor")
   protected Double walkSafetyFactor;
 
+  @QueryParam("minimalWidth")
+  protected Double minimalWidth;
+
   @QueryParam("allowKeepingRentedBicycleAtDestination")
   protected Boolean allowKeepingRentedBicycleAtDestination;
 
