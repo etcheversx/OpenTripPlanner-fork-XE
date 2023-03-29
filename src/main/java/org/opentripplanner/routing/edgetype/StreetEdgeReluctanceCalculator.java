@@ -41,8 +41,15 @@ class StreetEdgeReluctanceCalculator {
     OptionalDouble edgeWidth
   ) {
     double reluctance = preferences.walk().reluctance();
+//    System.out.println(
+//      "**** walkReluctance=" +
+//      preferences.walk().reluctance() +
+//      " minimalWidth=" +
+//      preferences.walk().minimalWidth()
+//    );
     if (edgeWidth.isPresent() && edgeWidth.getAsDouble() < preferences.walk().minimalWidth()) {
       reluctance *= 2;
+      System.out.println("**** updated walkReluctance=" + reluctance);
     }
     return reluctance;
   }
