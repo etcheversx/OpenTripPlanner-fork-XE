@@ -184,6 +184,28 @@ public class OSMWithTags {
   }
 
   /**
+   * Get tag and convert it to a double. If the tag exists, but can not be parsed into a number,
+   * then the error handler is called with the value witch failed to be parsed.
+   */
+  public OptionalBoolean getTagAsBoolean(String tag, Consumer<String> errorHandler) {
+    String value = getTag(tag);
+    if (value != null) {
+      try {
+        if (isFalse(value)) {
+          return OptionalBoolean.of(false);
+        }
+        if (isTrue(value)) {
+          return OptionalBoolean.of(true);
+        }
+        throw new Exception("Invalid boolean value " + value);
+      } catch (Exception e) {
+        errorHandler.accept(value);
+      }
+    }
+    return OptionalBoolean.empty();
+  }
+
+  /**
    * Checks if a tag contains the specified value.
    */
   public Boolean isTag(String tag, String value) {

@@ -183,6 +183,16 @@ public class OSMWithTagsTest {
     assertEquals(Set.of(), osm.getMultiTagValues(Set.of("ref3")));
   }
 
+  static class ErrorHandlerForTest implements Consumer<String> {
+
+    String invalidValue = null;
+
+    @Override
+    public void accept(String s) {
+      invalidValue = s;
+    }
+  }
+
   @Test
   public void testGetTagAsDouble() {
     OSMWithTags o = new OSMWithTags();
@@ -192,17 +202,26 @@ public class OSMWithTagsTest {
     assertEquals(OptionalDouble.of(12.5), o.getTagAsDouble("foo", null));
 
     o.addTag("foo", "bar");
-    class ErrorHandlerForTest implements Consumer<String> {
-
-      String invalidValue = null;
-
-      @Override
-      public void accept(String s) {
-        invalidValue = s;
-      }
-    }
     ErrorHandlerForTest errorHandlerForTest = new ErrorHandlerForTest();
     o.getTagAsDouble("foo", errorHandlerForTest);
+    assertEquals("bar", errorHandlerForTest.invalidValue);
+  }
+
+  @Test
+  public void testGetTagAsEnum() {
+    OSMWithTags o = new OSMWithTags();
+    assertEquals(o.getTagAsBoolean("foo", null), OptionalBoolean.empty());
+
+    o.addTag("foo", "true");
+    assertEquals(OptionalBoolean.of(true), o.getTagAsBoolean("foo", null));
+
+    o.addTag("foo", "no");
+    assertEquals(OptionalBoolean.of(false), o.getTagAsBoolean("foo", null));
+
+    o.addTag("foo", "bar");
+
+    ErrorHandlerForTest errorHandlerForTest = new ErrorHandlerForTest();
+    o.getTagAsBoolean("foo", errorHandlerForTest);
     assertEquals("bar", errorHandlerForTest.invalidValue);
   }
 }
