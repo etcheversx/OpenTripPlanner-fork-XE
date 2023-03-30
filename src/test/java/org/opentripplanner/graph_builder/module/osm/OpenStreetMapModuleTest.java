@@ -17,6 +17,7 @@ import java.time.Duration;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
+import java.util.Objects;
 import java.util.Set;
 import org.junit.jupiter.api.Test;
 import org.opentripplanner.common.model.P2;
@@ -46,7 +47,7 @@ public class OpenStreetMapModuleTest {
     var gg = new Graph(deduplicator);
 
     File file = new File(
-      URLDecoder.decode(getClass().getResource("map.osm.pbf").getFile(), StandardCharsets.UTF_8)
+      URLDecoder.decode(Objects.requireNonNull(getClass().getResource("map.osm.pbf")).getFile(), StandardCharsets.UTF_8)
     );
 
     OpenStreetMapProvider provider = new OpenStreetMapProvider(file, true);
@@ -113,7 +114,7 @@ public class OpenStreetMapModuleTest {
 
     File file = new File(
       URLDecoder.decode(
-        getClass().getResource("NYC_small.osm.pbf").getFile(),
+        Objects.requireNonNull(getClass().getResource("NYC_small.osm.pbf")).getFile(),
         StandardCharsets.UTF_8
       )
     );
@@ -160,12 +161,12 @@ public class OpenStreetMapModuleTest {
   }
 
   @Test
-  public void testBuildAreaWithoutVisibility() throws Exception {
+  public void testBuildAreaWithoutVisibility() {
     testBuildingAreas(true);
   }
 
   @Test
-  public void testBuildAreaWithVisibility() throws Exception {
+  public void testBuildAreaWithVisibility() {
     testBuildingAreas(false);
   }
 
@@ -301,7 +302,7 @@ public class OpenStreetMapModuleTest {
 
     File file = new File(
       URLDecoder.decode(
-        getClass().getResource("usf_area.osm.pbf").getFile(),
+        Objects.requireNonNull(getClass().getResource("usf_area.osm.pbf")).getFile(),
         StandardCharsets.UTF_8
       )
     );
@@ -363,7 +364,7 @@ public class OpenStreetMapModuleTest {
     var gg = new Graph(deduplicator);
 
     File file = new File(
-      URLDecoder.decode(getClass().getResource("map.osm.pbf").getFile(), StandardCharsets.UTF_8)
+      URLDecoder.decode(Objects.requireNonNull(getClass().getResource("map.osm.pbf")).getFile(), StandardCharsets.UTF_8)
     );
     OpenStreetMapProvider provider = new OpenStreetMapProvider(file, true);
     OpenStreetMapModule osmModule = new OpenStreetMapModule(
@@ -403,7 +404,7 @@ public class OpenStreetMapModuleTest {
     var gg = new Graph(deduplicator);
 
     File file = new File(
-      URLDecoder.decode(getClass().getResource("map.osm.pbf").getFile(), StandardCharsets.UTF_8)
+      URLDecoder.decode(Objects.requireNonNull(getClass().getResource("map.osm.pbf")).getFile(), StandardCharsets.UTF_8)
     );
     OpenStreetMapProvider provider = new OpenStreetMapProvider(file, true);
     OpenStreetMapModule osmModule = new OpenStreetMapModule(
@@ -427,9 +428,10 @@ public class OpenStreetMapModuleTest {
         (edge.getFromVertex().equals(iv7) && edge.getToVertex().equals(iv5))
       ) {
         assertTrue(edge.getLit().isEmpty());
-        // TODO : modify osm test file to integrate lit property
-        //assertTrue(edge.getLit().isPresent());
-        //assertTrue(edge.getLit().getAsBoolean());
+        /* TODO : modify osm test file to integrate lit property
+           assertTrue(edge.getLit().isPresent());
+           assertTrue(edge.getLit().getAsBoolean());
+        */
       } else {
         assertTrue(edge.getLit().isEmpty());
       }
