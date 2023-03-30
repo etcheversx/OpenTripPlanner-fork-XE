@@ -393,4 +393,46 @@ public class OpenStreetMapModuleTest {
       }
     }
   }
+
+  /**
+   * Lit is properly parsed on edges when building OSM graph .
+   */
+  @Test
+  public void testBuildGraphWithLit() {
+    var deduplicator = new Deduplicator();
+    var gg = new Graph(deduplicator);
+
+    File file = new File(
+      URLDecoder.decode(getClass().getResource("map.osm.pbf").getFile(), StandardCharsets.UTF_8)
+    );
+    OpenStreetMapProvider provider = new OpenStreetMapProvider(file, true);
+    OpenStreetMapModule osmModule = new OpenStreetMapModule(
+      List.of(provider),
+      Set.of(),
+      gg,
+      noopIssueStore(),
+      new DefaultMapper()
+    );
+
+    osmModule.buildGraph();
+
+    // These vertices are labeled in the OSM file as having traffic lights.
+    IntersectionVertex iv5 = (IntersectionVertex) gg.getVertex("osm:node:427567945");
+    IntersectionVertex iv7 = (IntersectionVertex) gg.getVertex("osm:node:427567949");
+
+    // 36775129
+    for (Edge edge : gg.getEdges()) {
+      if (
+        (edge.getFromVertex().equals(iv5) && edge.getToVertex().equals(iv7)) ||
+        (edge.getFromVertex().equals(iv7) && edge.getToVertex().equals(iv5))
+      ) {
+        assertTrue(edge.getLit().isEmpty());
+        // TODO : modify osm test file to integrate lit property
+        //assertTrue(edge.getLit().isPresent());
+        //assertTrue(edge.getLit().getAsBoolean());
+      } else {
+        assertTrue(edge.getLit().isEmpty());
+      }
+    }
+  }
 }

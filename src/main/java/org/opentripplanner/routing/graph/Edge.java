@@ -7,6 +7,7 @@ import java.io.Serializable;
 import java.util.Objects;
 import java.util.OptionalDouble;
 import org.locationtech.jts.geom.LineString;
+import org.opentripplanner.openstreetmap.model.OptionalBoolean;
 import org.opentripplanner.routing.core.State;
 import org.opentripplanner.transit.model.basic.I18NString;
 
@@ -20,6 +21,7 @@ public abstract class Edge implements Serializable {
 
   protected Vertex tov;
   protected OptionalDouble width;
+  protected OptionalBoolean lit;
 
   protected Edge(Vertex v1, Vertex v2) {
     if (v1 == null || v2 == null) {
@@ -116,9 +118,9 @@ public abstract class Edge implements Serializable {
 
   /**
    * The distance to walk adjusted for elevation and obstacles. This is used together with the
-   * walking speed to find the actual walking transfer time. This plus {@link
-   * #getDistanceIndependentTime()} is used to calculate the actual-transfer-time given a walking
-   * speed.
+   * walking speed to find the actual walking transfer time. This plus
+   * {@link #getDistanceIndependentTime()} is used to calculate the actual-transfer-time given a
+   * walking speed.
    * <p>
    * Unit: meters. Default: 0.
    */
@@ -128,8 +130,8 @@ public abstract class Edge implements Serializable {
 
   /**
    * This is the transfer time(duration) spent NOT moving like time in in elevators, escalators and
-   * waiting on read light when crossing a street. This is used together with {@link
-   * #getEffectiveWalkDistance()} to calculate the actual-transfer-time.
+   * waiting on read light when crossing a street. This is used together with
+   * {@link #getEffectiveWalkDistance()} to calculate the actual-transfer-time.
    * <p>
    * Unit: seconds. Default: 0.
    */
@@ -143,6 +145,14 @@ public abstract class Edge implements Serializable {
 
   public OptionalDouble getWidth() {
     return this.width;
+  }
+
+  public OptionalBoolean getLit() {
+    return this.lit;
+  }
+
+  public void setLit(OptionalBoolean lit) {
+    this.lit = lit;
   }
 
   /* SERIALIZATION */

@@ -44,6 +44,7 @@ import org.opentripplanner.openstreetmap.model.OSMLevel;
 import org.opentripplanner.openstreetmap.model.OSMNode;
 import org.opentripplanner.openstreetmap.model.OSMWay;
 import org.opentripplanner.openstreetmap.model.OSMWithTags;
+import org.opentripplanner.openstreetmap.model.OptionalBoolean;
 import org.opentripplanner.routing.core.TraverseMode;
 import org.opentripplanner.routing.edgetype.AreaEdge;
 import org.opentripplanner.routing.edgetype.AreaEdgeList;
@@ -223,6 +224,15 @@ public class OpenStreetMapModule implements GraphBuilderModule {
     return Issue.issue(
       "InvalidWidth",
       "Width for osm node %d is not a number: '%s'; it's replaced with '-1' (unknown).",
+      element.getId(),
+      v
+    );
+  }
+
+  private Issue invalidLit(OSMWithTags element, String v) {
+    return Issue.issue(
+      "InvalidLit",
+      "Lit for osm node %d is not a boolean: '%s'; it's replaced with unknown.",
       element.getId(),
       v
     );
@@ -472,6 +482,10 @@ public class OpenStreetMapModule implements GraphBuilderModule {
 
     private OptionalDouble parseWidth(OSMWithTags element) {
       return element.getTagAsDouble("width", v -> issueStore.add(invalidWidth(element, v)));
+    }
+
+    private OptionalBoolean parseLit(OSMWithTags element) {
+      return element.getTagAsBoolean("lit", v -> issueStore.add(invalidLit(element, v)));
     }
 
     private void processParkAndRideNodes(Collection<OSMNode> nodes, boolean isCarParkAndRide) {
@@ -1652,6 +1666,7 @@ public class OpenStreetMapModule implements GraphBuilderModule {
       }
 
       street.setWidth(parseWidth(way));
+      street.setLit(parseLit(way));
       return street;
     }
 
