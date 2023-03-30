@@ -1,12 +1,18 @@
 package org.opentripplanner.openstreetmap.model;
 
-public enum OptionalBoolean {
-  _true("true"),
-  _false("false");
+import java.util.NoSuchElementException;
 
-  private static final OptionalBoolean empty = null;
+public class OptionalBoolean {
+  private final static OptionalBoolean empty = new OptionalBoolean();
+  private final static OptionalBoolean yes = new OptionalBoolean("true");
+  private final static OptionalBoolean no = new OptionalBoolean("false");
 
-  OptionalBoolean(String s) {}
+
+  private OptionalBoolean(String s) {
+  }
+
+  private OptionalBoolean() {
+  }
 
   public static OptionalBoolean empty() {
     return empty;
@@ -14,9 +20,32 @@ public enum OptionalBoolean {
 
   public static OptionalBoolean of(boolean value) {
     if (value) {
-      return _true;
+      return yes;
     } else {
-      return _false;
+      return no;
     }
+  }
+
+  public static OptionalBoolean yes() {
+    return yes;
+  }
+
+  public static OptionalBoolean no() {
+    return no;
+  }
+
+  public boolean isPresent() {
+    return (! this.isEmpty());
+  }
+
+  public boolean getAsBoolean() {
+    if (!isPresent()) {
+      throw new NoSuchElementException("No value present");
+    }
+    return this.equals(yes);
+  }
+
+  public boolean isEmpty() {
+    return this.equals(empty);
   }
 }
