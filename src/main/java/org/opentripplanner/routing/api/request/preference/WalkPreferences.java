@@ -28,6 +28,7 @@ public final class WalkPreferences implements Serializable {
   private final double stairsTimeFactor;
   private final double safetyFactor;
   private final double minimalWidth;
+  private final boolean lightRequired;
 
   private WalkPreferences() {
     this.speed = 1.33;
@@ -37,6 +38,7 @@ public final class WalkPreferences implements Serializable {
     this.stairsTimeFactor = 3.0;
     this.safetyFactor = 1.0;
     this.minimalWidth = 0.0;
+    this.lightRequired = false;
   }
 
   private WalkPreferences(Builder builder) {
@@ -47,6 +49,7 @@ public final class WalkPreferences implements Serializable {
     this.stairsTimeFactor = Units.reluctance(builder.stairsTimeFactor);
     this.safetyFactor = Units.reluctance(builder.safetyFactor);
     this.minimalWidth = Units.length(builder.minimalWidth);
+    this.lightRequired = builder.lightRequired;
   }
 
   public static Builder of() {
@@ -113,6 +116,14 @@ public final class WalkPreferences implements Serializable {
     return minimalWidth;
   }
 
+  /*
+   * Is light required on an edge without introducing extra reluctance while routing.
+   * If the value is set to false, all edges considered to be acceptable.
+   */
+  public boolean lightRequired() {
+    return lightRequired;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;
@@ -120,12 +131,13 @@ public final class WalkPreferences implements Serializable {
     WalkPreferences that = (WalkPreferences) o;
     return (
       doubleEquals(that.speed, speed) &&
-      doubleEquals(that.reluctance, reluctance) &&
-      boardCost == that.boardCost &&
-      doubleEquals(that.stairsReluctance, stairsReluctance) &&
-      doubleEquals(that.stairsTimeFactor, stairsTimeFactor) &&
-      doubleEquals(that.safetyFactor, safetyFactor) &&
-      doubleEquals(that.minimalWidth, minimalWidth)
+        doubleEquals(that.reluctance, reluctance) &&
+        boardCost == that.boardCost &&
+        doubleEquals(that.stairsReluctance, stairsReluctance) &&
+        doubleEquals(that.stairsTimeFactor, stairsTimeFactor) &&
+        doubleEquals(that.safetyFactor, safetyFactor) &&
+        doubleEquals(that.minimalWidth, minimalWidth) &&
+        lightRequired == that.lightRequired
     );
   }
 
@@ -153,6 +165,7 @@ public final class WalkPreferences implements Serializable {
       .addNum("stairsTimeFactor", stairsTimeFactor, DEFAULT.stairsTimeFactor)
       .addNum("safetyFactor", safetyFactor, DEFAULT.safetyFactor)
       .addNum("minimalWidth", minimalWidth, DEFAULT.minimalWidth)
+      .addBoolIfTrue("lightRequired", lightRequired)
       .toString();
   }
 
@@ -166,6 +179,7 @@ public final class WalkPreferences implements Serializable {
     private double stairsTimeFactor;
     private double safetyFactor;
     private double minimalWidth = 0.0;
+    private boolean lightRequired = false;
 
     public Builder(WalkPreferences original) {
       this.original = original;
@@ -176,6 +190,7 @@ public final class WalkPreferences implements Serializable {
       this.stairsTimeFactor = original.stairsTimeFactor;
       this.safetyFactor = original.safetyFactor;
       this.minimalWidth = original.minimalWidth;
+      this.lightRequired = original.lightRequired;
     }
 
     public WalkPreferences original() {
@@ -244,6 +259,16 @@ public final class WalkPreferences implements Serializable {
 
     public Builder withMinimalWidth(double minimalWidth) {
       this.minimalWidth = minimalWidth;
+      return this;
+    }
+
+    public Builder withLightRequired(boolean lightRequired) {
+      this.lightRequired = lightRequired;
+      return this;
+    }
+
+    public Builder witLightRequired(boolean lightRequired) {
+      this.lightRequired = lightRequired;
       return this;
     }
 

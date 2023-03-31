@@ -22,6 +22,7 @@ class WalkPreferencesTest {
   private static final double SAFETY_FACTOR = 0.5111;
   private static final double EXPECTED_SAFETY_FACTOR = 0.51;
   private static final double MINIMAL_WIDTH = 0.85;
+  private static final boolean LIGHT_REQUIRED = true;
 
   private final WalkPreferences subject = WalkPreferences
     .of()
@@ -32,6 +33,7 @@ class WalkPreferencesTest {
     .withStairsTimeFactor(STAIRS_TIME_FACTOR)
     .withSafetyFactor(SAFETY_FACTOR)
     .withMinimalWidth(MINIMAL_WIDTH)
+    .withLightRequired(LIGHT_REQUIRED)
     .build();
 
   @Test
@@ -70,6 +72,11 @@ class WalkPreferencesTest {
   }
 
   @Test
+  void lightRequired() {
+    assertEquals(LIGHT_REQUIRED, subject.lightRequired());
+  }
+
+  @Test
   void testEqualsAndHAshCode() {
     // Return same object if no value is set
     assertSame(subject, subject.copyOf().build());
@@ -85,7 +92,7 @@ class WalkPreferencesTest {
   void testToSting() {
     assertEquals("WalkPreferences{}", WalkPreferences.DEFAULT.toString());
     assertEquals(
-      "WalkPreferences{speed: 1.71, reluctance: 2.5, boardCost: 301, stairsReluctance: 3.0, stairsTimeFactor: 1.31, safetyFactor: 0.51, minimalWidth: 0.85}",
+      "WalkPreferences{speed: 1.71, reluctance: 2.5, boardCost: 301, stairsReluctance: 3.0, stairsTimeFactor: 1.31, safetyFactor: 0.51, minimalWidth: 0.85, lightRequired}",
       subject.toString()
     );
   }
