@@ -1,6 +1,6 @@
 package org.opentripplanner.routing.edgetype;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.OptionalDouble;
 import org.junit.jupiter.api.BeforeEach;
@@ -67,6 +67,32 @@ class StreetEdgeReluctanceCalculatorTest {
       new RoutingPreferences()
     );
     routingPreferencesBuilder.withWalk(w -> w.withMinimalWidth(minimalWidth));
+    return routingPreferencesBuilder.build();
+  }
+
+  @Test
+  void testReluctanceProcessingWithLight() {
+    RoutingPreferences routingPreferences;
+    double walkReluctance;
+
+    routingPreferences = routingPreferencesWithLit(true);
+
+    walkReluctance = StreetEdgeReluctanceCalculator.computeReluctance(
+      routingPreferences,
+      TraverseMode.WALK,
+      false,
+      false,
+      OptionalDouble.empty(),
+      OptionalBoolean.of(true)
+    );
+    assertEquals(defaultWalkReluctance, walkReluctance);
+  }
+
+  private static RoutingPreferences routingPreferencesWithLit(boolean lightRequired) {
+    RoutingPreferences.Builder routingPreferencesBuilder = new RoutingPreferences.Builder(
+      new RoutingPreferences()
+    );
+    routingPreferencesBuilder.withWalk(w -> w.withLightRequired(lightRequired));
     return routingPreferencesBuilder.build();
   }
 }
