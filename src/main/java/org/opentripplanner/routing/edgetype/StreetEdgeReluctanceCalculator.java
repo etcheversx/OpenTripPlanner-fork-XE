@@ -1,6 +1,7 @@
 package org.opentripplanner.routing.edgetype;
 
 import java.util.OptionalDouble;
+import org.opentripplanner.openstreetmap.model.OptionalBoolean;
 import org.opentripplanner.routing.api.request.preference.RoutingPreferences;
 import org.opentripplanner.routing.core.TraverseMode;
 
@@ -18,8 +19,8 @@ class StreetEdgeReluctanceCalculator {
     TraverseMode traverseMode,
     boolean walkingBike,
     boolean edgeIsStairs,
-    OptionalDouble edgeWidth
-  ) {
+    OptionalDouble edgeWidth,
+    OptionalBoolean edgeLit) {
     if (edgeIsStairs) {
       return pref.walk().stairsReluctance();
     } else {

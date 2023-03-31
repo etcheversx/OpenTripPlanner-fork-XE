@@ -19,6 +19,7 @@ import org.opentripplanner.common.geometry.SphericalDistanceLibrary;
 import org.opentripplanner.common.model.P2;
 import org.opentripplanner.graph_builder.linking.DisposableEdgeCollection;
 import org.opentripplanner.graph_builder.linking.LinkingDirection;
+import org.opentripplanner.openstreetmap.model.OptionalBoolean;
 import org.opentripplanner.routing.api.request.preference.RoutingPreferences;
 import org.opentripplanner.routing.core.State;
 import org.opentripplanner.routing.core.StateEditor;
@@ -1096,8 +1097,8 @@ public class StreetEdge
         traverseMode,
         walkingBike,
         isStairs(),
-        OptionalDouble.empty()
-      );
+        OptionalDouble.empty(),
+        OptionalBoolean.empty());
     return new TraversalCosts(time, weight);
   }
 
@@ -1137,8 +1138,8 @@ public class StreetEdge
       TraverseMode.BICYCLE,
       false,
       isStairs(),
-      OptionalDouble.empty()
-    );
+      OptionalDouble.empty(),
+      OptionalBoolean.empty());
     weight *= reluctance;
     return new TraversalCosts(time, weight);
   }
@@ -1182,8 +1183,8 @@ public class StreetEdge
           traverseMode,
           walkingBike,
           isStairs(),
-          OptionalDouble.empty()
-        );
+          OptionalDouble.empty(),
+          OptionalBoolean.empty());
     }
 
     return new TraversalCosts(time, weight);
