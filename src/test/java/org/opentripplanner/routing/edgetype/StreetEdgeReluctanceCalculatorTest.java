@@ -5,6 +5,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.util.OptionalDouble;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.opentripplanner.openstreetmap.model.OptionalBoolean;
 import org.opentripplanner.routing.api.request.preference.RoutingPreferences;
 import org.opentripplanner.routing.api.request.preference.WalkPreferences;
@@ -70,22 +72,23 @@ class StreetEdgeReluctanceCalculatorTest {
     return routingPreferencesBuilder.build();
   }
 
-  @Test
-  void testReluctanceProcessingWithLight() {
-    RoutingPreferences routingPreferences;
-    double walkReluctance;
+  @ParameterizedTest(name = "Walk reluctance with requiredLight={0} on edge with light={1} is {2}")
+  @CsvSource(
+    "true, true, 2.0"
+  )
+  void testReluctanceProcessingWithLight(boolean lightRequired, boolean edgeLight, double expectedWalkReluctance) {
+    RoutingPreferences routingPreferences = routingPreferencesWithLit(lightRequired);
 
-    routingPreferences = routingPreferencesWithLit(true);
-
-    walkReluctance = StreetEdgeReluctanceCalculator.computeReluctance(
+    double walkReluctance = StreetEdgeReluctanceCalculator.computeReluctance(
       routingPreferences,
       TraverseMode.WALK,
       false,
       false,
       OptionalDouble.empty(),
-      OptionalBoolean.of(true)
+      OptionalBoolean.of(edgeLight)
     );
-    assertEquals(defaultWalkReluctance, walkReluctance);
+
+    assertEquals(expectedWalkReluctance, walkReluctance);
   }
 
   private static RoutingPreferences routingPreferencesWithLit(boolean lightRequired) {
