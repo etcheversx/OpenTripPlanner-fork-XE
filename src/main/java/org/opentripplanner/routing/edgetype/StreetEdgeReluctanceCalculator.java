@@ -20,7 +20,8 @@ class StreetEdgeReluctanceCalculator {
     boolean walkingBike,
     boolean edgeIsStairs,
     OptionalDouble edgeWidth,
-    OptionalBoolean edgeLit) {
+    OptionalBoolean edgeLit
+  ) {
     if (edgeIsStairs) {
       return pref.walk().stairsReluctance();
     } else {
@@ -53,7 +54,7 @@ class StreetEdgeReluctanceCalculator {
       reluctance *= 2;
       System.out.println("**** updated walkReluctance=" + reluctance);
     }
-    if (edgeLit.isPresent() && ! edgeLit.getAsBoolean() && preferences.walk().lightRequired()) {
+    if (edgeLit.isPresent() && !edgeLit.getAsBoolean() && preferences.walk().lightRequired()) {
       reluctance *= 2;
     }
     return reluctance;

@@ -117,7 +117,8 @@ public class PathwayEdge extends Edge implements BikeWalkableEdge, WheelchairTra
             s0.getNonTransitMode() == TraverseMode.BICYCLE,
             isStairs(),
             OptionalDouble.empty(),
-            OptionalBoolean.empty());
+            OptionalBoolean.empty()
+          );
       }
       s1.incrementTimeInSeconds(time);
       s1.incrementWeight(weight);
@@ -142,7 +143,7 @@ public class PathwayEdge extends Edge implements BikeWalkableEdge, WheelchairTra
   }
 
   public LineString getGeometry() {
-    Coordinate[] coordinates = new Coordinate[]{
+    Coordinate[] coordinates = new Coordinate[] {
       getFromVertex().getCoordinate(),
       getToVertex().getCoordinate(),
     };

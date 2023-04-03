@@ -13,13 +13,12 @@ import org.opentripplanner.routing.api.request.preference.WalkPreferences;
 import org.opentripplanner.routing.core.TraverseMode;
 
 class StreetEdgeReluctanceCalculatorTest {
+
   private RoutingPreferences.Builder routingPreferencesBuilder;
 
   @BeforeEach
   void setup() {
-    routingPreferencesBuilder = new RoutingPreferences.Builder(
-      new RoutingPreferences()
-    );
+    routingPreferencesBuilder = new RoutingPreferences.Builder(new RoutingPreferences());
   }
 
   @Test
@@ -28,14 +27,12 @@ class StreetEdgeReluctanceCalculatorTest {
   }
 
   @ParameterizedTest(name = "Walk reluctance with requiredLight={0} on edge with light={1} is {2}")
-  @CsvSource({
-    ", , 2.0",
-    "0.9, , 2.0",
-    ", 1.0, 2.0",
-    "0.9, 1.0, 2.0",
-    "0.9, 0.85, 4.0"
-  })
-  void testReluctanceProcessingWithWidth(Double minimalWidth, Double edgeWidth, Double expectedWalkReluctance) {
+  @CsvSource({ ", , 2.0", "0.9, , 2.0", ", 1.0, 2.0", "0.9, 1.0, 2.0", "0.9, 0.85, 4.0" })
+  void testReluctanceProcessingWithWidth(
+    Double minimalWidth,
+    Double edgeWidth,
+    Double expectedWalkReluctance
+  ) {
     if (minimalWidth != null) {
       routingPreferencesBuilder.withWalk(w -> w.withMinimalWidth(minimalWidth));
     }
@@ -44,18 +41,24 @@ class StreetEdgeReluctanceCalculatorTest {
   }
 
   @ParameterizedTest(name = "Walk reluctance with requiredLight={0} on edge with light={1} is {2}")
-  @CsvSource({
-    ", , 2.0",
-    "true, , 2.0",
-    "false, , 2.0",
-    ", true, 2.0",
-    ", false, 2.0",
-    "true, true, 2.0",
-    "false, true, 2.0",
-    "true, false, 4.0",
-    "false, false, 2.0"
-  })
-  void testReluctanceProcessingWithLight(Boolean lightRequired, Boolean edgeLight, Double expectedWalkReluctance) {
+  @CsvSource(
+    {
+      ", , 2.0",
+      "true, , 2.0",
+      "false, , 2.0",
+      ", true, 2.0",
+      ", false, 2.0",
+      "true, true, 2.0",
+      "false, true, 2.0",
+      "true, false, 4.0",
+      "false, false, 2.0",
+    }
+  )
+  void testReluctanceProcessingWithLight(
+    Boolean lightRequired,
+    Boolean edgeLight,
+    Double expectedWalkReluctance
+  ) {
     if (lightRequired != null) {
       routingPreferencesBuilder.withWalk(w -> w.withLightRequired(lightRequired));
     }
@@ -63,16 +66,14 @@ class StreetEdgeReluctanceCalculatorTest {
     assertEquals(expectedWalkReluctance, computeWalkReluctance(null, edgeLight));
   }
 
-  private double computeWalkReluctance(
-    Double edgeWidth,
-    Boolean edgeLight
-  ) {
+  private double computeWalkReluctance(Double edgeWidth, Boolean edgeLight) {
     return StreetEdgeReluctanceCalculator.computeReluctance(
       routingPreferencesBuilder.build(),
       TraverseMode.WALK,
       false,
       false,
       edgeWidth != null ? OptionalDouble.of(edgeWidth) : OptionalDouble.empty(),
-      edgeLight != null ? OptionalBoolean.of(edgeLight) : OptionalBoolean.empty());
+      edgeLight != null ? OptionalBoolean.of(edgeLight) : OptionalBoolean.empty()
+    );
   }
 }

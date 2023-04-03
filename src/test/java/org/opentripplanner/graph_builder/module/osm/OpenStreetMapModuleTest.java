@@ -47,7 +47,10 @@ public class OpenStreetMapModuleTest {
     var gg = new Graph(deduplicator);
 
     File file = new File(
-      URLDecoder.decode(Objects.requireNonNull(getClass().getResource("map.osm.pbf")).getFile(), StandardCharsets.UTF_8)
+      URLDecoder.decode(
+        Objects.requireNonNull(getClass().getResource("map.osm.pbf")).getFile(),
+        StandardCharsets.UTF_8
+      )
     );
 
     OpenStreetMapProvider provider = new OpenStreetMapProvider(file, true);
@@ -364,7 +367,10 @@ public class OpenStreetMapModuleTest {
     var gg = new Graph(deduplicator);
 
     File file = new File(
-      URLDecoder.decode(Objects.requireNonNull(getClass().getResource("map.osm.pbf")).getFile(), StandardCharsets.UTF_8)
+      URLDecoder.decode(
+        Objects.requireNonNull(getClass().getResource("map.osm.pbf")).getFile(),
+        StandardCharsets.UTF_8
+      )
     );
     OpenStreetMapProvider provider = new OpenStreetMapProvider(file, true);
     OpenStreetMapModule osmModule = new OpenStreetMapModule(
@@ -404,7 +410,10 @@ public class OpenStreetMapModuleTest {
     var gg = new Graph(deduplicator);
 
     File file = new File(
-      URLDecoder.decode(Objects.requireNonNull(getClass().getResource("map.osm.pbf")).getFile(), StandardCharsets.UTF_8)
+      URLDecoder.decode(
+        Objects.requireNonNull(getClass().getResource("map.osm.pbf")).getFile(),
+        StandardCharsets.UTF_8
+      )
     );
     OpenStreetMapProvider provider = new OpenStreetMapProvider(file, true);
     OpenStreetMapModule osmModule = new OpenStreetMapModule(

@@ -1098,7 +1098,8 @@ public class StreetEdge
         walkingBike,
         isStairs(),
         OptionalDouble.empty(),
-        OptionalBoolean.empty());
+        OptionalBoolean.empty()
+      );
     return new TraversalCosts(time, weight);
   }
 
@@ -1139,7 +1140,8 @@ public class StreetEdge
       false,
       isStairs(),
       OptionalDouble.empty(),
-      OptionalBoolean.empty());
+      OptionalBoolean.empty()
+    );
     weight *= reluctance;
     return new TraversalCosts(time, weight);
   }
@@ -1184,7 +1186,8 @@ public class StreetEdge
           walkingBike,
           isStairs(),
           OptionalDouble.empty(),
-          OptionalBoolean.empty());
+          OptionalBoolean.empty()
+        );
     }
 
     return new TraversalCosts(time, weight);

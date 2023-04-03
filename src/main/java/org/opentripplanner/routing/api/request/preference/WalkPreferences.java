@@ -131,13 +131,13 @@ public final class WalkPreferences implements Serializable {
     WalkPreferences that = (WalkPreferences) o;
     return (
       doubleEquals(that.speed, speed) &&
-        doubleEquals(that.reluctance, reluctance) &&
-        boardCost == that.boardCost &&
-        doubleEquals(that.stairsReluctance, stairsReluctance) &&
-        doubleEquals(that.stairsTimeFactor, stairsTimeFactor) &&
-        doubleEquals(that.safetyFactor, safetyFactor) &&
-        doubleEquals(that.minimalWidth, minimalWidth) &&
-        lightRequired == that.lightRequired
+      doubleEquals(that.reluctance, reluctance) &&
+      boardCost == that.boardCost &&
+      doubleEquals(that.stairsReluctance, stairsReluctance) &&
+      doubleEquals(that.stairsTimeFactor, stairsTimeFactor) &&
+      doubleEquals(that.safetyFactor, safetyFactor) &&
+      doubleEquals(that.minimalWidth, minimalWidth) &&
+      lightRequired == that.lightRequired
     );
   }
 

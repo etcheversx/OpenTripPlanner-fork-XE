@@ -52,6 +52,7 @@ class RequestToPreferencesMapper {
       setIfNotNull(req.walkBoardCost, walk::withBoardCost);
       setIfNotNull(req.walkSafetyFactor, walk::withSafetyFactor);
       setIfNotNull(req.minimalWidth, walk::withMinimalWidth);
+      setIfNotNull(req.lightRequired, walk::withLightRequired);
     });
   }
 
