@@ -3,7 +3,6 @@ package org.opentripplanner.routing.edgetype;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.OptionalDouble;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -13,24 +12,16 @@ import org.opentripplanner.routing.api.request.preference.WalkPreferences;
 import org.opentripplanner.routing.core.TraverseMode;
 
 class StreetEdgeReluctanceCalculatorTest {
-
-  private double defaultWalkReluctance;
-
-  @BeforeEach
-  void setup() {
-    defaultWalkReluctance =
-      StreetEdgeReluctanceCalculator.computeReluctance(
-        new RoutingPreferences(),
-        TraverseMode.WALK,
-        false,
-        false,
-        OptionalDouble.empty(),
-        OptionalBoolean.empty()
-      );
-  }
-
   @Test
   void computedReluctanceWithWalkModeIsDefaultWalkReluctance() {
+    double defaultWalkReluctance = StreetEdgeReluctanceCalculator.computeReluctance(
+      new RoutingPreferences(),
+      TraverseMode.WALK,
+      false,
+      false,
+      OptionalDouble.empty(),
+      OptionalBoolean.empty()
+    );
     assertEquals(WalkPreferences.DEFAULT.reluctance(), defaultWalkReluctance);
   }
 
