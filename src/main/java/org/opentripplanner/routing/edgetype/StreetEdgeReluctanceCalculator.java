@@ -27,7 +27,7 @@ class StreetEdgeReluctanceCalculator {
       return switch (traverseMode) {
         case WALK -> walkingBike
           ? pref.bike().walkingReluctance()
-          : computeRegularWalkReluctance(pref, edgeWidth);
+          : computeRegularWalkReluctance(pref, edgeWidth, edgeLit);
         case BICYCLE -> pref.bike().reluctance();
         case CAR -> pref.car().reluctance();
         default -> throw new IllegalArgumentException(
@@ -39,7 +39,8 @@ class StreetEdgeReluctanceCalculator {
 
   private static double computeRegularWalkReluctance(
     RoutingPreferences preferences,
-    OptionalDouble edgeWidth
+    OptionalDouble edgeWidth,
+    OptionalBoolean edgeLit
   ) {
     double reluctance = preferences.walk().reluctance();
     //    System.out.println(
@@ -51,6 +52,9 @@ class StreetEdgeReluctanceCalculator {
     if (edgeWidth.isPresent() && edgeWidth.getAsDouble() < preferences.walk().minimalWidth()) {
       reluctance *= 2;
       System.out.println("**** updated walkReluctance=" + reluctance);
+    }
+    if (edgeLit.isPresent() && ! edgeLit.getAsBoolean() && preferences.walk().lightRequired()) {
+      reluctance *= 2;
     }
     return reluctance;
   }

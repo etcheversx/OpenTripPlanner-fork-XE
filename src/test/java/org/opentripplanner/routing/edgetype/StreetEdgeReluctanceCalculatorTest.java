@@ -73,9 +73,12 @@ class StreetEdgeReluctanceCalculatorTest {
   }
 
   @ParameterizedTest(name = "Walk reluctance with requiredLight={0} on edge with light={1} is {2}")
-  @CsvSource(
-    "true, true, 2.0"
-  )
+  @CsvSource({
+    "true, true, 2.0",
+    "false, true, 2.0",
+    "true, false, 4.0",
+    "false, false, 2.0"
+  })
   void testReluctanceProcessingWithLight(boolean lightRequired, boolean edgeLight, double expectedWalkReluctance) {
     RoutingPreferences routingPreferences = routingPreferencesWithLit(lightRequired);
 
