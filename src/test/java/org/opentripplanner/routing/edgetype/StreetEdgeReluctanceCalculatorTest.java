@@ -14,39 +14,32 @@ import org.opentripplanner.routing.core.TraverseMode;
 class StreetEdgeReluctanceCalculatorTest {
   @Test
   void computedReluctanceWithWalkModeIsDefaultWalkReluctance() {
-    double defaultWalkReluctance = StreetEdgeReluctanceCalculator.computeReluctance(
-      new RoutingPreferences(),
-      TraverseMode.WALK,
-      false,
-      false,
-      OptionalDouble.empty(),
-      OptionalBoolean.empty()
-    );
-    assertEquals(WalkPreferences.DEFAULT.reluctance(), defaultWalkReluctance);
-  }
-
-  private static RoutingPreferences routingPreferencesWithWidth(double minimalWidth) {
-    RoutingPreferences.Builder routingPreferencesBuilder = new RoutingPreferences.Builder(
-      new RoutingPreferences()
-    );
-    routingPreferencesBuilder.withWalk(w -> w.withMinimalWidth(minimalWidth));
-    return routingPreferencesBuilder.build();
+    assertEquals(2.0, WalkPreferences.DEFAULT.reluctance());
   }
 
   @ParameterizedTest(name = "Walk reluctance with requiredLight={0} on edge with light={1} is {2}")
   @CsvSource({
+    ", , 2.0",
+    "0.9, , 2.0",
+    ", 1.0, 2.0",
     "0.9, 1.0, 2.0",
     "0.9, 0.85, 4.0"
   })
   void testReluctanceProcessingWithWidth(Double minimalWidth, Double edgeWidth, Double expectedWalkReluctance) {
-    RoutingPreferences routingPreferences = routingPreferencesWithWidth(minimalWidth);
+    RoutingPreferences.Builder routingPreferencesBuilder = new RoutingPreferences.Builder(
+      new RoutingPreferences()
+    );
+    if (minimalWidth != null) {
+      routingPreferencesBuilder.withWalk(w -> w.withMinimalWidth(minimalWidth));
+    }
+    RoutingPreferences routingPreferences = routingPreferencesBuilder.build();
 
     double walkReluctance = StreetEdgeReluctanceCalculator.computeReluctance(
       routingPreferences,
       TraverseMode.WALK,
       false,
       false,
-      OptionalDouble.of(edgeWidth),
+      edgeWidth != null ? OptionalDouble.of(edgeWidth) : OptionalDouble.empty(),
       OptionalBoolean.empty());
 
     assertEquals(expectedWalkReluctance, walkReluctance);
