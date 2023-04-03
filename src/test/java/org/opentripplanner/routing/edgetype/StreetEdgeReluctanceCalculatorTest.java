@@ -34,42 +34,31 @@ class StreetEdgeReluctanceCalculatorTest {
     assertEquals(WalkPreferences.DEFAULT.reluctance(), defaultWalkReluctance);
   }
 
-  @Test
-  void onAWideEnoughEdgeComputedReluctanceWithWalkModeDoesNotIncrease() {
-    RoutingPreferences routingPreferences = routingPreferencesWithWidth(0.9);
-
-    double walkReluctance = StreetEdgeReluctanceCalculator.computeReluctance(
-      routingPreferences,
-      TraverseMode.WALK,
-      false,
-      false,
-      OptionalDouble.of(1.0),
-      OptionalBoolean.empty());
-
-    assertEquals(defaultWalkReluctance, walkReluctance);
-  }
-
-  @Test
-  void onAToNarrowEdgeComputedReluctanceWithWalkModeIncreases() {
-    RoutingPreferences routingPreferences = routingPreferencesWithWidth(0.9);
-
-    double walkReluctance = StreetEdgeReluctanceCalculator.computeReluctance(
-      routingPreferences,
-      TraverseMode.WALK,
-      false,
-      false,
-      OptionalDouble.of(0.8),
-      OptionalBoolean.empty());
-
-    assertEquals(defaultWalkReluctance * 2, walkReluctance);
-  }
-
   private static RoutingPreferences routingPreferencesWithWidth(double minimalWidth) {
     RoutingPreferences.Builder routingPreferencesBuilder = new RoutingPreferences.Builder(
       new RoutingPreferences()
     );
     routingPreferencesBuilder.withWalk(w -> w.withMinimalWidth(minimalWidth));
     return routingPreferencesBuilder.build();
+  }
+
+  @ParameterizedTest(name = "Walk reluctance with requiredLight={0} on edge with light={1} is {2}")
+  @CsvSource({
+    "0.9, 1.0, 2.0",
+    "0.9, 0.85, 4.0"
+  })
+  void testReluctanceProcessingWithWidth(double minimalWidth, double edgeWidth, double expectedWalkReluctance) {
+    RoutingPreferences routingPreferences = routingPreferencesWithWidth(minimalWidth);
+
+    double walkReluctance = StreetEdgeReluctanceCalculator.computeReluctance(
+      routingPreferences,
+      TraverseMode.WALK,
+      false,
+      false,
+      OptionalDouble.of(edgeWidth),
+      OptionalBoolean.empty());
+
+    assertEquals(expectedWalkReluctance, walkReluctance);
   }
 
   @ParameterizedTest(name = "Walk reluctance with requiredLight={0} on edge with light={1} is {2}")
