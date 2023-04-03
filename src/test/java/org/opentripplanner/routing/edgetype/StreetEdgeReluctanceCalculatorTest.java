@@ -38,7 +38,7 @@ class StreetEdgeReluctanceCalculatorTest {
     "0.9, 1.0, 2.0",
     "0.9, 0.85, 4.0"
   })
-  void testReluctanceProcessingWithWidth(double minimalWidth, double edgeWidth, double expectedWalkReluctance) {
+  void testReluctanceProcessingWithWidth(Double minimalWidth, Double edgeWidth, Double expectedWalkReluctance) {
     RoutingPreferences routingPreferences = routingPreferencesWithWidth(minimalWidth);
 
     double walkReluctance = StreetEdgeReluctanceCalculator.computeReluctance(
@@ -59,7 +59,7 @@ class StreetEdgeReluctanceCalculatorTest {
     "true, false, 4.0",
     "false, false, 2.0"
   })
-  void testReluctanceProcessingWithLight(boolean lightRequired, boolean edgeLight, double expectedWalkReluctance) {
+  void testReluctanceProcessingWithLight(Boolean lightRequired, Boolean edgeLight, Double expectedWalkReluctance) {
     RoutingPreferences routingPreferences = routingPreferencesWithLit(lightRequired);
 
     double walkReluctance = StreetEdgeReluctanceCalculator.computeReluctance(
