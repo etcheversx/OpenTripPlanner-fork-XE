@@ -208,7 +208,7 @@ public class OSMWithTagsTest {
   }
 
   @Test
-  public void testGetTagAsEnum() {
+  public void testGetTagAsBoolean() {
     OSMWithTags o = new OSMWithTags();
     assertEquals(o.getTagAsBoolean("foo", null), OptionalBoolean.empty());
 
@@ -222,6 +222,21 @@ public class OSMWithTagsTest {
 
     ErrorHandlerForTest errorHandlerForTest = new ErrorHandlerForTest();
     o.getTagAsBoolean("foo", errorHandlerForTest);
+    assertEquals("bar", errorHandlerForTest.invalidValue);
+  }
+
+  @Test
+  public void testGetTagAsEnum() {
+    OSMWithTags o = new OSMWithTags();
+    assertEquals(o.getTagAsEnum("foo", null), OptionalEnum.empty());
+
+    o.addTag("surface", "sand");
+    assertEquals(OptionalEnum.of(OSMSurface.sand), o.getTagAsEnum("surface", null));
+
+
+    o.addTag("foo", "bar");
+    ErrorHandlerForTest errorHandlerForTest = new ErrorHandlerForTest();
+    o.getTagAsEnum("foo", errorHandlerForTest);
     assertEquals("bar", errorHandlerForTest.invalidValue);
   }
 }
