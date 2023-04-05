@@ -4,10 +4,12 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.util.Map;
 import java.util.Objects;
 import java.util.OptionalDouble;
 import org.locationtech.jts.geom.LineString;
 import org.opentripplanner.openstreetmap.model.OptionalBoolean;
+import org.opentripplanner.openstreetmap.model.OptionalEnum;
 import org.opentripplanner.routing.core.State;
 import org.opentripplanner.transit.model.basic.I18NString;
 
@@ -22,6 +24,7 @@ public abstract class Edge implements Serializable {
   protected Vertex tov;
   protected OptionalDouble width;
   protected OptionalBoolean lit;
+  private OptionalEnum surface;
 
   protected Edge(Vertex v1, Vertex v2) {
     if (v1 == null || v2 == null) {
@@ -153,6 +156,14 @@ public abstract class Edge implements Serializable {
 
   public void setLit(OptionalBoolean lit) {
     this.lit = lit;
+  }
+
+  public OptionalEnum getSurface() {
+    return this.surface;
+  }
+
+  public void setSurface(OptionalEnum surface) {
+    this.surface = surface;
   }
 
   /* SERIALIZATION */

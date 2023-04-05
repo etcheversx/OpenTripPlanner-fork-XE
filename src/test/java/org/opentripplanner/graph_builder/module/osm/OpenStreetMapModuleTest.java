@@ -3,6 +3,7 @@ package org.opentripplanner.graph_builder.module.osm;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
 import static org.opentripplanner.graph_builder.DataImportIssueStore.noopIssueStore;
@@ -25,6 +26,7 @@ import org.opentripplanner.graph_builder.module.osm.specifier.BestMatchSpecifier
 import org.opentripplanner.graph_builder.module.osm.specifier.OsmSpecifier;
 import org.opentripplanner.graph_builder.module.osm.tagmapping.DefaultMapper;
 import org.opentripplanner.openstreetmap.OpenStreetMapProvider;
+import org.opentripplanner.openstreetmap.model.OSMSurface;
 import org.opentripplanner.openstreetmap.model.OSMWay;
 import org.opentripplanner.openstreetmap.model.OSMWithTags;
 import org.opentripplanner.routing.api.request.RouteRequest;
@@ -391,7 +393,7 @@ public class OpenStreetMapModuleTest {
     for (Edge edge : gg.getEdges()) {
       if (
         (edge.getFromVertex().equals(iv5) && edge.getToVertex().equals(iv7)) ||
-        (edge.getFromVertex().equals(iv7) && edge.getToVertex().equals(iv5))
+          (edge.getFromVertex().equals(iv7) && edge.getToVertex().equals(iv5))
       ) {
         assertTrue(edge.getWidth().isPresent());
         assertEquals(4.0, edge.getWidth().getAsDouble());
@@ -434,7 +436,7 @@ public class OpenStreetMapModuleTest {
     for (Edge edge : gg.getEdges()) {
       if (
         (edge.getFromVertex().equals(iv5) && edge.getToVertex().equals(iv7)) ||
-        (edge.getFromVertex().equals(iv7) && edge.getToVertex().equals(iv5))
+          (edge.getFromVertex().equals(iv7) && edge.getToVertex().equals(iv5))
       ) {
         assertTrue(edge.getLit().isEmpty());
         /* TODO : modify osm test file to integrate lit property
@@ -443,6 +445,52 @@ public class OpenStreetMapModuleTest {
         */
       } else {
         assertTrue(edge.getLit().isEmpty());
+      }
+    }
+  }
+
+  /**
+   * Surface is properly parsed on edges when building OSM graph .
+   */
+  @Test
+  public void testBuildGraphWithSurface() {
+    var deduplicator = new Deduplicator();
+    var gg = new Graph(deduplicator);
+
+    File file = new File(
+      URLDecoder.decode(
+        Objects.requireNonNull(getClass().getResource("map.osm.pbf")).getFile(),
+        StandardCharsets.UTF_8
+      )
+    );
+    OpenStreetMapProvider provider = new OpenStreetMapProvider(file, true);
+    OpenStreetMapModule osmModule = new OpenStreetMapModule(
+      List.of(provider),
+      Set.of(),
+      gg,
+      noopIssueStore(),
+      new DefaultMapper()
+    );
+
+    osmModule.buildGraph();
+
+    // These vertices are labeled in the OSM file as having traffic lights.
+    IntersectionVertex iv5 = (IntersectionVertex) gg.getVertex("osm:node:261210346");
+    IntersectionVertex iv7 = (IntersectionVertex) gg.getVertex("osm:node:300879145");
+
+    // 36775129
+    for (Edge edge : gg.getEdges()) {
+      if (
+        (edge.getFromVertex().equals(iv5) && edge.getToVertex().equals(iv7)) ||
+          (edge.getFromVertex().equals(iv7) && edge.getToVertex().equals(iv5))
+      ) {
+        assertTrue(edge.getSurface().isPresent());
+        assertSame(OSMSurface.unpaved, edge.getSurface().getAsEnum());
+      } else {
+        /*
+        TODO : define the test of an edge without surface
+         */
+
       }
     }
   }

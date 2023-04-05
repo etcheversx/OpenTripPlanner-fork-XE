@@ -45,6 +45,7 @@ import org.opentripplanner.openstreetmap.model.OSMNode;
 import org.opentripplanner.openstreetmap.model.OSMWay;
 import org.opentripplanner.openstreetmap.model.OSMWithTags;
 import org.opentripplanner.openstreetmap.model.OptionalBoolean;
+import org.opentripplanner.openstreetmap.model.OptionalEnum;
 import org.opentripplanner.routing.core.TraverseMode;
 import org.opentripplanner.routing.edgetype.AreaEdge;
 import org.opentripplanner.routing.edgetype.AreaEdgeList;
@@ -486,6 +487,10 @@ public class OpenStreetMapModule implements GraphBuilderModule {
 
     private OptionalBoolean parseLit(OSMWithTags element) {
       return element.getTagAsBoolean("lit", v -> issueStore.add(invalidLit(element, v)));
+    }
+
+    private OptionalEnum parseSurface(OSMWithTags element) {
+      return element.getTagAsEnum("surface", v -> issueStore.add(invalidLit(element, v)));
     }
 
     private void processParkAndRideNodes(Collection<OSMNode> nodes, boolean isCarParkAndRide) {
@@ -1667,6 +1672,7 @@ public class OpenStreetMapModule implements GraphBuilderModule {
 
       street.setWidth(parseWidth(way));
       street.setLit(parseLit(way));
+      street.setSurface(parseSurface(way));
       return street;
     }
 
