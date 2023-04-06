@@ -29,6 +29,7 @@ import org.opentripplanner.openstreetmap.OpenStreetMapProvider;
 import org.opentripplanner.openstreetmap.model.OSMSurface;
 import org.opentripplanner.openstreetmap.model.OSMWay;
 import org.opentripplanner.openstreetmap.model.OSMWithTags;
+import org.opentripplanner.openstreetmap.model.OptionalEnum;
 import org.opentripplanner.routing.api.request.RouteRequest;
 import org.opentripplanner.routing.edgetype.StreetEdge;
 import org.opentripplanner.routing.graph.Edge;
@@ -484,8 +485,9 @@ public class OpenStreetMapModuleTest {
         (edge.getFromVertex().equals(iv5) && edge.getToVertex().equals(iv7)) ||
           (edge.getFromVertex().equals(iv7) && edge.getToVertex().equals(iv5))
       ) {
-        assertTrue(edge.getSurface().isPresent());
-        assertSame(OSMSurface.unpaved, edge.getSurface().getAsEnum());
+        OptionalEnum surface = edge.getAccessibilityProperties().getSurface();
+        assertTrue(surface.isPresent());
+        assertSame(OSMSurface.unpaved, surface.getAsEnum());
       } else {
         /*
         TODO : define the test of an edge without surface

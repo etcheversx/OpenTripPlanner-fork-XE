@@ -8,6 +8,7 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.OptionalDouble;
 import org.locationtech.jts.geom.LineString;
+import org.opentripplanner.graph_builder.module.osm.AccessibilityPropertySet;
 import org.opentripplanner.openstreetmap.model.OptionalBoolean;
 import org.opentripplanner.openstreetmap.model.OptionalEnum;
 import org.opentripplanner.routing.core.State;
@@ -25,6 +26,7 @@ public abstract class Edge implements Serializable {
   protected OptionalDouble width;
   protected OptionalBoolean lit;
   private OptionalEnum surface;
+  private AccessibilityPropertySet accessibilityProperties;
 
   protected Edge(Vertex v1, Vertex v2) {
     if (v1 == null || v2 == null) {
@@ -164,6 +166,14 @@ public abstract class Edge implements Serializable {
 
   public void setSurface(OptionalEnum surface) {
     this.surface = surface;
+  }
+
+  public AccessibilityPropertySet getAccessibilityProperties() {
+    return this.accessibilityProperties;
+  }
+
+  public void setAccessibilityProperties(AccessibilityPropertySet accessibilityProperties) {
+    this.accessibilityProperties = accessibilityProperties;
   }
 
   /* SERIALIZATION */
