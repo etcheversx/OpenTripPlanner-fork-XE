@@ -27,4 +27,13 @@ public class AccessibilityPropertySetTest {
     accessibilityPropertySet = new AccessibilityPropertySet.Builder().withWidth(width).build();
     assertEquals(width, accessibilityPropertySet.getWidth());
   }
+
+  @Test
+  void testLitGetSet() {
+    AccessibilityPropertySet accessibilityPropertySet;
+
+    OptionalBoolean lit = OptionalBoolean.of(true);
+    accessibilityPropertySet = new AccessibilityPropertySet.Builder().withLit(lit).build();
+    assertEquals(lit, accessibilityPropertySet.getLit());
+  }
 }
