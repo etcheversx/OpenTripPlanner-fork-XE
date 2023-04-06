@@ -18,4 +18,13 @@ public class AccessibilityPropertySetTest {
       .build();
     assertEquals(expectedValue, new AccessibilityPropertySet.Builder().build());
   }
+
+  @Test
+  void testWidthGetSet() {
+    AccessibilityPropertySet accessibilityPropertySet;
+
+    OptionalDouble width = OptionalDouble.of(4.5);
+    accessibilityPropertySet = new AccessibilityPropertySet.Builder().withWidth(width).build();
+    assertEquals(width, accessibilityPropertySet.getWidth());
+  }
 }
