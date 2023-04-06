@@ -5,6 +5,18 @@ import org.opentripplanner.openstreetmap.model.OptionalBoolean;
 import org.opentripplanner.openstreetmap.model.OptionalEnum;
 
 public class AccessibilityPropertySet {
+  public OptionalDouble getWidth() {
+    return width;
+  }
+
+  public OptionalBoolean getLit() {
+    return lit;
+  }
+
+  public OptionalEnum getSurface() {
+    return surface;
+  }
+
   final static AccessibilityPropertySet DEFAULT = new AccessibilityPropertySet();
 
   private OptionalDouble width;
@@ -36,15 +48,15 @@ public class AccessibilityPropertySet {
     private OptionalBoolean lit = OptionalBoolean.empty();
     private OptionalEnum surface = OptionalEnum.empty();
 
-    public OptionalDouble width() {
+    private OptionalDouble width() {
       return this.width;
     }
 
-    public OptionalBoolean lit() {
+    private OptionalBoolean lit() {
       return this.lit;
     }
 
-    public OptionalEnum surface() {
+    private OptionalEnum surface() {
       return this.surface;
     }
 
