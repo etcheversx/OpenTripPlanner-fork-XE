@@ -19,6 +19,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
+import java.util.OptionalDouble;
 import java.util.Set;
 import org.junit.jupiter.api.Test;
 import org.opentripplanner.common.model.P2;
@@ -394,12 +395,13 @@ public class OpenStreetMapModuleTest {
     for (Edge edge : gg.getEdges()) {
       if (
         (edge.getFromVertex().equals(iv5) && edge.getToVertex().equals(iv7)) ||
-          (edge.getFromVertex().equals(iv7) && edge.getToVertex().equals(iv5))
+        (edge.getFromVertex().equals(iv7) && edge.getToVertex().equals(iv5))
       ) {
-        assertTrue(edge.getWidth().isPresent());
-        assertEquals(4.0, edge.getWidth().getAsDouble());
+        OptionalDouble width = edge.getAccessibilityProperties().getWidth();
+        assertTrue(width.isPresent());
+        assertEquals(4.0, width.getAsDouble());
       } else {
-        assertTrue(edge.getWidth().isEmpty());
+        assertTrue(edge.getAccessibilityProperties().getWidth().isEmpty());
       }
     }
   }
@@ -437,7 +439,7 @@ public class OpenStreetMapModuleTest {
     for (Edge edge : gg.getEdges()) {
       if (
         (edge.getFromVertex().equals(iv5) && edge.getToVertex().equals(iv7)) ||
-          (edge.getFromVertex().equals(iv7) && edge.getToVertex().equals(iv5))
+        (edge.getFromVertex().equals(iv7) && edge.getToVertex().equals(iv5))
       ) {
         assertTrue(edge.getLit().isEmpty());
         /* TODO : modify osm test file to integrate lit property
@@ -483,7 +485,7 @@ public class OpenStreetMapModuleTest {
     for (Edge edge : gg.getEdges()) {
       if (
         (edge.getFromVertex().equals(iv5) && edge.getToVertex().equals(iv7)) ||
-          (edge.getFromVertex().equals(iv7) && edge.getToVertex().equals(iv5))
+        (edge.getFromVertex().equals(iv7) && edge.getToVertex().equals(iv5))
       ) {
         OptionalEnum surface = edge.getAccessibilityProperties().getSurface();
         assertTrue(surface.isPresent());

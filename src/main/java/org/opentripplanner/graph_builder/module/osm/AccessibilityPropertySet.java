@@ -5,6 +5,7 @@ import org.opentripplanner.openstreetmap.model.OptionalBoolean;
 import org.opentripplanner.openstreetmap.model.OptionalEnum;
 
 public class AccessibilityPropertySet {
+
   private final OptionalDouble width;
   private final OptionalBoolean lit;
   private final OptionalEnum surface;
@@ -36,6 +37,7 @@ public class AccessibilityPropertySet {
   }
 
   public static class Builder {
+
     private OptionalDouble width = OptionalDouble.empty();
     private OptionalBoolean lit = OptionalBoolean.empty();
     private OptionalEnum surface = OptionalEnum.empty();

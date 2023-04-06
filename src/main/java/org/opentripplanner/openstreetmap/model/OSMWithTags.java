@@ -136,9 +136,9 @@ public class OSMWithTags {
     String value = getTag(tag);
     return (
       "designated".equals(value) ||
-        "official".equals(value) ||
-        "permissive".equals(value) ||
-        "unknown".equals(value)
+      "official".equals(value) ||
+      "permissive".equals(value) ||
+      "unknown".equals(value)
     );
   }
 
@@ -344,8 +344,8 @@ public class OSMWithTags {
   public boolean isBicycleExplicitlyDenied() {
     return (
       isTagDeniedAccess("bicycle") ||
-        "dismount".equals(getTag("bicycle")) ||
-        "use_sidepath".equals(getTag("bicycle"))
+      "dismount".equals(getTag("bicycle")) ||
+      "use_sidepath".equals(getTag("bicycle"))
     );
   }
 
@@ -378,10 +378,10 @@ public class OSMWithTags {
     String parkAndRide = getTag("park_ride");
     return (
       isTag("amenity", "parking") &&
-        (
-          (parkingType != null && parkingType.contains("park_and_ride")) ||
-            (parkAndRide != null && !parkAndRide.equalsIgnoreCase("no"))
-        )
+      (
+        (parkingType != null && parkingType.contains("park_and_ride")) ||
+        (parkAndRide != null && !parkAndRide.equalsIgnoreCase("no"))
+      )
     );
   }
 
@@ -397,11 +397,11 @@ public class OSMWithTags {
   public boolean isBoardingLocation() {
     return (
       "bus_stop".equals(getTag("highway")) ||
-        "tram_stop".equals(getTag("railway")) ||
-        "station".equals(getTag("railway")) ||
-        "halt".equals(getTag("railway")) ||
-        "bus_station".equals(getTag("amenity")) ||
-        isPlatform()
+      "tram_stop".equals(getTag("railway")) ||
+      "station".equals(getTag("railway")) ||
+      "halt".equals(getTag("railway")) ||
+      "bus_station".equals(getTag("amenity")) ||
+      isPlatform()
     );
   }
 

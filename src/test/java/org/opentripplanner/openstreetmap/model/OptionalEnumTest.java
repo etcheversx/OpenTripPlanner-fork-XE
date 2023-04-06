@@ -51,7 +51,7 @@ class OptionalEnumTest {
     try {
       assertSame(OptionalEnum.of(OSMSurface.paved), OptionalEnum.get("paved"));
     } catch (Exception exc) {
-      fail ("Get failed with: "+exc.getMessage());
+      fail("Get failed with: " + exc.getMessage());
     }
 
     try {

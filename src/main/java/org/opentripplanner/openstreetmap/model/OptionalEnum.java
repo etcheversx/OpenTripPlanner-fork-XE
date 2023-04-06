@@ -26,7 +26,7 @@ public class OptionalEnum {
   }
 
   public static OptionalEnum get(String value) throws Exception {
-    for (Enum<?> enumerate: optionalEnums.keySet()) {
+    for (Enum<?> enumerate : optionalEnums.keySet()) {
       if (enumerate.toString().equals(value)) {
         return optionalEnums.get(enumerate);
       }

@@ -9,15 +9,17 @@ import org.opentripplanner.openstreetmap.model.OptionalBoolean;
 import org.opentripplanner.openstreetmap.model.OptionalEnum;
 
 public class AccessibilityPropertySetTest {
+
   private AccessibilityPropertySet accessibilityPropertySet;
 
   @Test
   void testDefaultBehaviourOfBuilder() {
-    accessibilityPropertySet = new AccessibilityPropertySet.Builder()
-      .withWidth(OptionalDouble.empty())
-      .withLit(OptionalBoolean.empty())
-      .withSurface(OptionalEnum.empty())
-      .build();
+    accessibilityPropertySet =
+      new AccessibilityPropertySet.Builder()
+        .withWidth(OptionalDouble.empty())
+        .withLit(OptionalBoolean.empty())
+        .withSurface(OptionalEnum.empty())
+        .build();
     assertEquals(accessibilityPropertySet, new AccessibilityPropertySet.Builder().build());
   }
 
