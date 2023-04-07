@@ -15,32 +15,70 @@ public class AccessibilityPropertySetTest {
   @Test
   void testDefaultBehaviourOfBuilder() {
     accessibilityPropertySet =
-      new AccessibilityPropertySet.Builder()
+      new AccessibilityPropertySetBuilder()
         .withWidth(OptionalDouble.empty())
         .withLit(OptionalBoolean.empty())
         .withSurface(OptionalEnum.empty())
         .build();
-    assertEquals(accessibilityPropertySet, new AccessibilityPropertySet.Builder().build());
+    assertEquals(accessibilityPropertySet, new AccessibilityPropertySetBuilder().build());
   }
 
   @Test
   void testWidthGetSet() {
     OptionalDouble width = OptionalDouble.of(4.5);
-    accessibilityPropertySet = new AccessibilityPropertySet.Builder().withWidth(width).build();
+    accessibilityPropertySet = new AccessibilityPropertySetBuilder().withWidth(width).build();
     assertEquals(width, accessibilityPropertySet.getWidth());
   }
 
   @Test
   void testLitGetSet() {
     OptionalBoolean lit = OptionalBoolean.of(true);
-    accessibilityPropertySet = new AccessibilityPropertySet.Builder().withLit(lit).build();
+    accessibilityPropertySet = new AccessibilityPropertySetBuilder().withLit(lit).build();
     assertEquals(lit, accessibilityPropertySet.getLit());
   }
 
   @Test
   void testSurfaceGetSet() {
     OptionalEnum surface = OptionalEnum.of(OSMSurface.paved);
-    accessibilityPropertySet = new AccessibilityPropertySet.Builder().withSurface(surface).build();
+    accessibilityPropertySet = new AccessibilityPropertySetBuilder().withSurface(surface).build();
     assertEquals(surface, accessibilityPropertySet.getSurface());
+  }
+
+  public static class AccessibilityPropertySetBuilder {
+
+    private OptionalDouble width = OptionalDouble.empty();
+    private OptionalBoolean lit = OptionalBoolean.empty();
+    private OptionalEnum surface = OptionalEnum.empty();
+
+    public AccessibilityPropertySetBuilder withWidth(OptionalDouble width) {
+      this.width = width;
+      return this;
+    }
+
+    public AccessibilityPropertySetBuilder withLit(OptionalBoolean lit) {
+      this.lit = lit;
+      return this;
+    }
+
+    public AccessibilityPropertySetBuilder withSurface(OptionalEnum surface) {
+      this.surface = surface;
+      return this;
+    }
+
+    private OptionalDouble width() {
+      return this.width;
+    }
+
+    private OptionalBoolean lit() {
+      return this.lit;
+    }
+
+    private OptionalEnum surface() {
+      return this.surface;
+    }
+
+    AccessibilityPropertySet build() {
+      return new AccessibilityPropertySet(this.width(), this.lit(), this.surface());
+    }
   }
 }

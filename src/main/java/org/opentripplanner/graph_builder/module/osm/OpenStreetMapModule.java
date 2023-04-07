@@ -494,11 +494,11 @@ public class OpenStreetMapModule implements GraphBuilderModule {
     }
 
     private AccessibilityPropertySet parseAccessibilityProperties(OSMWithTags element) {
-      return new AccessibilityPropertySet.Builder()
-        .withWidth(parseWidth(element))
-        .withLit(parseLit(element))
-        .withSurface(parseSurface(element))
-        .build();
+      return new AccessibilityPropertySet(
+        parseWidth(element),
+        parseLit(element),
+        parseSurface(element)
+      );
     }
 
     private void processParkAndRideNodes(Collection<OSMNode> nodes, boolean isCarParkAndRide) {
