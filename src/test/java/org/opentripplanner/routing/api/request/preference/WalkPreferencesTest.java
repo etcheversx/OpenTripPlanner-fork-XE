@@ -7,6 +7,7 @@ import static org.opentripplanner.routing.api.request.preference.ImmutablePrefer
 
 import java.util.function.Consumer;
 import org.junit.jupiter.api.Test;
+import org.opentripplanner.openstreetmap.model.OSMSurface;
 
 class WalkPreferencesTest {
 
@@ -23,6 +24,7 @@ class WalkPreferencesTest {
   private static final double EXPECTED_SAFETY_FACTOR = 0.51;
   private static final double MINIMAL_WIDTH = 0.85;
   private static final boolean LIGHT_REQUIRED = true;
+  private static final OSMSurface RELUCTED_SURFACES[] = { OSMSurface.sand, OSMSurface.grass };
 
   private final WalkPreferences subject = WalkPreferences
     .of()
@@ -34,6 +36,7 @@ class WalkPreferencesTest {
     .withSafetyFactor(SAFETY_FACTOR)
     .withMinimalWidth(MINIMAL_WIDTH)
     .withLightRequired(LIGHT_REQUIRED)
+    .withReluctedSurfaces(RELUCTED_SURFACES)
     .build();
 
   @Test

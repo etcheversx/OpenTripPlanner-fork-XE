@@ -5,6 +5,8 @@ import static org.opentripplanner.util.lang.DoubleUtils.doubleEquals;
 import java.io.Serializable;
 import java.util.Objects;
 import java.util.function.Consumer;
+import javax.validation.constraints.NotNull;
+import org.opentripplanner.openstreetmap.model.OSMSurface;
 import org.opentripplanner.routing.api.request.framework.Units;
 import org.opentripplanner.util.lang.ToStringBuilder;
 
@@ -180,6 +182,7 @@ public final class WalkPreferences implements Serializable {
     private double safetyFactor;
     private double minimalWidth = 0.0;
     private boolean lightRequired = false;
+    private OSMSurface[] reluctedSurfaces = {};
 
     public Builder(WalkPreferences original) {
       this.original = original;
@@ -269,6 +272,11 @@ public final class WalkPreferences implements Serializable {
 
     public Builder witLightRequired(boolean lightRequired) {
       this.lightRequired = lightRequired;
+      return this;
+    }
+
+    public Builder withReluctedSurfaces(@NotNull OSMSurface[] reluctedSurfaces) {
+      this.reluctedSurfaces = reluctedSurfaces;
       return this;
     }
 
