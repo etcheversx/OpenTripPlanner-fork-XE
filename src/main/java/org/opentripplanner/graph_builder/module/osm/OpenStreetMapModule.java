@@ -1678,7 +1678,6 @@ public class OpenStreetMapModule implements GraphBuilderModule {
         customNamer.nameWithEdge(way, street);
       }
 
-      street.setLit(parseLit(way));
       street.setAccessibilityProperties(parseAccessibilityProperties(way));
       return street;
     }

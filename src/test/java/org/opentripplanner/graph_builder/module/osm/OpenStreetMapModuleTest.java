@@ -30,6 +30,7 @@ import org.opentripplanner.openstreetmap.OpenStreetMapProvider;
 import org.opentripplanner.openstreetmap.model.OSMSurface;
 import org.opentripplanner.openstreetmap.model.OSMWay;
 import org.opentripplanner.openstreetmap.model.OSMWithTags;
+import org.opentripplanner.openstreetmap.model.OptionalBoolean;
 import org.opentripplanner.openstreetmap.model.OptionalEnum;
 import org.opentripplanner.routing.api.request.RouteRequest;
 import org.opentripplanner.routing.edgetype.StreetEdge;
@@ -437,17 +438,18 @@ public class OpenStreetMapModuleTest {
 
     // 36775129
     for (Edge edge : gg.getEdges()) {
+      OptionalBoolean lit = edge.getAccessibilityProperties().getLit();
       if (
         (edge.getFromVertex().equals(iv5) && edge.getToVertex().equals(iv7)) ||
         (edge.getFromVertex().equals(iv7) && edge.getToVertex().equals(iv5))
       ) {
-        assertTrue(edge.getLit().isEmpty());
+        assertTrue(lit.isEmpty());
         /* TODO : modify osm test file to integrate lit property
            assertTrue(edge.getLit().isPresent());
            assertTrue(edge.getLit().getAsBoolean());
         */
       } else {
-        assertTrue(edge.getLit().isEmpty());
+        assertTrue(lit.isEmpty());
       }
     }
   }

@@ -7,7 +7,6 @@ import java.io.Serializable;
 import java.util.Objects;
 import org.locationtech.jts.geom.LineString;
 import org.opentripplanner.graph_builder.module.osm.AccessibilityPropertySet;
-import org.opentripplanner.openstreetmap.model.OptionalBoolean;
 import org.opentripplanner.routing.core.State;
 import org.opentripplanner.transit.model.basic.I18NString;
 
@@ -21,7 +20,6 @@ public abstract class Edge implements Serializable {
 
   protected Vertex tov;
 
-  protected OptionalBoolean lit;
   protected AccessibilityPropertySet accessibilityProperties;
 
   protected Edge(Vertex v1, Vertex v2) {
@@ -138,14 +136,6 @@ public abstract class Edge implements Serializable {
    */
   public int getDistanceIndependentTime() {
     return 0;
-  }
-
-  public OptionalBoolean getLit() {
-    return this.lit;
-  }
-
-  public void setLit(OptionalBoolean lit) {
-    this.lit = lit;
   }
 
   public AccessibilityPropertySet getAccessibilityProperties() {

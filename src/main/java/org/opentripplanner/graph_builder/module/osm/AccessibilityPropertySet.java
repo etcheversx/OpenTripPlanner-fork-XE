@@ -1,10 +1,11 @@
 package org.opentripplanner.graph_builder.module.osm;
 
+import java.io.Serializable;
 import java.util.OptionalDouble;
 import org.opentripplanner.openstreetmap.model.OptionalBoolean;
 import org.opentripplanner.openstreetmap.model.OptionalEnum;
 
-public class AccessibilityPropertySet {
+public class AccessibilityPropertySet implements Serializable {
 
   private final OptionalDouble width;
   private final OptionalBoolean lit;
