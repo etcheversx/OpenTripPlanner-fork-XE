@@ -19,7 +19,9 @@ import org.opentripplanner.common.geometry.SphericalDistanceLibrary;
 import org.opentripplanner.common.model.P2;
 import org.opentripplanner.graph_builder.linking.DisposableEdgeCollection;
 import org.opentripplanner.graph_builder.linking.LinkingDirection;
+import org.opentripplanner.graph_builder.module.osm.AccessibilityPropertySet;
 import org.opentripplanner.openstreetmap.model.OptionalBoolean;
+import org.opentripplanner.openstreetmap.model.OptionalEnum;
 import org.opentripplanner.routing.api.request.preference.RoutingPreferences;
 import org.opentripplanner.routing.core.State;
 import org.opentripplanner.routing.core.StateEditor;
@@ -1098,7 +1100,12 @@ public class StreetEdge
         walkingBike,
         isStairs(),
         OptionalDouble.empty(),
-        OptionalBoolean.empty()
+        OptionalBoolean.empty(),
+        new AccessibilityPropertySet(
+          OptionalDouble.empty(),
+          OptionalBoolean.empty(),
+          OptionalEnum.empty()
+        )
       );
     return new TraversalCosts(time, weight);
   }
@@ -1140,7 +1147,12 @@ public class StreetEdge
       false,
       isStairs(),
       OptionalDouble.empty(),
-      OptionalBoolean.empty()
+      OptionalBoolean.empty(),
+      new AccessibilityPropertySet(
+        OptionalDouble.empty(),
+        OptionalBoolean.empty(),
+        OptionalEnum.empty()
+      )
     );
     weight *= reluctance;
     return new TraversalCosts(time, weight);
@@ -1186,7 +1198,12 @@ public class StreetEdge
           walkingBike,
           isStairs(),
           OptionalDouble.empty(),
-          OptionalBoolean.empty()
+          OptionalBoolean.empty(),
+          new AccessibilityPropertySet(
+            OptionalDouble.empty(),
+            OptionalBoolean.empty(),
+            OptionalEnum.empty()
+          )
         );
     }
 

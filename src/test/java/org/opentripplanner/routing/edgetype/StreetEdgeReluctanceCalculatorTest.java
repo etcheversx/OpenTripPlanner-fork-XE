@@ -93,7 +93,8 @@ class StreetEdgeReluctanceCalculatorTest {
       false,
       false,
       edgeAccessibilityProperties.getWidth(),
-      edgeAccessibilityProperties.getLit()
+      edgeAccessibilityProperties.getLit(),
+      edgeAccessibilityProperties
     );
   }
 }

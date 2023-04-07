@@ -4,7 +4,9 @@ import java.util.Objects;
 import java.util.OptionalDouble;
 import org.locationtech.jts.geom.Coordinate;
 import org.locationtech.jts.geom.LineString;
+import org.opentripplanner.graph_builder.module.osm.AccessibilityPropertySet;
 import org.opentripplanner.openstreetmap.model.OptionalBoolean;
+import org.opentripplanner.openstreetmap.model.OptionalEnum;
 import org.opentripplanner.routing.api.request.preference.RoutingPreferences;
 import org.opentripplanner.routing.core.State;
 import org.opentripplanner.routing.core.StateEditor;
@@ -117,7 +119,12 @@ public class PathwayEdge extends Edge implements BikeWalkableEdge, WheelchairTra
             s0.getNonTransitMode() == TraverseMode.BICYCLE,
             isStairs(),
             OptionalDouble.empty(),
-            OptionalBoolean.empty()
+            OptionalBoolean.empty(),
+            new AccessibilityPropertySet(
+              OptionalDouble.empty(),
+              OptionalBoolean.empty(),
+              OptionalEnum.empty()
+            )
           );
       }
       s1.incrementTimeInSeconds(time);
