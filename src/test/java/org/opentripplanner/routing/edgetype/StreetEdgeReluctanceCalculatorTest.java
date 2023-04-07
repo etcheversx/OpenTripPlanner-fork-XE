@@ -7,7 +7,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.opentripplanner.graph_builder.module.osm.AccessibilityPropertySet;
 import org.opentripplanner.openstreetmap.model.OptionalBoolean;
+import org.opentripplanner.openstreetmap.model.OptionalEnum;
 import org.opentripplanner.routing.api.request.preference.RoutingPreferences;
 import org.opentripplanner.routing.api.request.preference.WalkPreferences;
 import org.opentripplanner.routing.core.TraverseMode;
@@ -37,7 +39,16 @@ class StreetEdgeReluctanceCalculatorTest {
       routingPreferencesBuilder.withWalk(w -> w.withMinimalWidth(minimalWidth));
     }
 
-    assertEquals(expectedWalkReluctance, computeWalkReluctance(edgeWidth, null));
+    assertEquals(
+      expectedWalkReluctance,
+      computeWalkReluctance(
+        new AccessibilityPropertySet(
+          edgeWidth != null ? OptionalDouble.of(edgeWidth) : OptionalDouble.empty(),
+          OptionalBoolean.empty(),
+          OptionalEnum.empty()
+        )
+      )
+    );
   }
 
   @ParameterizedTest(name = "Walk reluctance with requiredLight={0} on edge with light={1} is {2}")
@@ -63,17 +74,26 @@ class StreetEdgeReluctanceCalculatorTest {
       routingPreferencesBuilder.withWalk(w -> w.withLightRequired(lightRequired));
     }
 
-    assertEquals(expectedWalkReluctance, computeWalkReluctance(null, edgeLight));
+    assertEquals(
+      expectedWalkReluctance,
+      computeWalkReluctance(
+        new AccessibilityPropertySet(
+          OptionalDouble.empty(),
+          edgeLight != null ? OptionalBoolean.of(edgeLight) : OptionalBoolean.empty(),
+          OptionalEnum.empty()
+        )
+      )
+    );
   }
 
-  private double computeWalkReluctance(Double edgeWidth, Boolean edgeLight) {
+  private double computeWalkReluctance(AccessibilityPropertySet edgeAccessibilityProperties) {
     return StreetEdgeReluctanceCalculator.computeReluctance(
       routingPreferencesBuilder.build(),
       TraverseMode.WALK,
       false,
       false,
-      edgeWidth != null ? OptionalDouble.of(edgeWidth) : OptionalDouble.empty(),
-      edgeLight != null ? OptionalBoolean.of(edgeLight) : OptionalBoolean.empty()
+      edgeAccessibilityProperties.getWidth(),
+      edgeAccessibilityProperties.getLit()
     );
   }
 }

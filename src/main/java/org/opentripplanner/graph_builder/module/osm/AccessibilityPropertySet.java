@@ -2,6 +2,7 @@ package org.opentripplanner.graph_builder.module.osm;
 
 import java.io.Serializable;
 import java.util.OptionalDouble;
+import javax.validation.constraints.NotNull;
 import org.opentripplanner.openstreetmap.model.OptionalBoolean;
 import org.opentripplanner.openstreetmap.model.OptionalEnum;
 
@@ -11,7 +12,11 @@ public class AccessibilityPropertySet implements Serializable {
   private final OptionalBoolean lit;
   private final OptionalEnum surface;
 
-  public AccessibilityPropertySet(OptionalDouble width, OptionalBoolean lit, OptionalEnum surface) {
+  public AccessibilityPropertySet(
+    @NotNull OptionalDouble width,
+    @NotNull OptionalBoolean lit,
+    @NotNull OptionalEnum surface
+  ) {
     this.width = width;
     this.lit = lit;
     this.surface = surface;
