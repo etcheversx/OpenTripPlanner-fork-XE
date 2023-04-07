@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.opentripplanner.graph_builder.module.osm.AccessibilityPropertySet;
+import org.opentripplanner.openstreetmap.model.OSMSurface;
 import org.opentripplanner.openstreetmap.model.OptionalBoolean;
 import org.opentripplanner.openstreetmap.model.OptionalEnum;
 import org.opentripplanner.routing.api.request.preference.RoutingPreferences;
@@ -81,6 +82,33 @@ class StreetEdgeReluctanceCalculatorTest {
           OptionalDouble.empty(),
           edgeLight != null ? OptionalBoolean.of(edgeLight) : OptionalBoolean.empty(),
           OptionalEnum.empty()
+        )
+      )
+    );
+  }
+
+  @ParameterizedTest(name = "Walk reluctance with reluctedSurfaces={0} on edge with surface={1} is {2}")
+  @CsvSource(
+    {
+      ", , 2.0"
+    }
+  )
+  void testReluctanceProcessingWithSurface(
+    OSMSurface[] reluctedSurfaces,
+    OSMSurface edgeSurface,
+    Double expectedWalkReluctance
+  ) {
+    if (reluctedSurfaces != null) {
+      routingPreferencesBuilder.withWalk(w -> w.withReluctedSurfaces(reluctedSurfaces));
+    }
+
+    assertEquals(
+      expectedWalkReluctance,
+      computeWalkReluctance(
+        new AccessibilityPropertySet(
+          OptionalDouble.empty(),
+          OptionalBoolean.empty(),
+          edgeSurface != null ? OptionalEnum.of(edgeSurface) : OptionalEnum.empty()
         )
       )
     );
