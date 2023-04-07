@@ -92,8 +92,6 @@ class StreetEdgeReluctanceCalculatorTest {
       TraverseMode.WALK,
       false,
       false,
-      edgeAccessibilityProperties.getWidth(),
-      edgeAccessibilityProperties.getLit(),
       edgeAccessibilityProperties
     );
   }

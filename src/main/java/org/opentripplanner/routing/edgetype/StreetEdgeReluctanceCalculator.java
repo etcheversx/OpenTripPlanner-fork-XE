@@ -20,8 +20,6 @@ class StreetEdgeReluctanceCalculator {
     TraverseMode traverseMode,
     boolean walkingBike,
     boolean edgeIsStairs,
-    OptionalDouble edgeWidth,
-    OptionalBoolean edgeLit,
     AccessibilityPropertySet edgeAccessibilityProperties
   ) {
     if (edgeIsStairs) {
@@ -30,7 +28,7 @@ class StreetEdgeReluctanceCalculator {
       return switch (traverseMode) {
         case WALK -> walkingBike
           ? pref.bike().walkingReluctance()
-          : computeRegularWalkReluctance(pref, edgeWidth, edgeLit);
+          : computeRegularWalkReluctance(pref, edgeAccessibilityProperties);
         case BICYCLE -> pref.bike().reluctance();
         case CAR -> pref.car().reluctance();
         default -> throw new IllegalArgumentException(
@@ -42,8 +40,7 @@ class StreetEdgeReluctanceCalculator {
 
   private static double computeRegularWalkReluctance(
     RoutingPreferences preferences,
-    OptionalDouble edgeWidth,
-    OptionalBoolean edgeLit
+    AccessibilityPropertySet edgeAccessibilityProperties
   ) {
     double reluctance = preferences.walk().reluctance();
     //    System.out.println(
@@ -52,11 +49,13 @@ class StreetEdgeReluctanceCalculator {
     //      " minimalWidth=" +
     //      preferences.walk().minimalWidth()
     //    );
-    if (edgeWidth.isPresent() && edgeWidth.getAsDouble() < preferences.walk().minimalWidth()) {
+    OptionalDouble width = edgeAccessibilityProperties.getWidth();
+    if (width.isPresent() && width.getAsDouble() < preferences.walk().minimalWidth()) {
       reluctance *= 2;
       System.out.println("**** updated walkReluctance=" + reluctance);
     }
-    if (edgeLit.isPresent() && !edgeLit.getAsBoolean() && preferences.walk().lightRequired()) {
+    OptionalBoolean lit = edgeAccessibilityProperties.getLit();
+    if (lit.isPresent() && !lit.getAsBoolean() && preferences.walk().lightRequired()) {
       reluctance *= 2;
     }
     return reluctance;

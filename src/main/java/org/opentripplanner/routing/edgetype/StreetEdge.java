@@ -1099,8 +1099,6 @@ public class StreetEdge
         traverseMode,
         walkingBike,
         isStairs(),
-        OptionalDouble.empty(),
-        OptionalBoolean.empty(),
         new AccessibilityPropertySet(
           OptionalDouble.empty(),
           OptionalBoolean.empty(),
@@ -1146,8 +1144,6 @@ public class StreetEdge
       TraverseMode.BICYCLE,
       false,
       isStairs(),
-      OptionalDouble.empty(),
-      OptionalBoolean.empty(),
       new AccessibilityPropertySet(
         OptionalDouble.empty(),
         OptionalBoolean.empty(),
@@ -1197,8 +1193,6 @@ public class StreetEdge
           traverseMode,
           walkingBike,
           isStairs(),
-          OptionalDouble.empty(),
-          OptionalBoolean.empty(),
           new AccessibilityPropertySet(
             OptionalDouble.empty(),
             OptionalBoolean.empty(),
