@@ -1,8 +1,12 @@
 package org.opentripplanner.openstreetmap.model;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.NoSuchElementException;
+import java.util.function.Consumer;
 import javax.validation.constraints.NotNull;
 
 public class OptionalEnum {
@@ -11,7 +15,8 @@ public class OptionalEnum {
   private static final Map<Enum<?>, OptionalEnum> optionalEnums = new HashMap<>();
   private Enum<?> enumerate;
 
-  private OptionalEnum() {}
+  private OptionalEnum() {
+  }
 
   private OptionalEnum(Enum<?> enumerate) {
     this.enumerate = enumerate;
@@ -32,6 +37,24 @@ public class OptionalEnum {
       }
     }
     throw new Exception("Invalid enum value " + value);
+  }
+
+  public static ArrayList<OptionalEnum> parseValues(String values) {
+    ArrayList<OptionalEnum> result = new ArrayList();
+    if (values == null) {
+      return result;
+    }
+    Arrays.stream(values.split(";"))
+      .forEach((s) -> {
+        try {
+          OptionalEnum optionalEnum = OptionalEnum.get(s);
+          if (! result.contains(optionalEnum)) {
+            result.add(optionalEnum);
+          }
+        } catch (Exception ignored) {
+        }
+      });
+    return  result;
   }
 
   public boolean isEmpty() {

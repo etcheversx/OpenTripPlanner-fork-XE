@@ -1,5 +1,6 @@
 package org.opentripplanner.openstreetmap.model;
 
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -11,7 +12,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.NoSuchElementException;
-import javax.swing.text.html.Option;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
@@ -92,5 +92,37 @@ class OptionalEnumTest {
       return;
     }
     fail("getAsBoolean should faild with NoSuchElementException");
+  }
+
+  @Test
+  void testParseValues() {
+    assertEquals(0, OptionalEnum.parseValues(null).size());
+
+    assertEquals(0, OptionalEnum.parseValues("").size());
+
+    ArrayList<OptionalEnum> parsedValues;
+    ArrayList<OptionalEnum> expectedValues;
+
+    parsedValues = OptionalEnum.parseValues("sand");
+    expectedValues = new ArrayList<>();
+    expectedValues.add(OptionalEnum.of(OSMSurface.sand));
+    assertEquals(expectedValues, parsedValues);
+
+    parsedValues = OptionalEnum.parseValues("sand;grass");
+    expectedValues = new ArrayList<>();
+    expectedValues.add(OptionalEnum.of(OSMSurface.sand));
+    expectedValues.add(OptionalEnum.of(OSMSurface.grass));
+    assertEquals(expectedValues, parsedValues);
+
+    parsedValues = OptionalEnum.parseValues("sand;foo;grass");
+    expectedValues = new ArrayList<>();
+    expectedValues.add(OptionalEnum.of(OSMSurface.sand));
+    expectedValues.add(OptionalEnum.of(OSMSurface.grass));
+    assertEquals(expectedValues, parsedValues);
+
+    parsedValues = OptionalEnum.parseValues("sand;sand");
+    expectedValues = new ArrayList<>();
+    expectedValues.add(OptionalEnum.of(OSMSurface.sand));
+    assertEquals(expectedValues, parsedValues);
   }
 }
