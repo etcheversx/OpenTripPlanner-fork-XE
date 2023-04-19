@@ -2,7 +2,9 @@ package org.opentripplanner.routing.edgetype;
 
 import java.util.OptionalDouble;
 import org.opentripplanner.graph_builder.module.osm.AccessibilityPropertySet;
+import org.opentripplanner.openstreetmap.model.OSMSurface;
 import org.opentripplanner.openstreetmap.model.OptionalBoolean;
+import org.opentripplanner.openstreetmap.model.OptionalEnum;
 import org.opentripplanner.routing.api.request.preference.RoutingPreferences;
 import org.opentripplanner.routing.core.TraverseMode;
 
@@ -56,6 +58,10 @@ class StreetEdgeReluctanceCalculator {
     }
     OptionalBoolean lit = edgeAccessibilityProperties.getLit();
     if (lit.isPresent() && !lit.getAsBoolean() && preferences.walk().lightRequired()) {
+      reluctance *= 2;
+    }
+    OptionalEnum surface = edgeAccessibilityProperties.getSurface();
+    if (surface.isPresent() && preferences.walk().reluctedSurfaces().contains((OSMSurface) surface.getAsEnum())) {
       reluctance *= 2;
     }
     return reluctance;

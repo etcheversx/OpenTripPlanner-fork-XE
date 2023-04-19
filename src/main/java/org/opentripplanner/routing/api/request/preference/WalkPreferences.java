@@ -3,6 +3,8 @@ package org.opentripplanner.routing.api.request.preference;
 import static org.opentripplanner.util.lang.DoubleUtils.doubleEquals;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Objects;
 import java.util.function.Consumer;
 import javax.validation.constraints.NotNull;
@@ -31,6 +33,7 @@ public final class WalkPreferences implements Serializable {
   private final double safetyFactor;
   private final double minimalWidth;
   private final boolean lightRequired;
+  private final Collection<OSMSurface> reluctedSurfaces;
 
   private WalkPreferences() {
     this.speed = 1.33;
@@ -41,6 +44,7 @@ public final class WalkPreferences implements Serializable {
     this.safetyFactor = 1.0;
     this.minimalWidth = 0.0;
     this.lightRequired = false;
+    this.reluctedSurfaces = new ArrayList<>();
   }
 
   private WalkPreferences(Builder builder) {
@@ -52,6 +56,7 @@ public final class WalkPreferences implements Serializable {
     this.safetyFactor = Units.reluctance(builder.safetyFactor);
     this.minimalWidth = Units.length(builder.minimalWidth);
     this.lightRequired = builder.lightRequired;
+    this.reluctedSurfaces = builder.reluctedSurfaces;
   }
 
   public static Builder of() {
@@ -126,6 +131,10 @@ public final class WalkPreferences implements Serializable {
     return lightRequired;
   }
 
+  public Collection<OSMSurface> reluctedSurfaces() {
+    return reluctedSurfaces;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;
@@ -133,13 +142,14 @@ public final class WalkPreferences implements Serializable {
     WalkPreferences that = (WalkPreferences) o;
     return (
       doubleEquals(that.speed, speed) &&
-      doubleEquals(that.reluctance, reluctance) &&
-      boardCost == that.boardCost &&
-      doubleEquals(that.stairsReluctance, stairsReluctance) &&
-      doubleEquals(that.stairsTimeFactor, stairsTimeFactor) &&
-      doubleEquals(that.safetyFactor, safetyFactor) &&
-      doubleEquals(that.minimalWidth, minimalWidth) &&
-      lightRequired == that.lightRequired
+        doubleEquals(that.reluctance, reluctance) &&
+        boardCost == that.boardCost &&
+        doubleEquals(that.stairsReluctance, stairsReluctance) &&
+        doubleEquals(that.stairsTimeFactor, stairsTimeFactor) &&
+        doubleEquals(that.safetyFactor, safetyFactor) &&
+        doubleEquals(that.minimalWidth, minimalWidth) &&
+        lightRequired == that.lightRequired &&
+        reluctedSurfaces.equals(that.reluctedSurfaces)
     );
   }
 
@@ -168,6 +178,7 @@ public final class WalkPreferences implements Serializable {
       .addNum("safetyFactor", safetyFactor, DEFAULT.safetyFactor)
       .addNum("minimalWidth", minimalWidth, DEFAULT.minimalWidth)
       .addBoolIfTrue("lightRequired", lightRequired)
+      .addStr("reluctedSurfaces", "...")
       .toString();
   }
 
@@ -182,7 +193,7 @@ public final class WalkPreferences implements Serializable {
     private double safetyFactor;
     private double minimalWidth = 0.0;
     private boolean lightRequired = false;
-    private OSMSurface[] reluctedSurfaces = {};
+    private Collection<OSMSurface> reluctedSurfaces = new ArrayList<>();
 
     public Builder(WalkPreferences original) {
       this.original = original;
@@ -194,6 +205,7 @@ public final class WalkPreferences implements Serializable {
       this.safetyFactor = original.safetyFactor;
       this.minimalWidth = original.minimalWidth;
       this.lightRequired = original.lightRequired;
+      this.reluctedSurfaces = original.reluctedSurfaces;
     }
 
     public WalkPreferences original() {
@@ -275,7 +287,7 @@ public final class WalkPreferences implements Serializable {
       return this;
     }
 
-    public Builder withReluctedSurfaces(@NotNull OSMSurface[] reluctedSurfaces) {
+    public Builder withReluctedSurfaces(@NotNull Collection<OSMSurface> reluctedSurfaces) {
       this.reluctedSurfaces = reluctedSurfaces;
       return this;
     }

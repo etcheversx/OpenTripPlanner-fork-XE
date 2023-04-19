@@ -1,7 +1,10 @@
 package org.opentripplanner.routing.edgetype;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.fail;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.OptionalDouble;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -30,7 +33,7 @@ class StreetEdgeReluctanceCalculatorTest {
   }
 
   @ParameterizedTest(name = "Walk reluctance with requiredLight={0} on edge with light={1} is {2}")
-  @CsvSource({ ", , 2.0", "0.9, , 2.0", ", 1.0, 2.0", "0.9, 1.0, 2.0", "0.9, 0.85, 4.0" })
+  @CsvSource({", , 2.0", "0.9, , 2.0", ", 1.0, 2.0", "0.9, 1.0, 2.0", "0.9, 0.85, 4.0"})
   void testReluctanceProcessingWithWidth(
     Double minimalWidth,
     Double edgeWidth,
@@ -90,28 +93,43 @@ class StreetEdgeReluctanceCalculatorTest {
   @ParameterizedTest(name = "Walk reluctance with reluctedSurfaces={0} on edge with surface={1} is {2}")
   @CsvSource(
     {
-      ", , 2.0"
+      ", , 2.0",
+      "sand, , 2.0",
+      ", sand, 2.0",
+      "grass, sand, 2.0",
+      "sand, sand, 4.0",
+      "sand;grass, grass, 4.0"
     }
   )
   void testReluctanceProcessingWithSurface(
-    OSMSurface[] reluctedSurfaces,
-    OSMSurface edgeSurface,
+    String reluctedSurfacesString,
+    String edgeSurfaceString,
     Double expectedWalkReluctance
   ) {
-    if (reluctedSurfaces != null) {
-      routingPreferencesBuilder.withWalk(w -> w.withReluctedSurfaces(reluctedSurfaces));
-    }
+    try {
+      if (reluctedSurfacesString != null) {
+        routingPreferencesBuilder.withWalk(w -> {
+          Collection<OSMSurface> reluctedSurfaces = new ArrayList<>();
+          OptionalEnum.parseValues(reluctedSurfacesString).forEach(e -> reluctedSurfaces.add((OSMSurface) e.getAsEnum()));
+          w.withReluctedSurfaces(reluctedSurfaces);
+        });
+      }
 
-    assertEquals(
-      expectedWalkReluctance,
-      computeWalkReluctance(
-        new AccessibilityPropertySet(
-          OptionalDouble.empty(),
-          OptionalBoolean.empty(),
-          edgeSurface != null ? OptionalEnum.of(edgeSurface) : OptionalEnum.empty()
+      OptionalEnum edgeSurface = edgeSurfaceString != null ? OptionalEnum.get(edgeSurfaceString) : OptionalEnum.empty();
+
+      assertEquals(
+        expectedWalkReluctance,
+        computeWalkReluctance(
+          new AccessibilityPropertySet(
+            OptionalDouble.empty(),
+            OptionalBoolean.empty(),
+            edgeSurface
+          )
         )
-      )
-    );
+      );
+    } catch (Exception exc) {
+      fail("Unexpected exception : " + exc.getMessage());
+    }
   }
 
   private double computeWalkReluctance(AccessibilityPropertySet edgeAccessibilityProperties) {

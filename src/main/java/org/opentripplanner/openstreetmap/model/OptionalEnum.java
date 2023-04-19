@@ -1,12 +1,10 @@
 package org.opentripplanner.openstreetmap.model;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.NoSuchElementException;
-import java.util.function.Consumer;
 import javax.validation.constraints.NotNull;
 
 public class OptionalEnum {
@@ -40,7 +38,7 @@ public class OptionalEnum {
   }
 
   public static ArrayList<OptionalEnum> parseValues(String values) {
-    ArrayList<OptionalEnum> result = new ArrayList();
+    ArrayList<OptionalEnum> result = new ArrayList<>();
     if (values == null) {
       return result;
     }
