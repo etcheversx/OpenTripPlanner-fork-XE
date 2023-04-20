@@ -3,8 +3,6 @@ package org.opentripplanner.routing.edgetype;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
 
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.OptionalDouble;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -108,11 +106,7 @@ class StreetEdgeReluctanceCalculatorTest {
   ) {
     try {
       if (reluctedSurfacesString != null) {
-        routingPreferencesBuilder.withWalk(w -> {
-          Collection<OSMSurface> reluctedSurfaces = new ArrayList<>();
-          OptionalEnum.parseValues(reluctedSurfacesString).forEach(e -> reluctedSurfaces.add((OSMSurface) e.getAsEnum()));
-          w.withReluctedSurfaces(reluctedSurfaces);
-        });
+        routingPreferencesBuilder.withWalk(w -> w.withReluctedSurfaces(OSMSurface.parseValues(reluctedSurfacesString)));
       }
 
       OptionalEnum edgeSurface = edgeSurfaceString != null ? OptionalEnum.get(edgeSurfaceString) : OptionalEnum.empty();
