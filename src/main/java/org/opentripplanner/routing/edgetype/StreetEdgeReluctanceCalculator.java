@@ -61,7 +61,10 @@ class StreetEdgeReluctanceCalculator {
       reluctance *= 2;
     }
     OptionalEnum surface = edgeAccessibilityProperties.getSurface();
-    if (surface.isPresent() && preferences.walk().reluctedSurfaces().contains((OSMSurface) surface.getAsEnum())) {
+    if (
+      surface.isPresent() &&
+      preferences.walk().reluctedSurfaces().contains((OSMSurface) surface.getAsEnum())
+    ) {
       reluctance *= 2;
     }
     return reluctance;

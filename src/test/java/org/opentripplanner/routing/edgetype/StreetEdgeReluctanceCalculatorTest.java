@@ -31,7 +31,7 @@ class StreetEdgeReluctanceCalculatorTest {
   }
 
   @ParameterizedTest(name = "Walk reluctance with requiredLight={0} on edge with light={1} is {2}")
-  @CsvSource({", , 2.0", "0.9, , 2.0", ", 1.0, 2.0", "0.9, 1.0, 2.0", "0.9, 0.85, 4.0"})
+  @CsvSource({ ", , 2.0", "0.9, , 2.0", ", 1.0, 2.0", "0.9, 1.0, 2.0", "0.9, 0.85, 4.0" })
   void testReluctanceProcessingWithWidth(
     Double minimalWidth,
     Double edgeWidth,
@@ -88,7 +88,9 @@ class StreetEdgeReluctanceCalculatorTest {
     );
   }
 
-  @ParameterizedTest(name = "Walk reluctance with reluctedSurfaces={0} on edge with surface={1} is {2}")
+  @ParameterizedTest(
+    name = "Walk reluctance with reluctedSurfaces={0} on edge with surface={1} is {2}"
+  )
   @CsvSource(
     {
       ", , 2.0",
@@ -96,7 +98,7 @@ class StreetEdgeReluctanceCalculatorTest {
       ", sand, 2.0",
       "grass, sand, 2.0",
       "sand, sand, 4.0",
-      "sand;grass, grass, 4.0"
+      "sand;grass, grass, 4.0",
     }
   )
   void testReluctanceProcessingWithSurface(
@@ -106,19 +108,19 @@ class StreetEdgeReluctanceCalculatorTest {
   ) {
     try {
       if (reluctedSurfacesString != null) {
-        routingPreferencesBuilder.withWalk(w -> w.withReluctedSurfaces(OSMSurface.parseValues(reluctedSurfacesString)));
+        routingPreferencesBuilder.withWalk(w ->
+          w.withReluctedSurfaces(OSMSurface.parseValues(reluctedSurfacesString))
+        );
       }
 
-      OptionalEnum edgeSurface = edgeSurfaceString != null ? OptionalEnum.get(edgeSurfaceString) : OptionalEnum.empty();
+      OptionalEnum edgeSurface = edgeSurfaceString != null
+        ? OptionalEnum.get(edgeSurfaceString)
+        : OptionalEnum.empty();
 
       assertEquals(
         expectedWalkReluctance,
         computeWalkReluctance(
-          new AccessibilityPropertySet(
-            OptionalDouble.empty(),
-            OptionalBoolean.empty(),
-            edgeSurface
-          )
+          new AccessibilityPropertySet(OptionalDouble.empty(), OptionalBoolean.empty(), edgeSurface)
         )
       );
     } catch (Exception exc) {

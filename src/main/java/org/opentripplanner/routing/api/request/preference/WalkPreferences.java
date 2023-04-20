@@ -142,14 +142,14 @@ public final class WalkPreferences implements Serializable {
     WalkPreferences that = (WalkPreferences) o;
     return (
       doubleEquals(that.speed, speed) &&
-        doubleEquals(that.reluctance, reluctance) &&
-        boardCost == that.boardCost &&
-        doubleEquals(that.stairsReluctance, stairsReluctance) &&
-        doubleEquals(that.stairsTimeFactor, stairsTimeFactor) &&
-        doubleEquals(that.safetyFactor, safetyFactor) &&
-        doubleEquals(that.minimalWidth, minimalWidth) &&
-        lightRequired == that.lightRequired &&
-        reluctedSurfaces.equals(that.reluctedSurfaces)
+      doubleEquals(that.reluctance, reluctance) &&
+      boardCost == that.boardCost &&
+      doubleEquals(that.stairsReluctance, stairsReluctance) &&
+      doubleEquals(that.stairsTimeFactor, stairsTimeFactor) &&
+      doubleEquals(that.safetyFactor, safetyFactor) &&
+      doubleEquals(that.minimalWidth, minimalWidth) &&
+      lightRequired == that.lightRequired &&
+      reluctedSurfaces.equals(that.reluctedSurfaces)
     );
   }
 
@@ -178,7 +178,7 @@ public final class WalkPreferences implements Serializable {
       .addNum("safetyFactor", safetyFactor, DEFAULT.safetyFactor)
       .addNum("minimalWidth", minimalWidth, DEFAULT.minimalWidth)
       .addBoolIfTrue("lightRequired", lightRequired)
-      .addStr("reluctedSurfaces", "...")
+      .addCol("reluctedSurfaces", reluctedSurfaces)
       .toString();
   }
 

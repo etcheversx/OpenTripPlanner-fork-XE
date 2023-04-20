@@ -18,7 +18,7 @@ public enum OSMSurface {
   gravel,
   sand;
 
-  public static Collection<OSMSurface> parseValues (String values) {
+  public static Collection<OSMSurface> parseValues(String values) {
     Collection<OSMSurface> result = new ArrayList<>();
     OptionalEnum.parseValues(values).forEach(e -> result.add((OSMSurface) e.getAsEnum()));
     return result;

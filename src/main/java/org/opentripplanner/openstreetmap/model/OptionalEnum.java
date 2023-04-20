@@ -13,8 +13,7 @@ public class OptionalEnum {
   private static final Map<Enum<?>, OptionalEnum> optionalEnums = new HashMap<>();
   private Enum<?> enumerate;
 
-  private OptionalEnum() {
-  }
+  private OptionalEnum() {}
 
   private OptionalEnum(Enum<?> enumerate) {
     this.enumerate = enumerate;
@@ -42,17 +41,17 @@ public class OptionalEnum {
     if (values == null) {
       return result;
     }
-    Arrays.stream(values.split(";"))
-      .forEach((s) -> {
+    Arrays
+      .stream(values.split(";"))
+      .forEach(s -> {
         try {
           OptionalEnum optionalEnum = OptionalEnum.get(s);
-          if (! result.contains(optionalEnum)) {
+          if (!result.contains(optionalEnum)) {
             result.add(optionalEnum);
           }
-        } catch (Exception ignored) {
-        }
+        } catch (Exception ignored) {}
       });
-    return  result;
+    return result;
   }
 
   public boolean isEmpty() {

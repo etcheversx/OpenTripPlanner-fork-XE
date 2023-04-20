@@ -9,9 +9,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.function.Consumer;
 import org.junit.jupiter.api.Test;
-import org.opengis.geometry.primitive.Surface;
 import org.opentripplanner.openstreetmap.model.OSMSurface;
-import org.opentripplanner.openstreetmap.model.OptionalEnum;
 
 class WalkPreferencesTest {
 
@@ -28,9 +26,8 @@ class WalkPreferencesTest {
   private static final double EXPECTED_SAFETY_FACTOR = 0.51;
   private static final double MINIMAL_WIDTH = 0.85;
   private static final boolean LIGHT_REQUIRED = true;
-  private static final OSMSurface[] _RELUCTED_SURFACES = {OSMSurface.sand, OSMSurface.grass};
-  private static final Collection<OSMSurface> RELUCTED_SURFACES =
-    Arrays.asList(_RELUCTED_SURFACES);
+  private static final OSMSurface[] _RELUCTED_SURFACES = { OSMSurface.sand, OSMSurface.grass };
+  private static final Collection<OSMSurface> RELUCTED_SURFACES = Arrays.asList(_RELUCTED_SURFACES);
 
   private final WalkPreferences subject = WalkPreferences
     .of()
@@ -98,10 +95,10 @@ class WalkPreferencesTest {
   }
 
   @Test
-  void testToSting() {
+  void testToString() {
     assertEquals("WalkPreferences{}", WalkPreferences.DEFAULT.toString());
     assertEquals(
-      "WalkPreferences{speed: 1.71, reluctance: 2.5, boardCost: 301, stairsReluctance: 3.0, stairsTimeFactor: 1.31, safetyFactor: 0.51, minimalWidth: 0.85, lightRequired}",
+      "WalkPreferences{speed: 1.71, reluctance: 2.5, boardCost: 301, stairsReluctance: 3.0, stairsTimeFactor: 1.31, safetyFactor: 0.51, minimalWidth: 0.85, lightRequired, reluctedSurfaces: [sand, grass]}",
       subject.toString()
     );
   }
