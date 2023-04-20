@@ -337,7 +337,7 @@ public abstract class RoutingResource {
   @QueryParam("minimalWidth")
   protected Double minimalWidth;
 
-  @QueryParam("lightrequired")
+  @QueryParam("lightRequired")
   protected Boolean lightRequired;
 
   @QueryParam("allowKeepingRentedBicycleAtDestination")
