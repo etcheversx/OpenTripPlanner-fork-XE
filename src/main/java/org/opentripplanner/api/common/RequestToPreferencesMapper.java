@@ -2,6 +2,7 @@ package org.opentripplanner.api.common;
 
 import java.util.function.Consumer;
 import javax.validation.constraints.NotNull;
+import org.opentripplanner.openstreetmap.model.OSMSurface;
 import org.opentripplanner.routing.api.request.preference.RoutingPreferences;
 import org.opentripplanner.routing.api.request.preference.VehicleParkingPreferences;
 import org.opentripplanner.routing.core.BicycleOptimizeType;
@@ -53,6 +54,7 @@ class RequestToPreferencesMapper {
       setIfNotNull(req.walkSafetyFactor, walk::withSafetyFactor);
       setIfNotNull(req.minimalWidth, walk::withMinimalWidth);
       setIfNotNull(req.lightRequired, walk::withLightRequired);
+      setIfNotNull(OSMSurface.parseValues(req.reluctedSurfaces), walk::withReluctedSurfaces);
     });
   }
 

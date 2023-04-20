@@ -340,6 +340,9 @@ public abstract class RoutingResource {
   @QueryParam("lightRequired")
   protected Boolean lightRequired;
 
+  @QueryParam("reluctedSurfaces")
+  protected String reluctedSurfaces;
+
   @QueryParam("allowKeepingRentedBicycleAtDestination")
   protected Boolean allowKeepingRentedBicycleAtDestination;
 
