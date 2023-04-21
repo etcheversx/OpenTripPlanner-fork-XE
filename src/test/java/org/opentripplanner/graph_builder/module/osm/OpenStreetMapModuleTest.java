@@ -396,7 +396,7 @@ public class OpenStreetMapModuleTest {
     for (Edge edge : gg.getEdges()) {
       if (
         (edge.getFromVertex().equals(iv5) && edge.getToVertex().equals(iv7)) ||
-        (edge.getFromVertex().equals(iv7) && edge.getToVertex().equals(iv5))
+          (edge.getFromVertex().equals(iv7) && edge.getToVertex().equals(iv5))
       ) {
         OptionalDouble width = edge.getAccessibilityProperties().getWidth();
         assertTrue(width.isPresent());
@@ -441,7 +441,7 @@ public class OpenStreetMapModuleTest {
       OptionalBoolean lit = edge.getAccessibilityProperties().getLit();
       if (
         (edge.getFromVertex().equals(iv5) && edge.getToVertex().equals(iv7)) ||
-        (edge.getFromVertex().equals(iv7) && edge.getToVertex().equals(iv5))
+          (edge.getFromVertex().equals(iv7) && edge.getToVertex().equals(iv5))
       ) {
         assertTrue(lit.isEmpty());
         /* TODO : modify osm test file to integrate lit property
@@ -464,7 +464,7 @@ public class OpenStreetMapModuleTest {
 
     File file = new File(
       URLDecoder.decode(
-        Objects.requireNonNull(getClass().getResource("map.osm.pbf")).getFile(),
+        Objects.requireNonNull(getClass().getResource("grenoble_secteur_verdun.osm.pbf")).getFile(),
         StandardCharsets.UTF_8
       )
     );
@@ -479,23 +479,23 @@ public class OpenStreetMapModuleTest {
 
     osmModule.buildGraph();
 
-    // These vertices are labeled in the OSM file as having traffic lights.
-    IntersectionVertex iv5 = (IntersectionVertex) gg.getVertex("osm:node:261210346");
-    IntersectionVertex iv7 = (IntersectionVertex) gg.getVertex("osm:node:300879145");
 
-    // 36775129
+    // These vertices are labeled in the OSM file as having traffic lights.
+    IntersectionVertex iv5 = (IntersectionVertex) gg.getVertex("osm:node:-1656814");
+    IntersectionVertex iv7 = (IntersectionVertex) gg.getVertex("osm:node:-1659965");
+
     for (Edge edge : gg.getEdges()) {
       if (
         (edge.getFromVertex().equals(iv5) && edge.getToVertex().equals(iv7)) ||
-        (edge.getFromVertex().equals(iv7) && edge.getToVertex().equals(iv5))
+          (edge.getFromVertex().equals(iv7) && edge.getToVertex().equals(iv5))
       ) {
         OptionalEnum surface = edge.getAccessibilityProperties().getSurface();
         assertTrue(surface.isPresent());
-        assertSame(OSMSurface.unpaved, surface.getAsEnum());
+        assertSame(OSMSurface.asphalt, surface.getAsEnum());
       } else {
-        /*
-        TODO : define the test of an edge without surface
-         */
+        //
+        // TODO : define the test of an edge without surface
+        //
 
       }
     }
