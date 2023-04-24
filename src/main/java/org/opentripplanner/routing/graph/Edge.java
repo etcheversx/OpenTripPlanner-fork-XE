@@ -135,7 +135,6 @@ public abstract class Edge implements Serializable {
     return 0;
   }
 
-
   /* SERIALIZATION */
 
   private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException {
