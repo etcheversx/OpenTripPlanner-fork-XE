@@ -367,8 +367,6 @@ public class OpenStreetMapModuleTest {
    * Global variables dedicated to assess accessibility
    */
   Graph grenobleGraph;
-  private IntersectionVertex edgeFromWithSurface;
-  private IntersectionVertex edgeToWithSurface;
 
 
   /**
@@ -397,10 +395,7 @@ public class OpenStreetMapModuleTest {
     osmModule.buildGraph();
 
 
-    // These vertices are labeled in the OSM file as having traffic lights.
-    edgeFromWithSurface = (IntersectionVertex) grenobleGraph.getVertex("osm:node:-1656814");
-    edgeToWithSurface = (IntersectionVertex) grenobleGraph.getVertex("osm:node:-1659965");
-
+    assessBuildGraphWithWidth();
     assessBuildGraphWithLit();
     assessBuildGraphWithSurface();
   }
@@ -408,43 +403,21 @@ public class OpenStreetMapModuleTest {
   /**
    * Width is properly parsed on edges when building OSM graph .
    */
-  @Test
-  public void testBuildGraphWithWidth() {
-    var deduplicator = new Deduplicator();
-    var gg = new Graph(deduplicator);
+  private void assessBuildGraphWithWidth() {
+    IntersectionVertex edgeFromWithWidth = (IntersectionVertex) grenobleGraph.getVertex("osm:node:-1659017");
+    IntersectionVertex edgeToWithWidth = (IntersectionVertex) grenobleGraph.getVertex("osm:node:-1659280");
+    IntersectionVertex edgeFromWithoutWidth = (IntersectionVertex) grenobleGraph.getVertex("osm:node:-1656814");
+    IntersectionVertex edgeToWithoutWidth = (IntersectionVertex) grenobleGraph.getVertex("osm:node:-1659965");
 
-    File file = new File(
-      URLDecoder.decode(
-        Objects.requireNonNull(getClass().getResource("map.osm.pbf")).getFile(),
-        StandardCharsets.UTF_8
-      )
-    );
-    OpenStreetMapProvider provider = new OpenStreetMapProvider(file, true);
-    OpenStreetMapModule osmModule = new OpenStreetMapModule(
-      List.of(provider),
-      Set.of(),
-      gg,
-      noopIssueStore(),
-      new DefaultMapper()
-    );
-
-    osmModule.buildGraph();
-
-    // These vertices are labeled in the OSM file as having traffic lights.
-    IntersectionVertex iv5 = (IntersectionVertex) gg.getVertex("osm:node:427567945");
-    IntersectionVertex iv7 = (IntersectionVertex) gg.getVertex("osm:node:427567949");
-
-    // 36775129
-    for (StreetEdge edge : gg.getStreetEdges()) {
-      if (
-        (edge.getFromVertex().equals(iv5) && edge.getToVertex().equals(iv7)) ||
-          (edge.getFromVertex().equals(iv7) && edge.getToVertex().equals(iv5))
-      ) {
-        OptionalDouble width = edge.getAccessibilityProperties().getWidth();
+    for (StreetEdge edge : grenobleGraph.getStreetEdges()) {
+      OptionalDouble width = edge.getAccessibilityProperties().getWidth();
+      if ((edge.getFromVertex().equals(edgeFromWithWidth) && edge.getToVertex().equals(edgeToWithWidth))
+        || (edge.getFromVertex().equals(edgeToWithWidth) && edge.getToVertex().equals(edgeFromWithWidth))) {
         assertTrue(width.isPresent());
-        assertEquals(4.0, width.getAsDouble());
-      } else {
-        assertTrue(edge.getAccessibilityProperties().getWidth().isEmpty());
+        assertEquals(170.0, width.getAsDouble());
+      } else if ((edge.getFromVertex().equals(edgeFromWithoutWidth) && edge.getToVertex().equals(edgeToWithoutWidth))
+        || (edge.getFromVertex().equals(edgeToWithoutWidth) && edge.getToVertex().equals(edgeFromWithoutWidth))) {
+        assertTrue(width.isEmpty());
       }
     }
   }
@@ -453,24 +426,19 @@ public class OpenStreetMapModuleTest {
    * Lit is properly parsed on edges when building OSM graph .
    */
   private void assessBuildGraphWithLit() {
-    // These vertices define a way without lit option.
+    IntersectionVertex edgeFromWithLit = (IntersectionVertex) grenobleGraph.getVertex("osm:node:-1656814");
+    IntersectionVertex edgeToWithLit = (IntersectionVertex) grenobleGraph.getVertex("osm:node:-1659965");
     IntersectionVertex edgeFromWithoutLight = (IntersectionVertex) grenobleGraph.getVertex("osm:node:-1660332");
     IntersectionVertex edgeToWithoutLight = (IntersectionVertex) grenobleGraph.getVertex("osm:node:-1661950");
 
     for (StreetEdge edge : grenobleGraph.getStreetEdges()) {
-      OptionalBoolean lit;
-      if (
-        (edge.getFromVertex().equals(edgeFromWithSurface) && edge.getToVertex().equals(edgeToWithSurface)) ||
-          (edge.getFromVertex().equals(edgeToWithSurface) && edge.getToVertex().equals(edgeFromWithSurface))
-      ) {
-        lit = edge.getAccessibilityProperties().getLit();
+      OptionalBoolean lit = edge.getAccessibilityProperties().getLit();
+      if ((edge.getFromVertex().equals(edgeFromWithLit) && edge.getToVertex().equals(edgeToWithLit))
+        || (edge.getFromVertex().equals(edgeToWithLit) && edge.getToVertex().equals(edgeFromWithLit))) {
         assertTrue(lit.isPresent());
         assertTrue(lit.getAsBoolean());
-      } else if (
-        (edge.getFromVertex().equals(edgeFromWithoutLight) && edge.getToVertex().equals(edgeToWithoutLight)) ||
-          (edge.getFromVertex().equals(edgeFromWithoutLight) && edge.getToVertex().equals(edgeFromWithoutLight))
-      ) {
-        lit = edge.getAccessibilityProperties().getLit();
+      } else if ((edge.getFromVertex().equals(edgeFromWithoutLight) && edge.getToVertex().equals(edgeToWithoutLight))
+        || (edge.getFromVertex().equals(edgeFromWithoutLight) && edge.getToVertex().equals(edgeFromWithoutLight))) {
         assertTrue(lit.isPresent());
         assertFalse(lit.getAsBoolean());
       }
@@ -481,18 +449,21 @@ public class OpenStreetMapModuleTest {
    * Surface is properly parsed on edges when building OSM graph .
    */
   private void assessBuildGraphWithSurface() {
+    IntersectionVertex edgeFromWithSurface = (IntersectionVertex) grenobleGraph.getVertex("osm:node:-1656814");
+    IntersectionVertex edgeToWithSurface = (IntersectionVertex) grenobleGraph.getVertex("osm:node:-1659965");
+    IntersectionVertex edgeFromWithoutSurface = (IntersectionVertex) grenobleGraph.getVertex("osm:node:-1660442");
+    IntersectionVertex edgeToWithoutSurface = (IntersectionVertex) grenobleGraph.getVertex("osm:node:-1658768");
+
     for (StreetEdge edge : grenobleGraph.getStreetEdges()) {
-      if (
-        (edge.getFromVertex().equals(edgeFromWithSurface) && edge.getToVertex().equals(edgeToWithSurface)) ||
-          (edge.getFromVertex().equals(edgeToWithSurface) && edge.getToVertex().equals(edgeFromWithSurface))
-      ) {
-        OptionalEnum surface = edge.getAccessibilityProperties().getSurface();
+      OptionalEnum surface = edge.getAccessibilityProperties().getSurface();
+      if ((edge.getFromVertex().equals(edgeFromWithSurface) && edge.getToVertex().equals(edgeToWithSurface))
+        || (edge.getFromVertex().equals(edgeToWithSurface) && edge.getToVertex().equals(edgeFromWithSurface))) {
         assertTrue(surface.isPresent());
         assertSame(OSMSurface.asphalt, surface.getAsEnum());
-      } else {
-        //
-        // TODO : define the test of an edge without surface
-        //
+      }
+      if ((edge.getFromVertex().equals(edgeFromWithoutSurface) && edge.getToVertex().equals(edgeToWithoutSurface))
+        || (edge.getFromVertex().equals(edgeToWithoutSurface) && edge.getToVertex().equals(edgeFromWithoutSurface))) {
+        assertTrue(surface.isEmpty());
 
       }
     }
