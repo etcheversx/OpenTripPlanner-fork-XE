@@ -1,10 +1,12 @@
 package org.opentripplanner.routing.graph;
 
+import com.fasterxml.jackson.datatype.jdk8.OptionalDoubleSerializer;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.Objects;
+import java.util.OptionalDouble;
 import org.locationtech.jts.geom.LineString;
 import org.opentripplanner.graph_builder.module.osm.AccessibilityPropertySet;
 import org.opentripplanner.routing.core.State;

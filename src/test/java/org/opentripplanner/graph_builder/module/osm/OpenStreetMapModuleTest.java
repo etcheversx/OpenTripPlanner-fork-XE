@@ -364,6 +364,48 @@ public class OpenStreetMapModuleTest {
   // }
 
   /**
+   * Global variables dedicated to assess accessibility
+   */
+  Graph grenobleGraph;
+  private IntersectionVertex edgeFromWithSurface;
+  private IntersectionVertex edgeToWithSurface;
+
+
+  /**
+   * Properties used to assess accessibility are properly parsed on edges when building OSM graph.
+   */
+  @Test
+  public void testBuildGraphForAccessibilityConcerns() {
+    var deduplicator = new Deduplicator();
+    grenobleGraph = new Graph(deduplicator);
+
+    File file = new File(
+      URLDecoder.decode(
+        Objects.requireNonNull(getClass().getResource("grenoble_secteur_verdun.osm.pbf")).getFile(),
+        StandardCharsets.UTF_8
+      )
+    );
+    OpenStreetMapProvider provider = new OpenStreetMapProvider(file, true);
+    OpenStreetMapModule osmModule = new OpenStreetMapModule(
+      List.of(provider),
+      Set.of(),
+      grenobleGraph,
+      noopIssueStore(),
+      new DefaultMapper()
+    );
+
+    osmModule.buildGraph();
+
+
+    // These vertices are labeled in the OSM file as having traffic lights.
+    edgeFromWithSurface = (IntersectionVertex) grenobleGraph.getVertex("osm:node:-1656814");
+    edgeToWithSurface = (IntersectionVertex) grenobleGraph.getVertex("osm:node:-1659965");
+
+    assessBuildGraphWithLit();
+    assessBuildGraphWithSurface();
+  }
+
+  /**
    * Width is properly parsed on edges when building OSM graph .
    */
   @Test
@@ -410,46 +452,27 @@ public class OpenStreetMapModuleTest {
   /**
    * Lit is properly parsed on edges when building OSM graph .
    */
-  @Test
-  public void testBuildGraphWithLit() {
-    var deduplicator = new Deduplicator();
-    var gg = new Graph(deduplicator);
+  private void assessBuildGraphWithLit() {
+    // These vertices define a way without lit option.
+    IntersectionVertex edgeFromWithoutLight = (IntersectionVertex) grenobleGraph.getVertex("osm:node:-1660332");
+    IntersectionVertex edgeToWithoutLight = (IntersectionVertex) grenobleGraph.getVertex("osm:node:-1661950");
 
-    File file = new File(
-      URLDecoder.decode(
-        Objects.requireNonNull(getClass().getResource("map.osm.pbf")).getFile(),
-        StandardCharsets.UTF_8
-      )
-    );
-    OpenStreetMapProvider provider = new OpenStreetMapProvider(file, true);
-    OpenStreetMapModule osmModule = new OpenStreetMapModule(
-      List.of(provider),
-      Set.of(),
-      gg,
-      noopIssueStore(),
-      new DefaultMapper()
-    );
-
-    osmModule.buildGraph();
-
-    // These vertices are labeled in the OSM file as having traffic lights.
-    IntersectionVertex iv5 = (IntersectionVertex) gg.getVertex("osm:node:427567945");
-    IntersectionVertex iv7 = (IntersectionVertex) gg.getVertex("osm:node:427567949");
-
-    // 36775129
-    for (Edge edge : gg.getEdges()) {
-      OptionalBoolean lit = edge.getAccessibilityProperties().getLit();
+    for (Edge edge : grenobleGraph.getEdges()) {
+      OptionalBoolean lit;
       if (
-        (edge.getFromVertex().equals(iv5) && edge.getToVertex().equals(iv7)) ||
-          (edge.getFromVertex().equals(iv7) && edge.getToVertex().equals(iv5))
+        (edge.getFromVertex().equals(edgeFromWithSurface) && edge.getToVertex().equals(edgeToWithSurface)) ||
+          (edge.getFromVertex().equals(edgeToWithSurface) && edge.getToVertex().equals(edgeFromWithSurface))
       ) {
-        assertTrue(lit.isEmpty());
-        /* TODO : modify osm test file to integrate lit property
-           assertTrue(edge.getLit().isPresent());
-           assertTrue(edge.getLit().getAsBoolean());
-        */
-      } else {
-        assertTrue(lit.isEmpty());
+        lit = edge.getAccessibilityProperties().getLit();
+        assertTrue(lit.isPresent());
+        assertTrue(lit.getAsBoolean());
+      } else if (
+        (edge.getFromVertex().equals(edgeFromWithoutLight) && edge.getToVertex().equals(edgeToWithoutLight)) ||
+          (edge.getFromVertex().equals(edgeFromWithoutLight) && edge.getToVertex().equals(edgeFromWithoutLight))
+      ) {
+        lit = edge.getAccessibilityProperties().getLit();
+        assertTrue(lit.isPresent());
+        assertFalse(lit.getAsBoolean());
       }
     }
   }
@@ -457,37 +480,11 @@ public class OpenStreetMapModuleTest {
   /**
    * Surface is properly parsed on edges when building OSM graph .
    */
-  @Test
-  public void testBuildGraphWithSurface() {
-    var deduplicator = new Deduplicator();
-    var gg = new Graph(deduplicator);
-
-    File file = new File(
-      URLDecoder.decode(
-        Objects.requireNonNull(getClass().getResource("grenoble_secteur_verdun.osm.pbf")).getFile(),
-        StandardCharsets.UTF_8
-      )
-    );
-    OpenStreetMapProvider provider = new OpenStreetMapProvider(file, true);
-    OpenStreetMapModule osmModule = new OpenStreetMapModule(
-      List.of(provider),
-      Set.of(),
-      gg,
-      noopIssueStore(),
-      new DefaultMapper()
-    );
-
-    osmModule.buildGraph();
-
-
-    // These vertices are labeled in the OSM file as having traffic lights.
-    IntersectionVertex iv5 = (IntersectionVertex) gg.getVertex("osm:node:-1656814");
-    IntersectionVertex iv7 = (IntersectionVertex) gg.getVertex("osm:node:-1659965");
-
-    for (Edge edge : gg.getEdges()) {
+  private void assessBuildGraphWithSurface() {
+    for (Edge edge : grenobleGraph.getEdges()) {
       if (
-        (edge.getFromVertex().equals(iv5) && edge.getToVertex().equals(iv7)) ||
-          (edge.getFromVertex().equals(iv7) && edge.getToVertex().equals(iv5))
+        (edge.getFromVertex().equals(edgeFromWithSurface) && edge.getToVertex().equals(edgeToWithSurface)) ||
+          (edge.getFromVertex().equals(edgeToWithSurface) && edge.getToVertex().equals(edgeFromWithSurface))
       ) {
         OptionalEnum surface = edge.getAccessibilityProperties().getSurface();
         assertTrue(surface.isPresent());
