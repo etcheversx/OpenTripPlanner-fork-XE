@@ -91,9 +91,9 @@ public class StreetEdge
   protected float bicycleSafetyFactor;
 
   /**
-   * walkSafetyFactor = length * walkSafetyFactor. For example, a 100m street with a safety
-   * factor of 2.0 will be considered in term of safety cost as the same as a 200m street with a
-   * safety factor of 1.0.
+   * walkSafetyFactor = length * walkSafetyFactor. For example, a 100m street with a safety factor
+   * of 2.0 will be considered in term of safety cost as the same as a 200m street with a safety
+   * factor of 1.0.
    */
   protected float walkSafetyFactor;
 
@@ -194,6 +194,11 @@ public class StreetEdge
         outAngle = 0;
       }
     }
+    this.accessibilityProperties = new AccessibilityPropertySet(
+      OptionalDouble.empty(),
+      OptionalBoolean.empty(),
+      OptionalEnum.empty()
+    );
   }
 
   //For testing only
@@ -375,18 +380,18 @@ public class StreetEdge
   public String toString() {
     return (
       "StreetEdge(" +
-      name +
-      ", " +
-      fromv +
-      " -> " +
-      tov +
-      " length=" +
-      this.getDistanceMeters() +
-      " carSpeed=" +
-      this.getCarSpeed() +
-      " permission=" +
-      this.getPermission() +
-      ")"
+        name +
+        ", " +
+        fromv +
+        " -> " +
+        tov +
+        " length=" +
+        this.getDistanceMeters() +
+        " carSpeed=" +
+        this.getCarSpeed() +
+        " permission=" +
+        this.getPermission() +
+        ")"
     );
   }
 
@@ -430,8 +435,8 @@ public class StreetEdge
 
     if (
       canDropOffAfterDriving(s0) &&
-      !getPermission().allows(TraverseMode.CAR) &&
-      canTraverse(TraverseMode.WALK)
+        !getPermission().allows(TraverseMode.CAR) &&
+        canTraverse(TraverseMode.WALK)
     ) {
       StateEditor dropOff = doTraverse(s0, TraverseMode.WALK, false);
       if (dropOff != null) {
@@ -519,16 +524,16 @@ public class StreetEdge
       if (turnRestriction.type == TurnRestrictionType.ONLY_TURN) {
         if (
           !e.isEquivalentTo(turnRestriction.to) &&
-          turnRestriction.modes.contains(mode) &&
-          turnRestriction.active(state.getTimeSeconds())
+            turnRestriction.modes.contains(mode) &&
+            turnRestriction.active(state.getTimeSeconds())
         ) {
           return false;
         }
       } else {
         if (
           e.isEquivalentTo(turnRestriction.to) &&
-          turnRestriction.modes.contains(mode) &&
-          turnRestriction.active(state.getTimeSeconds())
+            turnRestriction.modes.contains(mode) &&
+            turnRestriction.active(state.getTimeSeconds())
         ) {
           return false;
         }
@@ -1094,17 +1099,17 @@ public class StreetEdge
     var time = getDistanceMeters() / speed;
     var weight =
       time *
-      StreetEdgeReluctanceCalculator.computeReluctance(
-        preferences,
-        traverseMode,
-        walkingBike,
-        isStairs(),
-        new AccessibilityPropertySet(
-          OptionalDouble.empty(),
-          OptionalBoolean.empty(),
-          OptionalEnum.empty()
-        )
-      );
+        StreetEdgeReluctanceCalculator.computeReluctance(
+          preferences,
+          traverseMode,
+          walkingBike,
+          isStairs(),
+          new AccessibilityPropertySet(
+            OptionalDouble.empty(),
+            OptionalBoolean.empty(),
+            OptionalEnum.empty()
+          )
+        );
     return new TraversalCosts(time, weight);
   }
 
@@ -1130,11 +1135,11 @@ public class StreetEdge
         double slope = getEffectiveBikeDistanceForWorkCost();
         weight =
           quick *
-          pref.bike().optimizeTriangle().time() +
-          slope *
-          pref.bike().optimizeTriangle().slope() +
-          safety *
-          pref.bike().optimizeTriangle().safety();
+            pref.bike().optimizeTriangle().time() +
+            slope *
+              pref.bike().optimizeTriangle().slope() +
+            safety *
+              pref.bike().optimizeTriangle().safety();
         weight /= speed;
       }
       default -> weight = getDistanceMeters() / speed;
@@ -1167,12 +1172,12 @@ public class StreetEdge
       time = getEffectiveWalkDistance() / speed;
       weight =
         (getEffectiveBikeDistance() / speed) *
-        StreetEdgeReluctanceCalculator.computeWheelchairReluctance(
-          preferences,
-          getMaxSlope(),
-          isWheelchairAccessible(),
-          isStairs()
-        );
+          StreetEdgeReluctanceCalculator.computeWheelchairReluctance(
+            preferences,
+            getMaxSlope(),
+            isWheelchairAccessible(),
+            isStairs()
+          );
     } else {
       if (walkingBike) {
         // take slopes into account when walking bikes
@@ -1182,9 +1187,9 @@ public class StreetEdge
         time = getEffectiveWalkDistance() / speed;
         weight =
           getEffectiveWalkSafetyDistance() *
-          preferences.walk().safetyFactor() +
-          getEffectiveWalkDistance() *
-          (1 - preferences.walk().safetyFactor());
+            preferences.walk().safetyFactor() +
+            getEffectiveWalkDistance() *
+              (1 - preferences.walk().safetyFactor());
         weight /= speed;
       }
       weight *=
@@ -1236,5 +1241,16 @@ public class StreetEdge
   }
 
   /** Tuple to return time and weight from calculation */
-  private record TraversalCosts(double time, double weight) {}
+  private record TraversalCosts(double time, double weight) {
+  }
+
+  private AccessibilityPropertySet accessibilityProperties;
+
+  public AccessibilityPropertySet getAccessibilityProperties() {
+    return this.accessibilityProperties;
+  }
+
+  public void setAccessibilityProperties(AccessibilityPropertySet accessibilityProperties) {
+    this.accessibilityProperties = accessibilityProperties;
+  }
 }

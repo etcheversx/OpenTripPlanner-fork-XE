@@ -435,7 +435,7 @@ public class OpenStreetMapModuleTest {
     IntersectionVertex iv7 = (IntersectionVertex) gg.getVertex("osm:node:427567949");
 
     // 36775129
-    for (Edge edge : gg.getEdges()) {
+    for (StreetEdge edge : gg.getStreetEdges()) {
       if (
         (edge.getFromVertex().equals(iv5) && edge.getToVertex().equals(iv7)) ||
           (edge.getFromVertex().equals(iv7) && edge.getToVertex().equals(iv5))
@@ -457,7 +457,7 @@ public class OpenStreetMapModuleTest {
     IntersectionVertex edgeFromWithoutLight = (IntersectionVertex) grenobleGraph.getVertex("osm:node:-1660332");
     IntersectionVertex edgeToWithoutLight = (IntersectionVertex) grenobleGraph.getVertex("osm:node:-1661950");
 
-    for (Edge edge : grenobleGraph.getEdges()) {
+    for (StreetEdge edge : grenobleGraph.getStreetEdges()) {
       OptionalBoolean lit;
       if (
         (edge.getFromVertex().equals(edgeFromWithSurface) && edge.getToVertex().equals(edgeToWithSurface)) ||
@@ -481,7 +481,7 @@ public class OpenStreetMapModuleTest {
    * Surface is properly parsed on edges when building OSM graph .
    */
   private void assessBuildGraphWithSurface() {
-    for (Edge edge : grenobleGraph.getEdges()) {
+    for (StreetEdge edge : grenobleGraph.getStreetEdges()) {
       if (
         (edge.getFromVertex().equals(edgeFromWithSurface) && edge.getToVertex().equals(edgeToWithSurface)) ||
           (edge.getFromVertex().equals(edgeToWithSurface) && edge.getToVertex().equals(edgeFromWithSurface))

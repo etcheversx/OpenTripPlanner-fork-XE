@@ -1,14 +1,11 @@
 package org.opentripplanner.routing.graph;
 
-import com.fasterxml.jackson.datatype.jdk8.OptionalDoubleSerializer;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.Objects;
-import java.util.OptionalDouble;
 import org.locationtech.jts.geom.LineString;
-import org.opentripplanner.graph_builder.module.osm.AccessibilityPropertySet;
 import org.opentripplanner.routing.core.State;
 import org.opentripplanner.transit.model.basic.I18NString;
 
@@ -21,8 +18,6 @@ public abstract class Edge implements Serializable {
   protected Vertex fromv;
 
   protected Vertex tov;
-
-  protected AccessibilityPropertySet accessibilityProperties;
 
   protected Edge(Vertex v1, Vertex v2) {
     if (v1 == null || v2 == null) {
@@ -140,13 +135,6 @@ public abstract class Edge implements Serializable {
     return 0;
   }
 
-  public AccessibilityPropertySet getAccessibilityProperties() {
-    return this.accessibilityProperties;
-  }
-
-  public void setAccessibilityProperties(AccessibilityPropertySet accessibilityProperties) {
-    this.accessibilityProperties = accessibilityProperties;
-  }
 
   /* SERIALIZATION */
 
