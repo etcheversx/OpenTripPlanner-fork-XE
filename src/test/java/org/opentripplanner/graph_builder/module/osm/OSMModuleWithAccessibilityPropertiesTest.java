@@ -255,4 +255,54 @@ public class OSMModuleWithAccessibilityPropertiesTest {
     }
     assertEquals(2, succeed);
   }
+
+  @Test
+  public void testBuildGraphWithoutTactilePaving() {
+    int succeed = 0;
+    IntersectionVertex edgeFromWithoutTactilePaving = (IntersectionVertex) grenobleGraph.getVertex(
+      "osm:node:-1660332"
+    );
+    IntersectionVertex edgeToWithoutTactilePaving = (IntersectionVertex) grenobleGraph.getVertex(
+      "osm:node:-1661950"
+    );
+    IntersectionVertex edgeFromWithFalseTactilePaving = (IntersectionVertex) grenobleGraph.getVertex(
+      "osm:node:-1657652"
+    );
+    IntersectionVertex edgeToWithFalseTactilePaving = (IntersectionVertex) grenobleGraph.getVertex(
+      "osm:node:-1658679"
+    );
+
+
+    for (StreetEdge edge : grenobleGraph.getStreetEdges()) {
+      OptionalBoolean tactilePaving = edge.getAccessibilityProperties().getTactilePaving();
+      if (
+        (
+          edge.getFromVertex().equals(edgeFromWithoutTactilePaving) &&
+            edge.getToVertex().equals(edgeToWithoutTactilePaving)
+        ) ||
+          (
+            edge.getFromVertex().equals(edgeToWithoutTactilePaving) &&
+              edge.getToVertex().equals(edgeFromWithoutTactilePaving)
+          )
+      ) {
+        assertTrue(tactilePaving.isEmpty());
+        succeed++;
+      }
+      if (
+        (
+          edge.getFromVertex().equals(edgeFromWithFalseTactilePaving) &&
+            edge.getToVertex().equals(edgeToWithFalseTactilePaving)
+        ) ||
+          (
+            edge.getFromVertex().equals(edgeToWithFalseTactilePaving) &&
+              edge.getToVertex().equals(edgeFromWithFalseTactilePaving)
+          )
+      ) {
+        assertTrue(tactilePaving.isPresent());
+        assertFalse(tactilePaving.getAsBoolean());
+        succeed++;
+      }
+    }
+    assertEquals(4, succeed);
+  }
 }
