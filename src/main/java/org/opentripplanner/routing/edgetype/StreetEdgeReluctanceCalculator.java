@@ -45,16 +45,9 @@ class StreetEdgeReluctanceCalculator {
     AccessibilityPropertySet edgeAccessibilityProperties
   ) {
     double reluctance = preferences.walk().reluctance();
-    //    System.out.println(
-    //      "**** walkReluctance=" +
-    //      preferences.walk().reluctance() +
-    //      " minimalWidth=" +
-    //      preferences.walk().minimalWidth()
-    //    );
     OptionalDouble width = edgeAccessibilityProperties.getWidth();
     if (width.isPresent() && width.getAsDouble() < preferences.walk().minimalWidth()) {
       reluctance *= 2;
-      System.out.println("**** updated walkReluctance=" + reluctance);
     }
     OptionalBoolean lit = edgeAccessibilityProperties.getLit();
     if (lit.isPresent() && !lit.getAsBoolean() && preferences.walk().lightRequired()) {

@@ -1098,16 +1098,22 @@ public class StreetEdge
     double speed
   ) {
     var time = getDistanceMeters() / speed;
-    var weight =
-      time *
-      StreetEdgeReluctanceCalculator.computeReluctance(
-        preferences,
-        traverseMode,
-        walkingBike,
-        isStairs(),
-        this.accessibilityProperties
-      );
+    var weight = time * computeReluctance(preferences, traverseMode, walkingBike);
     return new TraversalCosts(time, weight);
+  }
+
+  private double computeReluctance(
+    RoutingPreferences preferences,
+    TraverseMode traverseMode,
+    boolean walkingBike
+  ) {
+    return StreetEdgeReluctanceCalculator.computeReluctance(
+      preferences,
+      traverseMode,
+      walkingBike,
+      isStairs(),
+      this.accessibilityProperties
+    );
   }
 
   @Nonnull
@@ -1141,14 +1147,7 @@ public class StreetEdge
       }
       default -> weight = getDistanceMeters() / speed;
     }
-    var reluctance = StreetEdgeReluctanceCalculator.computeReluctance(
-      pref,
-      TraverseMode.BICYCLE,
-      false,
-      isStairs(),
-      this.accessibilityProperties
-    );
-    weight *= reluctance;
+    weight *= computeReluctance(pref, TraverseMode.BICYCLE, false);
     return new TraversalCosts(time, weight);
   }
 
@@ -1185,14 +1184,7 @@ public class StreetEdge
           (1 - preferences.walk().safetyFactor());
         weight /= speed;
       }
-      weight *=
-        StreetEdgeReluctanceCalculator.computeReluctance(
-          preferences,
-          traverseMode,
-          walkingBike,
-          isStairs(),
-          this.accessibilityProperties
-        );
+      weight *= computeReluctance(preferences, traverseMode, walkingBike);
     }
 
     return new TraversalCosts(time, weight);
