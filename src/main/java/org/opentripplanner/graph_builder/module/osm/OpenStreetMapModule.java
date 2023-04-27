@@ -497,7 +497,8 @@ public class OpenStreetMapModule implements GraphBuilderModule {
       return new AccessibilityPropertySet(
         parseWidth(element),
         parseLit(element),
-        parseSurface(element)
+        parseSurface(element),
+        OptionalBoolean.empty()
       );
     }
 

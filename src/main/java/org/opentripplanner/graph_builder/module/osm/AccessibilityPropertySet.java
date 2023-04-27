@@ -11,15 +11,18 @@ public class AccessibilityPropertySet implements Serializable {
   private final OptionalDouble width;
   private final OptionalBoolean lit;
   private final OptionalEnum surface;
+  private final OptionalBoolean tactilePaving;
 
   public AccessibilityPropertySet(
     @NotNull OptionalDouble width,
     @NotNull OptionalBoolean lit,
-    @NotNull OptionalEnum surface
+    @NotNull OptionalEnum surface,
+    @NotNull OptionalBoolean tactilePaving
   ) {
     this.width = width;
     this.lit = lit;
     this.surface = surface;
+    this.tactilePaving = tactilePaving;
   }
 
   public OptionalDouble getWidth() {

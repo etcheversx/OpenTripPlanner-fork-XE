@@ -47,7 +47,8 @@ class StreetEdgeReluctanceCalculatorTest {
         new AccessibilityPropertySet(
           edgeWidth != null ? OptionalDouble.of(edgeWidth) : OptionalDouble.empty(),
           OptionalBoolean.empty(),
-          OptionalEnum.empty()
+          OptionalEnum.empty(),
+          OptionalBoolean.empty()
         )
       )
     );
@@ -82,7 +83,8 @@ class StreetEdgeReluctanceCalculatorTest {
         new AccessibilityPropertySet(
           OptionalDouble.empty(),
           edgeLight != null ? OptionalBoolean.of(edgeLight) : OptionalBoolean.empty(),
-          OptionalEnum.empty()
+          OptionalEnum.empty(),
+          OptionalBoolean.empty()
         )
       )
     );
@@ -120,7 +122,12 @@ class StreetEdgeReluctanceCalculatorTest {
       assertEquals(
         expectedWalkReluctance,
         computeWalkReluctance(
-          new AccessibilityPropertySet(OptionalDouble.empty(), OptionalBoolean.empty(), edgeSurface)
+          new AccessibilityPropertySet(
+            OptionalDouble.empty(),
+            OptionalBoolean.empty(),
+            edgeSurface,
+            OptionalBoolean.empty()
+          )
         )
       );
     } catch (Exception exc) {

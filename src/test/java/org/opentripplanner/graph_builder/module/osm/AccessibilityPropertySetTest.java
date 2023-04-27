@@ -18,14 +18,16 @@ public class AccessibilityPropertySetTest {
       new AccessibilityPropertySet(
         OptionalDouble.empty(),
         OptionalBoolean.empty(),
-        OptionalEnum.empty()
+        OptionalEnum.empty(),
+        OptionalBoolean.empty()
       );
     assertEquals(
       accessibilityPropertySet,
       new AccessibilityPropertySet(
         OptionalDouble.empty(),
         OptionalBoolean.empty(),
-        OptionalEnum.empty()
+        OptionalEnum.empty(),
+        OptionalBoolean.empty()
       )
     );
   }
@@ -34,7 +36,12 @@ public class AccessibilityPropertySetTest {
   void testWidthGetSet() {
     OptionalDouble width = OptionalDouble.of(4.5);
     accessibilityPropertySet =
-      new AccessibilityPropertySet(width, OptionalBoolean.empty(), OptionalEnum.empty());
+      new AccessibilityPropertySet(
+        width,
+        OptionalBoolean.empty(),
+        OptionalEnum.empty(),
+        OptionalBoolean.empty()
+      );
     assertEquals(width, accessibilityPropertySet.getWidth());
   }
 
@@ -42,7 +49,12 @@ public class AccessibilityPropertySetTest {
   void testLitGetSet() {
     OptionalBoolean lit = OptionalBoolean.of(true);
     accessibilityPropertySet =
-      new AccessibilityPropertySet(OptionalDouble.empty(), lit, OptionalEnum.empty());
+      new AccessibilityPropertySet(
+        OptionalDouble.empty(),
+        lit,
+        OptionalEnum.empty(),
+        OptionalBoolean.empty()
+      );
     assertEquals(lit, accessibilityPropertySet.getLit());
   }
 
@@ -50,7 +62,12 @@ public class AccessibilityPropertySetTest {
   void testSurfaceGetSet() {
     OptionalEnum surface = OptionalEnum.of(OSMSurface.paved);
     accessibilityPropertySet =
-      new AccessibilityPropertySet(OptionalDouble.empty(), OptionalBoolean.empty(), surface);
+      new AccessibilityPropertySet(
+        OptionalDouble.empty(),
+        OptionalBoolean.empty(),
+        surface,
+        OptionalBoolean.empty()
+      );
     assertEquals(surface, accessibilityPropertySet.getSurface());
   }
 }

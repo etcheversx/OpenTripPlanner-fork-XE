@@ -121,7 +121,8 @@ public class PathwayEdge extends Edge implements BikeWalkableEdge, WheelchairTra
             new AccessibilityPropertySet(
               OptionalDouble.empty(),
               OptionalBoolean.empty(),
-              OptionalEnum.empty()
+              OptionalEnum.empty(),
+              OptionalBoolean.empty()
             )
           );
       }

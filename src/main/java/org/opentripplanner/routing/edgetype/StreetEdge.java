@@ -198,7 +198,8 @@ public class StreetEdge
       new AccessibilityPropertySet(
         OptionalDouble.empty(),
         OptionalBoolean.empty(),
-        OptionalEnum.empty()
+        OptionalEnum.empty(),
+        OptionalBoolean.empty()
       );
   }
 
