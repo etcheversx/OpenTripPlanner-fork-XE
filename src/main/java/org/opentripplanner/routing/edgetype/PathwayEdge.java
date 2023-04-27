@@ -34,6 +34,7 @@ public class PathwayEdge extends Edge implements BikeWalkableEdge, WheelchairTra
 
   private final boolean wheelchairAccessible;
   private final FeedScopedId id;
+  private AccessibilityPropertySet accessibilityProperties;
 
   public PathwayEdge(
     Vertex fromv,
@@ -56,6 +57,13 @@ public class PathwayEdge extends Edge implements BikeWalkableEdge, WheelchairTra
     this.wheelchairAccessible = wheelchairAccessible;
     this.distance = distance;
     this.mode = mode;
+    this.accessibilityProperties =
+      new AccessibilityPropertySet(
+        OptionalDouble.empty(),
+        OptionalBoolean.empty(),
+        OptionalEnum.empty(),
+        OptionalBoolean.empty()
+      );
   }
 
   /**
@@ -118,12 +126,7 @@ public class PathwayEdge extends Edge implements BikeWalkableEdge, WheelchairTra
             TraverseMode.WALK,
             s0.getNonTransitMode() == TraverseMode.BICYCLE,
             isStairs(),
-            new AccessibilityPropertySet(
-              OptionalDouble.empty(),
-              OptionalBoolean.empty(),
-              OptionalEnum.empty(),
-              OptionalBoolean.empty()
-            )
+            this.accessibilityProperties
           );
       }
       s1.incrementTimeInSeconds(time);
