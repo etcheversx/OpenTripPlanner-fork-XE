@@ -37,6 +37,10 @@ public class AccessibilityPropertySet implements Serializable {
     return surface;
   }
 
+  public OptionalBoolean getTactilePaving() {
+    return tactilePaving;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;

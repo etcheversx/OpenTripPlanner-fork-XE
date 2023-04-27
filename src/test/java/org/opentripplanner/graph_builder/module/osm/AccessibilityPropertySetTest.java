@@ -70,4 +70,17 @@ public class AccessibilityPropertySetTest {
       );
     assertEquals(surface, accessibilityPropertySet.getSurface());
   }
+
+  @Test
+  void testTactilePavingGetSet() {
+    OptionalBoolean tactilePaving = OptionalBoolean.of(true);
+    accessibilityPropertySet =
+      new AccessibilityPropertySet(
+        OptionalDouble.empty(),
+        OptionalBoolean.empty(),
+        OptionalEnum.empty(),
+        tactilePaving
+      );
+    assertEquals(tactilePaving, accessibilityPropertySet.getTactilePaving());
+  }
 }
