@@ -1105,11 +1105,7 @@ public class StreetEdge
         traverseMode,
         walkingBike,
         isStairs(),
-        new AccessibilityPropertySet(
-          OptionalDouble.empty(),
-          OptionalBoolean.empty(),
-          OptionalEnum.empty()
-        )
+        this.accessibilityProperties
       );
     return new TraversalCosts(time, weight);
   }
@@ -1150,11 +1146,7 @@ public class StreetEdge
       TraverseMode.BICYCLE,
       false,
       isStairs(),
-      new AccessibilityPropertySet(
-        OptionalDouble.empty(),
-        OptionalBoolean.empty(),
-        OptionalEnum.empty()
-      )
+      this.accessibilityProperties
     );
     weight *= reluctance;
     return new TraversalCosts(time, weight);
@@ -1199,11 +1191,7 @@ public class StreetEdge
           traverseMode,
           walkingBike,
           isStairs(),
-          new AccessibilityPropertySet(
-            OptionalDouble.empty(),
-            OptionalBoolean.empty(),
-            OptionalEnum.empty()
-          )
+          this.accessibilityProperties
         );
     }
 
