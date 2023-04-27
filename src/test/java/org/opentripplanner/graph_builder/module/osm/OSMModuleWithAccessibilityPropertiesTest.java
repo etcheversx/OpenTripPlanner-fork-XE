@@ -2,7 +2,6 @@ package org.opentripplanner.graph_builder.module.osm;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.opentripplanner.graph_builder.DataImportIssueStore.noopIssueStore;
 
@@ -11,15 +10,16 @@ import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.Objects;
-import java.util.OptionalDouble;
 import java.util.Set;
+import java.util.function.Function;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.opentripplanner.graph_builder.module.osm.tagmapping.DefaultMapper;
 import org.opentripplanner.openstreetmap.OpenStreetMapProvider;
 import org.opentripplanner.openstreetmap.model.OSMSurface;
 import org.opentripplanner.openstreetmap.model.OptionalBoolean;
-import org.opentripplanner.openstreetmap.model.OptionalEnum;
 import org.opentripplanner.routing.edgetype.StreetEdge;
 import org.opentripplanner.routing.graph.Graph;
 import org.opentripplanner.routing.vertextype.IntersectionVertex;
@@ -39,8 +39,8 @@ public class OSMModuleWithAccessibilityPropertiesTest {
         Objects
           .requireNonNull(
             OSMModuleWithAccessibilityPropertiesTest.class.getResource(
-              "grenoble_secteur_verdun.osm.pbf"
-            )
+                "grenoble_secteur_verdun.osm.pbf"
+              )
           )
           .getFile(),
         StandardCharsets.UTF_8
@@ -58,251 +58,151 @@ public class OSMModuleWithAccessibilityPropertiesTest {
     osmModule.buildGraph();
   }
 
-  @Test
-  public void testBuildGraphWithWidth() {
+  private static void checkProperty(
+    String fromId,
+    String toId,
+    Function<StreetEdge, Boolean> checkedPropertyPresence,
+    Function<StreetEdge, Object> checkedPropertyValue,
+    boolean expectedPresence,
+    Object expectedValue
+  ) {
     int succeed = 0;
-    IntersectionVertex edgeFromWithWidth = (IntersectionVertex) grenobleGraph.getVertex(
-      "osm:node:-1659017"
+    IntersectionVertex fromVertex = (IntersectionVertex) grenobleGraph.getVertex(
+      "osm:node:" + fromId
     );
-    IntersectionVertex edgeToWithWidth = (IntersectionVertex) grenobleGraph.getVertex(
-      "osm:node:-1659280"
-    );
+    IntersectionVertex toVertex = (IntersectionVertex) grenobleGraph.getVertex("osm:node:" + toId);
 
     for (StreetEdge edge : grenobleGraph.getStreetEdges()) {
-      OptionalDouble width = edge.getAccessibilityProperties().getWidth();
       if (
-        (
-          edge.getFromVertex().equals(edgeFromWithWidth) &&
-            edge.getToVertex().equals(edgeToWithWidth)
-        ) ||
-          (
-            edge.getFromVertex().equals(edgeToWithWidth) &&
-              edge.getToVertex().equals(edgeFromWithWidth)
-          )
+        (edge.getFromVertex().equals(fromVertex) && edge.getToVertex().equals(toVertex)) ||
+        (edge.getFromVertex().equals(toVertex) && edge.getToVertex().equals(fromVertex))
       ) {
-        assertTrue(width.isPresent());
-        assertEquals(170.0, width.getAsDouble());
+        boolean presence = checkedPropertyPresence.apply(edge);
+        assertEquals(expectedPresence, presence);
+        if (expectedPresence) {
+          assertEquals(expectedValue, checkedPropertyValue.apply(edge));
+        }
         succeed++;
       }
     }
     assertEquals(2, succeed);
   }
 
-  @Test
-  public void testBuildGraphWithoutWidth() {
-    int succeed = 0;
-    IntersectionVertex edgeFromWithoutWidth = (IntersectionVertex) grenobleGraph.getVertex(
-      "osm:node:-1656814"
-    );
-    IntersectionVertex edgeToWithoutWidth = (IntersectionVertex) grenobleGraph.getVertex(
-      "osm:node:-1659965"
-    );
-
-    for (StreetEdge edge : grenobleGraph.getStreetEdges()) {
-      OptionalDouble width = edge.getAccessibilityProperties().getWidth();
-      if (
-        (
-          edge.getFromVertex().equals(edgeFromWithoutWidth) &&
-            edge.getToVertex().equals(edgeToWithoutWidth)
-        ) ||
-          (
-            edge.getFromVertex().equals(edgeToWithoutWidth) &&
-              edge.getToVertex().equals(edgeFromWithoutWidth)
-          )
-      ) {
-        assertTrue(width.isEmpty());
-        succeed++;
-      }
-    }
-    assertEquals(2, succeed);
+  private static boolean isWidthPresent(StreetEdge edge) {
+    return edge.getAccessibilityProperties().getWidth().isPresent();
   }
 
-  @Test
-  public void testBuildGraphWithLit() {
-    int succeed = 0;
-    IntersectionVertex edgeFromWithLit = (IntersectionVertex) grenobleGraph.getVertex(
-      "osm:node:-1656814"
-    );
-    IntersectionVertex edgeToWithLit = (IntersectionVertex) grenobleGraph.getVertex(
-      "osm:node:-1659965"
-    );
-
-    for (StreetEdge edge : grenobleGraph.getStreetEdges()) {
-      OptionalBoolean lit = edge.getAccessibilityProperties().getLit();
-      if (
-        (
-          edge.getFromVertex().equals(edgeFromWithLit) && edge.getToVertex().equals(edgeToWithLit)
-        ) ||
-          (edge.getFromVertex().equals(edgeToWithLit) && edge.getToVertex().equals(edgeFromWithLit))
-      ) {
-        assertTrue(lit.isPresent());
-        assertTrue(lit.getAsBoolean());
-        succeed++;
-      }
-    }
-    assertEquals(2, succeed);
+  private static Object getWidthValue(StreetEdge edge) {
+    return edge.getAccessibilityProperties().getWidth().getAsDouble();
   }
 
-  @Test
-  public void testBuildGraphWithoutLit() {
-    int succeed = 0;
-    IntersectionVertex edgeFromWithoutLight = (IntersectionVertex) grenobleGraph.getVertex(
-      "osm:node:-1660332"
+  @ParameterizedTest(
+    name = "On edge from {0} to {1} width expected presence is {2} and expected value is {3}"
+  )
+  @CsvSource({ "-1659017, -1659280, true, 170.0", "-1656814, -1659965, false, " })
+  public void testBuildGraphWithWidth(
+    String fromId,
+    String toId,
+    boolean expectedPresence,
+    Double expectedValue
+  ) {
+    checkProperty(
+      fromId,
+      toId,
+      OSMModuleWithAccessibilityPropertiesTest::isWidthPresent,
+      OSMModuleWithAccessibilityPropertiesTest::getWidthValue,
+      expectedPresence,
+      expectedValue
     );
-    IntersectionVertex edgeToWithoutLight = (IntersectionVertex) grenobleGraph.getVertex(
-      "osm:node:-1661950"
-    );
-
-    for (StreetEdge edge : grenobleGraph.getStreetEdges()) {
-      OptionalBoolean lit = edge.getAccessibilityProperties().getLit();
-      if (
-        (
-          edge.getFromVertex().equals(edgeFromWithoutLight) &&
-            edge.getToVertex().equals(edgeToWithoutLight)
-        ) ||
-          (
-            edge.getFromVertex().equals(edgeToWithoutLight) &&
-              edge.getToVertex().equals(edgeFromWithoutLight)
-          )
-      ) {
-        assertTrue(lit.isPresent());
-        assertFalse(lit.getAsBoolean());
-        succeed++;
-      }
-    }
-    assertEquals(2, succeed);
   }
 
-  @Test
-  public void testBuildGraphWithSurface() {
-    int succeed = 0;
-    IntersectionVertex edgeFromWithSurface = (IntersectionVertex) grenobleGraph.getVertex(
-      "osm:node:-1656814"
-    );
-    IntersectionVertex edgeToWithSurface = (IntersectionVertex) grenobleGraph.getVertex(
-      "osm:node:-1659965"
-    );
-
-    for (StreetEdge edge : grenobleGraph.getStreetEdges()) {
-      OptionalEnum surface = edge.getAccessibilityProperties().getSurface();
-      if (
-        (
-          edge.getFromVertex().equals(edgeFromWithSurface) &&
-            edge.getToVertex().equals(edgeToWithSurface)
-        ) ||
-          (
-            edge.getFromVertex().equals(edgeToWithSurface) &&
-              edge.getToVertex().equals(edgeFromWithSurface)
-          )
-      ) {
-        assertTrue(surface.isPresent());
-        assertSame(OSMSurface.asphalt, surface.getAsEnum());
-        succeed++;
-      }
-    }
-    assertEquals(2, succeed);
+  private static boolean isLitPresent(StreetEdge edge) {
+    return edge.getAccessibilityProperties().getLit().isPresent();
   }
 
-  @Test
-  public void testBuildGraphWithoutSurface() {
-    int succeed = 0;
-    IntersectionVertex edgeFromWithoutSurface = (IntersectionVertex) grenobleGraph.getVertex(
-      "osm:node:-1660442"
-    );
-    IntersectionVertex edgeToWithoutSurface = (IntersectionVertex) grenobleGraph.getVertex(
-      "osm:node:-1658768"
-    );
-
-    for (StreetEdge edge : grenobleGraph.getStreetEdges()) {
-      OptionalEnum surface = edge.getAccessibilityProperties().getSurface();
-      if (
-        (
-          edge.getFromVertex().equals(edgeFromWithoutSurface) &&
-            edge.getToVertex().equals(edgeToWithoutSurface)
-        ) ||
-          (
-            edge.getFromVertex().equals(edgeToWithoutSurface) &&
-              edge.getToVertex().equals(edgeFromWithoutSurface)
-          )
-      ) {
-        assertTrue(surface.isEmpty());
-        succeed++;
-      }
-    }
-    assertEquals(2, succeed);
+  private static Object getLitValue(StreetEdge edge) {
+    return edge.getAccessibilityProperties().getLit().getAsBoolean();
   }
 
-  @Test
-  public void testBuildGraphWithTactilePaving() {
-    int succeed = 0;
-    IntersectionVertex edgeFromWithTactilePaving = (IntersectionVertex) grenobleGraph.getVertex(
-      "osm:node:-1658611"
+  @ParameterizedTest(
+    name = "On edge from {0} to {1} lit expected presence is {2} and expected value is {3}"
+  )
+  @CsvSource({ "-1656814, -1659965, true, true", "-1660332, -1661950, true, false" })
+  public void testBuildGraphWithLit(
+    String fromId,
+    String toId,
+    boolean expectedPresence,
+    Boolean expectedValue
+  ) {
+    checkProperty(
+      fromId,
+      toId,
+      OSMModuleWithAccessibilityPropertiesTest::isLitPresent,
+      OSMModuleWithAccessibilityPropertiesTest::getLitValue,
+      expectedPresence,
+      expectedValue
     );
-    IntersectionVertex edgeToWithTactilePaving = (IntersectionVertex) grenobleGraph.getVertex(
-      "osm:node:-1659936"
-    );
-
-    for (StreetEdge edge : grenobleGraph.getStreetEdges()) {
-      OptionalBoolean tactilePaving = edge.getAccessibilityProperties().getTactilePaving();
-      if (
-        (edge.getFromVertex().equals(edgeFromWithTactilePaving) && edge.getToVertex().equals(edgeToWithTactilePaving))
-          || (edge.getFromVertex().equals(edgeToWithTactilePaving) && edge.getToVertex().equals(edgeFromWithTactilePaving))
-      ) {
-        assertTrue(tactilePaving.isPresent());
-        assertTrue(tactilePaving.getAsBoolean());
-        succeed++;
-      }
-    }
-    assertEquals(2, succeed);
   }
 
-  @Test
-  public void testBuildGraphWithoutTactilePaving() {
-    int succeed = 0;
-    IntersectionVertex edgeFromWithoutTactilePaving = (IntersectionVertex) grenobleGraph.getVertex(
-      "osm:node:-1660332"
-    );
-    IntersectionVertex edgeToWithoutTactilePaving = (IntersectionVertex) grenobleGraph.getVertex(
-      "osm:node:-1661950"
-    );
-    IntersectionVertex edgeFromWithFalseTactilePaving = (IntersectionVertex) grenobleGraph.getVertex(
-      "osm:node:-1657652"
-    );
-    IntersectionVertex edgeToWithFalseTactilePaving = (IntersectionVertex) grenobleGraph.getVertex(
-      "osm:node:-1658679"
-    );
+  private static boolean isSurfacePresent(StreetEdge edge) {
+    return edge.getAccessibilityProperties().getSurface().isPresent();
+  }
 
+  private static Object getSurfaceValue(StreetEdge edge) {
+    return edge.getAccessibilityProperties().getSurface().getAsEnum();
+  }
 
-    for (StreetEdge edge : grenobleGraph.getStreetEdges()) {
-      OptionalBoolean tactilePaving = edge.getAccessibilityProperties().getTactilePaving();
-      if (
-        (
-          edge.getFromVertex().equals(edgeFromWithoutTactilePaving) &&
-            edge.getToVertex().equals(edgeToWithoutTactilePaving)
-        ) ||
-          (
-            edge.getFromVertex().equals(edgeToWithoutTactilePaving) &&
-              edge.getToVertex().equals(edgeFromWithoutTactilePaving)
-          )
-      ) {
-        assertTrue(tactilePaving.isEmpty());
-        succeed++;
-      }
-      if (
-        (
-          edge.getFromVertex().equals(edgeFromWithFalseTactilePaving) &&
-            edge.getToVertex().equals(edgeToWithFalseTactilePaving)
-        ) ||
-          (
-            edge.getFromVertex().equals(edgeToWithFalseTactilePaving) &&
-              edge.getToVertex().equals(edgeFromWithFalseTactilePaving)
-          )
-      ) {
-        assertTrue(tactilePaving.isPresent());
-        assertFalse(tactilePaving.getAsBoolean());
-        succeed++;
-      }
+  @ParameterizedTest(
+    name = "On edge from {0} to {1} surface expected presence is {2} and expected value is {3}"
+  )
+  @CsvSource({ "-1656814, -1659965, true, asphalt", "-1660442, -1658768, false, " })
+  public void testBuildGraphWithSurface(
+    String fromId,
+    String toId,
+    boolean expectedPresence,
+    OSMSurface expectedValue
+  ) {
+    checkProperty(
+      fromId,
+      toId,
+      OSMModuleWithAccessibilityPropertiesTest::isSurfacePresent,
+      OSMModuleWithAccessibilityPropertiesTest::getSurfaceValue,
+      expectedPresence,
+      expectedValue
+    );
+  }
+
+  private static boolean isTactilePavingPresent(StreetEdge edge) {
+    return edge.getAccessibilityProperties().getTactilePaving().isPresent();
+  }
+
+  private static Object getTactilePavingValue(StreetEdge edge) {
+    return edge.getAccessibilityProperties().getTactilePaving().getAsBoolean();
+  }
+
+  @ParameterizedTest(
+    name = "On edge from {0} to {1} tactilePaving expected presence is {2} and expected value is {3}"
+  )
+  @CsvSource(
+    {
+      "-1658611, -1659936, true, true",
+      "-1660332, -1661950, false, ",
+      "-1657652, -1658679, true, false",
     }
-    assertEquals(4, succeed);
+  )
+  public void testBuildGraphWithTactilePaving(
+    String fromId,
+    String toId,
+    boolean expectedPresence,
+    Boolean expectedValue
+  ) {
+    checkProperty(
+      fromId,
+      toId,
+      OSMModuleWithAccessibilityPropertiesTest::isTactilePavingPresent,
+      OSMModuleWithAccessibilityPropertiesTest::getTactilePavingValue,
+      expectedPresence,
+      expectedValue
+    );
   }
 }
