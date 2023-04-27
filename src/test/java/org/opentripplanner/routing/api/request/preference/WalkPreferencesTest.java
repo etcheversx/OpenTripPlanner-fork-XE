@@ -28,6 +28,7 @@ class WalkPreferencesTest {
   private static final boolean LIGHT_REQUIRED = true;
   private static final OSMSurface[] _RELUCTED_SURFACES = { OSMSurface.sand, OSMSurface.grass };
   private static final Collection<OSMSurface> RELUCTED_SURFACES = Arrays.asList(_RELUCTED_SURFACES);
+  private static final boolean TACTILE_PAVING = true;
 
   private final WalkPreferences subject = WalkPreferences
     .of()
@@ -40,6 +41,7 @@ class WalkPreferencesTest {
     .withMinimalWidth(MINIMAL_WIDTH)
     .withLightRequired(LIGHT_REQUIRED)
     .withReluctedSurfaces(RELUCTED_SURFACES)
+    .withTactilePaving(TACTILE_PAVING)
     .build();
 
   @Test
@@ -98,7 +100,7 @@ class WalkPreferencesTest {
   void testToString() {
     assertEquals("WalkPreferences{}", WalkPreferences.DEFAULT.toString());
     assertEquals(
-      "WalkPreferences{speed: 1.71, reluctance: 2.5, boardCost: 301, stairsReluctance: 3.0, stairsTimeFactor: 1.31, safetyFactor: 0.51, minimalWidth: 0.85, lightRequired, reluctedSurfaces: [sand, grass]}",
+      "WalkPreferences{speed: 1.71, reluctance: 2.5, boardCost: 301, stairsReluctance: 3.0, stairsTimeFactor: 1.31, safetyFactor: 0.51, minimalWidth: 0.85, lightRequired, reluctedSurfaces: [sand, grass], tactilePaving}",
       subject.toString()
     );
   }

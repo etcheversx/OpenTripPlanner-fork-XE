@@ -34,6 +34,7 @@ public final class WalkPreferences implements Serializable {
   private final double minimalWidth;
   private final boolean lightRequired;
   private final Collection<OSMSurface> reluctedSurfaces;
+  private final boolean tactilePaving;
 
   private WalkPreferences() {
     this.speed = 1.33;
@@ -45,6 +46,7 @@ public final class WalkPreferences implements Serializable {
     this.minimalWidth = 0.0;
     this.lightRequired = false;
     this.reluctedSurfaces = new ArrayList<>();
+    this.tactilePaving = false;
   }
 
   private WalkPreferences(Builder builder) {
@@ -57,6 +59,7 @@ public final class WalkPreferences implements Serializable {
     this.minimalWidth = Units.length(builder.minimalWidth);
     this.lightRequired = builder.lightRequired;
     this.reluctedSurfaces = builder.reluctedSurfaces;
+    this.tactilePaving = builder.tactilePaving;
   }
 
   public static Builder of() {
@@ -135,6 +138,10 @@ public final class WalkPreferences implements Serializable {
     return reluctedSurfaces;
   }
 
+  public boolean tactilePaving() {
+    return tactilePaving;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;
@@ -149,7 +156,8 @@ public final class WalkPreferences implements Serializable {
       doubleEquals(that.safetyFactor, safetyFactor) &&
       doubleEquals(that.minimalWidth, minimalWidth) &&
       lightRequired == that.lightRequired &&
-      reluctedSurfaces.equals(that.reluctedSurfaces)
+      reluctedSurfaces.equals(that.reluctedSurfaces) &&
+      tactilePaving == that.tactilePaving
     );
   }
 
@@ -179,6 +187,7 @@ public final class WalkPreferences implements Serializable {
       .addNum("minimalWidth", minimalWidth, DEFAULT.minimalWidth)
       .addBoolIfTrue("lightRequired", lightRequired)
       .addCol("reluctedSurfaces", reluctedSurfaces)
+      .addBoolIfTrue("tactilePaving", tactilePaving)
       .toString();
   }
 
@@ -194,6 +203,7 @@ public final class WalkPreferences implements Serializable {
     private double minimalWidth = 0.0;
     private boolean lightRequired = false;
     private Collection<OSMSurface> reluctedSurfaces = new ArrayList<>();
+    private boolean tactilePaving = false;
 
     public Builder(WalkPreferences original) {
       this.original = original;
@@ -206,6 +216,7 @@ public final class WalkPreferences implements Serializable {
       this.minimalWidth = original.minimalWidth;
       this.lightRequired = original.lightRequired;
       this.reluctedSurfaces = original.reluctedSurfaces;
+      this.tactilePaving = original.tactilePaving;
     }
 
     public WalkPreferences original() {
@@ -282,13 +293,13 @@ public final class WalkPreferences implements Serializable {
       return this;
     }
 
-    public Builder witLightRequired(boolean lightRequired) {
-      this.lightRequired = lightRequired;
+    public Builder withReluctedSurfaces(@NotNull Collection<OSMSurface> reluctedSurfaces) {
+      this.reluctedSurfaces = reluctedSurfaces;
       return this;
     }
 
-    public Builder withReluctedSurfaces(@NotNull Collection<OSMSurface> reluctedSurfaces) {
-      this.reluctedSurfaces = reluctedSurfaces;
+    public Builder withTactilePaving(boolean tactilePaving) {
+      this.tactilePaving = tactilePaving;
       return this;
     }
 
