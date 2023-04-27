@@ -39,8 +39,8 @@ public class OSMModuleWithAccessibilityPropertiesTest {
         Objects
           .requireNonNull(
             OSMModuleWithAccessibilityPropertiesTest.class.getResource(
-                "grenoble_secteur_verdun.osm.pbf"
-              )
+              "grenoble_secteur_verdun.osm.pbf"
+            )
           )
           .getFile(),
         StandardCharsets.UTF_8
@@ -73,12 +73,12 @@ public class OSMModuleWithAccessibilityPropertiesTest {
       if (
         (
           edge.getFromVertex().equals(edgeFromWithWidth) &&
-          edge.getToVertex().equals(edgeToWithWidth)
+            edge.getToVertex().equals(edgeToWithWidth)
         ) ||
-        (
-          edge.getFromVertex().equals(edgeToWithWidth) &&
-          edge.getToVertex().equals(edgeFromWithWidth)
-        )
+          (
+            edge.getFromVertex().equals(edgeToWithWidth) &&
+              edge.getToVertex().equals(edgeFromWithWidth)
+          )
       ) {
         assertTrue(width.isPresent());
         assertEquals(170.0, width.getAsDouble());
@@ -103,12 +103,12 @@ public class OSMModuleWithAccessibilityPropertiesTest {
       if (
         (
           edge.getFromVertex().equals(edgeFromWithoutWidth) &&
-          edge.getToVertex().equals(edgeToWithoutWidth)
+            edge.getToVertex().equals(edgeToWithoutWidth)
         ) ||
-        (
-          edge.getFromVertex().equals(edgeToWithoutWidth) &&
-          edge.getToVertex().equals(edgeFromWithoutWidth)
-        )
+          (
+            edge.getFromVertex().equals(edgeToWithoutWidth) &&
+              edge.getToVertex().equals(edgeFromWithoutWidth)
+          )
       ) {
         assertTrue(width.isEmpty());
         succeed++;
@@ -133,7 +133,7 @@ public class OSMModuleWithAccessibilityPropertiesTest {
         (
           edge.getFromVertex().equals(edgeFromWithLit) && edge.getToVertex().equals(edgeToWithLit)
         ) ||
-        (edge.getFromVertex().equals(edgeToWithLit) && edge.getToVertex().equals(edgeFromWithLit))
+          (edge.getFromVertex().equals(edgeToWithLit) && edge.getToVertex().equals(edgeFromWithLit))
       ) {
         assertTrue(lit.isPresent());
         assertTrue(lit.getAsBoolean());
@@ -158,12 +158,12 @@ public class OSMModuleWithAccessibilityPropertiesTest {
       if (
         (
           edge.getFromVertex().equals(edgeFromWithoutLight) &&
-          edge.getToVertex().equals(edgeToWithoutLight)
+            edge.getToVertex().equals(edgeToWithoutLight)
         ) ||
-        (
-          edge.getFromVertex().equals(edgeToWithoutLight) &&
-          edge.getToVertex().equals(edgeFromWithoutLight)
-        )
+          (
+            edge.getFromVertex().equals(edgeToWithoutLight) &&
+              edge.getToVertex().equals(edgeFromWithoutLight)
+          )
       ) {
         assertTrue(lit.isPresent());
         assertFalse(lit.getAsBoolean());
@@ -188,12 +188,12 @@ public class OSMModuleWithAccessibilityPropertiesTest {
       if (
         (
           edge.getFromVertex().equals(edgeFromWithSurface) &&
-          edge.getToVertex().equals(edgeToWithSurface)
+            edge.getToVertex().equals(edgeToWithSurface)
         ) ||
-        (
-          edge.getFromVertex().equals(edgeToWithSurface) &&
-          edge.getToVertex().equals(edgeFromWithSurface)
-        )
+          (
+            edge.getFromVertex().equals(edgeToWithSurface) &&
+              edge.getToVertex().equals(edgeFromWithSurface)
+          )
       ) {
         assertTrue(surface.isPresent());
         assertSame(OSMSurface.asphalt, surface.getAsEnum());
@@ -218,14 +218,38 @@ public class OSMModuleWithAccessibilityPropertiesTest {
       if (
         (
           edge.getFromVertex().equals(edgeFromWithoutSurface) &&
-          edge.getToVertex().equals(edgeToWithoutSurface)
+            edge.getToVertex().equals(edgeToWithoutSurface)
         ) ||
-        (
-          edge.getFromVertex().equals(edgeToWithoutSurface) &&
-          edge.getToVertex().equals(edgeFromWithoutSurface)
-        )
+          (
+            edge.getFromVertex().equals(edgeToWithoutSurface) &&
+              edge.getToVertex().equals(edgeFromWithoutSurface)
+          )
       ) {
         assertTrue(surface.isEmpty());
+        succeed++;
+      }
+    }
+    assertEquals(2, succeed);
+  }
+
+  @Test
+  public void testBuildGraphWithTactilePaving() {
+    int succeed = 0;
+    IntersectionVertex edgeFromWithTactilePaving = (IntersectionVertex) grenobleGraph.getVertex(
+      "osm:node:-1658611"
+    );
+    IntersectionVertex edgeToWithTactilePaving = (IntersectionVertex) grenobleGraph.getVertex(
+      "osm:node:-1659936"
+    );
+
+    for (StreetEdge edge : grenobleGraph.getStreetEdges()) {
+      OptionalBoolean tactilePaving = edge.getAccessibilityProperties().getTactilePaving();
+      if (
+        (edge.getFromVertex().equals(edgeFromWithTactilePaving) && edge.getToVertex().equals(edgeToWithTactilePaving))
+          || (edge.getFromVertex().equals(edgeToWithTactilePaving) && edge.getToVertex().equals(edgeFromWithTactilePaving))
+      ) {
+        assertTrue(tactilePaving.isPresent());
+        assertTrue(tactilePaving.getAsBoolean());
         succeed++;
       }
     }
