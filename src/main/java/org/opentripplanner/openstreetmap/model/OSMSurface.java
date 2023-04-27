@@ -16,7 +16,8 @@ public enum OSMSurface {
   earth,
   ground,
   gravel,
-  sand;
+  sand,
+  fine_gravel;
 
   public static Collection<OSMSurface> parseValues(String values) {
     Collection<OSMSurface> result = new ArrayList<>();
