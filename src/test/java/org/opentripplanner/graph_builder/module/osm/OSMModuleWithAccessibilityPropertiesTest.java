@@ -37,8 +37,8 @@ public class OSMModuleWithAccessibilityPropertiesTest {
         Objects
           .requireNonNull(
             OSMModuleWithAccessibilityPropertiesTest.class.getResource(
-              "grenoble_secteur_verdun.osm.pbf"
-            )
+                "grenoble_secteur_verdun.osm.pbf"
+              )
           )
           .getFile(),
         StandardCharsets.UTF_8
@@ -79,7 +79,7 @@ public class OSMModuleWithAccessibilityPropertiesTest {
         return;
       }
     }
-    fail ("Edge to test should have been found");
+    fail("Edge to test should have been found");
   }
 
   private static boolean isWidthPresent(StreetEdge edge) {
@@ -98,7 +98,7 @@ public class OSMModuleWithAccessibilityPropertiesTest {
       "-1659017, -1659280, true, 170.0",
       "-1659280, -1659017, true, 170.0",
       "-1656814, -1659965, false, ",
-      "-1659965, -1656814, false, "
+      "-1659965, -1656814, false, ",
     }
   )
   public void testBuildGraphWithWidth(
@@ -133,7 +133,7 @@ public class OSMModuleWithAccessibilityPropertiesTest {
       "-1656814, -1659965, true, true",
       "-1659965, -1656814, true, true",
       "-1660332, -1661950, true, false",
-      "-1661950, -1660332, true, false"
+      "-1661950, -1660332, true, false",
     }
   )
   public void testBuildGraphWithLit(
@@ -168,7 +168,7 @@ public class OSMModuleWithAccessibilityPropertiesTest {
       "-1656814, -1659965, true, asphalt",
       "-1659965, -1656814, true, asphalt",
       "-1660442, -1658768, false, ",
-      "-1658768, -1660442, false, "
+      "-1658768, -1660442, false, ",
     }
   )
   public void testBuildGraphWithSurface(
@@ -205,7 +205,7 @@ public class OSMModuleWithAccessibilityPropertiesTest {
       "-1660332, -1661950, false, ",
       "-1661950, -1660332, false, ",
       "-1657652, -1658679, true, false",
-      "-1658679, -1657652, true, false"
+      "-1658679, -1657652, true, false",
     }
   )
   public void testBuildGraphWithTactilePaving(
@@ -240,7 +240,7 @@ public class OSMModuleWithAccessibilityPropertiesTest {
       "-1659001, -1659868, true, good",
       "-1659868, -1659001, true, good",
       "-1660442, -1658768, false, ",
-      "-1658768, -1660442, false, "
+      "-1658768, -1660442, false, ",
     }
   )
   public void testBuildGraphWithSmoothness(

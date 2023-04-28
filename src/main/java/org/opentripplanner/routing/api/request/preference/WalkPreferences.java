@@ -8,6 +8,7 @@ import java.util.Collection;
 import java.util.Objects;
 import java.util.function.Consumer;
 import javax.validation.constraints.NotNull;
+import org.opentripplanner.openstreetmap.model.OSMSmoothness;
 import org.opentripplanner.openstreetmap.model.OSMSurface;
 import org.opentripplanner.routing.api.request.framework.Units;
 import org.opentripplanner.util.lang.ToStringBuilder;
@@ -35,6 +36,7 @@ public final class WalkPreferences implements Serializable {
   private final boolean lightRequired;
   private final Collection<OSMSurface> reluctedSurfaces;
   private final boolean tactilePaving;
+  private final OSMSmoothness reluctedSmoothness;
 
   private WalkPreferences() {
     this.speed = 1.33;
@@ -47,6 +49,7 @@ public final class WalkPreferences implements Serializable {
     this.lightRequired = false;
     this.reluctedSurfaces = new ArrayList<>();
     this.tactilePaving = false;
+    this.reluctedSmoothness = OSMSmoothness.none;
   }
 
   private WalkPreferences(Builder builder) {
@@ -60,6 +63,7 @@ public final class WalkPreferences implements Serializable {
     this.lightRequired = builder.lightRequired;
     this.reluctedSurfaces = builder.reluctedSurfaces;
     this.tactilePaving = builder.tactilePaving;
+    this.reluctedSmoothness = builder.reluctedSmoothness;
   }
 
   public static Builder of() {
@@ -142,6 +146,10 @@ public final class WalkPreferences implements Serializable {
     return tactilePaving;
   }
 
+  public OSMSmoothness reluctedSmoothness() {
+    return reluctedSmoothness;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;
@@ -157,7 +165,8 @@ public final class WalkPreferences implements Serializable {
       doubleEquals(that.minimalWidth, minimalWidth) &&
       lightRequired == that.lightRequired &&
       reluctedSurfaces.equals(that.reluctedSurfaces) &&
-      tactilePaving == that.tactilePaving
+      tactilePaving == that.tactilePaving &&
+      reluctedSmoothness.equals(that.reluctedSmoothness)
     );
   }
 
@@ -188,6 +197,7 @@ public final class WalkPreferences implements Serializable {
       .addBoolIfTrue("lightRequired", lightRequired)
       .addCol("reluctedSurfaces", reluctedSurfaces)
       .addBoolIfTrue("tactilePaving", tactilePaving)
+      .addStr("reluctedSmoothness", reluctedSmoothness.toString(), OSMSmoothness.none.toString())
       .toString();
   }
 
@@ -204,6 +214,7 @@ public final class WalkPreferences implements Serializable {
     private boolean lightRequired = false;
     private Collection<OSMSurface> reluctedSurfaces = new ArrayList<>();
     private boolean tactilePaving = false;
+    private OSMSmoothness reluctedSmoothness = OSMSmoothness.none;
 
     public Builder(WalkPreferences original) {
       this.original = original;
@@ -217,6 +228,7 @@ public final class WalkPreferences implements Serializable {
       this.lightRequired = original.lightRequired;
       this.reluctedSurfaces = original.reluctedSurfaces;
       this.tactilePaving = original.tactilePaving;
+      this.reluctedSmoothness = original.reluctedSmoothness;
     }
 
     public WalkPreferences original() {
@@ -300,6 +312,11 @@ public final class WalkPreferences implements Serializable {
 
     public Builder withTactilePaving(boolean tactilePaving) {
       this.tactilePaving = tactilePaving;
+      return this;
+    }
+
+    public Builder withReluctedSmoothness(@NotNull OSMSmoothness reluctedSmoothness) {
+      this.reluctedSmoothness = reluctedSmoothness;
       return this;
     }
 

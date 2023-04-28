@@ -8,7 +8,8 @@ public enum OSMSmoothness {
   good,
   intermediate,
   bad,
-  very_bad;
+  very_bad,
+  none;
 
   public static Collection<OSMSmoothness> parseValues(String values) {
     Collection<OSMSmoothness> result = new ArrayList<>();
