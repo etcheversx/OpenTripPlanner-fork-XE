@@ -1,6 +1,7 @@
 package org.opentripplanner.graph_builder.module.osm;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.fail;
 import static org.opentripplanner.graph_builder.DataImportIssueStore.noopIssueStore;
 
 import java.io.File;
@@ -36,8 +37,8 @@ public class OSMModuleWithAccessibilityPropertiesTest {
         Objects
           .requireNonNull(
             OSMModuleWithAccessibilityPropertiesTest.class.getResource(
-                "grenoble_secteur_verdun.osm.pbf"
-              )
+              "grenoble_secteur_verdun.osm.pbf"
+            )
           )
           .getFile(),
         StandardCharsets.UTF_8
@@ -63,26 +64,22 @@ public class OSMModuleWithAccessibilityPropertiesTest {
     boolean expectedPresence,
     Object expectedValue
   ) {
-    int succeed = 0;
     IntersectionVertex fromVertex = (IntersectionVertex) grenobleGraph.getVertex(
       "osm:node:" + fromId
     );
     IntersectionVertex toVertex = (IntersectionVertex) grenobleGraph.getVertex("osm:node:" + toId);
 
     for (StreetEdge edge : grenobleGraph.getStreetEdges()) {
-      if (
-        (edge.getFromVertex().equals(fromVertex) && edge.getToVertex().equals(toVertex)) ||
-        (edge.getFromVertex().equals(toVertex) && edge.getToVertex().equals(fromVertex))
-      ) {
+      if (edge.getFromVertex().equals(fromVertex) && edge.getToVertex().equals(toVertex)) {
         boolean presence = checkedPropertyPresence.apply(edge);
         assertEquals(expectedPresence, presence);
         if (expectedPresence) {
           assertEquals(expectedValue, checkedPropertyValue.apply(edge));
         }
-        succeed++;
+        return;
       }
     }
-    assertEquals(2, succeed);
+    fail ("Edge to test should have been found");
   }
 
   private static boolean isWidthPresent(StreetEdge edge) {
@@ -96,7 +93,14 @@ public class OSMModuleWithAccessibilityPropertiesTest {
   @ParameterizedTest(
     name = "On edge from {0} to {1} width expected presence is {2} and expected value is {3}"
   )
-  @CsvSource({ "-1659017, -1659280, true, 170.0", "-1656814, -1659965, false, " })
+  @CsvSource(
+    {
+      "-1659017, -1659280, true, 170.0",
+      "-1659280, -1659017, true, 170.0",
+      "-1656814, -1659965, false, ",
+      "-1659965, -1656814, false, "
+    }
+  )
   public void testBuildGraphWithWidth(
     String fromId,
     String toId,
@@ -124,7 +128,14 @@ public class OSMModuleWithAccessibilityPropertiesTest {
   @ParameterizedTest(
     name = "On edge from {0} to {1} lit expected presence is {2} and expected value is {3}"
   )
-  @CsvSource({ "-1656814, -1659965, true, true", "-1660332, -1661950, true, false" })
+  @CsvSource(
+    {
+      "-1656814, -1659965, true, true",
+      "-1659965, -1656814, true, true",
+      "-1660332, -1661950, true, false",
+      "-1661950, -1660332, true, false"
+    }
+  )
   public void testBuildGraphWithLit(
     String fromId,
     String toId,
@@ -152,7 +163,14 @@ public class OSMModuleWithAccessibilityPropertiesTest {
   @ParameterizedTest(
     name = "On edge from {0} to {1} surface expected presence is {2} and expected value is {3}"
   )
-  @CsvSource({ "-1656814, -1659965, true, asphalt", "-1660442, -1658768, false, " })
+  @CsvSource(
+    {
+      "-1656814, -1659965, true, asphalt",
+      "-1659965, -1656814, true, asphalt",
+      "-1660442, -1658768, false, ",
+      "-1658768, -1660442, false, "
+    }
+  )
   public void testBuildGraphWithSurface(
     String fromId,
     String toId,
@@ -183,8 +201,11 @@ public class OSMModuleWithAccessibilityPropertiesTest {
   @CsvSource(
     {
       "-1658611, -1659936, true, true",
+      "-1659936, -1658611, true, true",
       "-1660332, -1661950, false, ",
+      "-1661950, -1660332, false, ",
       "-1657652, -1658679, true, false",
+      "-1658679, -1657652, true, false"
     }
   )
   public void testBuildGraphWithTactilePaving(
@@ -214,7 +235,14 @@ public class OSMModuleWithAccessibilityPropertiesTest {
   @ParameterizedTest(
     name = "On edge from {0} to {1} smoothness expected presence is {2} and expected value is {3}"
   )
-  @CsvSource({ "-1659001, -1659868, true, good", "-1660442, -1658768, false, " })
+  @CsvSource(
+    {
+      "-1659001, -1659868, true, good",
+      "-1659868, -1659001, true, good",
+      "-1660442, -1658768, false, ",
+      "-1658768, -1660442, false, "
+    }
+  )
   public void testBuildGraphWithSmoothness(
     String fromId,
     String toId,
