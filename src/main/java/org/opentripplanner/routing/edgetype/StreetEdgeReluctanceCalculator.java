@@ -60,6 +60,14 @@ class StreetEdgeReluctanceCalculator {
     ) {
       reluctance *= 2;
     }
+    OptionalBoolean tactilePaving = edgeAccessibilityProperties.getTactilePaving();
+    if (
+      tactilePaving.isPresent() &&
+      !tactilePaving.getAsBoolean() &&
+      preferences.walk().tactilePaving()
+    ) {
+      reluctance *= 2;
+    }
     return reluctance;
   }
 

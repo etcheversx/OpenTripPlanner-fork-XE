@@ -135,6 +135,44 @@ class StreetEdgeReluctanceCalculatorTest {
     }
   }
 
+  @ParameterizedTest(name = "Walk reluctance with requiredLight={0} on edge with light={1} is {2}")
+  @CsvSource(
+    {
+      ", , 2.0",
+      "true, , 2.0",
+      "false, , 2.0",
+      ", true, 2.0",
+      ", false, 2.0",
+      "true, true, 2.0",
+      "false, true, 2.0",
+      "true, false, 4.0",
+      "false, false, 2.0",
+    }
+  )
+  void testReluctanceProcessingWithTactilePaving(
+    Boolean tactilePavingRequired,
+    Boolean edgeTactilePaving,
+    Double expectedWalkReluctance
+  ) {
+    if (tactilePavingRequired != null) {
+      routingPreferencesBuilder.withWalk(w -> w.withTactilePaving(tactilePavingRequired));
+    }
+
+    assertEquals(
+      expectedWalkReluctance,
+      computeWalkReluctance(
+        new AccessibilityPropertySet(
+          OptionalDouble.empty(),
+          OptionalBoolean.empty(),
+          OptionalEnum.empty(),
+          edgeTactilePaving != null
+            ? OptionalBoolean.of(edgeTactilePaving)
+            : OptionalBoolean.empty()
+        )
+      )
+    );
+  }
+
   private double computeWalkReluctance(AccessibilityPropertySet edgeAccessibilityProperties) {
     return StreetEdgeReluctanceCalculator.computeReluctance(
       routingPreferencesBuilder.build(),
