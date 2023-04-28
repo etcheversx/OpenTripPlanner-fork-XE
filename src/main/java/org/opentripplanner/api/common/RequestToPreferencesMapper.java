@@ -55,6 +55,7 @@ class RequestToPreferencesMapper {
       setIfNotNull(req.minimalWidth, walk::withMinimalWidth);
       setIfNotNull(req.lightRequired, walk::withLightRequired);
       setIfNotNull(OSMSurface.parseValues(req.reluctedSurfaces), walk::withReluctedSurfaces);
+      setIfNotNull(req.tactilePaving, walk::withTactilePaving);
     });
   }
 
@@ -155,6 +156,7 @@ class RequestToPreferencesMapper {
    * preferences.
    * <p>
    * This class is used to pass a type-safe value from one phase of the mapping to another. This
-   * enforces the mapping order: 'transit' before 'transfer'. */
+   * enforces the mapping order: 'transit' before 'transfer'.
+   */
   private record BoardAndAlightSlack(int value) {}
 }

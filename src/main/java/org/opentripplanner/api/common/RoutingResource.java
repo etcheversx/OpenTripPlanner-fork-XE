@@ -343,6 +343,9 @@ public abstract class RoutingResource {
   @QueryParam("reluctedSurfaces")
   protected String reluctedSurfaces;
 
+  @QueryParam("tactilePaving")
+  protected Boolean tactilePaving;
+
   @QueryParam("allowKeepingRentedBicycleAtDestination")
   protected Boolean allowKeepingRentedBicycleAtDestination;
 
