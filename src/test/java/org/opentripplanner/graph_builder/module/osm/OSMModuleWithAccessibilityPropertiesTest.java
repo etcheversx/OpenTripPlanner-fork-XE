@@ -1,8 +1,6 @@
 package org.opentripplanner.graph_builder.module.osm;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.opentripplanner.graph_builder.DataImportIssueStore.noopIssueStore;
 
 import java.io.File;
@@ -13,13 +11,12 @@ import java.util.Objects;
 import java.util.Set;
 import java.util.function.Function;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.opentripplanner.graph_builder.module.osm.tagmapping.DefaultMapper;
 import org.opentripplanner.openstreetmap.OpenStreetMapProvider;
+import org.opentripplanner.openstreetmap.model.OSMSmoothness;
 import org.opentripplanner.openstreetmap.model.OSMSurface;
-import org.opentripplanner.openstreetmap.model.OptionalBoolean;
 import org.opentripplanner.routing.edgetype.StreetEdge;
 import org.opentripplanner.routing.graph.Graph;
 import org.opentripplanner.routing.vertextype.IntersectionVertex;
@@ -201,6 +198,34 @@ public class OSMModuleWithAccessibilityPropertiesTest {
       toId,
       OSMModuleWithAccessibilityPropertiesTest::isTactilePavingPresent,
       OSMModuleWithAccessibilityPropertiesTest::getTactilePavingValue,
+      expectedPresence,
+      expectedValue
+    );
+  }
+
+  private static boolean isSmoothnessPresent(StreetEdge edge) {
+    return edge.getAccessibilityProperties().getSmoothness().isPresent();
+  }
+
+  private static Object getSmoothnessValue(StreetEdge edge) {
+    return edge.getAccessibilityProperties().getSmoothness().getAsEnum();
+  }
+
+  @ParameterizedTest(
+    name = "On edge from {0} to {1} smoothness expected presence is {2} and expected value is {3}"
+  )
+  @CsvSource({ "-1659001, -1659868, true, good", "-1660442, -1658768, false, " })
+  public void testBuildGraphWithSmoothness(
+    String fromId,
+    String toId,
+    boolean expectedPresence,
+    OSMSmoothness expectedValue
+  ) {
+    checkProperty(
+      fromId,
+      toId,
+      OSMModuleWithAccessibilityPropertiesTest::isSmoothnessPresent,
+      OSMModuleWithAccessibilityPropertiesTest::getSmoothnessValue,
       expectedPresence,
       expectedValue
     );

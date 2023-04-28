@@ -497,13 +497,17 @@ public class OpenStreetMapModule implements GraphBuilderModule {
       return element.getTagAsBoolean("tactile_paving", v -> issueStore.add(invalidLit(element, v)));
     }
 
+    private OptionalEnum parseSmoothness(OSMWithTags element) {
+      return element.getTagAsEnum("smoothness", v -> issueStore.add(invalidLit(element, v)));
+    }
+
     private AccessibilityPropertySet parseAccessibilityProperties(OSMWithTags element) {
       return new AccessibilityPropertySet(
         parseWidth(element),
         parseLit(element),
         parseSurface(element),
         parseTactilePaving(element),
-        OptionalEnum.empty()
+        parseSmoothness(element)
       );
     }
 
