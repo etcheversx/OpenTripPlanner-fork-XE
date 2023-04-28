@@ -12,17 +12,20 @@ public class AccessibilityPropertySet implements Serializable {
   private final OptionalBoolean lit;
   private final OptionalEnum surface;
   private final OptionalBoolean tactilePaving;
+  private final OptionalEnum smoothness;
 
   public AccessibilityPropertySet(
     @NotNull OptionalDouble width,
     @NotNull OptionalBoolean lit,
     @NotNull OptionalEnum surface,
-    @NotNull OptionalBoolean tactilePaving
+    @NotNull OptionalBoolean tactilePaving,
+    @NotNull OptionalEnum smoothness
   ) {
     this.width = width;
     this.lit = lit;
     this.surface = surface;
     this.tactilePaving = tactilePaving;
+    this.smoothness = smoothness;
   }
 
   public OptionalDouble getWidth() {
@@ -41,11 +44,21 @@ public class AccessibilityPropertySet implements Serializable {
     return tactilePaving;
   }
 
+  public OptionalEnum getSmoothness() {
+    return smoothness;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
     AccessibilityPropertySet that = (AccessibilityPropertySet) o;
-    return width.equals(that.width) && lit.equals(that.lit) && surface.equals(that.surface);
+    return (
+      width.equals(that.width) &&
+      lit.equals(that.lit) &&
+      surface.equals(that.surface) &&
+      tactilePaving.equals(that.tactilePaving) &&
+      smoothness.equals(that.smoothness)
+    );
   }
 }
