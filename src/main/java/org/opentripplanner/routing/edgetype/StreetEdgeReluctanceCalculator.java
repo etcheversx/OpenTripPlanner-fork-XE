@@ -2,6 +2,7 @@ package org.opentripplanner.routing.edgetype;
 
 import java.util.OptionalDouble;
 import org.opentripplanner.graph_builder.module.osm.AccessibilityPropertySet;
+import org.opentripplanner.openstreetmap.model.OSMSmoothness;
 import org.opentripplanner.openstreetmap.model.OSMSurface;
 import org.opentripplanner.openstreetmap.model.OptionalBoolean;
 import org.opentripplanner.openstreetmap.model.OptionalEnum;
@@ -65,6 +66,13 @@ class StreetEdgeReluctanceCalculator {
       tactilePaving.isPresent() &&
       !tactilePaving.getAsBoolean() &&
       preferences.walk().tactilePaving()
+    ) {
+      reluctance *= 2;
+    }
+    OptionalEnum smoothness = edgeAccessibilityProperties.getSmoothness();
+    if (
+      smoothness.isPresent() &&
+      preferences.walk().reluctedSmoothness().compareTo((OSMSmoothness) smoothness.getAsEnum()) > 0
     ) {
       reluctance *= 2;
     }

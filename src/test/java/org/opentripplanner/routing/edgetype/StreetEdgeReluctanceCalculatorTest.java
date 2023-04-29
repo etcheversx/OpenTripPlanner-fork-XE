@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.opentripplanner.graph_builder.module.osm.AccessibilityPropertySet;
+import org.opentripplanner.openstreetmap.model.OSMSmoothness;
 import org.opentripplanner.openstreetmap.model.OSMSurface;
 import org.opentripplanner.openstreetmap.model.OptionalBoolean;
 import org.opentripplanner.openstreetmap.model.OptionalEnum;
@@ -175,6 +176,52 @@ class StreetEdgeReluctanceCalculatorTest {
         )
       )
     );
+  }
+
+  @ParameterizedTest(
+    name = "Walk reluctance with reluctedSmoothness={0} on edge with smoothness={1} is {2}"
+  )
+  @CsvSource(
+    {
+      ", , 2.0",
+      "intermediate, , 2.0",
+      ", intermediate, 2.0",
+      "good, very_bad, 4.0",
+      "intermediate, intermediate, 2.0",
+      "very_bad, bad, 2.0",
+    }
+  )
+  void testReluctanceProcessingWithSmoothness(
+    String reluctedSmoothnessString,
+    String edgeSmoothnessString,
+    Double expectedWalkReluctance
+  ) {
+    try {
+      if (reluctedSmoothnessString != null) {
+        routingPreferencesBuilder.withWalk(w ->
+          w.withReluctedSmoothness(OSMSmoothness.valueOf(reluctedSmoothnessString))
+        );
+      }
+
+      OptionalEnum edgeSmoothness = edgeSmoothnessString != null
+        ? OptionalEnum.get(edgeSmoothnessString)
+        : OptionalEnum.empty();
+
+      assertEquals(
+        expectedWalkReluctance,
+        computeWalkReluctance(
+          new AccessibilityPropertySet(
+            OptionalDouble.empty(),
+            OptionalBoolean.empty(),
+            OptionalEnum.empty(),
+            OptionalBoolean.empty(),
+            edgeSmoothness
+          )
+        )
+      );
+    } catch (Exception exc) {
+      fail("Unexpected exception : " + exc.getMessage());
+    }
   }
 
   private double computeWalkReluctance(AccessibilityPropertySet edgeAccessibilityProperties) {

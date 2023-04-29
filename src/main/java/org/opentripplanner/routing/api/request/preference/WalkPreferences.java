@@ -49,7 +49,7 @@ public final class WalkPreferences implements Serializable {
     this.lightRequired = false;
     this.reluctedSurfaces = new ArrayList<>();
     this.tactilePaving = false;
-    this.reluctedSmoothness = OSMSmoothness.none;
+    this.reluctedSmoothness = OSMSmoothness.very_bad;
   }
 
   private WalkPreferences(Builder builder) {
@@ -197,7 +197,11 @@ public final class WalkPreferences implements Serializable {
       .addBoolIfTrue("lightRequired", lightRequired)
       .addCol("reluctedSurfaces", reluctedSurfaces)
       .addBoolIfTrue("tactilePaving", tactilePaving)
-      .addStr("reluctedSmoothness", reluctedSmoothness.toString(), OSMSmoothness.none.toString())
+      .addStr(
+        "reluctedSmoothness",
+        reluctedSmoothness.toString(),
+        OSMSmoothness.very_bad.toString()
+      )
       .toString();
   }
 
@@ -214,7 +218,7 @@ public final class WalkPreferences implements Serializable {
     private boolean lightRequired = false;
     private Collection<OSMSurface> reluctedSurfaces = new ArrayList<>();
     private boolean tactilePaving = false;
-    private OSMSmoothness reluctedSmoothness = OSMSmoothness.none;
+    private OSMSmoothness reluctedSmoothness = OSMSmoothness.very_bad;
 
     public Builder(WalkPreferences original) {
       this.original = original;
