@@ -2,6 +2,7 @@ package org.opentripplanner.api.common;
 
 import java.util.function.Consumer;
 import javax.validation.constraints.NotNull;
+import org.opentripplanner.openstreetmap.model.OSMSmoothness;
 import org.opentripplanner.openstreetmap.model.OSMSurface;
 import org.opentripplanner.routing.api.request.preference.RoutingPreferences;
 import org.opentripplanner.routing.api.request.preference.VehicleParkingPreferences;
@@ -56,6 +57,7 @@ class RequestToPreferencesMapper {
       setIfNotNull(req.lightRequired, walk::withLightRequired);
       setIfNotNull(OSMSurface.parseValues(req.reluctedSurfaces), walk::withReluctedSurfaces);
       setIfNotNull(req.tactilePaving, walk::withTactilePaving);
+      setIfNotNull(OSMSmoothness.valueOf(req.requiredSmoothness), walk::withReluctedSmoothness);
     });
   }
 
