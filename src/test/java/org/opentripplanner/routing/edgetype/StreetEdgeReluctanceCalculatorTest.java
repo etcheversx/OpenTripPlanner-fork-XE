@@ -50,6 +50,8 @@ class StreetEdgeReluctanceCalculatorTest {
           OptionalBoolean.empty(),
           OptionalEnum.empty(),
           OptionalBoolean.empty(),
+          OptionalEnum.empty(),
+          OptionalEnum.empty(),
           OptionalEnum.empty()
         )
       )
@@ -87,6 +89,8 @@ class StreetEdgeReluctanceCalculatorTest {
           edgeLight != null ? OptionalBoolean.of(edgeLight) : OptionalBoolean.empty(),
           OptionalEnum.empty(),
           OptionalBoolean.empty(),
+          OptionalEnum.empty(),
+          OptionalEnum.empty(),
           OptionalEnum.empty()
         )
       )
@@ -130,6 +134,8 @@ class StreetEdgeReluctanceCalculatorTest {
             OptionalBoolean.empty(),
             edgeSurface,
             OptionalBoolean.empty(),
+            OptionalEnum.empty(),
+            OptionalEnum.empty(),
             OptionalEnum.empty()
           )
         )
@@ -172,6 +178,8 @@ class StreetEdgeReluctanceCalculatorTest {
           edgeTactilePaving != null
             ? OptionalBoolean.of(edgeTactilePaving)
             : OptionalBoolean.empty(),
+          OptionalEnum.empty(),
+          OptionalEnum.empty(),
           OptionalEnum.empty()
         )
       )
@@ -215,7 +223,9 @@ class StreetEdgeReluctanceCalculatorTest {
             OptionalBoolean.empty(),
             OptionalEnum.empty(),
             OptionalBoolean.empty(),
-            edgeSmoothness
+            edgeSmoothness,
+            OptionalEnum.empty(),
+            OptionalEnum.empty()
           )
         )
       );

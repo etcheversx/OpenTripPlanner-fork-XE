@@ -507,7 +507,9 @@ public class OpenStreetMapModule implements GraphBuilderModule {
         parseLit(element),
         parseSurface(element),
         parseTactilePaving(element),
-        parseSmoothness(element)
+        parseSmoothness(element),
+        OptionalEnum.empty(),
+        OptionalEnum.empty()
       );
     }
 

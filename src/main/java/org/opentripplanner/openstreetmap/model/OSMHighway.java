@@ -5,5 +5,5 @@ public enum OSMHighway {
   footway,
   residential,
   pedestrian,
-  railway
+  railway,
 }

@@ -200,6 +200,8 @@ public class StreetEdge
         OptionalBoolean.empty(),
         OptionalEnum.empty(),
         OptionalBoolean.empty(),
+        OptionalEnum.empty(),
+        OptionalEnum.empty(),
         OptionalEnum.empty()
       );
   }
