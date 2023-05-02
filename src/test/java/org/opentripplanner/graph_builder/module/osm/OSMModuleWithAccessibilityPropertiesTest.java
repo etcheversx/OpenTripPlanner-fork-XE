@@ -16,6 +16,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.opentripplanner.graph_builder.module.osm.tagmapping.DefaultMapper;
 import org.opentripplanner.openstreetmap.OpenStreetMapProvider;
+import org.opentripplanner.openstreetmap.model.OSMFootway;
 import org.opentripplanner.openstreetmap.model.OSMHighway;
 import org.opentripplanner.openstreetmap.model.OSMSmoothness;
 import org.opentripplanner.openstreetmap.model.OSMSurface;
@@ -38,8 +39,8 @@ public class OSMModuleWithAccessibilityPropertiesTest {
         Objects
           .requireNonNull(
             OSMModuleWithAccessibilityPropertiesTest.class.getResource(
-                "grenoble_secteur_verdun.osm.pbf"
-              )
+              "grenoble_secteur_verdun.osm.pbf"
+            )
           )
           .getFile(),
         StandardCharsets.UTF_8
@@ -290,6 +291,41 @@ public class OSMModuleWithAccessibilityPropertiesTest {
       toId,
       OSMModuleWithAccessibilityPropertiesTest::isHighwayPresent,
       OSMModuleWithAccessibilityPropertiesTest::getHighwayValue,
+      expectedPresence,
+      expectedValue
+    );
+  }
+
+  private static boolean isFootwayPresent(StreetEdge edge) {
+    return edge.getAccessibilityProperties().getFootway().isPresent();
+  }
+
+  private static Object getFootwayValue(StreetEdge edge) {
+    return edge.getAccessibilityProperties().getFootway().getAsEnum();
+  }
+
+  @ParameterizedTest(
+    name = "On edge from {0} to {1} footway expected presence is {2} and expected value is {3}"
+  )
+  @CsvSource(
+    {
+      "-1659001, -1659868, true, sidewalk",
+      "-1659868, -1659001, true, sidewalk",
+      "-1660442, -1658768, false, ",
+      "-1658768, -1660442, false, ",
+    }
+  )
+  public void testBuildGraphWithFootway(
+    String fromId,
+    String toId,
+    boolean expectedPresence,
+    OSMFootway expectedValue
+  ) {
+    checkProperty(
+      fromId,
+      toId,
+      OSMModuleWithAccessibilityPropertiesTest::isFootwayPresent,
+      OSMModuleWithAccessibilityPropertiesTest::getFootwayValue,
       expectedPresence,
       expectedValue
     );

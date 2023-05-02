@@ -80,6 +80,7 @@ public class OptionalEnum {
       createTypedOptionalEnum(OSMSurface.values());
       createTypedOptionalEnum(OSMSmoothness.values());
       createTypedOptionalEnum(OSMHighway.values());
+      createTypedOptionalEnum(OSMFootway.values());
     } catch (Exception exc) {
       // TODO : nothing done at present time
     }
