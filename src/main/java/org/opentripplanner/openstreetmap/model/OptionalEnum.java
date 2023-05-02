@@ -79,6 +79,7 @@ public class OptionalEnum {
     try {
       createTypedOptionalEnum(OSMSurface.values());
       createTypedOptionalEnum(OSMSmoothness.values());
+      createTypedOptionalEnum(OSMHighway.values());
     } catch (Exception exc) {
       // TODO : nothing done at present time
     }

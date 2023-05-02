@@ -16,6 +16,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.opentripplanner.graph_builder.module.osm.tagmapping.DefaultMapper;
 import org.opentripplanner.openstreetmap.OpenStreetMapProvider;
+import org.opentripplanner.openstreetmap.model.OSMHighway;
 import org.opentripplanner.openstreetmap.model.OSMSmoothness;
 import org.opentripplanner.openstreetmap.model.OSMSurface;
 import org.opentripplanner.routing.edgetype.StreetEdge;
@@ -254,6 +255,41 @@ public class OSMModuleWithAccessibilityPropertiesTest {
       toId,
       OSMModuleWithAccessibilityPropertiesTest::isSmoothnessPresent,
       OSMModuleWithAccessibilityPropertiesTest::getSmoothnessValue,
+      expectedPresence,
+      expectedValue
+    );
+  }
+
+  private static boolean isHighwayPresent(StreetEdge edge) {
+    return edge.getAccessibilityProperties().getHighway().isPresent();
+  }
+
+  private static Object getHighwayValue(StreetEdge edge) {
+    return edge.getAccessibilityProperties().getHighway().getAsEnum();
+  }
+
+  @ParameterizedTest(
+    name = "On edge from {0} to {1} highway expected presence is {2} and expected value is {3}"
+  )
+  @CsvSource(
+    {
+      "-1659001, -1659868, true, footway",
+      "-1659868, -1659001, true, footway",
+      "-1660442, -1658768, false, ",
+      "-1658768, -1660442, false, ",
+    }
+  )
+  public void testBuildGraphWithHighway(
+    String fromId,
+    String toId,
+    boolean expectedPresence,
+    OSMHighway expectedValue
+  ) {
+    checkProperty(
+      fromId,
+      toId,
+      OSMModuleWithAccessibilityPropertiesTest::isHighwayPresent,
+      OSMModuleWithAccessibilityPropertiesTest::getHighwayValue,
       expectedPresence,
       expectedValue
     );

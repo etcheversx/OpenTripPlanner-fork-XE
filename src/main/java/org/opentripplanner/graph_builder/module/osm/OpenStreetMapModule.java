@@ -239,6 +239,42 @@ public class OpenStreetMapModule implements GraphBuilderModule {
     );
   }
 
+  private Issue invalidSurface(OSMWithTags element, String v) {
+    return Issue.issue(
+      "InvalidSurface",
+      "surface for osm node %d is not a valid value: '%s'; it's replaced with unknown.",
+      element.getId(),
+      v
+    );
+  }
+
+  private Issue invalidTactilePaving(OSMWithTags element, String v) {
+    return Issue.issue(
+      "InvalidTactilePaving",
+      "tactile_paving for osm node %d is not a boolean: '%s'; it's replaced with unknown.",
+      element.getId(),
+      v
+    );
+  }
+
+  private Issue invalidSmoothness(OSMWithTags element, String v) {
+    return Issue.issue(
+      "InvalidSmoothness",
+      "smoothness for osm node %d is not a valid value: '%s'; it's replaced with unknown.",
+      element.getId(),
+      v
+    );
+  }
+
+  private Issue invalidHighway(OSMWithTags element, String v) {
+    return Issue.issue(
+      "InvalidHighway",
+      "highway for osm node %d is not a valid value: '%s'; it's replaced with unknown.",
+      element.getId(),
+      v
+    );
+  }
+
   protected class Handler {
 
     private static final String nodeLabelFormat = "osm:node:%d";
@@ -490,15 +526,19 @@ public class OpenStreetMapModule implements GraphBuilderModule {
     }
 
     private OptionalEnum parseSurface(OSMWithTags element) {
-      return element.getTagAsEnum("surface", v -> issueStore.add(invalidLit(element, v)));
+      return element.getTagAsEnum("surface", v -> issueStore.add(invalidSurface(element, v)));
     }
 
     private OptionalBoolean parseTactilePaving(OSMWithTags element) {
-      return element.getTagAsBoolean("tactile_paving", v -> issueStore.add(invalidLit(element, v)));
+      return element.getTagAsBoolean("tactile_paving", v -> issueStore.add(invalidTactilePaving(element, v)));
     }
 
     private OptionalEnum parseSmoothness(OSMWithTags element) {
-      return element.getTagAsEnum("smoothness", v -> issueStore.add(invalidLit(element, v)));
+      return element.getTagAsEnum("smoothness", v -> issueStore.add(invalidSmoothness(element, v)));
+    }
+
+    private OptionalEnum parseHighway(OSMWithTags element) {
+      return element.getTagAsEnum("highway", v -> issueStore.add(invalidHighway(element, v)));
     }
 
     private AccessibilityPropertySet parseAccessibilityProperties(OSMWithTags element) {
@@ -508,7 +548,7 @@ public class OpenStreetMapModule implements GraphBuilderModule {
         parseSurface(element),
         parseTactilePaving(element),
         parseSmoothness(element),
-        OptionalEnum.empty(),
+        parseHighway(element),
         OptionalEnum.empty()
       );
     }
