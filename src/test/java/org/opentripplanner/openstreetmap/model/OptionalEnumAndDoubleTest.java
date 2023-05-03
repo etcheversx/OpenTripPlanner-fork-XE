@@ -22,9 +22,25 @@ class OptionalEnumAndDoubleTest {
   }
 
   @Test
-  void testCreation() {
+  void testDoNotThrow() {
     for (Enum<?> e : supportedEnums) {
-      assertDoesNotThrow((Executable) () -> OptionalEnumAndDouble.of(e));
+      assertDoesNotThrow((Executable) () -> OptionalEnumAndDouble.get(e.name()));
+    }
+  }
+
+  private OptionalEnumAndDouble createOptionalEnumAndDoubleOf(Enum<?> e) {
+    try {
+      return OptionalEnumAndDouble.get(e.name());
+    } catch (Exception exc) {
+      return OptionalEnumAndDouble.empty();
+    }
+  }
+
+  private OptionalEnumAndDouble createOptionalEnumAndDoubleOf(double d) {
+    try {
+      return OptionalEnumAndDouble.get(Double.toString(d));
+    } catch (Exception exc) {
+      return OptionalEnumAndDouble.empty();
     }
   }
 
@@ -34,8 +50,8 @@ class OptionalEnumAndDoubleTest {
     OptionalEnumAndDouble optionalEnumAndDouble;
 
     for (Enum<?> enumerate : supportedEnums) {
-      optionalEnumAndDouble = OptionalEnumAndDouble.of(enumerate);
-      expectedValue = OptionalEnumAndDouble.of(enumerate);
+      optionalEnumAndDouble = createOptionalEnumAndDoubleOf(enumerate);
+      expectedValue = createOptionalEnumAndDoubleOf(enumerate);
 
       assertEquals(expectedValue, optionalEnumAndDouble);
     }
@@ -44,9 +60,12 @@ class OptionalEnumAndDoubleTest {
   @Test
   void testGet() {
     try {
-      assertEquals(OptionalEnumAndDouble.of(OSMIncline.up), OptionalEnumAndDouble.get("up"));
-      assertEquals(OptionalEnumAndDouble.of(OSMIncline.down), OptionalEnumAndDouble.get("down"));
-      assertEquals(OptionalEnumAndDouble.of(-2.33), OptionalEnumAndDouble.get("-2.33"));
+      assertEquals(createOptionalEnumAndDoubleOf(OSMIncline.up), OptionalEnumAndDouble.get("up"));
+      assertEquals(
+        createOptionalEnumAndDoubleOf(OSMIncline.down),
+        OptionalEnumAndDouble.get("down")
+      );
+      assertEquals(createOptionalEnumAndDoubleOf(-2.33), OptionalEnumAndDouble.get("-2.33"));
     } catch (Exception exc) {
       fail("Get failed with: " + exc.getMessage());
     }

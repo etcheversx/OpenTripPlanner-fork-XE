@@ -6,6 +6,10 @@ import javax.validation.constraints.NotNull;
 
 public class OptionalEnumAndDouble {
 
+  private static final OptionalEnumAndDouble _EMPTY = new OptionalEnumAndDouble(
+    OptionalEnum.empty(),
+    OptionalDouble.empty()
+  );
   private final OptionalEnum optionalEnum;
   private final OptionalDouble optionalDouble;
 
@@ -25,22 +29,6 @@ public class OptionalEnumAndDouble {
     this(OptionalEnum.empty(), optionalDouble);
   }
 
-  private static OptionalEnum optionalEnumOf(String value) {
-    try {
-      return OptionalEnum.get(value);
-    } catch (Exception exc) {
-      return OptionalEnum.empty();
-    }
-  }
-
-  public static OptionalEnumAndDouble of(Enum<?> e) {
-    return new OptionalEnumAndDouble(optionalEnumOf(e.name()));
-  }
-
-  public static OptionalEnumAndDouble of(double d) {
-    return new OptionalEnumAndDouble(OptionalDouble.of(d));
-  }
-
   public static OptionalEnumAndDouble get(String value) throws Exception {
     OptionalEnumAndDouble result;
     try {
@@ -49,6 +37,10 @@ public class OptionalEnumAndDouble {
       result = new OptionalEnumAndDouble(OptionalDouble.of(Double.parseDouble(value)));
     }
     return result;
+  }
+
+  public static OptionalEnumAndDouble empty() {
+    return _EMPTY;
   }
 
   @Override
