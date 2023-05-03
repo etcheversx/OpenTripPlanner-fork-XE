@@ -231,7 +231,7 @@ public class OSMWithTagsTest {
     assertEquals(o.getTagAsEnum("foo", null), OptionalEnum.empty());
 
     o.addTag("surface", "sand");
-    assertEquals(OptionalEnum.of(OSMSurface.sand), o.getTagAsEnum("surface", null));
+    assertEquals(OptionalEnum.of("sand"), o.getTagAsEnum("surface", null));
 
     o.addTag("foo", "bar");
     ErrorHandlerForTest errorHandlerForTest = new ErrorHandlerForTest();

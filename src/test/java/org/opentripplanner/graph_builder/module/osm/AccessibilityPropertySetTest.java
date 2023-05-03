@@ -4,10 +4,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.OptionalDouble;
 import org.junit.jupiter.api.Test;
-import org.opentripplanner.openstreetmap.model.OSMFootway;
-import org.opentripplanner.openstreetmap.model.OSMHighway;
-import org.opentripplanner.openstreetmap.model.OSMSmoothness;
-import org.opentripplanner.openstreetmap.model.OSMSurface;
 import org.opentripplanner.openstreetmap.model.OptionalBoolean;
 import org.opentripplanner.openstreetmap.model.OptionalEnum;
 
@@ -75,7 +71,7 @@ public class AccessibilityPropertySetTest {
 
   @Test
   void testSurfaceGetSet() {
-    OptionalEnum surface = OptionalEnum.of(OSMSurface.paved);
+    OptionalEnum surface = OptionalEnum.of("paved");
     accessibilityPropertySet =
       new AccessibilityPropertySet(
         OptionalDouble.empty(),
@@ -107,7 +103,7 @@ public class AccessibilityPropertySetTest {
 
   @Test
   void testSmoothnessGetSet() {
-    OptionalEnum smoothness = OptionalEnum.of(OSMSmoothness.intermediate);
+    OptionalEnum smoothness = OptionalEnum.of("intermediate");
     accessibilityPropertySet =
       new AccessibilityPropertySet(
         OptionalDouble.empty(),
@@ -123,7 +119,7 @@ public class AccessibilityPropertySetTest {
 
   @Test
   void testHighwayGetSet() {
-    OptionalEnum highway = OptionalEnum.of(OSMHighway.footway);
+    OptionalEnum highway = OptionalEnum.of("footway");
     accessibilityPropertySet =
       new AccessibilityPropertySet(
         OptionalDouble.empty(),
@@ -139,7 +135,7 @@ public class AccessibilityPropertySetTest {
 
   @Test
   void testFootwayGetSet() {
-    OptionalEnum footway = OptionalEnum.of(OSMFootway.crossing);
+    OptionalEnum footway = OptionalEnum.of("crossing");
     accessibilityPropertySet =
       new AccessibilityPropertySet(
         OptionalDouble.empty(),

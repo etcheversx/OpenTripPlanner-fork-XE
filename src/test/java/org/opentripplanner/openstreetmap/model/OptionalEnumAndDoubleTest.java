@@ -38,11 +38,8 @@ class OptionalEnumAndDoubleTest {
       expectedValue = OptionalEnumAndDouble.of(enumerate);
 
       assertEquals(expectedValue, optionalEnumAndDouble);
-
-
     }
   }
-
 
   @Test
   void testGet() {
@@ -61,7 +58,6 @@ class OptionalEnumAndDoubleTest {
       assertEquals("For input string: \"foo\"", exc.getMessage());
     }
   }
-
   /*
 
   @Test

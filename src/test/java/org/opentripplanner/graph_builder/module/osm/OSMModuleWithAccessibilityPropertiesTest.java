@@ -39,8 +39,8 @@ public class OSMModuleWithAccessibilityPropertiesTest {
         Objects
           .requireNonNull(
             OSMModuleWithAccessibilityPropertiesTest.class.getResource(
-              "grenoble_secteur_verdun.osm.pbf"
-            )
+                "grenoble_secteur_verdun.osm.pbf"
+              )
           )
           .getFile(),
         StandardCharsets.UTF_8

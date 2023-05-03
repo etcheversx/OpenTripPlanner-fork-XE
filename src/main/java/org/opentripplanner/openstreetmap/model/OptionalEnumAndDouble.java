@@ -5,10 +5,14 @@ import java.util.OptionalDouble;
 import javax.validation.constraints.NotNull;
 
 public class OptionalEnumAndDouble {
+
   private final OptionalEnum optionalEnum;
   private final OptionalDouble optionalDouble;
 
-  private OptionalEnumAndDouble(@NotNull OptionalEnum optionalEnum, @NotNull OptionalDouble optionalDouble) {
+  private OptionalEnumAndDouble(
+    @NotNull OptionalEnum optionalEnum,
+    @NotNull OptionalDouble optionalDouble
+  ) {
     this.optionalEnum = optionalEnum;
     this.optionalDouble = optionalDouble;
   }
@@ -22,7 +26,7 @@ public class OptionalEnumAndDouble {
   }
 
   public static OptionalEnumAndDouble of(Enum<?> e) {
-    return new OptionalEnumAndDouble(OptionalEnum.of(e));
+    return new OptionalEnumAndDouble(OptionalEnum.of(e.name()));
   }
 
   public static OptionalEnumAndDouble of(double d) {
@@ -35,7 +39,6 @@ public class OptionalEnumAndDouble {
       result = new OptionalEnumAndDouble(OptionalEnum.get(value));
     } catch (Exception exc) {
       result = new OptionalEnumAndDouble(OptionalDouble.of(Double.parseDouble(value)));
-
     }
     return result;
   }
@@ -45,7 +48,10 @@ public class OptionalEnumAndDouble {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
     OptionalEnumAndDouble that = (OptionalEnumAndDouble) o;
-    return Objects.equals(optionalEnum, that.optionalEnum) && Objects.equals(optionalDouble, that.optionalDouble);
+    return (
+      Objects.equals(optionalEnum, that.optionalEnum) &&
+      Objects.equals(optionalDouble, that.optionalDouble)
+    );
   }
 
   @Override
