@@ -225,13 +225,21 @@ public class OSMWithTagsTest {
     assertEquals("bar", errorHandlerForTest.invalidValue);
   }
 
+  private static OptionalEnum optionalEnumOf(String value) {
+    try {
+      return OptionalEnum.get(value);
+    } catch (Exception exc) {
+      return OptionalEnum.empty();
+    }
+  }
+
   @Test
   public void testGetTagAsEnum() {
     OSMWithTags o = new OSMWithTags();
     assertEquals(o.getTagAsEnum("foo", null), OptionalEnum.empty());
 
     o.addTag("surface", "sand");
-    assertEquals(OptionalEnum.of("sand"), o.getTagAsEnum("surface", null));
+    assertEquals(optionalEnumOf("sand"), o.getTagAsEnum("surface", null));
 
     o.addTag("foo", "bar");
     ErrorHandlerForTest errorHandlerForTest = new ErrorHandlerForTest();

@@ -25,10 +25,18 @@ class OptionalEnumTest {
     supportedEnums.addAll(Arrays.stream(OSMSurface.values()).toList());
   }
 
+  private static OptionalEnum optionalEnumOf(String value) {
+    try {
+      return OptionalEnum.get(value);
+    } catch (Exception exc) {
+      return OptionalEnum.empty();
+    }
+  }
+
   @Test
   void testOptionalEnumsCreation() {
     for (Enum<?> e : supportedEnums) {
-      assertDoesNotThrow((Executable) () -> OptionalEnum.of(e.name()));
+      assertDoesNotThrow((Executable) () -> optionalEnumOf(e.name()));
     }
   }
 
@@ -38,8 +46,8 @@ class OptionalEnumTest {
     OptionalEnum optionalEnum;
 
     for (Enum<?> enumerate : supportedEnums) {
-      optionalEnum = OptionalEnum.of(enumerate.name());
-      expectedOptionalEnum = OptionalEnum.of(enumerate.name());
+      optionalEnum = optionalEnumOf(enumerate.name());
+      expectedOptionalEnum = optionalEnumOf(enumerate.name());
 
       assertSame(expectedOptionalEnum, optionalEnum);
     }
@@ -48,7 +56,7 @@ class OptionalEnumTest {
   @Test
   void testGet() {
     try {
-      assertSame(OptionalEnum.of("paved"), OptionalEnum.get("paved"));
+      assertSame(optionalEnumOf("paved"), OptionalEnum.get("paved"));
     } catch (Exception exc) {
       fail("Get failed with: " + exc.getMessage());
     }
@@ -65,7 +73,7 @@ class OptionalEnumTest {
   void testIsEmpty() {
     assertTrue(OptionalEnum.empty().isEmpty());
     for (Enum<?> enumerate : supportedEnums) {
-      assertFalse(OptionalEnum.of(enumerate.name()).isEmpty());
+      assertFalse(optionalEnumOf(enumerate.name()).isEmpty());
     }
   }
 
@@ -73,14 +81,14 @@ class OptionalEnumTest {
   void testIsPresent() {
     assertFalse(OptionalEnum.empty().isPresent());
     for (Enum<?> enumerate : supportedEnums) {
-      assertTrue(OptionalEnum.of(enumerate.name()).isPresent());
+      assertTrue(optionalEnumOf(enumerate.name()).isPresent());
     }
   }
 
   @Test
   void testGetAsEnum() {
     for (Enum<?> enumerate : supportedEnums) {
-      assertSame(enumerate, OptionalEnum.of(enumerate.name()).getAsEnum());
+      assertSame(enumerate, optionalEnumOf(enumerate.name()).getAsEnum());
     }
 
     try {
@@ -104,24 +112,24 @@ class OptionalEnumTest {
 
     parsedValues = OptionalEnum.parseValues("sand");
     expectedValues = new ArrayList<>();
-    expectedValues.add(OptionalEnum.of("sand"));
+    expectedValues.add(optionalEnumOf("sand"));
     assertEquals(expectedValues, parsedValues);
 
     parsedValues = OptionalEnum.parseValues("sand;grass");
     expectedValues = new ArrayList<>();
-    expectedValues.add(OptionalEnum.of("sand"));
-    expectedValues.add(OptionalEnum.of("grass"));
+    expectedValues.add(optionalEnumOf("sand"));
+    expectedValues.add(optionalEnumOf("grass"));
     assertEquals(expectedValues, parsedValues);
 
     parsedValues = OptionalEnum.parseValues("sand;foo;grass");
     expectedValues = new ArrayList<>();
-    expectedValues.add(OptionalEnum.of("sand"));
-    expectedValues.add(OptionalEnum.of("grass"));
+    expectedValues.add(optionalEnumOf("sand"));
+    expectedValues.add(optionalEnumOf("grass"));
     assertEquals(expectedValues, parsedValues);
 
     parsedValues = OptionalEnum.parseValues("sand;sand");
     expectedValues = new ArrayList<>();
-    expectedValues.add(OptionalEnum.of("sand"));
+    expectedValues.add(optionalEnumOf("sand"));
     assertEquals(expectedValues, parsedValues);
   }
 }

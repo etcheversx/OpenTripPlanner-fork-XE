@@ -19,14 +19,6 @@ public class OptionalEnum {
     this.enumerate = enumerate;
   }
 
-  public static OptionalEnum of(String value) {
-    try {
-      return get(value);
-    } catch (Exception exc) {
-      return empty();
-    }
-  }
-
   public static OptionalEnum empty() {
     return empty;
   }

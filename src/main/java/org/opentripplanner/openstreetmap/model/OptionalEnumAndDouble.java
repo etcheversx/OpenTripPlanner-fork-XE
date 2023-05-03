@@ -25,8 +25,16 @@ public class OptionalEnumAndDouble {
     this(OptionalEnum.empty(), optionalDouble);
   }
 
+  private static OptionalEnum optionalEnumOf(String value) {
+    try {
+      return OptionalEnum.get(value);
+    } catch (Exception exc) {
+      return OptionalEnum.empty();
+    }
+  }
+
   public static OptionalEnumAndDouble of(Enum<?> e) {
-    return new OptionalEnumAndDouble(OptionalEnum.of(e.name()));
+    return new OptionalEnumAndDouble(optionalEnumOf(e.name()));
   }
 
   public static OptionalEnumAndDouble of(double d) {

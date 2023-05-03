@@ -69,9 +69,17 @@ public class AccessibilityPropertySetTest {
     assertEquals(lit, accessibilityPropertySet.getLit());
   }
 
+  private static OptionalEnum optionalEnumOf(String value) {
+    try {
+      return OptionalEnum.get(value);
+    } catch (Exception exc) {
+      return OptionalEnum.empty();
+    }
+  }
+
   @Test
   void testSurfaceGetSet() {
-    OptionalEnum surface = OptionalEnum.of("paved");
+    OptionalEnum surface = optionalEnumOf("paved");
     accessibilityPropertySet =
       new AccessibilityPropertySet(
         OptionalDouble.empty(),
@@ -103,7 +111,7 @@ public class AccessibilityPropertySetTest {
 
   @Test
   void testSmoothnessGetSet() {
-    OptionalEnum smoothness = OptionalEnum.of("intermediate");
+    OptionalEnum smoothness = optionalEnumOf("intermediate");
     accessibilityPropertySet =
       new AccessibilityPropertySet(
         OptionalDouble.empty(),
@@ -119,7 +127,7 @@ public class AccessibilityPropertySetTest {
 
   @Test
   void testHighwayGetSet() {
-    OptionalEnum highway = OptionalEnum.of("footway");
+    OptionalEnum highway = optionalEnumOf("footway");
     accessibilityPropertySet =
       new AccessibilityPropertySet(
         OptionalDouble.empty(),
@@ -135,7 +143,7 @@ public class AccessibilityPropertySetTest {
 
   @Test
   void testFootwayGetSet() {
-    OptionalEnum footway = OptionalEnum.of("crossing");
+    OptionalEnum footway = optionalEnumOf("crossing");
     accessibilityPropertySet =
       new AccessibilityPropertySet(
         OptionalDouble.empty(),
