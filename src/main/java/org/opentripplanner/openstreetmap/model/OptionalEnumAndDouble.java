@@ -1,10 +1,11 @@
 package org.opentripplanner.openstreetmap.model;
 
+import java.io.Serializable;
 import java.util.Objects;
 import java.util.OptionalDouble;
 import javax.validation.constraints.NotNull;
 
-public class OptionalEnumAndDouble {
+public class OptionalEnumAndDouble implements Serializable {
 
   private static final OptionalEnumAndDouble _EMPTY = new OptionalEnumAndDouble(
     OptionalEnum.empty(),

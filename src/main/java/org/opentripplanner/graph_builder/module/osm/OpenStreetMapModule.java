@@ -46,6 +46,7 @@ import org.opentripplanner.openstreetmap.model.OSMWay;
 import org.opentripplanner.openstreetmap.model.OSMWithTags;
 import org.opentripplanner.openstreetmap.model.OptionalBoolean;
 import org.opentripplanner.openstreetmap.model.OptionalEnum;
+import org.opentripplanner.openstreetmap.model.OptionalEnumAndDouble;
 import org.opentripplanner.routing.core.TraverseMode;
 import org.opentripplanner.routing.edgetype.AreaEdge;
 import org.opentripplanner.routing.edgetype.AreaEdgeList;
@@ -576,7 +577,8 @@ public class OpenStreetMapModule implements GraphBuilderModule {
         parseTactilePaving(element),
         parseSmoothness(element),
         parseHighway(element),
-        parseFootway(element)
+        parseFootway(element),
+        OptionalEnumAndDouble.empty()
       );
     }
 

@@ -13,6 +13,7 @@ import org.opentripplanner.openstreetmap.model.OSMSmoothness;
 import org.opentripplanner.openstreetmap.model.OSMSurface;
 import org.opentripplanner.openstreetmap.model.OptionalBoolean;
 import org.opentripplanner.openstreetmap.model.OptionalEnum;
+import org.opentripplanner.openstreetmap.model.OptionalEnumAndDouble;
 import org.opentripplanner.routing.api.request.preference.RoutingPreferences;
 import org.opentripplanner.routing.api.request.preference.WalkPreferences;
 import org.opentripplanner.routing.core.TraverseMode;
@@ -52,7 +53,8 @@ class StreetEdgeReluctanceCalculatorTest {
           OptionalBoolean.empty(),
           OptionalEnum.empty(),
           OptionalEnum.empty(),
-          OptionalEnum.empty()
+          OptionalEnum.empty(),
+          OptionalEnumAndDouble.empty()
         )
       )
     );
@@ -91,7 +93,8 @@ class StreetEdgeReluctanceCalculatorTest {
           OptionalBoolean.empty(),
           OptionalEnum.empty(),
           OptionalEnum.empty(),
-          OptionalEnum.empty()
+          OptionalEnum.empty(),
+          OptionalEnumAndDouble.empty()
         )
       )
     );
@@ -136,7 +139,8 @@ class StreetEdgeReluctanceCalculatorTest {
             OptionalBoolean.empty(),
             OptionalEnum.empty(),
             OptionalEnum.empty(),
-            OptionalEnum.empty()
+            OptionalEnum.empty(),
+            OptionalEnumAndDouble.empty()
           )
         )
       );
@@ -180,7 +184,8 @@ class StreetEdgeReluctanceCalculatorTest {
             : OptionalBoolean.empty(),
           OptionalEnum.empty(),
           OptionalEnum.empty(),
-          OptionalEnum.empty()
+          OptionalEnum.empty(),
+          OptionalEnumAndDouble.empty()
         )
       )
     );
@@ -225,7 +230,8 @@ class StreetEdgeReluctanceCalculatorTest {
             OptionalBoolean.empty(),
             edgeSmoothness,
             OptionalEnum.empty(),
-            OptionalEnum.empty()
+            OptionalEnum.empty(),
+            OptionalEnumAndDouble.empty()
           )
         )
       );

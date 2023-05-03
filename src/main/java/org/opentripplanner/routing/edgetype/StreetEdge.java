@@ -22,6 +22,7 @@ import org.opentripplanner.graph_builder.linking.LinkingDirection;
 import org.opentripplanner.graph_builder.module.osm.AccessibilityPropertySet;
 import org.opentripplanner.openstreetmap.model.OptionalBoolean;
 import org.opentripplanner.openstreetmap.model.OptionalEnum;
+import org.opentripplanner.openstreetmap.model.OptionalEnumAndDouble;
 import org.opentripplanner.routing.api.request.preference.RoutingPreferences;
 import org.opentripplanner.routing.core.State;
 import org.opentripplanner.routing.core.StateEditor;
@@ -202,7 +203,8 @@ public class StreetEdge
         OptionalBoolean.empty(),
         OptionalEnum.empty(),
         OptionalEnum.empty(),
-        OptionalEnum.empty()
+        OptionalEnum.empty(),
+        OptionalEnumAndDouble.empty()
       );
   }
 

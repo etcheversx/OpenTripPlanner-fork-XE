@@ -1,11 +1,13 @@
 package org.opentripplanner.graph_builder.module.osm;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.fail;
 
 import java.util.OptionalDouble;
 import org.junit.jupiter.api.Test;
 import org.opentripplanner.openstreetmap.model.OptionalBoolean;
 import org.opentripplanner.openstreetmap.model.OptionalEnum;
+import org.opentripplanner.openstreetmap.model.OptionalEnumAndDouble;
 
 public class AccessibilityPropertySetTest {
 
@@ -21,7 +23,8 @@ public class AccessibilityPropertySetTest {
         OptionalBoolean.empty(),
         OptionalEnum.empty(),
         OptionalEnum.empty(),
-        OptionalEnum.empty()
+        OptionalEnum.empty(),
+        OptionalEnumAndDouble.empty()
       );
     assertEquals(
       accessibilityPropertySet,
@@ -32,7 +35,8 @@ public class AccessibilityPropertySetTest {
         OptionalBoolean.empty(),
         OptionalEnum.empty(),
         OptionalEnum.empty(),
-        OptionalEnum.empty()
+        OptionalEnum.empty(),
+        OptionalEnumAndDouble.empty()
       )
     );
   }
@@ -48,7 +52,8 @@ public class AccessibilityPropertySetTest {
         OptionalBoolean.empty(),
         OptionalEnum.empty(),
         OptionalEnum.empty(),
-        OptionalEnum.empty()
+        OptionalEnum.empty(),
+        OptionalEnumAndDouble.empty()
       );
     assertEquals(width, accessibilityPropertySet.getWidth());
   }
@@ -64,7 +69,8 @@ public class AccessibilityPropertySetTest {
         OptionalBoolean.empty(),
         OptionalEnum.empty(),
         OptionalEnum.empty(),
-        OptionalEnum.empty()
+        OptionalEnum.empty(),
+        OptionalEnumAndDouble.empty()
       );
     assertEquals(lit, accessibilityPropertySet.getLit());
   }
@@ -88,7 +94,8 @@ public class AccessibilityPropertySetTest {
         OptionalBoolean.empty(),
         OptionalEnum.empty(),
         OptionalEnum.empty(),
-        OptionalEnum.empty()
+        OptionalEnum.empty(),
+        OptionalEnumAndDouble.empty()
       );
     assertEquals(surface, accessibilityPropertySet.getSurface());
   }
@@ -104,7 +111,8 @@ public class AccessibilityPropertySetTest {
         tactilePaving,
         OptionalEnum.empty(),
         OptionalEnum.empty(),
-        OptionalEnum.empty()
+        OptionalEnum.empty(),
+        OptionalEnumAndDouble.empty()
       );
     assertEquals(tactilePaving, accessibilityPropertySet.getTactilePaving());
   }
@@ -120,7 +128,8 @@ public class AccessibilityPropertySetTest {
         OptionalBoolean.empty(),
         smoothness,
         OptionalEnum.empty(),
-        OptionalEnum.empty()
+        OptionalEnum.empty(),
+        OptionalEnumAndDouble.empty()
       );
     assertEquals(smoothness, accessibilityPropertySet.getSmoothness());
   }
@@ -136,7 +145,8 @@ public class AccessibilityPropertySetTest {
         OptionalBoolean.empty(),
         OptionalEnum.empty(),
         highway,
-        OptionalEnum.empty()
+        OptionalEnum.empty(),
+        OptionalEnumAndDouble.empty()
       );
     assertEquals(highway, accessibilityPropertySet.getHighway());
   }
@@ -152,8 +162,31 @@ public class AccessibilityPropertySetTest {
         OptionalBoolean.empty(),
         OptionalEnum.empty(),
         OptionalEnum.empty(),
-        footway
+        footway,
+        OptionalEnumAndDouble.empty()
       );
     assertEquals(footway, accessibilityPropertySet.getFootway());
+  }
+
+  @Test
+  void testInclineGetSet() {
+    OptionalEnumAndDouble incline = OptionalEnumAndDouble.empty();
+    try {
+      incline = OptionalEnumAndDouble.get("2.1");
+    } catch (Exception exc) {
+      fail("OptionalEnumAndDouble creation should not fail");
+    }
+    accessibilityPropertySet =
+      new AccessibilityPropertySet(
+        OptionalDouble.empty(),
+        OptionalBoolean.empty(),
+        OptionalEnum.empty(),
+        OptionalBoolean.empty(),
+        OptionalEnum.empty(),
+        OptionalEnum.empty(),
+        OptionalEnum.empty(),
+        incline
+      );
+    assertEquals(incline, accessibilityPropertySet.getIncline());
   }
 }

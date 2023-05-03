@@ -5,6 +5,7 @@ import java.util.OptionalDouble;
 import javax.validation.constraints.NotNull;
 import org.opentripplanner.openstreetmap.model.OptionalBoolean;
 import org.opentripplanner.openstreetmap.model.OptionalEnum;
+import org.opentripplanner.openstreetmap.model.OptionalEnumAndDouble;
 
 public class AccessibilityPropertySet implements Serializable {
 
@@ -15,6 +16,7 @@ public class AccessibilityPropertySet implements Serializable {
   private final OptionalEnum smoothness;
   private final OptionalEnum highway;
   private final OptionalEnum footway;
+  private final OptionalEnumAndDouble incline;
 
   public AccessibilityPropertySet(
     @NotNull OptionalDouble width,
@@ -23,7 +25,8 @@ public class AccessibilityPropertySet implements Serializable {
     @NotNull OptionalBoolean tactilePaving,
     @NotNull OptionalEnum smoothness,
     @NotNull OptionalEnum highway,
-    @NotNull OptionalEnum footway
+    @NotNull OptionalEnum footway,
+    @NotNull OptionalEnumAndDouble incline
   ) {
     this.width = width;
     this.lit = lit;
@@ -32,6 +35,7 @@ public class AccessibilityPropertySet implements Serializable {
     this.smoothness = smoothness;
     this.highway = highway;
     this.footway = footway;
+    this.incline = incline;
   }
 
   public OptionalDouble getWidth() {
@@ -60,6 +64,10 @@ public class AccessibilityPropertySet implements Serializable {
 
   public OptionalEnum getFootway() {
     return footway;
+  }
+
+  public OptionalEnumAndDouble getIncline() {
+    return incline;
   }
 
   @Override
