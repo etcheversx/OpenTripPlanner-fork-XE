@@ -2,11 +2,15 @@ package org.opentripplanner.openstreetmap.model;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertSame;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.NoSuchElementException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
@@ -26,6 +30,7 @@ class OptionalEnumAndDoubleTest {
     for (Enum<?> e : supportedEnums) {
       assertDoesNotThrow((Executable) () -> OptionalEnumAndDouble.get(e.name()));
     }
+    assertDoesNotThrow((Executable) () -> OptionalEnumAndDouble.get("5.1"));
   }
 
   private OptionalEnumAndDouble createOptionalEnumAndDoubleOf(Enum<?> e) {
@@ -55,6 +60,11 @@ class OptionalEnumAndDoubleTest {
 
       assertEquals(expectedValue, optionalEnumAndDouble);
     }
+
+    optionalEnumAndDouble = createOptionalEnumAndDoubleOf(0.31);
+    expectedValue = createOptionalEnumAndDoubleOf(0.31);
+
+    assertEquals(expectedValue, optionalEnumAndDouble);
   }
 
   @Test
@@ -77,70 +87,42 @@ class OptionalEnumAndDoubleTest {
       assertEquals("For input string: \"foo\"", exc.getMessage());
     }
   }
-  /*
 
   @Test
   void testIsEmpty() {
-    assertTrue(OptionalEnum.empty().isEmpty());
+    assertTrue(OptionalEnumAndDouble.empty().isEmpty());
     for (Enum<?> enumerate : supportedEnums) {
-      assertFalse(OptionalEnum.of(enumerate).isEmpty());
+      assertFalse(createOptionalEnumAndDoubleOf(enumerate).isEmpty());
     }
   }
 
   @Test
   void testIsPresent() {
-    assertFalse(OptionalEnum.empty().isPresent());
+    assertFalse(OptionalEnumAndDouble.empty().isPresent());
     for (Enum<?> enumerate : supportedEnums) {
-      assertTrue(OptionalEnum.of(enumerate).isPresent());
+      assertTrue(createOptionalEnumAndDoubleOf(enumerate).isPresent());
     }
   }
 
   @Test
   void testGetAsEnum() {
     for (Enum<?> enumerate : supportedEnums) {
-      assertSame(enumerate, OptionalEnum.of(enumerate).getAsEnum());
+      assertSame(enumerate, createOptionalEnumAndDoubleOf(enumerate).getAsEnum());
     }
 
     try {
-      OptionalEnum.empty().getAsEnum();
+      OptionalEnumAndDouble.empty().getAsEnum();
+      fail("getAsEnum should faild with NoSuchElementException");
     } catch (NoSuchElementException exc) {
       NoSuchElementException expectedException = new NoSuchElementException("No value present");
       assertEquals(expectedException.getMessage(), exc.getMessage());
-      return;
     }
-    fail("getAsBoolean should faild with NoSuchElementException");
+    try {
+      createOptionalEnumAndDoubleOf(-12.3).getAsEnum();
+      fail("getAsEnum should faild with NoSuchElementException");
+    } catch (NoSuchElementException exc) {
+      NoSuchElementException expectedException = new NoSuchElementException("No value present");
+      assertEquals(expectedException.getMessage(), exc.getMessage());
+    }
   }
-
-  @Test
-  void testParseValues() {
-    assertEquals(0, OptionalEnum.parseValues(null).size());
-
-    assertEquals(0, OptionalEnum.parseValues("").size());
-
-    ArrayList<OptionalEnum> parsedValues;
-    ArrayList<OptionalEnum> expectedValues;
-
-    parsedValues = OptionalEnum.parseValues("sand");
-    expectedValues = new ArrayList<>();
-    expectedValues.add(OptionalEnum.of(OSMSurface.sand));
-    assertEquals(expectedValues, parsedValues);
-
-    parsedValues = OptionalEnum.parseValues("sand;grass");
-    expectedValues = new ArrayList<>();
-    expectedValues.add(OptionalEnum.of(OSMSurface.sand));
-    expectedValues.add(OptionalEnum.of(OSMSurface.grass));
-    assertEquals(expectedValues, parsedValues);
-
-    parsedValues = OptionalEnum.parseValues("sand;foo;grass");
-    expectedValues = new ArrayList<>();
-    expectedValues.add(OptionalEnum.of(OSMSurface.sand));
-    expectedValues.add(OptionalEnum.of(OSMSurface.grass));
-    assertEquals(expectedValues, parsedValues);
-
-    parsedValues = OptionalEnum.parseValues("sand;sand");
-    expectedValues = new ArrayList<>();
-    expectedValues.add(OptionalEnum.of(OSMSurface.sand));
-    assertEquals(expectedValues, parsedValues);
-  }
-  */
 }

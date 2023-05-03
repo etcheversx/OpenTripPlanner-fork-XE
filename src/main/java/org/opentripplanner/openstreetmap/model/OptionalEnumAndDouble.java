@@ -58,4 +58,16 @@ public class OptionalEnumAndDouble {
   public int hashCode() {
     return Objects.hash(optionalEnum, optionalDouble);
   }
+
+  public boolean isEmpty() {
+    return equals(_EMPTY);
+  }
+
+  public boolean isPresent() {
+    return !isEmpty();
+  }
+
+  public Enum<?> getAsEnum() {
+    return this.optionalEnum.getAsEnum();
+  }
 }
