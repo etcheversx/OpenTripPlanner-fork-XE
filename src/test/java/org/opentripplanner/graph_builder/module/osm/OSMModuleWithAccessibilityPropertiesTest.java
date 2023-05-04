@@ -20,6 +20,7 @@ import org.opentripplanner.openstreetmap.model.OSMFootway;
 import org.opentripplanner.openstreetmap.model.OSMHighway;
 import org.opentripplanner.openstreetmap.model.OSMSmoothness;
 import org.opentripplanner.openstreetmap.model.OSMSurface;
+import org.opentripplanner.openstreetmap.model.OptionalEnumAndDouble;
 import org.opentripplanner.routing.edgetype.StreetEdge;
 import org.opentripplanner.routing.graph.Graph;
 import org.opentripplanner.routing.vertextype.IntersectionVertex;
@@ -76,6 +77,7 @@ public class OSMModuleWithAccessibilityPropertiesTest {
         boolean presence = checkedPropertyPresence.apply(edge);
         assertEquals(expectedPresence, presence);
         if (expectedPresence) {
+          edge.isReverseOf()
           assertEquals(expectedValue, checkedPropertyValue.apply(edge));
         }
         return;
@@ -326,6 +328,51 @@ public class OSMModuleWithAccessibilityPropertiesTest {
       toId,
       OSMModuleWithAccessibilityPropertiesTest::isFootwayPresent,
       OSMModuleWithAccessibilityPropertiesTest::getFootwayValue,
+      expectedPresence,
+      expectedValue
+    );
+  }
+
+  private static boolean isInclinePresent(StreetEdge edge) {
+    return edge.getAccessibilityProperties().getIncline().isPresent();
+  }
+
+  private static Object getInclineValue(StreetEdge edge) {
+    OptionalEnumAndDouble incline = edge.getAccessibilityProperties().getIncline();
+    try {
+      return incline.getAsObject().toString();
+    } catch (Exception exc) {
+      return incline.toString();
+
+    }
+  }
+
+  @ParameterizedTest(
+    name = "On edge from {0} to {1} incline expected presence is {2} and expected value is {3}"
+  )
+  @CsvSource(
+    {
+      "-1659001, -1659868, false, ",
+      "-1659868, -1659001, false, ",
+      "-1656494, -1661526, true, up",
+      "-1661526, -1656494, true, down",
+      "-1660538, -1660804, true, down",
+      "-1660804, -1660538, true, up",
+      "-1659017, -1659280, true, 2.0",
+      "-1659280, -1659017, true, -2.0"
+    }
+  )
+  public void testBuildGraphWithIncline(
+    String fromId,
+    String toId,
+    boolean expectedPresence,
+    String expectedValue
+  ) {
+    checkProperty(
+      fromId,
+      toId,
+      OSMModuleWithAccessibilityPropertiesTest::isInclinePresent,
+      OSMModuleWithAccessibilityPropertiesTest::getInclineValue,
       expectedPresence,
       expectedValue
     );

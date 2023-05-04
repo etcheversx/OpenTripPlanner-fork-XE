@@ -1,6 +1,7 @@
 package org.opentripplanner.openstreetmap.model;
 
 import java.io.Serializable;
+import java.util.NoSuchElementException;
 import java.util.Objects;
 import java.util.OptionalDouble;
 import javax.validation.constraints.NotNull;
@@ -68,7 +69,16 @@ public class OptionalEnumAndDouble implements Serializable {
     return !isEmpty();
   }
 
-  public Enum<?> getAsEnum() {
-    return this.optionalEnum.getAsEnum();
+  public Object getAsObject() {
+    if (!isPresent()) {
+      throw new NoSuchElementException("No value present");
+    }
+    if (this.optionalEnum.isPresent()) {
+      return this.optionalEnum.getAsEnum();
+    }
+    if (this.optionalDouble.isPresent()) {
+      return this.optionalDouble.getAsDouble();
+    }
+    return new Object();
   }
 }
