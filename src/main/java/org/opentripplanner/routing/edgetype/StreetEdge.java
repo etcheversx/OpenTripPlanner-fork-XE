@@ -20,6 +20,7 @@ import org.opentripplanner.common.model.P2;
 import org.opentripplanner.graph_builder.linking.DisposableEdgeCollection;
 import org.opentripplanner.graph_builder.linking.LinkingDirection;
 import org.opentripplanner.graph_builder.module.osm.AccessibilityPropertySet;
+import org.opentripplanner.openstreetmap.model.OSMIncline;
 import org.opentripplanner.openstreetmap.model.OptionalBoolean;
 import org.opentripplanner.openstreetmap.model.OptionalEnum;
 import org.opentripplanner.openstreetmap.model.OptionalEnumAndDouble;
@@ -1237,6 +1238,43 @@ public class StreetEdge
   }
 
   public void setAccessibilityProperties(AccessibilityPropertySet accessibilityProperties) {
-    this.accessibilityProperties = accessibilityProperties;
+    if (isBack()) {
+      OptionalEnumAndDouble incline = accessibilityProperties.getIncline();
+      if (incline.isPresent()) {
+        Object inclineAsObject = incline.getAsObject();
+        if (inclineAsObject instanceof OSMIncline inclineAsEnum) {
+          try {
+            switch (inclineAsEnum) {
+              case up -> incline = OptionalEnumAndDouble.get("down");
+              case down -> incline = OptionalEnumAndDouble.get("up");
+            }
+          } catch (Exception exc) {
+            incline = OptionalEnumAndDouble.empty();
+          }
+        }
+        if (inclineAsObject instanceof Double inclineAsDouble) {
+          try {
+            double opposite = inclineAsDouble * (-1);
+            incline = OptionalEnumAndDouble.get(Double.toString(opposite));
+          } catch (Exception exc) {
+            incline = OptionalEnumAndDouble.empty();
+          }
+        }
+      }
+
+      this.accessibilityProperties =
+        new AccessibilityPropertySet(
+          accessibilityProperties.getWidth(),
+          accessibilityProperties.getLit(),
+          accessibilityProperties.getSurface(),
+          accessibilityProperties.getTactilePaving(),
+          accessibilityProperties.getSmoothness(),
+          accessibilityProperties.getHighway(),
+          accessibilityProperties.getFootway(),
+          incline
+        );
+    } else {
+      this.accessibilityProperties = accessibilityProperties;
+    }
   }
 }

@@ -77,7 +77,6 @@ public class OSMModuleWithAccessibilityPropertiesTest {
         boolean presence = checkedPropertyPresence.apply(edge);
         assertEquals(expectedPresence, presence);
         if (expectedPresence) {
-          edge.isReverseOf()
           assertEquals(expectedValue, checkedPropertyValue.apply(edge));
         }
         return;
@@ -343,7 +342,6 @@ public class OSMModuleWithAccessibilityPropertiesTest {
       return incline.getAsObject().toString();
     } catch (Exception exc) {
       return incline.toString();
-
     }
   }
 
@@ -359,7 +357,7 @@ public class OSMModuleWithAccessibilityPropertiesTest {
       "-1660538, -1660804, true, down",
       "-1660804, -1660538, true, up",
       "-1659017, -1659280, true, 2.0",
-      "-1659280, -1659017, true, -2.0"
+      "-1659280, -1659017, true, -2.0",
     }
   )
   public void testBuildGraphWithIncline(
