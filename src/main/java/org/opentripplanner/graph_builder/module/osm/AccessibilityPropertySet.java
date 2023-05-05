@@ -17,6 +17,7 @@ public class AccessibilityPropertySet implements Serializable {
   private final OptionalEnum highway;
   private final OptionalEnum footway;
   private final OptionalEnumAndDouble incline;
+  private final OptionalDouble travHTrt;
 
   public AccessibilityPropertySet(
     @NotNull OptionalDouble width,
@@ -26,7 +27,8 @@ public class AccessibilityPropertySet implements Serializable {
     @NotNull OptionalEnum smoothness,
     @NotNull OptionalEnum highway,
     @NotNull OptionalEnum footway,
-    @NotNull OptionalEnumAndDouble incline
+    @NotNull OptionalEnumAndDouble incline,
+    @NotNull OptionalDouble travHTrt
   ) {
     this.width = width;
     this.lit = lit;
@@ -36,6 +38,7 @@ public class AccessibilityPropertySet implements Serializable {
     this.highway = highway;
     this.footway = footway;
     this.incline = incline;
+    this.travHTrt = travHTrt;
   }
 
   public OptionalDouble getWidth() {
@@ -68,6 +71,10 @@ public class AccessibilityPropertySet implements Serializable {
 
   public OptionalEnumAndDouble getIncline() {
     return incline;
+  }
+
+  public OptionalDouble getTravHTrt() {
+    return travHTrt;
   }
 
   @Override

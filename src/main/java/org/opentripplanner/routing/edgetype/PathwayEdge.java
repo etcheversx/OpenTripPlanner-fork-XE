@@ -67,7 +67,8 @@ public class PathwayEdge extends Edge implements BikeWalkableEdge, WheelchairTra
         OptionalEnum.empty(),
         OptionalEnum.empty(),
         OptionalEnum.empty(),
-        OptionalEnumAndDouble.empty()
+        OptionalEnumAndDouble.empty(),
+        OptionalDouble.empty()
       );
   }
 
@@ -157,7 +158,7 @@ public class PathwayEdge extends Edge implements BikeWalkableEdge, WheelchairTra
   }
 
   public LineString getGeometry() {
-    Coordinate[] coordinates = new Coordinate[] {
+    Coordinate[] coordinates = new Coordinate[]{
       getFromVertex().getCoordinate(),
       getToVertex().getCoordinate(),
     };

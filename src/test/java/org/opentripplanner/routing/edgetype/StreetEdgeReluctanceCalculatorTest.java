@@ -54,7 +54,8 @@ class StreetEdgeReluctanceCalculatorTest {
           OptionalEnum.empty(),
           OptionalEnum.empty(),
           OptionalEnum.empty(),
-          OptionalEnumAndDouble.empty()
+          OptionalEnumAndDouble.empty(),
+          OptionalDouble.empty()
         )
       )
     );
@@ -94,7 +95,8 @@ class StreetEdgeReluctanceCalculatorTest {
           OptionalEnum.empty(),
           OptionalEnum.empty(),
           OptionalEnum.empty(),
-          OptionalEnumAndDouble.empty()
+          OptionalEnumAndDouble.empty(),
+          OptionalDouble.empty()
         )
       )
     );
@@ -140,7 +142,8 @@ class StreetEdgeReluctanceCalculatorTest {
             OptionalEnum.empty(),
             OptionalEnum.empty(),
             OptionalEnum.empty(),
-            OptionalEnumAndDouble.empty()
+            OptionalEnumAndDouble.empty(),
+            OptionalDouble.empty()
           )
         )
       );
@@ -185,7 +188,8 @@ class StreetEdgeReluctanceCalculatorTest {
           OptionalEnum.empty(),
           OptionalEnum.empty(),
           OptionalEnum.empty(),
-          OptionalEnumAndDouble.empty()
+          OptionalEnumAndDouble.empty(),
+          OptionalDouble.empty()
         )
       )
     );
@@ -231,7 +235,8 @@ class StreetEdgeReluctanceCalculatorTest {
             edgeSmoothness,
             OptionalEnum.empty(),
             OptionalEnum.empty(),
-            OptionalEnumAndDouble.empty()
+            OptionalEnumAndDouble.empty(),
+            OptionalDouble.empty()
           )
         )
       );
@@ -282,7 +287,8 @@ class StreetEdgeReluctanceCalculatorTest {
           OptionalEnum.empty(),
           edgeIncline != null
             ? OptionalEnumAndDouble.get(edgeIncline)
-            : OptionalEnumAndDouble.empty()
+            : OptionalEnumAndDouble.empty(),
+          OptionalDouble.empty()
         )
       )
     );

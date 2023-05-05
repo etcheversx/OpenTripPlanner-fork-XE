@@ -205,7 +205,8 @@ public class StreetEdge
         OptionalEnum.empty(),
         OptionalEnum.empty(),
         OptionalEnum.empty(),
-        OptionalEnumAndDouble.empty()
+        OptionalEnumAndDouble.empty(),
+        OptionalDouble.empty()
       );
   }
 
@@ -1271,7 +1272,8 @@ public class StreetEdge
           accessibilityProperties.getSmoothness(),
           accessibilityProperties.getHighway(),
           accessibilityProperties.getFootway(),
-          incline
+          incline,
+          accessibilityProperties.getTravHTrt()
         );
     } else {
       this.accessibilityProperties = accessibilityProperties;

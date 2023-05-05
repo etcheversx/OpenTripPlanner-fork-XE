@@ -24,7 +24,8 @@ public class AccessibilityPropertySetTest {
         OptionalEnum.empty(),
         OptionalEnum.empty(),
         OptionalEnum.empty(),
-        OptionalEnumAndDouble.empty()
+        OptionalEnumAndDouble.empty(),
+        OptionalDouble.empty()
       );
     assertEquals(
       accessibilityPropertySet,
@@ -36,7 +37,8 @@ public class AccessibilityPropertySetTest {
         OptionalEnum.empty(),
         OptionalEnum.empty(),
         OptionalEnum.empty(),
-        OptionalEnumAndDouble.empty()
+        OptionalEnumAndDouble.empty(),
+        OptionalDouble.empty()
       )
     );
   }
@@ -53,7 +55,8 @@ public class AccessibilityPropertySetTest {
         OptionalEnum.empty(),
         OptionalEnum.empty(),
         OptionalEnum.empty(),
-        OptionalEnumAndDouble.empty()
+        OptionalEnumAndDouble.empty(),
+        OptionalDouble.empty()
       );
     assertEquals(width, accessibilityPropertySet.getWidth());
   }
@@ -70,7 +73,8 @@ public class AccessibilityPropertySetTest {
         OptionalEnum.empty(),
         OptionalEnum.empty(),
         OptionalEnum.empty(),
-        OptionalEnumAndDouble.empty()
+        OptionalEnumAndDouble.empty(),
+        OptionalDouble.empty()
       );
     assertEquals(lit, accessibilityPropertySet.getLit());
   }
@@ -95,7 +99,8 @@ public class AccessibilityPropertySetTest {
         OptionalEnum.empty(),
         OptionalEnum.empty(),
         OptionalEnum.empty(),
-        OptionalEnumAndDouble.empty()
+        OptionalEnumAndDouble.empty(),
+        OptionalDouble.empty()
       );
     assertEquals(surface, accessibilityPropertySet.getSurface());
   }
@@ -112,7 +117,8 @@ public class AccessibilityPropertySetTest {
         OptionalEnum.empty(),
         OptionalEnum.empty(),
         OptionalEnum.empty(),
-        OptionalEnumAndDouble.empty()
+        OptionalEnumAndDouble.empty(),
+        OptionalDouble.empty()
       );
     assertEquals(tactilePaving, accessibilityPropertySet.getTactilePaving());
   }
@@ -129,7 +135,8 @@ public class AccessibilityPropertySetTest {
         smoothness,
         OptionalEnum.empty(),
         OptionalEnum.empty(),
-        OptionalEnumAndDouble.empty()
+        OptionalEnumAndDouble.empty(),
+        OptionalDouble.empty()
       );
     assertEquals(smoothness, accessibilityPropertySet.getSmoothness());
   }
@@ -146,7 +153,8 @@ public class AccessibilityPropertySetTest {
         OptionalEnum.empty(),
         highway,
         OptionalEnum.empty(),
-        OptionalEnumAndDouble.empty()
+        OptionalEnumAndDouble.empty(),
+        OptionalDouble.empty()
       );
     assertEquals(highway, accessibilityPropertySet.getHighway());
   }
@@ -163,7 +171,8 @@ public class AccessibilityPropertySetTest {
         OptionalEnum.empty(),
         OptionalEnum.empty(),
         footway,
-        OptionalEnumAndDouble.empty()
+        OptionalEnumAndDouble.empty(),
+        OptionalDouble.empty()
       );
     assertEquals(footway, accessibilityPropertySet.getFootway());
   }
@@ -185,8 +194,27 @@ public class AccessibilityPropertySetTest {
         OptionalEnum.empty(),
         OptionalEnum.empty(),
         OptionalEnum.empty(),
-        incline
+        incline,
+        OptionalDouble.empty()
       );
     assertEquals(incline, accessibilityPropertySet.getIncline());
+  }
+
+  @Test
+  void testTravHTrtGetSet() {
+    OptionalDouble travHTrt = OptionalDouble.of(0.25);
+    accessibilityPropertySet =
+      new AccessibilityPropertySet(
+        OptionalDouble.empty(),
+        OptionalBoolean.empty(),
+        OptionalEnum.empty(),
+        OptionalBoolean.empty(),
+        OptionalEnum.empty(),
+        OptionalEnum.empty(),
+        OptionalEnum.empty(),
+        OptionalEnumAndDouble.empty(),
+        travHTrt
+      );
+    assertEquals(travHTrt, accessibilityPropertySet.getTravHTrt());
   }
 }
