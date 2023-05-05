@@ -375,4 +375,39 @@ public class OSMModuleWithAccessibilityPropertiesTest {
       expectedValue
     );
   }
+
+  private static boolean isTravHTrtPresent(StreetEdge edge) {
+    return edge.getAccessibilityProperties().getTravHTrt().isPresent();
+  }
+
+  private static Object getTravHTrtValue(StreetEdge edge) {
+    return edge.getAccessibilityProperties().getTravHTrt().getAsDouble();
+  }
+
+  @ParameterizedTest(
+    name = "On edge from {0} to {1} trav_h_trt expected presence is {2} and expected value is {3}"
+  )
+  @CsvSource(
+    {
+      "-1659017, -1659280, true, 0.17",
+      "-1659280, -1659017, true, 0.17",
+      "-1656814, -1659965, false, ",
+      "-1659965, -1656814, false, ",
+    }
+  )
+  public void testBuildGraphWithTravHTrt(
+    String fromId,
+    String toId,
+    boolean expectedPresence,
+    Double expectedValue
+  ) {
+    checkProperty(
+      fromId,
+      toId,
+      OSMModuleWithAccessibilityPropertiesTest::isTravHTrtPresent,
+      OSMModuleWithAccessibilityPropertiesTest::getTravHTrtValue,
+      expectedPresence,
+      expectedValue
+    );
+  }
 }
