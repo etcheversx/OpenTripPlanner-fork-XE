@@ -78,16 +78,6 @@ class WalkPreferencesTest {
   }
 
   @Test
-  void minimalWidth() {
-    assertEquals(MINIMAL_WIDTH, subject.minimalWidth());
-  }
-
-  @Test
-  void lightRequired() {
-    assertEquals(LIGHT_REQUIRED, subject.lightRequired());
-  }
-
-  @Test
   void testEqualsAndHAshCode() {
     // Return same object if no value is set
     assertSame(subject, subject.copyOf().build());
@@ -113,5 +103,30 @@ class WalkPreferencesTest {
     body.accept(copy);
     WalkPreferences walk = copy.build();
     assertNotEquals(subject, walk);
+  }
+
+  @Test
+  void minimalWidth() {
+    assertEquals(MINIMAL_WIDTH, subject.minimalWidth());
+  }
+
+  @Test
+  void lightRequired() {
+    assertEquals(LIGHT_REQUIRED, subject.lightRequired());
+  }
+
+  @Test
+  void reluctedSurfaces() {
+    assertEquals(RELUCTED_SURFACES, subject.reluctedSurfaces());
+  }
+
+  @Test
+  void tactilePaving() {
+    assertEquals(TACTILE_PAVING, subject.tactilePaving());
+  }
+
+  @Test
+  void reluctedSmoothness() {
+    assertEquals(RELUCTED_SMOOTHNESS, subject.reluctedSmoothness());
   }
 }
