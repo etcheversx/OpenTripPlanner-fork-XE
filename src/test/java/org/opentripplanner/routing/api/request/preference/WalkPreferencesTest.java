@@ -31,6 +31,7 @@ class WalkPreferencesTest {
   private static final Collection<OSMSurface> RELUCTED_SURFACES = Arrays.asList(_RELUCTED_SURFACES);
   private static final boolean TACTILE_PAVING = true;
   private static final OSMSmoothness RELUCTED_SMOOTHNESS = OSMSmoothness.intermediate;
+  private static final double MAXIMAL_INCLINE = 1.25;
 
   private final WalkPreferences subject = WalkPreferences
     .of()
@@ -45,6 +46,7 @@ class WalkPreferencesTest {
     .withReluctedSurfaces(RELUCTED_SURFACES)
     .withTactilePaving(TACTILE_PAVING)
     .withReluctedSmoothness(RELUCTED_SMOOTHNESS)
+    .withMaximalIncline(MAXIMAL_INCLINE)
     .build();
 
   @Test
@@ -93,7 +95,7 @@ class WalkPreferencesTest {
   void testToString() {
     assertEquals("WalkPreferences{}", WalkPreferences.DEFAULT.toString());
     assertEquals(
-      "WalkPreferences{speed: 1.71, reluctance: 2.5, boardCost: 301, stairsReluctance: 3.0, stairsTimeFactor: 1.31, safetyFactor: 0.51, minimalWidth: 0.85, lightRequired, reluctedSurfaces: [sand, grass], tactilePaving, reluctedSmoothness: 'intermediate'}",
+      "WalkPreferences{speed: 1.71, reluctance: 2.5, boardCost: 301, stairsReluctance: 3.0, stairsTimeFactor: 1.31, safetyFactor: 0.51, minimalWidth: 0.85, lightRequired, reluctedSurfaces: [sand, grass], tactilePaving, reluctedSmoothness: 'intermediate', maximalIncline: 1.25}",
       subject.toString()
     );
   }
@@ -128,5 +130,10 @@ class WalkPreferencesTest {
   @Test
   void reluctedSmoothness() {
     assertEquals(RELUCTED_SMOOTHNESS, subject.reluctedSmoothness());
+  }
+
+  @Test
+  void maximalIncline() {
+    assertEquals(MAXIMAL_INCLINE, subject.maximalIncline());
   }
 }
