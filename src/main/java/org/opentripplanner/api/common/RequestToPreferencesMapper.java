@@ -58,6 +58,7 @@ class RequestToPreferencesMapper {
       setIfNotNull(OSMSurface.parseValues(req.reluctedSurfaces), walk::withReluctedSurfaces);
       setIfNotNull(req.tactilePaving, walk::withTactilePaving);
       setIfNotNull(OSMSmoothness.valueOf(req.requiredSmoothness), walk::withReluctedSmoothness);
+      setIfNotNull(req.maximalIncline, walk::withMaximalIncline);
     });
   }
 

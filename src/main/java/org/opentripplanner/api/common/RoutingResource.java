@@ -349,6 +349,9 @@ public abstract class RoutingResource {
   @QueryParam("requiredSmoothness")
   protected String requiredSmoothness;
 
+  @QueryParam("maximalIncline")
+  protected Double maximalIncline;
+
   @QueryParam("allowKeepingRentedBicycleAtDestination")
   protected Boolean allowKeepingRentedBicycleAtDestination;
 
