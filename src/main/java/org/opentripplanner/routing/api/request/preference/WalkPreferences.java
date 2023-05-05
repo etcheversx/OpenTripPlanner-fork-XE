@@ -51,7 +51,7 @@ public final class WalkPreferences implements Serializable {
     this.reluctedSurfaces = new ArrayList<>();
     this.tactilePaving = false;
     this.reluctedSmoothness = OSMSmoothness.very_bad;
-    this.maximalIncline = 0.0;
+    this.maximalIncline = Double.MAX_VALUE;
   }
 
   private WalkPreferences(Builder builder) {

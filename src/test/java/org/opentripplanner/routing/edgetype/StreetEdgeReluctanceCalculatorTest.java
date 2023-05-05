@@ -33,15 +33,7 @@ class StreetEdgeReluctanceCalculatorTest {
   }
 
   @ParameterizedTest(name = "Walk reluctance with minimalWidth={0} on edge with width={1} is {2}")
-  @CsvSource(
-    {
-      ", , 2.0",
-      "0.9, , 2.0",
-      ", 1.0, 2.0",
-      "0.9, 1.0, 2.0",
-      "0.9, 0.85, 4.0"
-    }
-    )
+  @CsvSource({ ", , 2.0", "0.9, , 2.0", ", 1.0, 2.0", "0.9, 1.0, 2.0", "0.9, 0.85, 4.0" })
   void testReluctanceProcessingWithWidth(
     Double minimalWidth,
     Double edgeWidth,
@@ -246,6 +238,54 @@ class StreetEdgeReluctanceCalculatorTest {
     } catch (Exception exc) {
       fail("Unexpected exception : " + exc.getMessage());
     }
+  }
+
+  @ParameterizedTest(
+    name = "Walk reluctance with maximalIncline={0} on edge with incline={1} is {2}"
+  )
+  @CsvSource(
+    {
+      ", , 2.0",
+      "2.0, , 2.0",
+      "2.0, up, 2.0",
+      "2.0, down, 2.0",
+      ", 1.0, 2.0",
+      "1.25, 1.0, 2.0",
+      "-1.25, 1.0, 2.0",
+      "1.25, -1.0, 2.0",
+      "-1.25, -1.0, 2.0",
+      "1.25, 2.0, 4.0",
+      "-1.25, 2.0, 4.0",
+      "1.25, -2.0, 4.0",
+      "-1.25, -2.0, 4.0",
+    }
+  )
+  void testReluctanceProcessingWithIncline(
+    Double maximalIncline,
+    String edgeIncline,
+    Double expectedWalkReluctance
+  ) throws Exception {
+    if (maximalIncline != null) {
+      routingPreferencesBuilder.withWalk(w -> w.withMaximalIncline(maximalIncline));
+    }
+
+    assertEquals(
+      expectedWalkReluctance,
+      computeWalkReluctance(
+        new AccessibilityPropertySet(
+          OptionalDouble.empty(),
+          OptionalBoolean.empty(),
+          OptionalEnum.empty(),
+          OptionalBoolean.empty(),
+          OptionalEnum.empty(),
+          OptionalEnum.empty(),
+          OptionalEnum.empty(),
+          edgeIncline != null
+            ? OptionalEnumAndDouble.get(edgeIncline)
+            : OptionalEnumAndDouble.empty()
+        )
+      )
+    );
   }
 
   private double computeWalkReluctance(AccessibilityPropertySet edgeAccessibilityProperties) {

@@ -6,6 +6,7 @@ import org.opentripplanner.openstreetmap.model.OSMSmoothness;
 import org.opentripplanner.openstreetmap.model.OSMSurface;
 import org.opentripplanner.openstreetmap.model.OptionalBoolean;
 import org.opentripplanner.openstreetmap.model.OptionalEnum;
+import org.opentripplanner.openstreetmap.model.OptionalEnumAndDouble;
 import org.opentripplanner.routing.api.request.preference.RoutingPreferences;
 import org.opentripplanner.routing.core.TraverseMode;
 
@@ -75,6 +76,15 @@ class StreetEdgeReluctanceCalculator {
       preferences.walk().reluctedSmoothness().compareTo((OSMSmoothness) smoothness.getAsEnum()) > 0
     ) {
       reluctance *= 2;
+    }
+    OptionalEnumAndDouble incline = edgeAccessibilityProperties.getIncline();
+    if (incline.isPresent()) {
+      Object inclineAsObject = incline.getAsObject();
+      if (inclineAsObject instanceof Double inclineAsDouble) {
+        if (Math.abs(inclineAsDouble) > Math.abs(preferences.walk().maximalIncline())) {
+          reluctance *= 2;
+        }
+      }
     }
     return reluctance;
   }
