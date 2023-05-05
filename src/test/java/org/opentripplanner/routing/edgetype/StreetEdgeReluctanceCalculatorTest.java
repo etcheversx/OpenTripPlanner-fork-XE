@@ -32,8 +32,16 @@ class StreetEdgeReluctanceCalculatorTest {
     assertEquals(2.0, WalkPreferences.DEFAULT.reluctance());
   }
 
-  @ParameterizedTest(name = "Walk reluctance with requiredLight={0} on edge with light={1} is {2}")
-  @CsvSource({ ", , 2.0", "0.9, , 2.0", ", 1.0, 2.0", "0.9, 1.0, 2.0", "0.9, 0.85, 4.0" })
+  @ParameterizedTest(name = "Walk reluctance with minimalWidth={0} on edge with width={1} is {2}")
+  @CsvSource(
+    {
+      ", , 2.0",
+      "0.9, , 2.0",
+      ", 1.0, 2.0",
+      "0.9, 1.0, 2.0",
+      "0.9, 0.85, 4.0"
+    }
+    )
   void testReluctanceProcessingWithWidth(
     Double minimalWidth,
     Double edgeWidth,
