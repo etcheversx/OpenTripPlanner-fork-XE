@@ -33,15 +33,7 @@ class StreetEdgeReluctanceCalculatorTest {
   }
 
   @ParameterizedTest(name = "Walk reluctance with minimalWidth={0} on edge with width={1} is {2}")
-  @CsvSource(
-    {
-      ", , 2.0",
-      "0.9, , 2.0",
-      ", 1.0, 2.0",
-      "0.9, 1.0, 2.0",
-      "0.9, 0.85, 4.0"
-    }
-    )
+  @CsvSource({ ", , 2.0", "0.9, , 2.0", ", 1.0, 2.0", "0.9, 1.0, 2.0", "0.9, 0.85, 4.0" })
   void testReluctanceProcessingWithWidth(
     Double minimalWidth,
     Double edgeWidth,
@@ -312,7 +304,7 @@ class StreetEdgeReluctanceCalculatorTest {
       ", 0.17, 2.0",
       "0.19, 0.17, 2.0",
       "0.17, 0.17, 2.0",
-      "0.15, 0.17, 4.0"
+      "0.15, 0.17, 4.0",
     }
   )
   void testReluctanceProcessingWithTravHTrt(

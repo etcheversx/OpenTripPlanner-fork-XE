@@ -352,6 +352,9 @@ public abstract class RoutingResource {
   @QueryParam("maximalIncline")
   protected Double maximalIncline;
 
+  @QueryParam("maximalTravHTrt")
+  protected Double maximalTravHTrt;
+
   @QueryParam("allowKeepingRentedBicycleAtDestination")
   protected Boolean allowKeepingRentedBicycleAtDestination;
 
