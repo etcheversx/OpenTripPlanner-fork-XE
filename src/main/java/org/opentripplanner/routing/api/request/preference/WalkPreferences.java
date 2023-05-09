@@ -38,6 +38,7 @@ public final class WalkPreferences implements Serializable {
   private final boolean tactilePaving;
   private final OSMSmoothness reluctedSmoothness;
   private final double maximalIncline;
+  private final double maximalTravHTrt;
 
   private WalkPreferences() {
     this.speed = 1.33;
@@ -52,6 +53,7 @@ public final class WalkPreferences implements Serializable {
     this.tactilePaving = false;
     this.reluctedSmoothness = OSMSmoothness.very_bad;
     this.maximalIncline = Double.MAX_VALUE;
+    this.maximalTravHTrt = Double.MAX_VALUE;
   }
 
   private WalkPreferences(Builder builder) {
@@ -67,6 +69,7 @@ public final class WalkPreferences implements Serializable {
     this.tactilePaving = builder.tactilePaving;
     this.reluctedSmoothness = builder.reluctedSmoothness;
     this.maximalIncline = builder.maximalIncline;
+    this.maximalTravHTrt = builder.maximalTravHTrt;
   }
 
   public static Builder of() {
@@ -157,6 +160,10 @@ public final class WalkPreferences implements Serializable {
     return maximalIncline;
   }
 
+  public double maximalTravHTrt() {
+    return maximalTravHTrt;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;
@@ -174,7 +181,8 @@ public final class WalkPreferences implements Serializable {
       reluctedSurfaces.equals(that.reluctedSurfaces) &&
       tactilePaving == that.tactilePaving &&
       reluctedSmoothness.equals(that.reluctedSmoothness) &&
-      doubleEquals(that.maximalIncline, maximalIncline)
+      doubleEquals(that.maximalIncline, maximalIncline) &&
+      doubleEquals(that.maximalTravHTrt, maximalTravHTrt)
     );
   }
 
@@ -211,6 +219,7 @@ public final class WalkPreferences implements Serializable {
         OSMSmoothness.very_bad.toString()
       )
       .addNum("maximalIncline", maximalIncline, DEFAULT.maximalIncline)
+      .addNum("maximalTravHTrt", maximalTravHTrt, DEFAULT.maximalTravHTrt)
       .toString();
   }
 
@@ -229,6 +238,7 @@ public final class WalkPreferences implements Serializable {
     private boolean tactilePaving = false;
     private OSMSmoothness reluctedSmoothness = OSMSmoothness.very_bad;
     private double maximalIncline = 0.0;
+    private double maximalTravHTrt = 0.0;
 
     public Builder(WalkPreferences original) {
       this.original = original;
@@ -244,6 +254,7 @@ public final class WalkPreferences implements Serializable {
       this.tactilePaving = original.tactilePaving;
       this.reluctedSmoothness = original.reluctedSmoothness;
       this.maximalIncline = original.maximalIncline;
+      this.maximalTravHTrt = original.maximalTravHTrt;
     }
 
     public WalkPreferences original() {
@@ -337,6 +348,11 @@ public final class WalkPreferences implements Serializable {
 
     public Builder withMaximalIncline(double maximalIncline) {
       this.maximalIncline = maximalIncline;
+      return this;
+    }
+
+    public Builder withMaximalTravHTrt(double maximalTravHTrt) {
+      this.maximalTravHTrt = maximalTravHTrt;
       return this;
     }
 
