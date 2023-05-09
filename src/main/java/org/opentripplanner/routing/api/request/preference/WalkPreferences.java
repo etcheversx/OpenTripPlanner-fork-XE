@@ -51,7 +51,7 @@ public final class WalkPreferences implements Serializable {
     this.lightRequired = false;
     this.reluctedSurfaces = new ArrayList<>();
     this.tactilePaving = false;
-    this.reluctedSmoothness = OSMSmoothness.very_bad;
+    this.reluctedSmoothness = OSMSmoothness.impassable;
     this.maximalIncline = Double.MAX_VALUE;
     this.maximalTravHTrt = Double.MAX_VALUE;
   }
@@ -216,7 +216,7 @@ public final class WalkPreferences implements Serializable {
       .addStr(
         "reluctedSmoothness",
         reluctedSmoothness.toString(),
-        OSMSmoothness.very_bad.toString()
+        OSMSmoothness.impassable.toString()
       )
       .addNum("maximalIncline", maximalIncline, DEFAULT.maximalIncline)
       .addNum("maximalTravHTrt", maximalTravHTrt, DEFAULT.maximalTravHTrt)
@@ -236,7 +236,7 @@ public final class WalkPreferences implements Serializable {
     private boolean lightRequired = false;
     private Collection<OSMSurface> reluctedSurfaces = new ArrayList<>();
     private boolean tactilePaving = false;
-    private OSMSmoothness reluctedSmoothness = OSMSmoothness.very_bad;
+    private OSMSmoothness reluctedSmoothness = OSMSmoothness.impassable;
     private double maximalIncline = 0.0;
     private double maximalTravHTrt = 0.0;
 
