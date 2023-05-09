@@ -86,6 +86,10 @@ class StreetEdgeReluctanceCalculator {
         }
       }
     }
+    OptionalDouble travHTrt = edgeAccessibilityProperties.getTravHTrt();
+    if (travHTrt.isPresent() && travHTrt.getAsDouble() > preferences.walk().maximalTravHTrt()) {
+      reluctance *= 2;
+    }
     return reluctance;
   }
 
