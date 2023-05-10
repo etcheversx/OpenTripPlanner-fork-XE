@@ -71,11 +71,13 @@ class StreetEdgeReluctanceCalculator {
       reluctance *= 2;
     }
     OptionalEnum smoothness = edgeAccessibilityProperties.getSmoothness();
-    if (
-      smoothness.isPresent() &&
-      preferences.walk().reluctedSmoothness().compareTo((OSMSmoothness) smoothness.getAsEnum()) > 0
-    ) {
-      reluctance *= 2;
+    if (smoothness.isPresent()) {
+      if (
+        preferences.walk().reluctedSmoothness().compareTo((OSMSmoothness) smoothness.getAsEnum()) >
+        0
+      ) {
+        reluctance *= 2;
+      }
     }
     OptionalEnumAndDouble incline = edgeAccessibilityProperties.getIncline();
     if (incline.isPresent()) {

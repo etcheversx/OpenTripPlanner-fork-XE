@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.NoSuchElementException;
+import java.util.Objects;
 import javax.validation.constraints.NotNull;
 
 public class OptionalEnum {
@@ -72,14 +73,23 @@ public class OptionalEnum {
   }
 
   static {
-    try {
-      createTypedOptionalEnum(OSMSurface.values());
-      createTypedOptionalEnum(OSMSmoothness.values());
-      createTypedOptionalEnum(OSMHighway.values());
-      createTypedOptionalEnum(OSMFootway.values());
-      createTypedOptionalEnum(OSMIncline.values());
-    } catch (Exception exc) {
-      // TODO : nothing done at present time
-    }
+    createTypedOptionalEnum(OSMSmoothness.values());
+    createTypedOptionalEnum(OSMSurface.values());
+    createTypedOptionalEnum(OSMHighway.values());
+    createTypedOptionalEnum(OSMFootway.values());
+    createTypedOptionalEnum(OSMIncline.values());
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    OptionalEnum that = (OptionalEnum) o;
+    return Objects.equals(enumerate, that.enumerate);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(enumerate);
   }
 }
