@@ -2829,7 +2829,8 @@ org.opentripplanner.routing.algorithm.mapping.TransitSnapshotTest.test_trip_plan
               "relativeDirection": "RIGHT",
               "stayOn": false,
               "streetName": "East Burnside Street",
-              "walkingBike": false
+              "walkingBike": false,
+              "width": 11.0
             },
             {
               "absoluteDirection": "WEST",
@@ -5726,7 +5727,8 @@ org.opentripplanner.routing.algorithm.mapping.TransitSnapshotTest.test_trip_plan
               "relativeDirection": "RIGHT",
               "stayOn": false,
               "streetName": "East Burnside Street",
-              "walkingBike": false
+              "walkingBike": false,
+              "width": 11.0
             },
             {
               "absoluteDirection": "WEST",

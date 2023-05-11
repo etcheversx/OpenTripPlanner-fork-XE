@@ -7,6 +7,7 @@ import static org.opentripplanner.api.mapping.RelativeDirectionMapper.mapRelativ
 import java.util.Collection;
 import java.util.List;
 import java.util.Locale;
+import java.util.OptionalDouble;
 import java.util.stream.Collectors;
 import org.opentripplanner.api.model.ApiWalkStep;
 import org.opentripplanner.model.plan.WalkStep;
@@ -50,6 +51,8 @@ public class WalkStepMapper {
     api.walkingBike = domain.isWalkingBike();
     api.alerts = alertsMapper.mapToApi(domain.getStreetNotes());
 
+    OptionalDouble width = domain.getAccessibilityProperties().getWidth();
+    api.width = width.isPresent() ? width.getAsDouble() : null;
     return api;
   }
 }

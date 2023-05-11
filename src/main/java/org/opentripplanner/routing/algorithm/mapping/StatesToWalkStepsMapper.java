@@ -518,7 +518,8 @@ public class StatesToWalkStepsMapper {
         en.hasBogusName(),
         DirectionUtils.getFirstAngle(forwardState.getBackEdge().getGeometry()),
         forwardState.isBackWalkingBike(),
-        forwardState.getBackEdge() instanceof AreaEdge
+        forwardState.getBackEdge() instanceof AreaEdge,
+        en instanceof StreetEdge ? ((StreetEdge) en).getAccessibilityProperties() : null
       );
     step.addElevation(
       encodeElevationProfile(

@@ -6,6 +6,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import org.opentripplanner.common.model.P2;
+import org.opentripplanner.graph_builder.module.osm.AccessibilityPropertySet;
 import org.opentripplanner.model.StreetNote;
 import org.opentripplanner.model.VehicleRentalStationInfo;
 import org.opentripplanner.routing.graph.Edge;
@@ -55,6 +56,12 @@ public class WalkStep {
 
   private VehicleRentalStationInfo vehicleRentalOffStation;
 
+  public AccessibilityPropertySet getAccessibilityProperties() {
+    return accessibilityProperties;
+  }
+
+  private final AccessibilityPropertySet accessibilityProperties;
+
   public WalkStep(
     I18NString streetName,
     WgsCoordinate startLocation,
@@ -63,12 +70,25 @@ public class WalkStep {
     boolean walkingBike,
     boolean area
   ) {
+    this(streetName, startLocation, bogusName, angle, walkingBike, area, null);
+  }
+
+  public WalkStep(
+    I18NString streetName,
+    WgsCoordinate startLocation,
+    boolean bogusName,
+    double angle,
+    boolean walkingBike,
+    boolean area,
+    AccessibilityPropertySet accessibilityProperties
+  ) {
     this.streetName = streetName;
     this.startLocation = startLocation;
     this.bogusName = bogusName;
     this.angle = DoubleUtils.roundTo2Decimals(angle);
     this.walkingBike = walkingBike;
     this.area = area;
+    this.accessibilityProperties = accessibilityProperties;
   }
 
   public void setDirections(double lastAngle, double thisAngle, boolean roundabout) {
