@@ -88,6 +88,14 @@ public class ApiWalkStep {
 
   public List<ApiAlert> alerts;
   public Double width;
+  public Boolean lit;
+  public String surface;
+  public Boolean tactilePaving;
+  public String smoothness;
+  public String highway;
+  public String footway;
+  public String incline;
+  public Double travHTrt;
 
   public String toString() {
     String direction = absoluteDirection.toString();

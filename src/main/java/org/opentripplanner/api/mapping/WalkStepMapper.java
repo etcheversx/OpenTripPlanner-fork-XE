@@ -10,7 +10,11 @@ import java.util.Locale;
 import java.util.OptionalDouble;
 import java.util.stream.Collectors;
 import org.opentripplanner.api.model.ApiWalkStep;
+import org.opentripplanner.graph_builder.module.osm.AccessibilityPropertySet;
 import org.opentripplanner.model.plan.WalkStep;
+import org.opentripplanner.openstreetmap.model.OptionalBoolean;
+import org.opentripplanner.openstreetmap.model.OptionalEnum;
+import org.opentripplanner.openstreetmap.model.OptionalEnumAndDouble;
 
 public class WalkStepMapper {
 
@@ -51,8 +55,38 @@ public class WalkStepMapper {
     api.walkingBike = domain.isWalkingBike();
     api.alerts = alertsMapper.mapToApi(domain.getStreetNotes());
 
-    OptionalDouble width = domain.getAccessibilityProperties().getWidth();
-    api.width = width.isPresent() ? width.getAsDouble() : null;
+    enrichWithAccessibilityProperties(api, domain.getAccessibilityProperties());
     return api;
+  }
+
+  private static void enrichWithAccessibilityProperties(
+    ApiWalkStep api,
+    AccessibilityPropertySet accessibilityProperties
+  ) {
+    OptionalDouble width = accessibilityProperties.getWidth();
+    api.width = width.isPresent() ? width.getAsDouble() : null;
+
+    OptionalBoolean lit = accessibilityProperties.getLit();
+    api.lit = lit.isPresent() ? lit.getAsBoolean() : null;
+
+    OptionalEnum surface = accessibilityProperties.getSurface();
+    api.surface = surface.isPresent() ? surface.getAsEnum().name() : null;
+    OptionalBoolean tactile_paving = accessibilityProperties.getTactilePaving();
+
+    api.tactilePaving = tactile_paving.isPresent() ? tactile_paving.getAsBoolean() : null;
+    OptionalEnum smoothness = accessibilityProperties.getSmoothness();
+    api.smoothness = smoothness.isPresent() ? smoothness.getAsEnum().name() : null;
+
+    OptionalEnum highway = accessibilityProperties.getHighway();
+    api.highway = highway.isPresent() ? highway.getAsEnum().name() : null;
+    OptionalEnum footway = accessibilityProperties.getFootway();
+
+    api.footway = footway.isPresent() ? footway.getAsEnum().name() : null;
+    OptionalEnumAndDouble incline = accessibilityProperties.getIncline();
+
+    api.incline = incline.isPresent() ? incline.getAsObject().toString() : null;
+    OptionalDouble travHTrt = accessibilityProperties.getTravHTrt();
+
+    api.travHTrt = travHTrt.isPresent() ? travHTrt.getAsDouble() : null;
   }
 }
