@@ -107,12 +107,12 @@ class OptionalEnumAndDoubleTest {
   @Test
   void testGetAsObject() {
     for (Enum<?> enumerate : supportedEnums) {
-      assertSame(enumerate, createOptionalEnumAndDoubleOf(enumerate).getAsObject());
+      assertSame(enumerate, createOptionalEnumAndDoubleOf(enumerate).getAsTyped());
     }
-    assertEquals(-12.3, createOptionalEnumAndDoubleOf(-12.3).getAsObject());
+    assertEquals(-12.3, createOptionalEnumAndDoubleOf(-12.3).getAsTyped());
 
     try {
-      OptionalEnumAndDouble.empty().getAsObject();
+      OptionalEnumAndDouble.empty().getAsTyped();
       fail("getAsEnum should faild with NoSuchElementException");
     } catch (NoSuchElementException exc) {
       NoSuchElementException expectedException = new NoSuchElementException("No value present");

@@ -84,7 +84,7 @@ public class WalkStepMapper {
     api.footway = footway.isPresent() ? footway.getAsTyped().name() : null;
     OptionalEnumAndDouble incline = accessibilityProperties.getIncline();
 
-    api.incline = incline.isPresent() ? incline.getAsObject().toString() : null;
+    api.incline = incline.isPresent() ? incline.getAsTyped().toString() : null;
     OptionalDouble travHTrt = accessibilityProperties.getTravHTrt();
 
     api.travHTrt = travHTrt.isPresent() ? travHTrt.getAsDouble() : null;

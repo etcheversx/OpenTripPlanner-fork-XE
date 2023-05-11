@@ -79,7 +79,7 @@ class StreetEdgeReluctanceCalculator {
     }
     OptionalEnumAndDouble incline = edgeAccessibilityProperties.getIncline();
     if (incline.isPresent()) {
-      Object inclineAsObject = incline.getAsObject();
+      Object inclineAsObject = incline.getAsTyped();
       if (inclineAsObject instanceof Double inclineAsDouble) {
         if (Math.abs(inclineAsDouble) > Math.abs(preferences.walk().maximalIncline())) {
           reluctance *= 2;

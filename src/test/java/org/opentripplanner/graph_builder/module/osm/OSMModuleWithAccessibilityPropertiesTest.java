@@ -339,7 +339,7 @@ public class OSMModuleWithAccessibilityPropertiesTest {
   private static Object getInclineValue(StreetEdge edge) {
     OptionalEnumAndDouble incline = edge.getAccessibilityProperties().getIncline();
     try {
-      return incline.getAsObject().toString();
+      return incline.getAsTyped().toString();
     } catch (Exception exc) {
       return incline.toString();
     }

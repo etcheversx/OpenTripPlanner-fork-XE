@@ -1242,7 +1242,7 @@ public class StreetEdge
     if (isBack()) {
       OptionalEnumAndDouble incline = accessibilityProperties.getIncline();
       if (incline.isPresent()) {
-        Object inclineAsObject = incline.getAsObject();
+        Object inclineAsObject = incline.getAsTyped();
         if (inclineAsObject instanceof OSMIncline inclineAsEnum) {
           try {
             switch (inclineAsEnum) {

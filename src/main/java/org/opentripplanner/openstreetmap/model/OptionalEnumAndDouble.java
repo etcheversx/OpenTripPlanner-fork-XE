@@ -6,7 +6,7 @@ import java.util.Objects;
 import java.util.OptionalDouble;
 import javax.validation.constraints.NotNull;
 
-public class OptionalEnumAndDouble implements Serializable {
+public class OptionalEnumAndDouble implements OptionalValue<Object>, Serializable {
 
   private static final OptionalEnumAndDouble _EMPTY = new OptionalEnumAndDouble(
     OptionalEnum.empty(),
@@ -61,15 +61,18 @@ public class OptionalEnumAndDouble implements Serializable {
     return Objects.hash(optionalEnum, optionalDouble);
   }
 
+  @Override
   public boolean isEmpty() {
     return equals(_EMPTY);
   }
 
+  @Override
   public boolean isPresent() {
     return !isEmpty();
   }
 
-  public Object getAsObject() {
+  @Override
+  public Object getAsTyped() {
     if (!isPresent()) {
       throw new NoSuchElementException("No value present");
     }
