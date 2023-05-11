@@ -74,7 +74,7 @@ public class OptionalEnumAndDouble implements Serializable {
       throw new NoSuchElementException("No value present");
     }
     if (this.optionalEnum.isPresent()) {
-      return this.optionalEnum.getAsEnum();
+      return this.optionalEnum.getAsTyped();
     }
     if (this.optionalDouble.isPresent()) {
       return this.optionalDouble.getAsDouble();

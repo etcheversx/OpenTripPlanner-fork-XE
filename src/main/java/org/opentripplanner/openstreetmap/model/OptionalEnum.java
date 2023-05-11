@@ -8,7 +8,7 @@ import java.util.NoSuchElementException;
 import java.util.Objects;
 import javax.validation.constraints.NotNull;
 
-public class OptionalEnum {
+public class OptionalEnum implements OptionalValue<Enum<?>> {
 
   private static final OptionalEnum empty = new OptionalEnum();
   private static final Map<Enum<?>, OptionalEnum> optionalEnums = new HashMap<>();
@@ -51,15 +51,18 @@ public class OptionalEnum {
     return result;
   }
 
+  @Override
   public boolean isEmpty() {
     return this.equals(empty);
   }
 
+  @Override
   public boolean isPresent() {
     return !isEmpty();
   }
 
-  public Enum<?> getAsEnum() {
+  @Override
+  public Enum<?> getAsTyped() {
     if (!isPresent()) {
       throw new NoSuchElementException("No value present");
     }

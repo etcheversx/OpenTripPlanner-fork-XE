@@ -52,28 +52,26 @@ class StreetEdgeReluctanceCalculator {
       reluctance *= 2;
     }
     OptionalBoolean lit = edgeAccessibilityProperties.getLit();
-    if (lit.isPresent() && !lit.getAsBoolean() && preferences.walk().lightRequired()) {
+    if (lit.isPresent() && !lit.getAsTyped() && preferences.walk().lightRequired()) {
       reluctance *= 2;
     }
     OptionalEnum surface = edgeAccessibilityProperties.getSurface();
     if (
       surface.isPresent() &&
-      preferences.walk().reluctedSurfaces().contains((OSMSurface) surface.getAsEnum())
+      preferences.walk().reluctedSurfaces().contains((OSMSurface) surface.getAsTyped())
     ) {
       reluctance *= 2;
     }
     OptionalBoolean tactilePaving = edgeAccessibilityProperties.getTactilePaving();
     if (
-      tactilePaving.isPresent() &&
-      !tactilePaving.getAsBoolean() &&
-      preferences.walk().tactilePaving()
+      tactilePaving.isPresent() && !tactilePaving.getAsTyped() && preferences.walk().tactilePaving()
     ) {
       reluctance *= 2;
     }
     OptionalEnum smoothness = edgeAccessibilityProperties.getSmoothness();
     if (smoothness.isPresent()) {
       if (
-        preferences.walk().reluctedSmoothness().compareTo((OSMSmoothness) smoothness.getAsEnum()) >
+        preferences.walk().reluctedSmoothness().compareTo((OSMSmoothness) smoothness.getAsTyped()) >
         0
       ) {
         reluctance *= 2;

@@ -67,21 +67,21 @@ public class WalkStepMapper {
     api.width = width.isPresent() ? width.getAsDouble() : null;
 
     OptionalBoolean lit = accessibilityProperties.getLit();
-    api.lit = lit.isPresent() ? lit.getAsBoolean() : null;
+    api.lit = lit.isPresent() ? lit.getAsTyped() : null;
 
     OptionalEnum surface = accessibilityProperties.getSurface();
-    api.surface = surface.isPresent() ? surface.getAsEnum().name() : null;
+    api.surface = surface.isPresent() ? surface.getAsTyped().name() : null;
     OptionalBoolean tactile_paving = accessibilityProperties.getTactilePaving();
 
-    api.tactilePaving = tactile_paving.isPresent() ? tactile_paving.getAsBoolean() : null;
+    api.tactilePaving = tactile_paving.isPresent() ? tactile_paving.getAsTyped() : null;
     OptionalEnum smoothness = accessibilityProperties.getSmoothness();
-    api.smoothness = smoothness.isPresent() ? smoothness.getAsEnum().name() : null;
+    api.smoothness = smoothness.isPresent() ? smoothness.getAsTyped().name() : null;
 
     OptionalEnum highway = accessibilityProperties.getHighway();
-    api.highway = highway.isPresent() ? highway.getAsEnum().name() : null;
+    api.highway = highway.isPresent() ? highway.getAsTyped().name() : null;
     OptionalEnum footway = accessibilityProperties.getFootway();
 
-    api.footway = footway.isPresent() ? footway.getAsEnum().name() : null;
+    api.footway = footway.isPresent() ? footway.getAsTyped().name() : null;
     OptionalEnumAndDouble incline = accessibilityProperties.getIncline();
 
     api.incline = incline.isPresent() ? incline.getAsObject().toString() : null;

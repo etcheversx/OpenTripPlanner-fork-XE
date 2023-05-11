@@ -88,11 +88,11 @@ class OptionalEnumTest {
   @Test
   void testGetAsEnum() {
     for (Enum<?> enumerate : supportedEnums) {
-      assertSame(enumerate, optionalEnumOf(enumerate.name()).getAsEnum());
+      assertSame(enumerate, optionalEnumOf(enumerate.name()).getAsTyped());
     }
 
     try {
-      OptionalEnum.empty().getAsEnum();
+      OptionalEnum.empty().getAsTyped();
     } catch (NoSuchElementException exc) {
       NoSuchElementException expectedException = new NoSuchElementException("No value present");
       assertEquals(expectedException.getMessage(), exc.getMessage());

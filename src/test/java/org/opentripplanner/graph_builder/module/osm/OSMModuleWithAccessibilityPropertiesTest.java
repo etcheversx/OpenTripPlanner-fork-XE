@@ -125,7 +125,7 @@ public class OSMModuleWithAccessibilityPropertiesTest {
   }
 
   private static Object getLitValue(StreetEdge edge) {
-    return edge.getAccessibilityProperties().getLit().getAsBoolean();
+    return edge.getAccessibilityProperties().getLit().getAsTyped();
   }
 
   @ParameterizedTest(
@@ -160,7 +160,7 @@ public class OSMModuleWithAccessibilityPropertiesTest {
   }
 
   private static Object getSurfaceValue(StreetEdge edge) {
-    return edge.getAccessibilityProperties().getSurface().getAsEnum();
+    return edge.getAccessibilityProperties().getSurface().getAsTyped();
   }
 
   @ParameterizedTest(
@@ -195,7 +195,7 @@ public class OSMModuleWithAccessibilityPropertiesTest {
   }
 
   private static Object getTactilePavingValue(StreetEdge edge) {
-    return edge.getAccessibilityProperties().getTactilePaving().getAsBoolean();
+    return edge.getAccessibilityProperties().getTactilePaving().getAsTyped();
   }
 
   @ParameterizedTest(
@@ -232,7 +232,7 @@ public class OSMModuleWithAccessibilityPropertiesTest {
   }
 
   private static Object getSmoothnessValue(StreetEdge edge) {
-    return edge.getAccessibilityProperties().getSmoothness().getAsEnum();
+    return edge.getAccessibilityProperties().getSmoothness().getAsTyped();
   }
 
   @ParameterizedTest(
@@ -267,7 +267,7 @@ public class OSMModuleWithAccessibilityPropertiesTest {
   }
 
   private static Object getHighwayValue(StreetEdge edge) {
-    return edge.getAccessibilityProperties().getHighway().getAsEnum();
+    return edge.getAccessibilityProperties().getHighway().getAsTyped();
   }
 
   @ParameterizedTest(
@@ -302,7 +302,7 @@ public class OSMModuleWithAccessibilityPropertiesTest {
   }
 
   private static Object getFootwayValue(StreetEdge edge) {
-    return edge.getAccessibilityProperties().getFootway().getAsEnum();
+    return edge.getAccessibilityProperties().getFootway().getAsTyped();
   }
 
   @ParameterizedTest(

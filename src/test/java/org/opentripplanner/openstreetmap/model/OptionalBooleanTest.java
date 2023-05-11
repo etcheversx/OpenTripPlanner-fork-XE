@@ -34,11 +34,11 @@ class OptionalBooleanTest {
 
   @Test
   void testGetAsBoolean() {
-    assertTrue(OptionalBoolean.yes().getAsBoolean());
-    assertFalse(OptionalBoolean.no().getAsBoolean());
+    assertTrue(OptionalBoolean.yes().getAsTyped());
+    assertFalse(OptionalBoolean.no().getAsTyped());
 
     try {
-      OptionalBoolean.empty().getAsBoolean();
+      OptionalBoolean.empty().getAsTyped();
     } catch (NoSuchElementException exc) {
       NoSuchElementException expectedException = new NoSuchElementException("No value present");
       assertEquals(expectedException.getMessage(), exc.getMessage());
