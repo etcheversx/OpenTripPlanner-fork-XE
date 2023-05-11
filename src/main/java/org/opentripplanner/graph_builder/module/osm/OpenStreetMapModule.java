@@ -606,17 +606,17 @@ public class OpenStreetMapModule implements GraphBuilderModule {
     }
 
     private AccessibilityPropertySet parseAccessibilityProperties(OSMWithTags element) {
-      return new AccessibilityPropertySet(
-        parseWidth(element),
-        parseLit(element),
-        parseSurface(element),
-        parseTactilePaving(element),
-        parseSmoothness(element),
-        parseHighway(element),
-        parseFootway(element),
-        parseIncline(element),
-        parseTravHTrt(element)
-      );
+      return new AccessibilityPropertySet.Builder()
+        .withWidth(parseWidth(element))
+        .withLit(parseLit(element))
+        .withSurface(parseSurface(element))
+        .withTactilePaving(parseTactilePaving(element))
+        .withSmoothness(parseSmoothness(element))
+        .withHighway(parseHighway(element))
+        .withFootway(parseFootway(element))
+        .withIncline(parseIncline(element))
+        .withTravHTrt(parseTravHTrt(element))
+        .build();
     }
 
     private void processParkAndRideNodes(Collection<OSMNode> nodes, boolean isCarParkAndRide) {

@@ -16,67 +16,21 @@ public class AccessibilityPropertySetTest {
 
   @Test
   void testDefaultBehaviourOfBuilder() {
-    accessibilityPropertySet =
-      new AccessibilityPropertySet(
-        OptionalNumber.empty(),
-        OptionalBoolean.empty(),
-        OptionalEnum.empty(),
-        OptionalBoolean.empty(),
-        OptionalEnum.empty(),
-        OptionalEnum.empty(),
-        OptionalEnum.empty(),
-        OptionalEnumAndDouble.empty(),
-        OptionalDouble.empty()
-      );
-    assertEquals(
-      accessibilityPropertySet,
-      new AccessibilityPropertySet(
-        OptionalNumber.empty(),
-        OptionalBoolean.empty(),
-        OptionalEnum.empty(),
-        OptionalBoolean.empty(),
-        OptionalEnum.empty(),
-        OptionalEnum.empty(),
-        OptionalEnum.empty(),
-        OptionalEnumAndDouble.empty(),
-        OptionalDouble.empty()
-      )
-    );
+    accessibilityPropertySet = new AccessibilityPropertySet.Builder().build();
+    assertEquals(accessibilityPropertySet, new AccessibilityPropertySet.Builder().build());
   }
 
   @Test
   void testWidthGetSet() {
     OptionalNumber width = OptionalNumber.get("4.5");
-    accessibilityPropertySet =
-      new AccessibilityPropertySet(
-        width,
-        OptionalBoolean.empty(),
-        OptionalEnum.empty(),
-        OptionalBoolean.empty(),
-        OptionalEnum.empty(),
-        OptionalEnum.empty(),
-        OptionalEnum.empty(),
-        OptionalEnumAndDouble.empty(),
-        OptionalDouble.empty()
-      );
+    accessibilityPropertySet = new AccessibilityPropertySet.Builder().withWidth(width).build();
     assertEquals(width, accessibilityPropertySet.getWidth());
   }
 
   @Test
   void testLitGetSet() {
     OptionalBoolean lit = OptionalBoolean.of(true);
-    accessibilityPropertySet =
-      new AccessibilityPropertySet(
-        OptionalNumber.empty(),
-        lit,
-        OptionalEnum.empty(),
-        OptionalBoolean.empty(),
-        OptionalEnum.empty(),
-        OptionalEnum.empty(),
-        OptionalEnum.empty(),
-        OptionalEnumAndDouble.empty(),
-        OptionalDouble.empty()
-      );
+    accessibilityPropertySet = new AccessibilityPropertySet.Builder().withLit(lit).build();
     assertEquals(lit, accessibilityPropertySet.getLit());
   }
 
@@ -91,18 +45,7 @@ public class AccessibilityPropertySetTest {
   @Test
   void testSurfaceGetSet() {
     OptionalEnum surface = optionalEnumOf("paved");
-    accessibilityPropertySet =
-      new AccessibilityPropertySet(
-        OptionalNumber.empty(),
-        OptionalBoolean.empty(),
-        surface,
-        OptionalBoolean.empty(),
-        OptionalEnum.empty(),
-        OptionalEnum.empty(),
-        OptionalEnum.empty(),
-        OptionalEnumAndDouble.empty(),
-        OptionalDouble.empty()
-      );
+    accessibilityPropertySet = new AccessibilityPropertySet.Builder().withSurface(surface).build();
     assertEquals(surface, accessibilityPropertySet.getSurface());
   }
 
@@ -110,17 +53,7 @@ public class AccessibilityPropertySetTest {
   void testTactilePavingGetSet() {
     OptionalBoolean tactilePaving = OptionalBoolean.of(true);
     accessibilityPropertySet =
-      new AccessibilityPropertySet(
-        OptionalNumber.empty(),
-        OptionalBoolean.empty(),
-        OptionalEnum.empty(),
-        tactilePaving,
-        OptionalEnum.empty(),
-        OptionalEnum.empty(),
-        OptionalEnum.empty(),
-        OptionalEnumAndDouble.empty(),
-        OptionalDouble.empty()
-      );
+      new AccessibilityPropertySet.Builder().withTactilePaving(tactilePaving).build();
     assertEquals(tactilePaving, accessibilityPropertySet.getTactilePaving());
   }
 
@@ -128,53 +61,21 @@ public class AccessibilityPropertySetTest {
   void testSmoothnessGetSet() {
     OptionalEnum smoothness = optionalEnumOf("intermediate");
     accessibilityPropertySet =
-      new AccessibilityPropertySet(
-        OptionalNumber.empty(),
-        OptionalBoolean.empty(),
-        OptionalEnum.empty(),
-        OptionalBoolean.empty(),
-        smoothness,
-        OptionalEnum.empty(),
-        OptionalEnum.empty(),
-        OptionalEnumAndDouble.empty(),
-        OptionalDouble.empty()
-      );
+      new AccessibilityPropertySet.Builder().withSmoothness(smoothness).build();
     assertEquals(smoothness, accessibilityPropertySet.getSmoothness());
   }
 
   @Test
   void testHighwayGetSet() {
     OptionalEnum highway = optionalEnumOf("footway");
-    accessibilityPropertySet =
-      new AccessibilityPropertySet(
-        OptionalNumber.empty(),
-        OptionalBoolean.empty(),
-        OptionalEnum.empty(),
-        OptionalBoolean.empty(),
-        OptionalEnum.empty(),
-        highway,
-        OptionalEnum.empty(),
-        OptionalEnumAndDouble.empty(),
-        OptionalDouble.empty()
-      );
+    accessibilityPropertySet = new AccessibilityPropertySet.Builder().withHighway(highway).build();
     assertEquals(highway, accessibilityPropertySet.getHighway());
   }
 
   @Test
   void testFootwayGetSet() {
     OptionalEnum footway = optionalEnumOf("crossing");
-    accessibilityPropertySet =
-      new AccessibilityPropertySet(
-        OptionalNumber.empty(),
-        OptionalBoolean.empty(),
-        OptionalEnum.empty(),
-        OptionalBoolean.empty(),
-        OptionalEnum.empty(),
-        OptionalEnum.empty(),
-        footway,
-        OptionalEnumAndDouble.empty(),
-        OptionalDouble.empty()
-      );
+    accessibilityPropertySet = new AccessibilityPropertySet.Builder().withFootway(footway).build();
     assertEquals(footway, accessibilityPropertySet.getFootway());
   }
 
@@ -186,18 +87,7 @@ public class AccessibilityPropertySetTest {
     } catch (Exception exc) {
       fail("OptionalEnumAndDouble creation should not fail");
     }
-    accessibilityPropertySet =
-      new AccessibilityPropertySet(
-        OptionalNumber.empty(),
-        OptionalBoolean.empty(),
-        OptionalEnum.empty(),
-        OptionalBoolean.empty(),
-        OptionalEnum.empty(),
-        OptionalEnum.empty(),
-        OptionalEnum.empty(),
-        incline,
-        OptionalDouble.empty()
-      );
+    accessibilityPropertySet = new AccessibilityPropertySet.Builder().withIncline(incline).build();
     assertEquals(incline, accessibilityPropertySet.getIncline());
   }
 
@@ -205,17 +95,7 @@ public class AccessibilityPropertySetTest {
   void testTravHTrtGetSet() {
     OptionalDouble travHTrt = OptionalDouble.of(0.25);
     accessibilityPropertySet =
-      new AccessibilityPropertySet(
-        OptionalNumber.empty(),
-        OptionalBoolean.empty(),
-        OptionalEnum.empty(),
-        OptionalBoolean.empty(),
-        OptionalEnum.empty(),
-        OptionalEnum.empty(),
-        OptionalEnum.empty(),
-        OptionalEnumAndDouble.empty(),
-        travHTrt
-      );
+      new AccessibilityPropertySet.Builder().withTravHTrt(travHTrt).build();
     assertEquals(travHTrt, accessibilityPropertySet.getTravHTrt());
   }
 }

@@ -7,7 +7,6 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
-import java.util.OptionalDouble;
 import javax.annotation.Nonnull;
 import org.locationtech.jts.geom.Coordinate;
 import org.locationtech.jts.geom.LineString;
@@ -21,10 +20,7 @@ import org.opentripplanner.graph_builder.linking.DisposableEdgeCollection;
 import org.opentripplanner.graph_builder.linking.LinkingDirection;
 import org.opentripplanner.graph_builder.module.osm.AccessibilityPropertySet;
 import org.opentripplanner.openstreetmap.model.OSMIncline;
-import org.opentripplanner.openstreetmap.model.OptionalBoolean;
-import org.opentripplanner.openstreetmap.model.OptionalEnum;
 import org.opentripplanner.openstreetmap.model.OptionalEnumAndDouble;
-import org.opentripplanner.openstreetmap.model.OptionalNumber;
 import org.opentripplanner.routing.api.request.preference.RoutingPreferences;
 import org.opentripplanner.routing.core.State;
 import org.opentripplanner.routing.core.StateEditor;
@@ -197,18 +193,7 @@ public class StreetEdge
         outAngle = 0;
       }
     }
-    this.accessibilityProperties =
-      new AccessibilityPropertySet(
-        OptionalNumber.empty(),
-        OptionalBoolean.empty(),
-        OptionalEnum.empty(),
-        OptionalBoolean.empty(),
-        OptionalEnum.empty(),
-        OptionalEnum.empty(),
-        OptionalEnum.empty(),
-        OptionalEnumAndDouble.empty(),
-        OptionalDouble.empty()
-      );
+    this.accessibilityProperties = new AccessibilityPropertySet.Builder().build();
   }
 
   //For testing only
@@ -390,18 +375,18 @@ public class StreetEdge
   public String toString() {
     return (
       "StreetEdge(" +
-      name +
-      ", " +
-      fromv +
-      " -> " +
-      tov +
-      " length=" +
-      this.getDistanceMeters() +
-      " carSpeed=" +
-      this.getCarSpeed() +
-      " permission=" +
-      this.getPermission() +
-      ")"
+        name +
+        ", " +
+        fromv +
+        " -> " +
+        tov +
+        " length=" +
+        this.getDistanceMeters() +
+        " carSpeed=" +
+        this.getCarSpeed() +
+        " permission=" +
+        this.getPermission() +
+        ")"
     );
   }
 
@@ -445,8 +430,8 @@ public class StreetEdge
 
     if (
       canDropOffAfterDriving(s0) &&
-      !getPermission().allows(TraverseMode.CAR) &&
-      canTraverse(TraverseMode.WALK)
+        !getPermission().allows(TraverseMode.CAR) &&
+        canTraverse(TraverseMode.WALK)
     ) {
       StateEditor dropOff = doTraverse(s0, TraverseMode.WALK, false);
       if (dropOff != null) {
@@ -534,16 +519,16 @@ public class StreetEdge
       if (turnRestriction.type == TurnRestrictionType.ONLY_TURN) {
         if (
           !e.isEquivalentTo(turnRestriction.to) &&
-          turnRestriction.modes.contains(mode) &&
-          turnRestriction.active(state.getTimeSeconds())
+            turnRestriction.modes.contains(mode) &&
+            turnRestriction.active(state.getTimeSeconds())
         ) {
           return false;
         }
       } else {
         if (
           e.isEquivalentTo(turnRestriction.to) &&
-          turnRestriction.modes.contains(mode) &&
-          turnRestriction.active(state.getTimeSeconds())
+            turnRestriction.modes.contains(mode) &&
+            turnRestriction.active(state.getTimeSeconds())
         ) {
           return false;
         }
@@ -1147,11 +1132,11 @@ public class StreetEdge
         double slope = getEffectiveBikeDistanceForWorkCost();
         weight =
           quick *
-          pref.bike().optimizeTriangle().time() +
-          slope *
-          pref.bike().optimizeTriangle().slope() +
-          safety *
-          pref.bike().optimizeTriangle().safety();
+            pref.bike().optimizeTriangle().time() +
+            slope *
+              pref.bike().optimizeTriangle().slope() +
+            safety *
+              pref.bike().optimizeTriangle().safety();
         weight /= speed;
       }
       default -> weight = getDistanceMeters() / speed;
@@ -1173,12 +1158,12 @@ public class StreetEdge
       time = getEffectiveWalkDistance() / speed;
       weight =
         (getEffectiveBikeDistance() / speed) *
-        StreetEdgeReluctanceCalculator.computeWheelchairReluctance(
-          preferences,
-          getMaxSlope(),
-          isWheelchairAccessible(),
-          isStairs()
-        );
+          StreetEdgeReluctanceCalculator.computeWheelchairReluctance(
+            preferences,
+            getMaxSlope(),
+            isWheelchairAccessible(),
+            isStairs()
+          );
     } else {
       if (walkingBike) {
         // take slopes into account when walking bikes
@@ -1188,9 +1173,9 @@ public class StreetEdge
         time = getEffectiveWalkDistance() / speed;
         weight =
           getEffectiveWalkSafetyDistance() *
-          preferences.walk().safetyFactor() +
-          getEffectiveWalkDistance() *
-          (1 - preferences.walk().safetyFactor());
+            preferences.walk().safetyFactor() +
+            getEffectiveWalkDistance() *
+              (1 - preferences.walk().safetyFactor());
         weight /= speed;
       }
       weight *= computeReluctance(preferences, traverseMode, walkingBike);
@@ -1231,7 +1216,8 @@ public class StreetEdge
   }
 
   /** Tuple to return time and weight from calculation */
-  private record TraversalCosts(double time, double weight) {}
+  private record TraversalCosts(double time, double weight) {
+  }
 
   private AccessibilityPropertySet accessibilityProperties;
 
@@ -1265,17 +1251,17 @@ public class StreetEdge
       }
 
       this.accessibilityProperties =
-        new AccessibilityPropertySet(
-          accessibilityProperties.getWidth(),
-          accessibilityProperties.getLit(),
-          accessibilityProperties.getSurface(),
-          accessibilityProperties.getTactilePaving(),
-          accessibilityProperties.getSmoothness(),
-          accessibilityProperties.getHighway(),
-          accessibilityProperties.getFootway(),
-          incline,
-          accessibilityProperties.getTravHTrt()
-        );
+        new AccessibilityPropertySet.Builder()
+          .withWidth(accessibilityProperties.getWidth())
+          .withLit(accessibilityProperties.getLit())
+          .withSurface(accessibilityProperties.getSurface())
+          .withTactilePaving(accessibilityProperties.getTactilePaving())
+          .withSmoothness(accessibilityProperties.getSmoothness())
+          .withHighway(accessibilityProperties.getHighway())
+          .withFootway(accessibilityProperties.getFootway())
+          .withIncline(incline)
+          .withTravHTrt(accessibilityProperties.getTravHTrt())
+          .build();
     } else {
       this.accessibilityProperties = accessibilityProperties;
     }

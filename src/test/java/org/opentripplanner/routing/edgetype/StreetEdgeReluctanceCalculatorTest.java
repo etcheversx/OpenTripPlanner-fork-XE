@@ -47,17 +47,11 @@ class StreetEdgeReluctanceCalculatorTest {
     assertEquals(
       expectedWalkReluctance,
       computeWalkReluctance(
-        new AccessibilityPropertySet(
-          edgeWidth != null ? OptionalNumber.get(edgeWidth.toString()) : OptionalNumber.empty(),
-          OptionalBoolean.empty(),
-          OptionalEnum.empty(),
-          OptionalBoolean.empty(),
-          OptionalEnum.empty(),
-          OptionalEnum.empty(),
-          OptionalEnum.empty(),
-          OptionalEnumAndDouble.empty(),
-          OptionalDouble.empty()
-        )
+        new AccessibilityPropertySet.Builder()
+          .withWidth(
+            edgeWidth != null ? OptionalNumber.get(edgeWidth.toString()) : OptionalNumber.empty()
+          )
+          .build()
       )
     );
   }
@@ -88,17 +82,9 @@ class StreetEdgeReluctanceCalculatorTest {
     assertEquals(
       expectedWalkReluctance,
       computeWalkReluctance(
-        new AccessibilityPropertySet(
-          OptionalNumber.empty(),
-          edgeLight != null ? OptionalBoolean.of(edgeLight) : OptionalBoolean.empty(),
-          OptionalEnum.empty(),
-          OptionalBoolean.empty(),
-          OptionalEnum.empty(),
-          OptionalEnum.empty(),
-          OptionalEnum.empty(),
-          OptionalEnumAndDouble.empty(),
-          OptionalDouble.empty()
-        )
+        new AccessibilityPropertySet.Builder()
+          .withLit(edgeLight != null ? OptionalBoolean.of(edgeLight) : OptionalBoolean.empty())
+          .build()
       )
     );
   }
@@ -135,17 +121,7 @@ class StreetEdgeReluctanceCalculatorTest {
       assertEquals(
         expectedWalkReluctance,
         computeWalkReluctance(
-          new AccessibilityPropertySet(
-            OptionalNumber.empty(),
-            OptionalBoolean.empty(),
-            edgeSurface,
-            OptionalBoolean.empty(),
-            OptionalEnum.empty(),
-            OptionalEnum.empty(),
-            OptionalEnum.empty(),
-            OptionalEnumAndDouble.empty(),
-            OptionalDouble.empty()
-          )
+          new AccessibilityPropertySet.Builder().withSurface(edgeSurface).build()
         )
       );
     } catch (Exception exc) {
@@ -179,19 +155,13 @@ class StreetEdgeReluctanceCalculatorTest {
     assertEquals(
       expectedWalkReluctance,
       computeWalkReluctance(
-        new AccessibilityPropertySet(
-          OptionalNumber.empty(),
-          OptionalBoolean.empty(),
-          OptionalEnum.empty(),
-          edgeTactilePaving != null
-            ? OptionalBoolean.of(edgeTactilePaving)
-            : OptionalBoolean.empty(),
-          OptionalEnum.empty(),
-          OptionalEnum.empty(),
-          OptionalEnum.empty(),
-          OptionalEnumAndDouble.empty(),
-          OptionalDouble.empty()
-        )
+        new AccessibilityPropertySet.Builder()
+          .withTactilePaving(
+            edgeTactilePaving != null
+              ? OptionalBoolean.of(edgeTactilePaving)
+              : OptionalBoolean.empty()
+          )
+          .build()
       )
     );
   }
@@ -228,17 +198,7 @@ class StreetEdgeReluctanceCalculatorTest {
       assertEquals(
         expectedWalkReluctance,
         computeWalkReluctance(
-          new AccessibilityPropertySet(
-            OptionalNumber.empty(),
-            OptionalBoolean.empty(),
-            OptionalEnum.empty(),
-            OptionalBoolean.empty(),
-            edgeSmoothness,
-            OptionalEnum.empty(),
-            OptionalEnum.empty(),
-            OptionalEnumAndDouble.empty(),
-            OptionalDouble.empty()
-          )
+          new AccessibilityPropertySet.Builder().withSmoothness(edgeSmoothness).build()
         )
       );
     } catch (Exception exc) {
@@ -278,19 +238,13 @@ class StreetEdgeReluctanceCalculatorTest {
     assertEquals(
       expectedWalkReluctance,
       computeWalkReluctance(
-        new AccessibilityPropertySet(
-          OptionalNumber.empty(),
-          OptionalBoolean.empty(),
-          OptionalEnum.empty(),
-          OptionalBoolean.empty(),
-          OptionalEnum.empty(),
-          OptionalEnum.empty(),
-          OptionalEnum.empty(),
-          edgeIncline != null
-            ? OptionalEnumAndDouble.get(edgeIncline)
-            : OptionalEnumAndDouble.empty(),
-          OptionalDouble.empty()
-        )
+        new AccessibilityPropertySet.Builder()
+          .withIncline(
+            edgeIncline != null
+              ? OptionalEnumAndDouble.get(edgeIncline)
+              : OptionalEnumAndDouble.empty()
+          )
+          .build()
       )
     );
   }
@@ -320,17 +274,11 @@ class StreetEdgeReluctanceCalculatorTest {
     assertEquals(
       expectedWalkReluctance,
       computeWalkReluctance(
-        new AccessibilityPropertySet(
-          OptionalNumber.empty(),
-          OptionalBoolean.empty(),
-          OptionalEnum.empty(),
-          OptionalBoolean.empty(),
-          OptionalEnum.empty(),
-          OptionalEnum.empty(),
-          OptionalEnum.empty(),
-          OptionalEnumAndDouble.empty(),
-          edgeTravHTrt != null ? OptionalDouble.of(edgeTravHTrt) : OptionalDouble.empty()
-        )
+        new AccessibilityPropertySet.Builder()
+          .withTravHTrt(
+            edgeTravHTrt != null ? OptionalDouble.of(edgeTravHTrt) : OptionalDouble.empty()
+          )
+          .build()
       )
     );
   }

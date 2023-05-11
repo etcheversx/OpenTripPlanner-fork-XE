@@ -1,14 +1,9 @@
 package org.opentripplanner.routing.edgetype;
 
 import java.util.Objects;
-import java.util.OptionalDouble;
 import org.locationtech.jts.geom.Coordinate;
 import org.locationtech.jts.geom.LineString;
 import org.opentripplanner.graph_builder.module.osm.AccessibilityPropertySet;
-import org.opentripplanner.openstreetmap.model.OptionalBoolean;
-import org.opentripplanner.openstreetmap.model.OptionalEnum;
-import org.opentripplanner.openstreetmap.model.OptionalEnumAndDouble;
-import org.opentripplanner.openstreetmap.model.OptionalNumber;
 import org.opentripplanner.routing.api.request.preference.RoutingPreferences;
 import org.opentripplanner.routing.core.State;
 import org.opentripplanner.routing.core.StateEditor;
@@ -36,7 +31,7 @@ public class PathwayEdge extends Edge implements BikeWalkableEdge, WheelchairTra
 
   private final boolean wheelchairAccessible;
   private final FeedScopedId id;
-  private AccessibilityPropertySet accessibilityProperties;
+  private final AccessibilityPropertySet accessibilityProperties;
 
   public PathwayEdge(
     Vertex fromv,
@@ -59,18 +54,7 @@ public class PathwayEdge extends Edge implements BikeWalkableEdge, WheelchairTra
     this.wheelchairAccessible = wheelchairAccessible;
     this.distance = distance;
     this.mode = mode;
-    this.accessibilityProperties =
-      new AccessibilityPropertySet(
-        OptionalNumber.empty(),
-        OptionalBoolean.empty(),
-        OptionalEnum.empty(),
-        OptionalBoolean.empty(),
-        OptionalEnum.empty(),
-        OptionalEnum.empty(),
-        OptionalEnum.empty(),
-        OptionalEnumAndDouble.empty(),
-        OptionalDouble.empty()
-      );
+    this.accessibilityProperties = new AccessibilityPropertySet.Builder().build();
   }
 
   /**
@@ -159,7 +143,7 @@ public class PathwayEdge extends Edge implements BikeWalkableEdge, WheelchairTra
   }
 
   public LineString getGeometry() {
-    Coordinate[] coordinates = new Coordinate[] {
+    Coordinate[] coordinates = new Coordinate[]{
       getFromVertex().getCoordinate(),
       getToVertex().getCoordinate(),
     };
