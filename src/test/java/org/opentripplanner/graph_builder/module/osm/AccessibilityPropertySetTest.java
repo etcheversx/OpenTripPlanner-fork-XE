@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import org.opentripplanner.openstreetmap.model.OptionalBoolean;
 import org.opentripplanner.openstreetmap.model.OptionalEnum;
 import org.opentripplanner.openstreetmap.model.OptionalEnumAndDouble;
+import org.opentripplanner.openstreetmap.model.OptionalNumber;
 
 public class AccessibilityPropertySetTest {
 
@@ -17,7 +18,7 @@ public class AccessibilityPropertySetTest {
   void testDefaultBehaviourOfBuilder() {
     accessibilityPropertySet =
       new AccessibilityPropertySet(
-        OptionalDouble.empty(),
+        OptionalNumber.empty(),
         OptionalBoolean.empty(),
         OptionalEnum.empty(),
         OptionalBoolean.empty(),
@@ -30,7 +31,7 @@ public class AccessibilityPropertySetTest {
     assertEquals(
       accessibilityPropertySet,
       new AccessibilityPropertySet(
-        OptionalDouble.empty(),
+        OptionalNumber.empty(),
         OptionalBoolean.empty(),
         OptionalEnum.empty(),
         OptionalBoolean.empty(),
@@ -45,7 +46,7 @@ public class AccessibilityPropertySetTest {
 
   @Test
   void testWidthGetSet() {
-    OptionalDouble width = OptionalDouble.of(4.5);
+    OptionalNumber width = OptionalNumber.get("4.5");
     accessibilityPropertySet =
       new AccessibilityPropertySet(
         width,
@@ -66,7 +67,7 @@ public class AccessibilityPropertySetTest {
     OptionalBoolean lit = OptionalBoolean.of(true);
     accessibilityPropertySet =
       new AccessibilityPropertySet(
-        OptionalDouble.empty(),
+        OptionalNumber.empty(),
         lit,
         OptionalEnum.empty(),
         OptionalBoolean.empty(),
@@ -92,7 +93,7 @@ public class AccessibilityPropertySetTest {
     OptionalEnum surface = optionalEnumOf("paved");
     accessibilityPropertySet =
       new AccessibilityPropertySet(
-        OptionalDouble.empty(),
+        OptionalNumber.empty(),
         OptionalBoolean.empty(),
         surface,
         OptionalBoolean.empty(),
@@ -110,7 +111,7 @@ public class AccessibilityPropertySetTest {
     OptionalBoolean tactilePaving = OptionalBoolean.of(true);
     accessibilityPropertySet =
       new AccessibilityPropertySet(
-        OptionalDouble.empty(),
+        OptionalNumber.empty(),
         OptionalBoolean.empty(),
         OptionalEnum.empty(),
         tactilePaving,
@@ -128,7 +129,7 @@ public class AccessibilityPropertySetTest {
     OptionalEnum smoothness = optionalEnumOf("intermediate");
     accessibilityPropertySet =
       new AccessibilityPropertySet(
-        OptionalDouble.empty(),
+        OptionalNumber.empty(),
         OptionalBoolean.empty(),
         OptionalEnum.empty(),
         OptionalBoolean.empty(),
@@ -146,7 +147,7 @@ public class AccessibilityPropertySetTest {
     OptionalEnum highway = optionalEnumOf("footway");
     accessibilityPropertySet =
       new AccessibilityPropertySet(
-        OptionalDouble.empty(),
+        OptionalNumber.empty(),
         OptionalBoolean.empty(),
         OptionalEnum.empty(),
         OptionalBoolean.empty(),
@@ -164,7 +165,7 @@ public class AccessibilityPropertySetTest {
     OptionalEnum footway = optionalEnumOf("crossing");
     accessibilityPropertySet =
       new AccessibilityPropertySet(
-        OptionalDouble.empty(),
+        OptionalNumber.empty(),
         OptionalBoolean.empty(),
         OptionalEnum.empty(),
         OptionalBoolean.empty(),
@@ -187,7 +188,7 @@ public class AccessibilityPropertySetTest {
     }
     accessibilityPropertySet =
       new AccessibilityPropertySet(
-        OptionalDouble.empty(),
+        OptionalNumber.empty(),
         OptionalBoolean.empty(),
         OptionalEnum.empty(),
         OptionalBoolean.empty(),
@@ -205,7 +206,7 @@ public class AccessibilityPropertySetTest {
     OptionalDouble travHTrt = OptionalDouble.of(0.25);
     accessibilityPropertySet =
       new AccessibilityPropertySet(
-        OptionalDouble.empty(),
+        OptionalNumber.empty(),
         OptionalBoolean.empty(),
         OptionalEnum.empty(),
         OptionalBoolean.empty(),

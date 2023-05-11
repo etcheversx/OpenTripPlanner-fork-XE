@@ -24,6 +24,7 @@ import org.opentripplanner.openstreetmap.model.OSMIncline;
 import org.opentripplanner.openstreetmap.model.OptionalBoolean;
 import org.opentripplanner.openstreetmap.model.OptionalEnum;
 import org.opentripplanner.openstreetmap.model.OptionalEnumAndDouble;
+import org.opentripplanner.openstreetmap.model.OptionalNumber;
 import org.opentripplanner.routing.api.request.preference.RoutingPreferences;
 import org.opentripplanner.routing.core.State;
 import org.opentripplanner.routing.core.StateEditor;
@@ -198,7 +199,7 @@ public class StreetEdge
     }
     this.accessibilityProperties =
       new AccessibilityPropertySet(
-        OptionalDouble.empty(),
+        OptionalNumber.empty(),
         OptionalBoolean.empty(),
         OptionalEnum.empty(),
         OptionalBoolean.empty(),

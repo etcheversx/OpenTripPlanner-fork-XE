@@ -90,7 +90,7 @@ public class OSMModuleWithAccessibilityPropertiesTest {
   }
 
   private static Object getWidthValue(StreetEdge edge) {
-    return edge.getAccessibilityProperties().getWidth().getAsDouble();
+    return edge.getAccessibilityProperties().getWidth().getAsTyped();
   }
 
   @ParameterizedTest(

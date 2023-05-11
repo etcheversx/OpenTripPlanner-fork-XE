@@ -6,10 +6,11 @@ import javax.validation.constraints.NotNull;
 import org.opentripplanner.openstreetmap.model.OptionalBoolean;
 import org.opentripplanner.openstreetmap.model.OptionalEnum;
 import org.opentripplanner.openstreetmap.model.OptionalEnumAndDouble;
+import org.opentripplanner.openstreetmap.model.OptionalNumber;
 
 public class AccessibilityPropertySet implements Serializable {
 
-  private final OptionalDouble width;
+  private final OptionalNumber width;
   private final OptionalBoolean lit;
   private final OptionalEnum surface;
   private final OptionalBoolean tactilePaving;
@@ -20,7 +21,7 @@ public class AccessibilityPropertySet implements Serializable {
   private final OptionalDouble travHTrt;
 
   public AccessibilityPropertySet(
-    @NotNull OptionalDouble width,
+    @NotNull OptionalNumber width,
     @NotNull OptionalBoolean lit,
     @NotNull OptionalEnum surface,
     @NotNull OptionalBoolean tactilePaving,
@@ -41,7 +42,7 @@ public class AccessibilityPropertySet implements Serializable {
     this.travHTrt = travHTrt;
   }
 
-  public OptionalDouble getWidth() {
+  public OptionalNumber getWidth() {
     return width;
   }
 

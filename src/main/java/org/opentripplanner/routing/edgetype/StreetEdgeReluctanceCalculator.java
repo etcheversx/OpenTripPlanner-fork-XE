@@ -7,6 +7,7 @@ import org.opentripplanner.openstreetmap.model.OSMSurface;
 import org.opentripplanner.openstreetmap.model.OptionalBoolean;
 import org.opentripplanner.openstreetmap.model.OptionalEnum;
 import org.opentripplanner.openstreetmap.model.OptionalEnumAndDouble;
+import org.opentripplanner.openstreetmap.model.OptionalNumber;
 import org.opentripplanner.routing.api.request.preference.RoutingPreferences;
 import org.opentripplanner.routing.core.TraverseMode;
 
@@ -47,8 +48,8 @@ class StreetEdgeReluctanceCalculator {
     AccessibilityPropertySet edgeAccessibilityProperties
   ) {
     double reluctance = preferences.walk().reluctance();
-    OptionalDouble width = edgeAccessibilityProperties.getWidth();
-    if (width.isPresent() && width.getAsDouble() < preferences.walk().minimalWidth()) {
+    OptionalNumber width = edgeAccessibilityProperties.getWidth();
+    if (width.isPresent() && width.getAsTyped() < preferences.walk().minimalWidth()) {
       reluctance *= 2;
     }
     OptionalBoolean lit = edgeAccessibilityProperties.getLit();

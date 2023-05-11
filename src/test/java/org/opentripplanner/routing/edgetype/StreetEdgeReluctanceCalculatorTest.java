@@ -14,6 +14,7 @@ import org.opentripplanner.openstreetmap.model.OSMSurface;
 import org.opentripplanner.openstreetmap.model.OptionalBoolean;
 import org.opentripplanner.openstreetmap.model.OptionalEnum;
 import org.opentripplanner.openstreetmap.model.OptionalEnumAndDouble;
+import org.opentripplanner.openstreetmap.model.OptionalNumber;
 import org.opentripplanner.routing.api.request.preference.RoutingPreferences;
 import org.opentripplanner.routing.api.request.preference.WalkPreferences;
 import org.opentripplanner.routing.core.TraverseMode;
@@ -47,7 +48,7 @@ class StreetEdgeReluctanceCalculatorTest {
       expectedWalkReluctance,
       computeWalkReluctance(
         new AccessibilityPropertySet(
-          edgeWidth != null ? OptionalDouble.of(edgeWidth) : OptionalDouble.empty(),
+          edgeWidth != null ? OptionalNumber.get(edgeWidth.toString()) : OptionalNumber.empty(),
           OptionalBoolean.empty(),
           OptionalEnum.empty(),
           OptionalBoolean.empty(),
@@ -88,7 +89,7 @@ class StreetEdgeReluctanceCalculatorTest {
       expectedWalkReluctance,
       computeWalkReluctance(
         new AccessibilityPropertySet(
-          OptionalDouble.empty(),
+          OptionalNumber.empty(),
           edgeLight != null ? OptionalBoolean.of(edgeLight) : OptionalBoolean.empty(),
           OptionalEnum.empty(),
           OptionalBoolean.empty(),
@@ -135,7 +136,7 @@ class StreetEdgeReluctanceCalculatorTest {
         expectedWalkReluctance,
         computeWalkReluctance(
           new AccessibilityPropertySet(
-            OptionalDouble.empty(),
+            OptionalNumber.empty(),
             OptionalBoolean.empty(),
             edgeSurface,
             OptionalBoolean.empty(),
@@ -179,7 +180,7 @@ class StreetEdgeReluctanceCalculatorTest {
       expectedWalkReluctance,
       computeWalkReluctance(
         new AccessibilityPropertySet(
-          OptionalDouble.empty(),
+          OptionalNumber.empty(),
           OptionalBoolean.empty(),
           OptionalEnum.empty(),
           edgeTactilePaving != null
@@ -228,7 +229,7 @@ class StreetEdgeReluctanceCalculatorTest {
         expectedWalkReluctance,
         computeWalkReluctance(
           new AccessibilityPropertySet(
-            OptionalDouble.empty(),
+            OptionalNumber.empty(),
             OptionalBoolean.empty(),
             OptionalEnum.empty(),
             OptionalBoolean.empty(),
@@ -278,7 +279,7 @@ class StreetEdgeReluctanceCalculatorTest {
       expectedWalkReluctance,
       computeWalkReluctance(
         new AccessibilityPropertySet(
-          OptionalDouble.empty(),
+          OptionalNumber.empty(),
           OptionalBoolean.empty(),
           OptionalEnum.empty(),
           OptionalBoolean.empty(),
@@ -320,7 +321,7 @@ class StreetEdgeReluctanceCalculatorTest {
       expectedWalkReluctance,
       computeWalkReluctance(
         new AccessibilityPropertySet(
-          OptionalDouble.empty(),
+          OptionalNumber.empty(),
           OptionalBoolean.empty(),
           OptionalEnum.empty(),
           OptionalBoolean.empty(),

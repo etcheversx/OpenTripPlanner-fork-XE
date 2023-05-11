@@ -47,6 +47,7 @@ import org.opentripplanner.openstreetmap.model.OSMWithTags;
 import org.opentripplanner.openstreetmap.model.OptionalBoolean;
 import org.opentripplanner.openstreetmap.model.OptionalEnum;
 import org.opentripplanner.openstreetmap.model.OptionalEnumAndDouble;
+import org.opentripplanner.openstreetmap.model.OptionalNumber;
 import org.opentripplanner.routing.core.TraverseMode;
 import org.opentripplanner.routing.edgetype.AreaEdge;
 import org.opentripplanner.routing.edgetype.AreaEdgeList;
@@ -464,8 +465,8 @@ public class OpenStreetMapModule implements GraphBuilderModule {
       return element.getTagAsInt("duration", v -> issueStore.add(invalidDuration(element, v)));
     }
 
-    private OptionalDouble parseWidth(OSMWithTags element) {
-      return element.getTagAsDouble(
+    private OptionalNumber parseWidth(OSMWithTags element) {
+      OptionalDouble result = element.getTagAsDouble(
         "width",
         v ->
           issueStore.add(
@@ -476,6 +477,11 @@ public class OpenStreetMapModule implements GraphBuilderModule {
               v
             )
           )
+      );
+      return (
+        result.isPresent()
+          ? OptionalNumber.get(Double.valueOf(result.getAsDouble()).toString())
+          : OptionalNumber.empty()
       );
     }
 

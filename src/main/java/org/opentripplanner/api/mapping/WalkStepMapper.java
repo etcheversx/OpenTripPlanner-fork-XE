@@ -15,6 +15,7 @@ import org.opentripplanner.model.plan.WalkStep;
 import org.opentripplanner.openstreetmap.model.OptionalBoolean;
 import org.opentripplanner.openstreetmap.model.OptionalEnum;
 import org.opentripplanner.openstreetmap.model.OptionalEnumAndDouble;
+import org.opentripplanner.openstreetmap.model.OptionalNumber;
 
 public class WalkStepMapper {
 
@@ -63,8 +64,8 @@ public class WalkStepMapper {
     ApiWalkStep api,
     AccessibilityPropertySet accessibilityProperties
   ) {
-    OptionalDouble width = accessibilityProperties.getWidth();
-    api.width = width.isPresent() ? width.getAsDouble() : null;
+    OptionalNumber width = accessibilityProperties.getWidth();
+    api.width = width.isPresent() ? width.getAsTyped() : null;
 
     OptionalBoolean lit = accessibilityProperties.getLit();
     api.lit = lit.isPresent() ? lit.getAsTyped() : null;
