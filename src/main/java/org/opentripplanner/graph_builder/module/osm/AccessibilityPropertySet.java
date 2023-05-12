@@ -1,23 +1,18 @@
 package org.opentripplanner.graph_builder.module.osm;
 
 import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
 import javax.validation.constraints.NotNull;
 import org.opentripplanner.openstreetmap.model.OptionalBoolean;
 import org.opentripplanner.openstreetmap.model.OptionalEnum;
 import org.opentripplanner.openstreetmap.model.OptionalEnumAndDouble;
 import org.opentripplanner.openstreetmap.model.OptionalNumber;
+import org.opentripplanner.openstreetmap.model.OptionalValue;
 
 public class AccessibilityPropertySet implements Serializable {
 
-  private final OptionalNumber width;
-  private final OptionalBoolean lit;
-  private final OptionalEnum surface;
-  private final OptionalBoolean tactilePaving;
-  private final OptionalEnum smoothness;
-  private final OptionalEnum highway;
-  private final OptionalEnum footway;
-  private final OptionalEnumAndDouble incline;
-  private final OptionalNumber travHTrt;
+  private final Map<String, OptionalValue<?>> properties = new HashMap<>();
 
   private AccessibilityPropertySet(
     @NotNull OptionalNumber width,
@@ -30,51 +25,54 @@ public class AccessibilityPropertySet implements Serializable {
     @NotNull OptionalEnumAndDouble incline,
     @NotNull OptionalNumber travHTrt
   ) {
-    this.width = width;
-    this.lit = lit;
-    this.surface = surface;
-    this.tactilePaving = tactilePaving;
-    this.smoothness = smoothness;
-    this.highway = highway;
-    this.footway = footway;
-    this.incline = incline;
-    this.travHTrt = travHTrt;
+    this.properties.put("width", width);
+    this.properties.put("lit", lit);
+    this.properties.put("surface", surface);
+    this.properties.put("tactile_paving", tactilePaving);
+    this.properties.put("smoothness", smoothness);
+    this.properties.put("highway", highway);
+    this.properties.put("footway", footway);
+    this.properties.put("incline", incline);
+    this.properties.put("trav_h_trt", travHTrt);
   }
 
   public OptionalNumber getWidth() {
-    return width;
+    return (OptionalNumber) properties.getOrDefault("width", OptionalNumber.empty());
   }
 
   public OptionalBoolean getLit() {
-    return lit;
+    return (OptionalBoolean) properties.getOrDefault("lit", OptionalBoolean.empty());
   }
 
   public OptionalEnum getSurface() {
-    return surface;
+    return (OptionalEnum) properties.getOrDefault("surface", OptionalEnum.empty());
   }
 
   public OptionalBoolean getTactilePaving() {
-    return tactilePaving;
+    return (OptionalBoolean) properties.getOrDefault("tactile_paving", OptionalBoolean.empty());
   }
 
   public OptionalEnum getSmoothness() {
-    return smoothness;
+    return (OptionalEnum) properties.getOrDefault("smoothness", OptionalEnum.empty());
   }
 
   public OptionalEnum getHighway() {
-    return highway;
+    return (OptionalEnum) properties.getOrDefault("highway", OptionalEnum.empty());
   }
 
   public OptionalEnum getFootway() {
-    return footway;
+    return (OptionalEnum) properties.getOrDefault("footway", OptionalEnum.empty());
   }
 
   public OptionalEnumAndDouble getIncline() {
-    return incline;
+    return (OptionalEnumAndDouble) properties.getOrDefault(
+      "incline",
+      OptionalEnumAndDouble.empty()
+    );
   }
 
   public OptionalNumber getTravHTrt() {
-    return travHTrt;
+    return (OptionalNumber) properties.getOrDefault("trav_h_trt", OptionalNumber.empty());
   }
 
   @Override
@@ -82,15 +80,7 @@ public class AccessibilityPropertySet implements Serializable {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
     AccessibilityPropertySet that = (AccessibilityPropertySet) o;
-    return (
-      width.equals(that.width) &&
-      lit.equals(that.lit) &&
-      surface.equals(that.surface) &&
-      tactilePaving.equals(that.tactilePaving) &&
-      smoothness.equals(that.smoothness) &&
-      highway.equals(that.highway) &&
-      footway.equals(that.footway)
-    );
+    return properties.equals(that.properties);
   }
 
   public static class Builder {
