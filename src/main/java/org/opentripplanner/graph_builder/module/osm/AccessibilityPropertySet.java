@@ -1,7 +1,6 @@
 package org.opentripplanner.graph_builder.module.osm;
 
 import java.io.Serializable;
-import java.util.OptionalDouble;
 import javax.validation.constraints.NotNull;
 import org.opentripplanner.openstreetmap.model.OptionalBoolean;
 import org.opentripplanner.openstreetmap.model.OptionalEnum;
@@ -18,7 +17,7 @@ public class AccessibilityPropertySet implements Serializable {
   private final OptionalEnum highway;
   private final OptionalEnum footway;
   private final OptionalEnumAndDouble incline;
-  private final OptionalDouble travHTrt;
+  private final OptionalNumber travHTrt;
 
   private AccessibilityPropertySet(
     @NotNull OptionalNumber width,
@@ -29,7 +28,7 @@ public class AccessibilityPropertySet implements Serializable {
     @NotNull OptionalEnum highway,
     @NotNull OptionalEnum footway,
     @NotNull OptionalEnumAndDouble incline,
-    @NotNull OptionalDouble travHTrt
+    @NotNull OptionalNumber travHTrt
   ) {
     this.width = width;
     this.lit = lit;
@@ -74,7 +73,7 @@ public class AccessibilityPropertySet implements Serializable {
     return incline;
   }
 
-  public OptionalDouble getTravHTrt() {
+  public OptionalNumber getTravHTrt() {
     return travHTrt;
   }
 
@@ -85,12 +84,12 @@ public class AccessibilityPropertySet implements Serializable {
     AccessibilityPropertySet that = (AccessibilityPropertySet) o;
     return (
       width.equals(that.width) &&
-        lit.equals(that.lit) &&
-        surface.equals(that.surface) &&
-        tactilePaving.equals(that.tactilePaving) &&
-        smoothness.equals(that.smoothness) &&
-        highway.equals(that.highway) &&
-        footway.equals(that.footway)
+      lit.equals(that.lit) &&
+      surface.equals(that.surface) &&
+      tactilePaving.equals(that.tactilePaving) &&
+      smoothness.equals(that.smoothness) &&
+      highway.equals(that.highway) &&
+      footway.equals(that.footway)
     );
   }
 
@@ -104,7 +103,7 @@ public class AccessibilityPropertySet implements Serializable {
     private OptionalEnum highway = OptionalEnum.empty();
     private OptionalEnum footway = OptionalEnum.empty();
     private OptionalEnumAndDouble incline = OptionalEnumAndDouble.empty();
-    private OptionalDouble travHTrt = OptionalDouble.empty();
+    private OptionalNumber travHTrt = OptionalNumber.empty();
 
     public Builder withWidth(OptionalNumber width) {
       this.width = width;
@@ -146,7 +145,7 @@ public class AccessibilityPropertySet implements Serializable {
       return this;
     }
 
-    public Builder withTravHTrt(OptionalDouble travHTrt) {
+    public Builder withTravHTrt(OptionalNumber travHTrt) {
       this.travHTrt = travHTrt;
       return this;
     }

@@ -590,8 +590,8 @@ public class OpenStreetMapModule implements GraphBuilderModule {
       );
     }
 
-    private OptionalDouble parseTravHTrt(OSMWithTags element) {
-      return element.getTagAsDouble(
+    private OptionalNumber parseTravHTrt(OSMWithTags element) {
+      OptionalDouble result = element.getTagAsDouble(
         "trav_h_trt",
         v ->
           issueStore.add(
@@ -603,6 +603,11 @@ public class OpenStreetMapModule implements GraphBuilderModule {
             )
           )
       );
+      if (result.isPresent()) {
+        return OptionalNumber.get(Double.valueOf(result.getAsDouble()).toString());
+      } else {
+        return OptionalNumber.empty();
+      }
     }
 
     private AccessibilityPropertySet parseAccessibilityProperties(OSMWithTags element) {

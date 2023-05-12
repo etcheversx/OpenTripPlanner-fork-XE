@@ -1,6 +1,5 @@
 package org.opentripplanner.routing.edgetype;
 
-import java.util.OptionalDouble;
 import org.opentripplanner.graph_builder.module.osm.AccessibilityPropertySet;
 import org.opentripplanner.openstreetmap.model.OSMSmoothness;
 import org.opentripplanner.openstreetmap.model.OSMSurface;
@@ -87,8 +86,8 @@ class StreetEdgeReluctanceCalculator {
         }
       }
     }
-    OptionalDouble travHTrt = edgeAccessibilityProperties.getTravHTrt();
-    if (travHTrt.isPresent() && travHTrt.getAsDouble() > preferences.walk().maximalTravHTrt()) {
+    OptionalNumber travHTrt = edgeAccessibilityProperties.getTravHTrt();
+    if (travHTrt.isPresent() && travHTrt.getAsTyped() > preferences.walk().maximalTravHTrt()) {
       reluctance *= 2;
     }
     return reluctance;

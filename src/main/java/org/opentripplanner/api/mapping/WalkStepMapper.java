@@ -7,7 +7,6 @@ import static org.opentripplanner.api.mapping.RelativeDirectionMapper.mapRelativ
 import java.util.Collection;
 import java.util.List;
 import java.util.Locale;
-import java.util.OptionalDouble;
 import java.util.stream.Collectors;
 import org.opentripplanner.api.model.ApiWalkStep;
 import org.opentripplanner.graph_builder.module.osm.AccessibilityPropertySet;
@@ -86,8 +85,8 @@ public class WalkStepMapper {
     OptionalEnumAndDouble incline = accessibilityProperties.getIncline();
 
     api.incline = incline.isPresent() ? incline.getAsTyped().toString() : null;
-    OptionalDouble travHTrt = accessibilityProperties.getTravHTrt();
+    OptionalNumber travHTrt = accessibilityProperties.getTravHTrt();
 
-    api.travHTrt = travHTrt.isPresent() ? travHTrt.getAsDouble() : null;
+    api.travHTrt = travHTrt.isPresent() ? travHTrt.getAsTyped() : null;
   }
 }

@@ -3,7 +3,6 @@ package org.opentripplanner.routing.edgetype;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
 
-import java.util.OptionalDouble;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -276,7 +275,9 @@ class StreetEdgeReluctanceCalculatorTest {
       computeWalkReluctance(
         new AccessibilityPropertySet.Builder()
           .withTravHTrt(
-            edgeTravHTrt != null ? OptionalDouble.of(edgeTravHTrt) : OptionalDouble.empty()
+            edgeTravHTrt != null
+              ? OptionalNumber.get(edgeTravHTrt.toString())
+              : OptionalNumber.empty()
           )
           .build()
       )

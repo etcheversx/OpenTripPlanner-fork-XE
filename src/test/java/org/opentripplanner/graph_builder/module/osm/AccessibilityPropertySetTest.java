@@ -3,7 +3,6 @@ package org.opentripplanner.graph_builder.module.osm;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
 
-import java.util.OptionalDouble;
 import org.junit.jupiter.api.Test;
 import org.opentripplanner.openstreetmap.model.OptionalBoolean;
 import org.opentripplanner.openstreetmap.model.OptionalEnum;
@@ -93,7 +92,7 @@ public class AccessibilityPropertySetTest {
 
   @Test
   void testTravHTrtGetSet() {
-    OptionalDouble travHTrt = OptionalDouble.of(0.25);
+    OptionalNumber travHTrt = OptionalNumber.get("0.25");
     accessibilityPropertySet =
       new AccessibilityPropertySet.Builder().withTravHTrt(travHTrt).build();
     assertEquals(travHTrt, accessibilityPropertySet.getTravHTrt());

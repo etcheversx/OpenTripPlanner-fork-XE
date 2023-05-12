@@ -381,7 +381,7 @@ public class OSMModuleWithAccessibilityPropertiesTest {
   }
 
   private static Object getTravHTrtValue(StreetEdge edge) {
-    return edge.getAccessibilityProperties().getTravHTrt().getAsDouble();
+    return edge.getAccessibilityProperties().getTravHTrt().getAsTyped();
   }
 
   @ParameterizedTest(
