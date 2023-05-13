@@ -1,5 +1,7 @@
 package org.opentripplanner.routing.edgetype;
 
+import java.util.HashMap;
+import java.util.Map;
 import org.opentripplanner.graph_builder.module.osm.AccessibilityPropertySet;
 import org.opentripplanner.openstreetmap.model.OSMSmoothness;
 import org.opentripplanner.openstreetmap.model.OSMSurface;
@@ -7,13 +9,16 @@ import org.opentripplanner.openstreetmap.model.OptionalBoolean;
 import org.opentripplanner.openstreetmap.model.OptionalEnum;
 import org.opentripplanner.openstreetmap.model.OptionalEnumAndDouble;
 import org.opentripplanner.openstreetmap.model.OptionalNumber;
+import org.opentripplanner.routing.api.request.preference.AccessibilityProfile;
 import org.opentripplanner.routing.api.request.preference.RoutingPreferences;
+import org.opentripplanner.routing.api.request.preference.WalkPreferences;
 import org.opentripplanner.routing.core.TraverseMode;
 
 class StreetEdgeReluctanceCalculator {
 
   /** Utility class, private constructor to prevent instantiation */
-  private StreetEdgeReluctanceCalculator() {}
+  private StreetEdgeReluctanceCalculator() {
+  }
 
   /**
    * Compute reluctance for a regular street section. Note! This does not apply if in a wheelchair,
@@ -46,33 +51,46 @@ class StreetEdgeReluctanceCalculator {
     RoutingPreferences preferences,
     AccessibilityPropertySet edgeAccessibilityProperties
   ) {
-    double reluctance = preferences.walk().reluctance();
+    WalkPreferences walkPreferences = preferences.walk();
+    double reluctance = walkPreferences.reluctance();
+    if (walkPreferences.accessibilityProfile() == null || walkPreferences.accessibilityProfile().equals(AccessibilityProfile.NONE)) {
+      reluctance = computeRegularWalkReluctanceWithoutAccessibilityProfile(reluctance, edgeAccessibilityProperties, walkPreferences);
+    } else {
+      reluctance = AccessibilityProfileReluctanceImpact.computeRegularWalkReluctanceWithAccessibilityProfile(reluctance, edgeAccessibilityProperties, walkPreferences.accessibilityProfile());
+    }
+    return reluctance;
+  }
+
+      private static double computeRegularWalkReluctanceWithoutAccessibilityProfile(
+    double reluctance, AccessibilityPropertySet edgeAccessibilityProperties,
+    WalkPreferences walkPreferences
+  ) {
     OptionalNumber width = edgeAccessibilityProperties.getWidth();
-    if (width.isPresent() && width.getAsTyped() < preferences.walk().minimalWidth()) {
+    if (width.isPresent() && width.getAsTyped() < walkPreferences.minimalWidth()) {
       reluctance *= 2;
     }
     OptionalBoolean lit = edgeAccessibilityProperties.getLit();
-    if (lit.isPresent() && !lit.getAsTyped() && preferences.walk().lightRequired()) {
+    if (lit.isPresent() && !lit.getAsTyped() && walkPreferences.lightRequired()) {
       reluctance *= 2;
     }
     OptionalEnum surface = edgeAccessibilityProperties.getSurface();
     if (
       surface.isPresent() &&
-      preferences.walk().reluctedSurfaces().contains((OSMSurface) surface.getAsTyped())
+        walkPreferences.reluctedSurfaces().contains((OSMSurface) surface.getAsTyped())
     ) {
       reluctance *= 2;
     }
     OptionalBoolean tactilePaving = edgeAccessibilityProperties.getTactilePaving();
     if (
-      tactilePaving.isPresent() && !tactilePaving.getAsTyped() && preferences.walk().tactilePaving()
+      tactilePaving.isPresent() && !tactilePaving.getAsTyped() && walkPreferences.tactilePaving()
     ) {
       reluctance *= 2;
     }
     OptionalEnum smoothness = edgeAccessibilityProperties.getSmoothness();
     if (smoothness.isPresent()) {
       if (
-        preferences.walk().reluctedSmoothness().compareTo((OSMSmoothness) smoothness.getAsTyped()) >
-        0
+        walkPreferences.reluctedSmoothness().compareTo((OSMSmoothness) smoothness.getAsTyped()) >
+          0
       ) {
         reluctance *= 2;
       }
@@ -81,13 +99,13 @@ class StreetEdgeReluctanceCalculator {
     if (incline.isPresent()) {
       Object inclineAsObject = incline.getAsTyped();
       if (inclineAsObject instanceof Double inclineAsDouble) {
-        if (Math.abs(inclineAsDouble) > Math.abs(preferences.walk().maximalIncline())) {
+        if (Math.abs(inclineAsDouble) > Math.abs(walkPreferences.maximalIncline())) {
           reluctance *= 2;
         }
       }
     }
     OptionalNumber travHTrt = edgeAccessibilityProperties.getTravHTrt();
-    if (travHTrt.isPresent() && travHTrt.getAsTyped() > preferences.walk().maximalTravHTrt()) {
+    if (travHTrt.isPresent() && travHTrt.getAsTyped() > walkPreferences.maximalTravHTrt()) {
       reluctance *= 2;
     }
     return reluctance;

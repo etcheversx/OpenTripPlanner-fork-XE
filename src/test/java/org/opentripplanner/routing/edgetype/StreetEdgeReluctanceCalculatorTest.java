@@ -14,6 +14,7 @@ import org.opentripplanner.openstreetmap.model.OptionalBoolean;
 import org.opentripplanner.openstreetmap.model.OptionalEnum;
 import org.opentripplanner.openstreetmap.model.OptionalEnumAndDouble;
 import org.opentripplanner.openstreetmap.model.OptionalNumber;
+import org.opentripplanner.routing.api.request.preference.AccessibilityProfile;
 import org.opentripplanner.routing.api.request.preference.RoutingPreferences;
 import org.opentripplanner.routing.api.request.preference.WalkPreferences;
 import org.opentripplanner.routing.core.TraverseMode;
@@ -277,6 +278,55 @@ class StreetEdgeReluctanceCalculatorTest {
           .withTravHTrt(
             edgeTravHTrt != null
               ? OptionalNumber.get(edgeTravHTrt.toString())
+              : OptionalNumber.empty()
+          )
+          .build()
+      )
+    );
+  }
+
+
+  @ParameterizedTest(
+    name = "Walk reluctance with accessibilityProfile={0} on edge with width={1} is {2}"
+  )
+  @CsvSource(
+    {
+      "NONE, , 2.0",
+      "NONE, 100.0, 2.0",
+      "NONE, 99.99, 2.0",
+      "NONE, 1.4, 2.0",
+      "NONE, 1.39, 2.0",
+      "NONE, 1.2, 2.0",
+      "PAM, , 2.0",
+      "PAM, 100.0, 6.0",
+      "PAM, 99.99, 2.0",
+      "PAM, 1.4, 2.0",
+      "PAM, 1.39, 2.0",
+      "PAM, 1.2, 2.0",
+      "UFR, , 2.0",
+      "UFR, 100.0, 2.0",
+      "UFR, 99.99, 2.0",
+      "UFR, 1.4, 2.0",
+      "UFR, 1.39, 4.0",
+      "UFR, 1.2, 2.0",
+    }
+  )
+  void testReluctanceProcessingWithAccessibilityProfileAndWidth(
+    AccessibilityProfile accessibilityProfile,
+    Double edgeWidth,
+    Double expectedWalkReluctance
+  ) {
+    if (accessibilityProfile != null) {
+      routingPreferencesBuilder.withWalk(w -> w.withAccessibilityProfile(accessibilityProfile));
+    }
+
+    assertEquals(
+      expectedWalkReluctance,
+      computeWalkReluctance(
+        new AccessibilityPropertySet.Builder()
+          .withWidth(
+            edgeWidth != null
+              ? OptionalNumber.get(edgeWidth.toString())
               : OptionalNumber.empty()
           )
           .build()
