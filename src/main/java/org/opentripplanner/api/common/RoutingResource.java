@@ -355,6 +355,9 @@ public abstract class RoutingResource {
   @QueryParam("maximalTravHTrt")
   protected Double maximalTravHTrt;
 
+  @QueryParam("accessibilityProfile")
+  protected String accessibilityProfile;
+
   @QueryParam("allowKeepingRentedBicycleAtDestination")
   protected Boolean allowKeepingRentedBicycleAtDestination;
 

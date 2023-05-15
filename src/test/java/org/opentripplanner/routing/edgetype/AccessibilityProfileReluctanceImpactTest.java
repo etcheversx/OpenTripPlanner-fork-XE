@@ -9,6 +9,7 @@ import org.opentripplanner.openstreetmap.model.OptionalNumber;
 import org.opentripplanner.routing.api.request.preference.AccessibilityProfile;
 
 class AccessibilityProfileReluctanceImpactTest {
+
   @ParameterizedTest(
     name = "Walk reluctance with accessibilityProfile={0} on edge with width={1} is {2}"
   )
@@ -60,9 +61,7 @@ class AccessibilityProfileReluctanceImpactTest {
         1.0,
         new AccessibilityPropertySet.Builder()
           .withWidth(
-            edgeWidth != null
-              ? OptionalNumber.get(edgeWidth.toString())
-              : OptionalNumber.empty()
+            edgeWidth != null ? OptionalNumber.get(edgeWidth.toString()) : OptionalNumber.empty()
           )
           .build(),
         accessibilityProfile

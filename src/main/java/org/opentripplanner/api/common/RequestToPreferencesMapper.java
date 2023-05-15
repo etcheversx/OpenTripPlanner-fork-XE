@@ -4,6 +4,7 @@ import java.util.function.Consumer;
 import javax.validation.constraints.NotNull;
 import org.opentripplanner.openstreetmap.model.OSMSmoothness;
 import org.opentripplanner.openstreetmap.model.OSMSurface;
+import org.opentripplanner.routing.api.request.preference.AccessibilityProfile;
 import org.opentripplanner.routing.api.request.preference.RoutingPreferences;
 import org.opentripplanner.routing.api.request.preference.VehicleParkingPreferences;
 import org.opentripplanner.routing.core.BicycleOptimizeType;
@@ -57,9 +58,13 @@ class RequestToPreferencesMapper {
       setIfNotNull(req.lightRequired, walk::withLightRequired);
       setIfNotNull(OSMSurface.parseValues(req.reluctedSurfaces), walk::withReluctedSurfaces);
       setIfNotNull(req.tactilePaving, walk::withTactilePaving);
-      setIfNotNull(OSMSmoothness.valueOf(req.requiredSmoothness), walk::withReluctedSmoothness);
+      setIfNotNull(OSMSmoothness.weakValueOf(req.requiredSmoothness), walk::withReluctedSmoothness);
       setIfNotNull(req.maximalIncline, walk::withMaximalIncline);
       setIfNotNull(req.maximalTravHTrt, walk::withMaximalTravHTrt);
+      setIfNotNull(
+        AccessibilityProfile.weakValueOf(req.accessibilityProfile),
+        walk::withAccessibilityProfile
+      );
     });
   }
 

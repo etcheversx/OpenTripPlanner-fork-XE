@@ -8,5 +8,13 @@ public enum OSMSmoothness {
   bad,
   intermediate,
   good,
-  excellent,
+  excellent;
+
+  public static OSMSmoothness weakValueOf(String s) {
+    try {
+      return OSMSmoothness.valueOf(s);
+    } catch (Exception e) {
+      return null;
+    }
+  }
 }

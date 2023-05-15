@@ -17,8 +17,7 @@ import org.opentripplanner.routing.core.TraverseMode;
 class StreetEdgeReluctanceCalculator {
 
   /** Utility class, private constructor to prevent instantiation */
-  private StreetEdgeReluctanceCalculator() {
-  }
+  private StreetEdgeReluctanceCalculator() {}
 
   /**
    * Compute reluctance for a regular street section. Note! This does not apply if in a wheelchair,
@@ -53,16 +52,30 @@ class StreetEdgeReluctanceCalculator {
   ) {
     WalkPreferences walkPreferences = preferences.walk();
     double reluctance = walkPreferences.reluctance();
-    if (walkPreferences.accessibilityProfile() == null || walkPreferences.accessibilityProfile().equals(AccessibilityProfile.NONE)) {
-      reluctance = computeRegularWalkReluctanceWithoutAccessibilityProfile(reluctance, edgeAccessibilityProperties, walkPreferences);
+    if (
+      walkPreferences.accessibilityProfile() == null ||
+      walkPreferences.accessibilityProfile().equals(AccessibilityProfile.NONE)
+    ) {
+      reluctance =
+        computeRegularWalkReluctanceWithoutAccessibilityProfile(
+          reluctance,
+          edgeAccessibilityProperties,
+          walkPreferences
+        );
     } else {
-      reluctance = AccessibilityProfileReluctanceImpact.computeRegularWalkReluctanceWithAccessibilityProfile(reluctance, edgeAccessibilityProperties, walkPreferences.accessibilityProfile());
+      reluctance =
+        AccessibilityProfileReluctanceImpact.computeRegularWalkReluctanceWithAccessibilityProfile(
+          reluctance,
+          edgeAccessibilityProperties,
+          walkPreferences.accessibilityProfile()
+        );
     }
     return reluctance;
   }
 
-      private static double computeRegularWalkReluctanceWithoutAccessibilityProfile(
-    double reluctance, AccessibilityPropertySet edgeAccessibilityProperties,
+  private static double computeRegularWalkReluctanceWithoutAccessibilityProfile(
+    double reluctance,
+    AccessibilityPropertySet edgeAccessibilityProperties,
     WalkPreferences walkPreferences
   ) {
     OptionalNumber width = edgeAccessibilityProperties.getWidth();
@@ -76,7 +89,7 @@ class StreetEdgeReluctanceCalculator {
     OptionalEnum surface = edgeAccessibilityProperties.getSurface();
     if (
       surface.isPresent() &&
-        walkPreferences.reluctedSurfaces().contains((OSMSurface) surface.getAsTyped())
+      walkPreferences.reluctedSurfaces().contains((OSMSurface) surface.getAsTyped())
     ) {
       reluctance *= 2;
     }
@@ -89,8 +102,7 @@ class StreetEdgeReluctanceCalculator {
     OptionalEnum smoothness = edgeAccessibilityProperties.getSmoothness();
     if (smoothness.isPresent()) {
       if (
-        walkPreferences.reluctedSmoothness().compareTo((OSMSmoothness) smoothness.getAsTyped()) >
-          0
+        walkPreferences.reluctedSmoothness().compareTo((OSMSmoothness) smoothness.getAsTyped()) > 0
       ) {
         reluctance *= 2;
       }

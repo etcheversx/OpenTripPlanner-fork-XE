@@ -8,15 +8,15 @@ import org.opentripplanner.openstreetmap.model.OptionalNumber;
 import org.opentripplanner.routing.api.request.preference.AccessibilityProfile;
 
 public class AccessibilityProfileReluctanceImpact {
+
   private static final Map<AccessibilityProfile, Map<String, Function<Object, Integer>>> impactOnReluctance = new HashMap<>();
 
   private static final Function<Object, Integer> widthImpactForPAM = value -> {
     Integer result = 1;
     if (value instanceof Double valueAsDouble) {
-      if (valueAsDouble < 0.8) result = 3;
-      else if (valueAsDouble < 1.2) result = 2;
-      else if (valueAsDouble < 100.0) result = 1;
-      else result = 3;
+      if (valueAsDouble < 0.8) result = 3; else if (valueAsDouble < 1.2) result = 2; else if (
+        valueAsDouble < 100.0
+      ) result = 1; else result = 3;
     }
     return result;
   };
@@ -24,11 +24,9 @@ public class AccessibilityProfileReluctanceImpact {
   private static final Function<Object, Integer> widthImpactForUFR = value -> {
     Integer result = 1;
     if (value instanceof Double valueAsDouble) {
-      if (valueAsDouble < 0.8) result = 5;
-      else if (valueAsDouble < 0.9) result = 4;
-      else if (valueAsDouble < 1.2) result = 3;
-      else if (valueAsDouble < 1.4) result = 2;
-      else result = 1;
+      if (valueAsDouble < 0.8) result = 5; else if (valueAsDouble < 0.9) result = 4; else if (
+        valueAsDouble < 1.2
+      ) result = 3; else if (valueAsDouble < 1.4) result = 2; else result = 1;
     }
     return result;
   };
@@ -60,6 +58,4 @@ public class AccessibilityProfileReluctanceImpact {
     }
     return reluctance;
   }
-
-
 }

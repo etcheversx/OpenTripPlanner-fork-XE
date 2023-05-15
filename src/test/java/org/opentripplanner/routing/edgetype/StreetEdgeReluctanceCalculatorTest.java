@@ -34,7 +34,7 @@ class StreetEdgeReluctanceCalculatorTest {
   }
 
   @ParameterizedTest(name = "Walk reluctance with minimalWidth={0} on edge with width={1} is {2}")
-  @CsvSource({", , 2.0", "0.9, , 2.0", ", 1.0, 2.0", "0.9, 1.0, 2.0", "0.9, 0.85, 4.0"})
+  @CsvSource({ ", , 2.0", "0.9, , 2.0", ", 1.0, 2.0", "0.9, 1.0, 2.0", "0.9, 0.85, 4.0" })
   void testReluctanceProcessingWithWidth(
     Double minimalWidth,
     Double edgeWidth,
@@ -285,7 +285,6 @@ class StreetEdgeReluctanceCalculatorTest {
     );
   }
 
-
   private double computeWalkReluctance(AccessibilityPropertySet edgeAccessibilityProperties) {
     return StreetEdgeReluctanceCalculator.computeReluctance(
       routingPreferencesBuilder.build(),
@@ -303,20 +302,12 @@ class StreetEdgeReluctanceCalculatorTest {
       .build();
     routingPreferencesBuilder.withWalk(w -> w.withMinimalWidth(0.9));
 
-    assertEquals(
-      4.0,
-      computeWalkReluctance(
-        accessibilityPropertySet
-      )
+    assertEquals(4.0, computeWalkReluctance(accessibilityPropertySet));
+
+    routingPreferencesBuilder.withWalk(w ->
+      w.withMinimalWidth(0.9).withAccessibilityProfile(AccessibilityProfile.PAM)
     );
 
-    routingPreferencesBuilder.withWalk(w -> w.withMinimalWidth(0.9).withAccessibilityProfile(AccessibilityProfile.PAM));
-
-    assertEquals(
-      6.0,
-      computeWalkReluctance(
-        accessibilityPropertySet
-      )
-    );
+    assertEquals(6.0, computeWalkReluctance(accessibilityPropertySet));
   }
 }
