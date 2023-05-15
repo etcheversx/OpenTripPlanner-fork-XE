@@ -89,6 +89,10 @@ public class AccessibilityPropertySet implements Serializable {
     return properties.keySet().toArray(result);
   }
 
+  public OptionalValue getProperty(String key) {
+    return properties.get(key);
+  }
+
   public static class Builder {
 
     private OptionalNumber width = OptionalNumber.empty();

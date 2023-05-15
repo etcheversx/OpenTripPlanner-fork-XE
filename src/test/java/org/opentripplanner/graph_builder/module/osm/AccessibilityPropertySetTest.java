@@ -3,6 +3,7 @@ package org.opentripplanner.graph_builder.module.osm;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.fail;
 
 import java.util.Arrays;
@@ -32,6 +33,23 @@ public class AccessibilityPropertySetTest {
       Arrays.stream(expected).sorted().toArray(),
       Arrays.stream(propertyKeys).sorted().toArray()
     );
+  }
+
+  @Test
+  void testGetProperty() {
+    accessibilityPropertySet = new AccessibilityPropertySet.Builder().build();
+
+    assertNull(accessibilityPropertySet.getProperty("foo"));
+
+    OptionalNumber width = OptionalNumber.get("1.79");
+    accessibilityPropertySet = new AccessibilityPropertySet.Builder().withWidth(width).build();
+
+
+    assertEquals(
+      width,
+      accessibilityPropertySet.getProperty("width")
+    );
+
   }
 
   @Test
