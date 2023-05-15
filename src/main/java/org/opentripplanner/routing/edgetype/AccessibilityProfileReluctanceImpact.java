@@ -5,6 +5,7 @@ import java.util.Map;
 import java.util.function.Function;
 import org.opentripplanner.graph_builder.module.osm.AccessibilityPropertySet;
 import org.opentripplanner.openstreetmap.model.OptionalNumber;
+import org.opentripplanner.openstreetmap.model.OptionalValue;
 import org.opentripplanner.routing.api.request.preference.AccessibilityProfile;
 
 public class AccessibilityProfileReluctanceImpact {
@@ -51,10 +52,9 @@ public class AccessibilityProfileReluctanceImpact {
     AccessibilityPropertySet edgeAccessibilityProperties,
     AccessibilityProfile accessibilityProfile
   ) {
-    OptionalNumber optionalWidth = edgeAccessibilityProperties.getWidth();
+    OptionalValue optionalWidth = edgeAccessibilityProperties.getWidth();
     if (optionalWidth.isPresent()) {
-      Double width = optionalWidth.getAsTyped();
-      reluctance *= impactOnReluctance.get(accessibilityProfile).get("width").apply(width);
+      reluctance *= impactOnReluctance.get(accessibilityProfile).get("width").apply(optionalWidth.getAsTyped());
     }
     return reluctance;
   }
