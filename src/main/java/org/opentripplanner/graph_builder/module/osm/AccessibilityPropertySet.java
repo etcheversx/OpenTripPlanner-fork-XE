@@ -1,6 +1,7 @@
 package org.opentripplanner.graph_builder.module.osm;
 
 import java.io.Serializable;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import javax.validation.constraints.NotNull;
@@ -81,6 +82,11 @@ public class AccessibilityPropertySet implements Serializable {
     if (o == null || getClass() != o.getClass()) return false;
     AccessibilityPropertySet that = (AccessibilityPropertySet) o;
     return properties.equals(that.properties);
+  }
+
+  public String[] propertyKeys() {
+    String [] result = {};
+    return properties.keySet().toArray(result);
   }
 
   public static class Builder {

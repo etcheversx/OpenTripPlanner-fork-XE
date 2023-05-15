@@ -1,8 +1,11 @@
 package org.opentripplanner.graph_builder.module.osm;
 
+
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
 
+import java.util.Arrays;
 import org.junit.jupiter.api.Test;
 import org.opentripplanner.openstreetmap.model.OptionalBoolean;
 import org.opentripplanner.openstreetmap.model.OptionalEnum;
@@ -17,6 +20,18 @@ public class AccessibilityPropertySetTest {
   void testDefaultBehaviourOfBuilder() {
     accessibilityPropertySet = new AccessibilityPropertySet.Builder().build();
     assertEquals(accessibilityPropertySet, new AccessibilityPropertySet.Builder().build());
+  }
+
+  @Test
+  void testPropertyKeys() {
+    accessibilityPropertySet = new AccessibilityPropertySet.Builder().build();
+
+    String[] expected = {"width", "lit", "surface", "tactile_paving", "smoothness", "highway", "footway", "incline", "trav_h_trt"};
+    String[] propertyKeys = accessibilityPropertySet.propertyKeys();
+    assertArrayEquals(
+      Arrays.stream(expected).sorted().toArray(),
+      Arrays.stream(propertyKeys).sorted().toArray()
+    );
   }
 
   @Test
