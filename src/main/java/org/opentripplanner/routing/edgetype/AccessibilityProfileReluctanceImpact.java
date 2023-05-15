@@ -33,7 +33,14 @@ public class AccessibilityProfileReluctanceImpact {
     return result;
   };
 
+  private static final Function<Object, Integer> doNothing = value -> {
+    return 1;
+  };
+
   static {
+    impactOnReluctance.put(AccessibilityProfile.NONE, new HashMap<>());
+    impactOnReluctance.get(AccessibilityProfile.NONE).put("width", doNothing);
+
     impactOnReluctance.put(AccessibilityProfile.PAM, new HashMap<>());
     impactOnReluctance.get(AccessibilityProfile.PAM).put("width", widthImpactForPAM);
 

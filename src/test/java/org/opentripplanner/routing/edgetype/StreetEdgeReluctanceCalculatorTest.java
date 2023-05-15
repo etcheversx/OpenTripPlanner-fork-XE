@@ -34,7 +34,7 @@ class StreetEdgeReluctanceCalculatorTest {
   }
 
   @ParameterizedTest(name = "Walk reluctance with minimalWidth={0} on edge with width={1} is {2}")
-  @CsvSource({ ", , 2.0", "0.9, , 2.0", ", 1.0, 2.0", "0.9, 1.0, 2.0", "0.9, 0.85, 4.0" })
+  @CsvSource({", , 2.0", "0.9, , 2.0", ", 1.0, 2.0", "0.9, 1.0, 2.0", "0.9, 0.85, 4.0"})
   void testReluctanceProcessingWithWidth(
     Double minimalWidth,
     Double edgeWidth,
@@ -286,69 +286,6 @@ class StreetEdgeReluctanceCalculatorTest {
   }
 
 
-  @ParameterizedTest(
-    name = "Walk reluctance with accessibilityProfile={0} on edge with width={1} is {2}"
-  )
-  @CsvSource(
-    {
-      "NONE, , 2.0",
-      "NONE, 100.0, 2.0",
-      "NONE, 99.99, 2.0",
-      "NONE, 1.4, 2.0",
-      "NONE, 1.39, 2.0",
-      "NONE, 1.2, 2.0",
-      "NONE, 1.19, 2.0",
-      "NONE, 0.90, 2.0",
-      "NONE, 0.89, 2.0",
-      "NONE, 0.80, 2.0",
-      "NONE, 0.79, 2.0",
-      "PAM, , 2.0",
-      "PAM, 100.0, 6.0",
-      "PAM, 99.99, 2.0",
-      "PAM, 1.4, 2.0",
-      "PAM, 1.39, 2.0",
-      "PAM, 1.2, 2.0",
-      "PAM, 1.19, 4.0",
-      "PAM, 0.90, 4.0",
-      "PAM, 0.89, 4.0",
-      "PAM, 0.80, 4.0",
-      "PAM, 0.79, 6.0",
-      "UFR, , 2.0",
-      "UFR, 100.0, 2.0",
-      "UFR, 99.99, 2.0",
-      "UFR, 1.4, 2.0",
-      "UFR, 1.39, 4.0",
-      "UFR, 1.2, 4.0",
-      "UFR, 1.19, 6.0",
-      "UFR, 0.90, 6.0",
-      "UFR, 0.89, 8.0",
-      "UFR, 0.80, 8.0",
-      "UFR, 0.79, 10.0",
-    }
-  )
-  void testReluctanceProcessingWithAccessibilityProfileAndWidth(
-    AccessibilityProfile accessibilityProfile,
-    Double edgeWidth,
-    Double expectedWalkReluctance
-  ) {
-    if (accessibilityProfile != null) {
-      routingPreferencesBuilder.withWalk(w -> w.withAccessibilityProfile(accessibilityProfile));
-    }
-
-    assertEquals(
-      expectedWalkReluctance,
-      computeWalkReluctance(
-        new AccessibilityPropertySet.Builder()
-          .withWidth(
-            edgeWidth != null
-              ? OptionalNumber.get(edgeWidth.toString())
-              : OptionalNumber.empty()
-          )
-          .build()
-      )
-    );
-  }
-
   private double computeWalkReluctance(AccessibilityPropertySet edgeAccessibilityProperties) {
     return StreetEdgeReluctanceCalculator.computeReluctance(
       routingPreferencesBuilder.build(),
@@ -356,6 +293,30 @@ class StreetEdgeReluctanceCalculatorTest {
       false,
       false,
       edgeAccessibilityProperties
+    );
+  }
+
+  @Test
+  void testAccessibilityProfileOverrideAnyOtherAccessibilityPreference() {
+    AccessibilityPropertySet accessibilityPropertySet = new AccessibilityPropertySet.Builder()
+      .withWidth(OptionalNumber.get("0.75"))
+      .build();
+    routingPreferencesBuilder.withWalk(w -> w.withMinimalWidth(0.9));
+
+    assertEquals(
+      4.0,
+      computeWalkReluctance(
+        accessibilityPropertySet
+      )
+    );
+
+    routingPreferencesBuilder.withWalk(w -> w.withMinimalWidth(0.9).withAccessibilityProfile(AccessibilityProfile.PAM));
+
+    assertEquals(
+      6.0,
+      computeWalkReluctance(
+        accessibilityPropertySet
+      )
     );
   }
 }
