@@ -8,6 +8,7 @@ import org.opentripplanner.graph_builder.module.osm.AccessibilityPropertySet;
 import org.opentripplanner.openstreetmap.model.OSMSmoothness;
 import org.opentripplanner.openstreetmap.model.OSMSurface;
 import org.opentripplanner.openstreetmap.model.OptionalEnum;
+import org.opentripplanner.openstreetmap.model.OptionalEnumAndDouble;
 import org.opentripplanner.openstreetmap.model.OptionalNumber;
 import org.opentripplanner.routing.api.request.preference.AccessibilityProfile;
 
@@ -257,6 +258,66 @@ class AccessibilityProfileReluctanceImpactTest {
             edgeSmoothness != null
               ? OptionalEnum.get(edgeSmoothness.toString())
               : OptionalEnum.empty()
+          )
+          .build(),
+        accessibilityProfile
+      )
+    );
+  }
+
+  @ParameterizedTest(
+    name = "Incline impact with accessibilityProfile={0} on edge with incline={1} is {2}"
+  )
+  @CsvSource(
+    {
+      "NONE, , 1.0",
+      "NONE, up, 1.0",
+      "NONE, down, 1.0",
+      "NONE, 4.0, 1.0",
+      "NONE, 4.01, 1.0",
+      "NONE, 5.0, 1.0",
+      "NONE, 5.01, 1.0",
+      "NONE, 6.0, 1.0",
+      "NONE, 6.01, 1.0",
+      "NONE, 7.0, 1.0",
+      "NONE, 7.01, 1.0",
+      "NONE, 8.0, 1.0",
+      "NONE, 8.01, 1.0",
+      "NONE, 9.0, 1.0",
+      "NONE, 9.01, 1.0",
+      "NONE, 10.0, 1.0",
+      "NONE, 10.01, 1.0",
+      "NONE, 11.0, 1.0",
+      "NONE, 11.01, 1.0",
+      "NONE, 12.0, 1.0",
+      "NONE, 12.01, 1.0",
+    }
+  )
+  void testInclineImpactOnReluctanceWithAccessibilityProfile(
+    AccessibilityProfile accessibilityProfile,
+    String edgeIncline,
+    Double expectedImpact
+  ) throws Exception {
+    assertEquals(
+      expectedImpact,
+      AccessibilityProfileReluctanceImpact.computeRegularWalkReluctanceWithAccessibilityProfile(
+        1.0,
+        new AccessibilityPropertySet.Builder()
+          .withIncline(
+            edgeIncline != null ? OptionalEnumAndDouble.get(edgeIncline.toString()) : OptionalEnumAndDouble.empty()
+          )
+          .build(),
+        accessibilityProfile
+      )
+    );
+
+    assertEquals(
+      expectedImpact,
+      AccessibilityProfileReluctanceImpact.computeRegularWalkReluctanceWithAccessibilityProfile(
+        1.0,
+        new AccessibilityPropertySet.Builder()
+          .withIncline(
+            (edgeIncline != null && !"up".equals(edgeIncline) && !"down".equals(edgeIncline)) ? OptionalEnumAndDouble.get(edgeIncline.toString()) : OptionalEnumAndDouble.empty()
           )
           .build(),
         accessibilityProfile
