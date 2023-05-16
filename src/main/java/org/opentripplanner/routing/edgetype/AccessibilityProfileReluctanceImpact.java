@@ -81,6 +81,18 @@ public class AccessibilityProfileReluctanceImpact {
     return result;
   };
 
+  private static final Function<Object, Integer> inclineImpactForPAM = value -> {
+    Integer result = 1;
+    if (value instanceof Double valueAsDouble) {
+      Double absValueAsDouble = Math.abs(valueAsDouble);
+      if (absValueAsDouble <= 4) result = 1;
+      else if (absValueAsDouble <= 7) result = 2;
+      else if (absValueAsDouble <= 11) result = 3;
+      else result = 4;
+    }
+    return result;
+  };
+
   private static final Function<Object, Integer> widthImpactForUFR = value -> {
     Integer result = 1;
     if (value instanceof Double valueAsDouble) {
@@ -161,6 +173,7 @@ public class AccessibilityProfileReluctanceImpact {
     impactOnReluctance.get(AccessibilityProfile.PAM).put("width", widthImpactForPAM);
     impactOnReluctance.get(AccessibilityProfile.PAM).put("surface", surfaceImpactForPAM);
     impactOnReluctance.get(AccessibilityProfile.PAM).put("smoothness", smoothnessImpactForPAM);
+    impactOnReluctance.get(AccessibilityProfile.PAM).put("incline", inclineImpactForPAM);
 
     impactOnReluctance.put(AccessibilityProfile.UFR, new HashMap<>());
     for (String key : keys) {
