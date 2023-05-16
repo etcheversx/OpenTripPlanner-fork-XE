@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Function;
 import org.opentripplanner.graph_builder.module.osm.AccessibilityPropertySet;
+import org.opentripplanner.openstreetmap.model.OSMSurface;
 import org.opentripplanner.openstreetmap.model.OptionalValue;
 import org.opentripplanner.routing.api.request.preference.AccessibilityProfile;
 
@@ -38,9 +39,23 @@ public class AccessibilityProfileReluctanceImpact {
     return result;
   };
 
-  private static final Function<Object, Integer> doNothing = value -> {
-    return 1;
+  private static final Function<Object, Integer> surfaceImpactForUFR = value -> {
+    Integer result = 1;
+    if (value instanceof OSMSurface valueAsOSMSurface) {
+      result = switch (valueAsOSMSurface) {
+        case paved, asphalt, chipseal, concrete, metal, rubber, clay, tartan, acrylic, carpet -> 1;
+        case concrete_lanes, stepping_stones, gravel, rock, mud, sand, woodchips, snow, ice -> 5;
+        case concrete_plates, paving_stones, wood, unpaved, compacted, fine_gravel, artificial_turf ->
+          2;
+        case sett, metal_grid -> 3;
+        case cobblestone, unhewn_cobblestone, pebblestone, ground, dirt, earth, grass, grass_paver ->
+          4;
+      };
+    }
+    return result;
   };
+
+  private static final Function<Object, Integer> doNothing = value -> 1;
 
   static {
     impactOnReluctance.put(AccessibilityProfile.NONE, new HashMap<>());
@@ -51,6 +66,7 @@ public class AccessibilityProfileReluctanceImpact {
 
     impactOnReluctance.put(AccessibilityProfile.UFR, new HashMap<>());
     impactOnReluctance.get(AccessibilityProfile.UFR).put("width", widthImpactForUFR);
+    impactOnReluctance.get(AccessibilityProfile.UFR).put("surface", surfaceImpactForUFR);
   }
 
   static double computeRegularWalkReluctanceWithAccessibilityProfile(
@@ -61,7 +77,7 @@ public class AccessibilityProfileReluctanceImpact {
     for (String propertyKey : edgeAccessibilityProperties.propertyKeys()) {
       OptionalValue<?> optionalProperty = edgeAccessibilityProperties.getProperty(propertyKey);
       if (optionalProperty.isPresent()) {
-        reluctance *= impactOnReluctance.get(accessibilityProfile).get("width").apply(optionalProperty.getAsTyped());
+        reluctance *= impactOnReluctance.get(accessibilityProfile).get(propertyKey).apply(optionalProperty.getAsTyped());
       }
     }
     return reluctance;
