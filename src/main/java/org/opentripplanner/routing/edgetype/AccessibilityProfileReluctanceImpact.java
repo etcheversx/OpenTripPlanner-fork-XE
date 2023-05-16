@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Function;
 import org.opentripplanner.graph_builder.module.osm.AccessibilityPropertySet;
+import org.opentripplanner.openstreetmap.model.OSMSmoothness;
 import org.opentripplanner.openstreetmap.model.OSMSurface;
 import org.opentripplanner.openstreetmap.model.OptionalValue;
 import org.opentripplanner.routing.api.request.preference.AccessibilityProfile;
@@ -57,6 +58,21 @@ public class AccessibilityProfileReluctanceImpact {
             snow,
             ice -> 4;
           case rock -> 5;
+        };
+    }
+    return result;
+  };
+
+  private static final Function<Object, Integer> smoothnessImpactForPAM = value -> {
+    Integer result = 1;
+    if (value instanceof OSMSmoothness typedValue) {
+      result =
+        switch (typedValue) {
+          case excellent, good -> 1;
+          case intermediate -> 2;
+          case bad -> 3;
+          case very_bad -> 4;
+          case horrible, very_horrible, impassable -> 5;
         };
     }
     return result;
@@ -118,6 +134,7 @@ public class AccessibilityProfileReluctanceImpact {
     impactOnReluctance.put(AccessibilityProfile.PAM, new HashMap<>());
     impactOnReluctance.get(AccessibilityProfile.PAM).put("width", widthImpactForPAM);
     impactOnReluctance.get(AccessibilityProfile.PAM).put("surface", surfaceImpactForPAM);
+    impactOnReluctance.get(AccessibilityProfile.PAM).put("smoothness", smoothnessImpactForPAM);
 
     impactOnReluctance.put(AccessibilityProfile.UFR, new HashMap<>());
     impactOnReluctance.get(AccessibilityProfile.UFR).put("width", widthImpactForUFR);

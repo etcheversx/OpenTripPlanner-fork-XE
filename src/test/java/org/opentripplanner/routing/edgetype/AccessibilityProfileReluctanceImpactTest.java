@@ -223,7 +223,15 @@ class AccessibilityProfileReluctanceImpactTest {
       "NONE, intermediate, 1.0",
       "NONE, good, 1.0",
       "NONE, excellent, 1.0",
-
+      "PAM, , 1.0",
+      "PAM, impassable, 5.0",
+      "PAM, very_horrible, 5.0",
+      "PAM, horrible, 5.0",
+      "PAM, very_bad, 4.0",
+      "PAM, bad, 3.0",
+      "PAM, intermediate, 2.0",
+      "PAM, good, 1.0",
+      "PAM, excellent, 1.0",
     }
   )
   void testSmoothnessImpactOnReluctanceWithAccessibilityProfile(
