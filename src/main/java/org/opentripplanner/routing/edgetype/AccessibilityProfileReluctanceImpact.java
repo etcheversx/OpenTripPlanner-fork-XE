@@ -128,15 +128,24 @@ public class AccessibilityProfileReluctanceImpact {
   private static final Function<Object, Integer> doNothing = value -> 1;
 
   static {
+    String[] keys = new AccessibilityPropertySet.Builder().build().propertyKeys();
     impactOnReluctance.put(AccessibilityProfile.NONE, new HashMap<>());
-    impactOnReluctance.get(AccessibilityProfile.NONE).put("width", doNothing);
+    for (String key : keys) {
+      impactOnReluctance.get(AccessibilityProfile.NONE).put(key, doNothing);
+    }
 
     impactOnReluctance.put(AccessibilityProfile.PAM, new HashMap<>());
+    for (String key : keys) {
+      impactOnReluctance.get(AccessibilityProfile.PAM).put(key, doNothing);
+    }
     impactOnReluctance.get(AccessibilityProfile.PAM).put("width", widthImpactForPAM);
     impactOnReluctance.get(AccessibilityProfile.PAM).put("surface", surfaceImpactForPAM);
     impactOnReluctance.get(AccessibilityProfile.PAM).put("smoothness", smoothnessImpactForPAM);
 
     impactOnReluctance.put(AccessibilityProfile.UFR, new HashMap<>());
+    for (String key : keys) {
+      impactOnReluctance.get(AccessibilityProfile.UFR).put(key, doNothing);
+    }
     impactOnReluctance.get(AccessibilityProfile.UFR).put("width", widthImpactForUFR);
     impactOnReluctance.get(AccessibilityProfile.UFR).put("surface", surfaceImpactForUFR);
   }

@@ -245,7 +245,9 @@ class AccessibilityProfileReluctanceImpactTest {
         1.0,
         new AccessibilityPropertySet.Builder()
           .withSmoothness(
-            edgeSmoothness != null ? OptionalEnum.get(edgeSmoothness.toString()) : OptionalEnum.empty()
+            edgeSmoothness != null
+              ? OptionalEnum.get(edgeSmoothness.toString())
+              : OptionalEnum.empty()
           )
           .build(),
         accessibilityProfile
