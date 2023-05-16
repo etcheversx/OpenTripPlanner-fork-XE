@@ -11,7 +11,7 @@ import org.opentripplanner.routing.api.request.preference.AccessibilityProfile;
 class AccessibilityProfileReluctanceImpactTest {
 
   @ParameterizedTest(
-    name = "Walk reluctance with accessibilityProfile={0} on edge with width={1} is {2}"
+    name = "Width impact with accessibilityProfile={0} on edge with width={1} is {2}"
   )
   @CsvSource(
     {

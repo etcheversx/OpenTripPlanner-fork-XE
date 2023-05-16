@@ -58,9 +58,11 @@ public class AccessibilityProfileReluctanceImpact {
     AccessibilityPropertySet edgeAccessibilityProperties,
     AccessibilityProfile accessibilityProfile
   ) {
-    OptionalValue<?> optionalProperty = edgeAccessibilityProperties.getProperty("width");
-    if (optionalProperty.isPresent()) {
-      reluctance *= impactOnReluctance.get(accessibilityProfile).get("width").apply(optionalProperty.getAsTyped());
+    for (String propertyKey : edgeAccessibilityProperties.propertyKeys()) {
+      OptionalValue<?> optionalProperty = edgeAccessibilityProperties.getProperty(propertyKey);
+      if (optionalProperty.isPresent()) {
+        reluctance *= impactOnReluctance.get(accessibilityProfile).get("width").apply(optionalProperty.getAsTyped());
+      }
     }
     return reluctance;
   }
