@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Function;
 import org.opentripplanner.graph_builder.module.osm.AccessibilityPropertySet;
-import org.opentripplanner.openstreetmap.model.OptionalNumber;
 import org.opentripplanner.openstreetmap.model.OptionalValue;
 import org.opentripplanner.routing.api.request.preference.AccessibilityProfile;
 
@@ -15,9 +14,12 @@ public class AccessibilityProfileReluctanceImpact {
   private static final Function<Object, Integer> widthImpactForPAM = value -> {
     Integer result = 1;
     if (value instanceof Double valueAsDouble) {
-      if (valueAsDouble < 0.8) result = 3; else if (valueAsDouble < 1.2) result = 2; else if (
+      if (valueAsDouble < 0.8) result = 3;
+      else if (valueAsDouble < 1.2) result = 2;
+      else if (
         valueAsDouble < 100.0
-      ) result = 1; else result = 3;
+      ) result = 1;
+      else result = 3;
     }
     return result;
   };
@@ -25,9 +27,13 @@ public class AccessibilityProfileReluctanceImpact {
   private static final Function<Object, Integer> widthImpactForUFR = value -> {
     Integer result = 1;
     if (value instanceof Double valueAsDouble) {
-      if (valueAsDouble < 0.8) result = 5; else if (valueAsDouble < 0.9) result = 4; else if (
+      if (valueAsDouble < 0.8) result = 5;
+      else if (valueAsDouble < 0.9) result = 4;
+      else if (
         valueAsDouble < 1.2
-      ) result = 3; else if (valueAsDouble < 1.4) result = 2; else result = 1;
+      ) result = 3;
+      else if (valueAsDouble < 1.4) result = 2;
+      else result = 1;
     }
     return result;
   };
@@ -52,9 +58,9 @@ public class AccessibilityProfileReluctanceImpact {
     AccessibilityPropertySet edgeAccessibilityProperties,
     AccessibilityProfile accessibilityProfile
   ) {
-    OptionalValue optionalWidth = edgeAccessibilityProperties.getWidth();
-    if (optionalWidth.isPresent()) {
-      reluctance *= impactOnReluctance.get(accessibilityProfile).get("width").apply(optionalWidth.getAsTyped());
+    OptionalValue<?> optionalProperty = edgeAccessibilityProperties.getProperty("width");
+    if (optionalProperty.isPresent()) {
+      reluctance *= impactOnReluctance.get(accessibilityProfile).get("width").apply(optionalProperty.getAsTyped());
     }
     return reluctance;
   }
