@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.opentripplanner.graph_builder.module.osm.AccessibilityPropertySet;
+import org.opentripplanner.openstreetmap.model.OSMSmoothness;
 import org.opentripplanner.openstreetmap.model.OSMSurface;
 import org.opentripplanner.openstreetmap.model.OptionalEnum;
 import org.opentripplanner.openstreetmap.model.OptionalNumber;
@@ -201,6 +202,42 @@ class AccessibilityProfileReluctanceImpactTest {
         new AccessibilityPropertySet.Builder()
           .withSurface(
             edgeSurface != null ? OptionalEnum.get(edgeSurface.toString()) : OptionalEnum.empty()
+          )
+          .build(),
+        accessibilityProfile
+      )
+    );
+  }
+
+  @ParameterizedTest(
+    name = "Smoothness impact with accessibilityProfile={0} on edge with smoothness={1} is {2}"
+  )
+  @CsvSource(
+    {
+      "NONE, , 1.0",
+      "NONE, impassable, 1.0",
+      "NONE, very_horrible, 1.0",
+      "NONE, horrible, 1.0",
+      "NONE, very_bad, 1.0",
+      "NONE, bad, 1.0",
+      "NONE, intermediate, 1.0",
+      "NONE, good, 1.0",
+      "NONE, excellent, 1.0",
+
+    }
+  )
+  void testSmoothnessImpactOnReluctanceWithAccessibilityProfile(
+    AccessibilityProfile accessibilityProfile,
+    OSMSmoothness edgeSmoothness,
+    Double expectedImpact
+  ) throws Exception {
+    assertEquals(
+      expectedImpact,
+      AccessibilityProfileReluctanceImpact.computeRegularWalkReluctanceWithAccessibilityProfile(
+        1.0,
+        new AccessibilityPropertySet.Builder()
+          .withSmoothness(
+            edgeSmoothness != null ? OptionalEnum.get(edgeSmoothness.toString()) : OptionalEnum.empty()
           )
           .build(),
         accessibilityProfile
