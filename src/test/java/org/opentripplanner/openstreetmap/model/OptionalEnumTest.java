@@ -73,7 +73,7 @@ class OptionalEnumTest {
   void testIsEmpty() {
     assertTrue(OptionalEnum.empty().isEmpty());
     for (Enum<?> enumerate : supportedEnums) {
-      assertFalse(optionalEnumOf(enumerate.name()).isEmpty());
+      assertFalse(optionalEnumOf(enumerate.toString()).isEmpty());
     }
   }
 
@@ -81,14 +81,14 @@ class OptionalEnumTest {
   void testIsPresent() {
     assertFalse(OptionalEnum.empty().isPresent());
     for (Enum<?> enumerate : supportedEnums) {
-      assertTrue(optionalEnumOf(enumerate.name()).isPresent());
+      assertTrue(optionalEnumOf(enumerate.toString()).isPresent());
     }
   }
 
   @Test
   void testGetAsEnum() {
     for (Enum<?> enumerate : supportedEnums) {
-      assertSame(enumerate, optionalEnumOf(enumerate.name()).getAsTyped());
+      assertSame(enumerate, optionalEnumOf(enumerate.toString()).getAsTyped());
     }
 
     try {

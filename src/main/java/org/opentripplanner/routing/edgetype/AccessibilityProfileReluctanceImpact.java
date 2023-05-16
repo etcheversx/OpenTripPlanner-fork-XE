@@ -15,12 +15,9 @@ public class AccessibilityProfileReluctanceImpact {
   private static final Function<Object, Integer> widthImpactForPAM = value -> {
     Integer result = 1;
     if (value instanceof Double valueAsDouble) {
-      if (valueAsDouble < 0.8) result = 3;
-      else if (valueAsDouble < 1.2) result = 2;
-      else if (
+      if (valueAsDouble < 0.8) result = 3; else if (valueAsDouble < 1.2) result = 2; else if (
         valueAsDouble < 100.0
-      ) result = 1;
-      else result = 3;
+      ) result = 1; else result = 3;
     }
     return result;
   };
@@ -28,13 +25,9 @@ public class AccessibilityProfileReluctanceImpact {
   private static final Function<Object, Integer> widthImpactForUFR = value -> {
     Integer result = 1;
     if (value instanceof Double valueAsDouble) {
-      if (valueAsDouble < 0.8) result = 5;
-      else if (valueAsDouble < 0.9) result = 4;
-      else if (
+      if (valueAsDouble < 0.8) result = 5; else if (valueAsDouble < 0.9) result = 4; else if (
         valueAsDouble < 1.2
-      ) result = 3;
-      else if (valueAsDouble < 1.4) result = 2;
-      else result = 1;
+      ) result = 3; else if (valueAsDouble < 1.4) result = 2; else result = 1;
     }
     return result;
   };
@@ -42,15 +35,36 @@ public class AccessibilityProfileReluctanceImpact {
   private static final Function<Object, Integer> surfaceImpactForUFR = value -> {
     Integer result = 1;
     if (value instanceof OSMSurface valueAsOSMSurface) {
-      result = switch (valueAsOSMSurface) {
-        case paved, asphalt, chipseal, concrete, metal, rubber, clay, tartan, acrylic, carpet -> 1;
-        case concrete_lanes, stepping_stones, gravel, rock, mud, sand, woodchips, snow, ice -> 5;
-        case concrete_plates, paving_stones, wood, unpaved, compacted, fine_gravel, artificial_turf ->
-          2;
-        case sett, metal_grid -> 3;
-        case cobblestone, unhewn_cobblestone, pebblestone, ground, dirt, earth, grass, grass_paver ->
-          4;
-      };
+      result =
+        switch (valueAsOSMSurface) {
+          case paved,
+            asphalt,
+            chipseal,
+            concrete,
+            metal,
+            rubber,
+            clay,
+            tartan,
+            acrylic,
+            carpet -> 1;
+          case concrete_lanes, stepping_stones, gravel, rock, mud, sand, woodchips, snow, ice -> 5;
+          case concrete_plates,
+            paving_stones,
+            wood,
+            unpaved,
+            compacted,
+            fine_gravel,
+            artificial_turf -> 2;
+          case sett, metal_grid -> 3;
+          case cobblestone,
+            unhewn_cobblestone,
+            pebblestone,
+            ground,
+            dirt,
+            earth,
+            grass,
+            grass_paver -> 4;
+        };
     }
     return result;
   };
@@ -77,7 +91,11 @@ public class AccessibilityProfileReluctanceImpact {
     for (String propertyKey : edgeAccessibilityProperties.propertyKeys()) {
       OptionalValue<?> optionalProperty = edgeAccessibilityProperties.getProperty(propertyKey);
       if (optionalProperty.isPresent()) {
-        reluctance *= impactOnReluctance.get(accessibilityProfile).get(propertyKey).apply(optionalProperty.getAsTyped());
+        reluctance *=
+          impactOnReluctance
+            .get(accessibilityProfile)
+            .get(propertyKey)
+            .apply(optionalProperty.getAsTyped());
       }
     }
     return reluctance;

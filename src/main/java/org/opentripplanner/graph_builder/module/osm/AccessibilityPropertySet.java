@@ -85,7 +85,7 @@ public class AccessibilityPropertySet implements Serializable {
   }
 
   public String[] propertyKeys() {
-    String [] result = {};
+    String[] result = {};
     return properties.keySet().toArray(result);
   }
 

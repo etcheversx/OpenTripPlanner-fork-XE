@@ -43,7 +43,7 @@ public enum OSMSurface {
 
   private final String label;
 
-  OSMSurface (String label) {
+  OSMSurface(String label) {
     this.label = label;
   }
 
@@ -56,7 +56,6 @@ public enum OSMSurface {
     OptionalEnum.parseValues(values).forEach(e -> result.add((OSMSurface) e.getAsTyped()));
     return result;
   }
-
 
   @Override
   public String toString() {

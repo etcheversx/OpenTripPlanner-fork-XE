@@ -113,8 +113,6 @@ class AccessibilityProfileReluctanceImpactTest {
       "UFR, artificial_turf, 2",
       "UFR, acrylic, 1",
       "UFR, carpet, 1",
-
-
     }
   )
   void testSurfaceImpactOnReluctanceWithAccessibilityProfile(
