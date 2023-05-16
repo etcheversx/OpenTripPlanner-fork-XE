@@ -22,6 +22,46 @@ public class AccessibilityProfileReluctanceImpact {
     return result;
   };
 
+  private static final Function<Object, Integer> surfaceImpactForPAM = value -> {
+    Integer result = 1;
+    if (value instanceof OSMSurface valueAsOSMSurface) {
+      result =
+        switch (valueAsOSMSurface) {
+          case paved,
+            asphalt,
+            chipseal,
+            concrete,
+            concrete_lanes,
+            metal,
+            rubber,
+            clay,
+            tartan,
+            artificial_turf,
+            acrylic,
+            carpet -> 1;
+          case concrete_plates, paving_stones, sett, wood, unpaved, compacted, fine_gravel -> 2;
+          case cobblestone,
+            unhewn_cobblestone,
+            stepping_stones,
+            gravel,
+            pebblestone,
+            ground,
+            dirt,
+            earth,
+            grass,
+            grass_paver,
+            metal_grid,
+            mud,
+            sand,
+            woodchips,
+            snow,
+            ice -> 4;
+          case rock -> 5;
+        };
+    }
+    return result;
+  };
+
   private static final Function<Object, Integer> widthImpactForUFR = value -> {
     Integer result = 1;
     if (value instanceof Double valueAsDouble) {
@@ -77,6 +117,7 @@ public class AccessibilityProfileReluctanceImpact {
 
     impactOnReluctance.put(AccessibilityProfile.PAM, new HashMap<>());
     impactOnReluctance.get(AccessibilityProfile.PAM).put("width", widthImpactForPAM);
+    impactOnReluctance.get(AccessibilityProfile.PAM).put("surface", surfaceImpactForPAM);
 
     impactOnReluctance.put(AccessibilityProfile.UFR, new HashMap<>());
     impactOnReluctance.get(AccessibilityProfile.UFR).put("width", widthImpactForUFR);
