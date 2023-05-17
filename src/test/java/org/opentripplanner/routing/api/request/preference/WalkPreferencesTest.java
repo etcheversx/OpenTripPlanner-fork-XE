@@ -32,7 +32,7 @@ class WalkPreferencesTest {
   private static final boolean TACTILE_PAVING = true;
   private static final OSMSmoothness RELUCTED_SMOOTHNESS = OSMSmoothness.intermediate;
   private static final double MAXIMAL_INCLINE = 1.25;
-  private static final double MAXIMAL_TRAV_H_TRT = 0.17;
+  private static final double RESSAUT_MAX = 0.17;
   private static final AccessibilityProfile ACCESSIBILITY_PROFILE = AccessibilityProfile.PAM;
 
   private final WalkPreferences subject = WalkPreferences
@@ -49,7 +49,7 @@ class WalkPreferencesTest {
     .withTactilePaving(TACTILE_PAVING)
     .withReluctedSmoothness(RELUCTED_SMOOTHNESS)
     .withMaximalIncline(MAXIMAL_INCLINE)
-    .withMaximalTravHTrt(MAXIMAL_TRAV_H_TRT)
+    .withRessautMax(RESSAUT_MAX)
     .withAccessibilityProfile(ACCESSIBILITY_PROFILE)
     .build();
 
@@ -99,7 +99,7 @@ class WalkPreferencesTest {
   void testToString() {
     assertEquals("WalkPreferences{}", WalkPreferences.DEFAULT.toString());
     assertEquals(
-      "WalkPreferences{speed: 1.71, reluctance: 2.5, boardCost: 301, stairsReluctance: 3.0, stairsTimeFactor: 1.31, safetyFactor: 0.51, minimalWidth: 0.85, lightRequired, reluctedSurfaces: [sand, grass], tactilePaving, reluctedSmoothness: 'intermediate', maximalIncline: 1.25, maximalTravHTrt: 0.17, accessibilityProfile: 'PAM'}",
+      "WalkPreferences{speed: 1.71, reluctance: 2.5, boardCost: 301, stairsReluctance: 3.0, stairsTimeFactor: 1.31, safetyFactor: 0.51, minimalWidth: 0.85, lightRequired, reluctedSurfaces: [sand, grass], tactilePaving, reluctedSmoothness: 'intermediate', maximalIncline: 1.25, ressautMax: 0.17, accessibilityProfile: 'PAM'}",
       subject.toString()
     );
   }
@@ -142,8 +142,8 @@ class WalkPreferencesTest {
   }
 
   @Test
-  void maximalTravHTrt() {
-    assertEquals(MAXIMAL_TRAV_H_TRT, subject.maximalTravHTrt());
+  void ressautMax() {
+    assertEquals(RESSAUT_MAX, subject.ressautMax());
   }
 
   @Test

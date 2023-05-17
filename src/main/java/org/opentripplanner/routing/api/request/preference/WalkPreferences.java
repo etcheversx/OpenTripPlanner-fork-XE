@@ -38,7 +38,7 @@ public final class WalkPreferences implements Serializable {
   private final boolean tactilePaving;
   private final OSMSmoothness reluctedSmoothness;
   private final double maximalIncline;
-  private final double maximalTravHTrt;
+  private final double ressautMax;
   private final AccessibilityProfile accessibilityProfile;
 
   private WalkPreferences() {
@@ -54,7 +54,7 @@ public final class WalkPreferences implements Serializable {
     this.tactilePaving = false;
     this.reluctedSmoothness = OSMSmoothness.impassable;
     this.maximalIncline = Double.MAX_VALUE;
-    this.maximalTravHTrt = Double.MAX_VALUE;
+    this.ressautMax = Double.MAX_VALUE;
     this.accessibilityProfile = AccessibilityProfile.NONE;
   }
 
@@ -71,7 +71,7 @@ public final class WalkPreferences implements Serializable {
     this.tactilePaving = builder.tactilePaving;
     this.reluctedSmoothness = builder.reluctedSmoothness;
     this.maximalIncline = builder.maximalIncline;
-    this.maximalTravHTrt = builder.maximalTravHTrt;
+    this.ressautMax = builder.ressautMax;
     this.accessibilityProfile = builder.accessibilityProfile;
   }
 
@@ -163,8 +163,8 @@ public final class WalkPreferences implements Serializable {
     return maximalIncline;
   }
 
-  public double maximalTravHTrt() {
-    return maximalTravHTrt;
+  public double ressautMax() {
+    return ressautMax;
   }
 
   public AccessibilityProfile accessibilityProfile() {
@@ -189,7 +189,7 @@ public final class WalkPreferences implements Serializable {
       tactilePaving == that.tactilePaving &&
       reluctedSmoothness.equals(that.reluctedSmoothness) &&
       doubleEquals(that.maximalIncline, maximalIncline) &&
-      doubleEquals(that.maximalTravHTrt, maximalTravHTrt) &&
+      doubleEquals(that.ressautMax, ressautMax) &&
       accessibilityProfile.equals(that.accessibilityProfile)
     );
   }
@@ -227,7 +227,7 @@ public final class WalkPreferences implements Serializable {
         OSMSmoothness.impassable.toString()
       )
       .addNum("maximalIncline", maximalIncline, DEFAULT.maximalIncline)
-      .addNum("maximalTravHTrt", maximalTravHTrt, DEFAULT.maximalTravHTrt)
+      .addNum("ressautMax", ressautMax, DEFAULT.ressautMax)
       .addStr(
         "accessibilityProfile",
         accessibilityProfile.toString(),
@@ -251,7 +251,7 @@ public final class WalkPreferences implements Serializable {
     private boolean tactilePaving = false;
     private OSMSmoothness reluctedSmoothness = OSMSmoothness.impassable;
     private double maximalIncline = 0.0;
-    private double maximalTravHTrt = 0.0;
+    private double ressautMax = 0.0;
     private AccessibilityProfile accessibilityProfile = null;
 
     public Builder(WalkPreferences original) {
@@ -268,7 +268,7 @@ public final class WalkPreferences implements Serializable {
       this.tactilePaving = original.tactilePaving;
       this.reluctedSmoothness = original.reluctedSmoothness;
       this.maximalIncline = original.maximalIncline;
-      this.maximalTravHTrt = original.maximalTravHTrt;
+      this.ressautMax = original.ressautMax;
       this.accessibilityProfile = original.accessibilityProfile;
     }
 
@@ -366,8 +366,8 @@ public final class WalkPreferences implements Serializable {
       return this;
     }
 
-    public Builder withMaximalTravHTrt(double maximalTravHTrt) {
-      this.maximalTravHTrt = maximalTravHTrt;
+    public Builder withRessautMax(double ressautMax) {
+      this.ressautMax = ressautMax;
       return this;
     }
 

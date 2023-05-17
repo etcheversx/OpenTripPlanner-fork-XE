@@ -60,7 +60,7 @@ class RequestToPreferencesMapper {
       setIfNotNull(req.tactilePaving, walk::withTactilePaving);
       setIfNotNull(OSMSmoothness.weakValueOf(req.requiredSmoothness), walk::withReluctedSmoothness);
       setIfNotNull(req.maximalIncline, walk::withMaximalIncline);
-      setIfNotNull(req.maximalTravHTrt, walk::withMaximalTravHTrt);
+      setIfNotNull(req.maximalTravHTrt, walk::withRessautMax);
       setIfNotNull(
         AccessibilityProfile.weakValueOf(req.accessibilityProfile),
         walk::withAccessibilityProfile

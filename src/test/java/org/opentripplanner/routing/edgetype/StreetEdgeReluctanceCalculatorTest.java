@@ -268,7 +268,7 @@ class StreetEdgeReluctanceCalculatorTest {
     Double expectedWalkReluctance
   ) {
     if (maximalTravHTrt != null) {
-      routingPreferencesBuilder.withWalk(w -> w.withMaximalTravHTrt(maximalTravHTrt));
+      routingPreferencesBuilder.withWalk(w -> w.withRessautMax(maximalTravHTrt));
     }
 
     assertEquals(
