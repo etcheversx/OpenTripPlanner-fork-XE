@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.opentripplanner.graph_builder.module.osm.AccessibilityPropertySet;
+import org.opentripplanner.openstreetmap.model.OSMHighway;
 import org.opentripplanner.openstreetmap.model.OSMSmoothness;
 import org.opentripplanner.openstreetmap.model.OSMSurface;
 import org.opentripplanner.openstreetmap.model.OptionalEnum;
@@ -364,6 +365,41 @@ class AccessibilityProfileReluctanceImpactTest {
             (edgeIncline != null && !"up".equals(edgeIncline) && !"down".equals(edgeIncline))
               ? OptionalEnumAndDouble.get(edgeIncline.toString())
               : OptionalEnumAndDouble.empty()
+          )
+          .build(),
+        accessibilityProfile
+      )
+    );
+  }
+
+  @ParameterizedTest(
+    name = "Highway impact with accessibilityProfile={0} on edge with highway={1} is {2}"
+  )
+  @CsvSource(
+    {
+      "NONE, , 1.0",
+      "NONE, pedestrian, 1.0",
+      "NONE, footway, 1.0",
+      "NONE, steps, 1.0",
+      "NONE, elevator, 1.0",
+      "NONE, corridor, 1.0",
+      "NONE, residential, 1.0",
+    }
+  )
+  void testHighwayImpactOnReluctanceWithAccessibilityProfile(
+    AccessibilityProfile accessibilityProfile,
+    OSMHighway edgeHighway,
+    Double expectedImpact
+  ) throws Exception {
+    assertEquals(
+      expectedImpact,
+      AccessibilityProfileReluctanceImpact.computeRegularWalkReluctanceWithAccessibilityProfile(
+        1.0,
+        new AccessibilityPropertySet.Builder()
+          .withHighway(
+            edgeHighway != null
+              ? OptionalEnum.get(edgeHighway.toString())
+              : OptionalEnum.empty()
           )
           .build(),
         accessibilityProfile
