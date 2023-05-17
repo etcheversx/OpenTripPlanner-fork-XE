@@ -157,6 +157,19 @@ public class AccessibilityProfileReluctanceImpact {
     return result;
   };
 
+  private static final Function<Object, Integer> inclineImpactForUFR = value -> {
+    Integer result = 1;
+    if (value instanceof Double valueAsDouble) {
+      Double absValueAsDouble = Math.abs(valueAsDouble);
+      if (absValueAsDouble <= 4) result = 1;
+      else if (absValueAsDouble <= 5) result = 2;
+      else if (absValueAsDouble <= 6) result = 3;
+      else if (absValueAsDouble <= 7) result = 4;
+      else result = 5;
+    }
+    return result;
+  };
+
   private static final Function<Object, Integer> doNothing = value -> 1;
 
   static {
@@ -182,6 +195,7 @@ public class AccessibilityProfileReluctanceImpact {
     impactOnReluctance.get(AccessibilityProfile.UFR).put("width", widthImpactForUFR);
     impactOnReluctance.get(AccessibilityProfile.UFR).put("surface", surfaceImpactForUFR);
     impactOnReluctance.get(AccessibilityProfile.UFR).put("smoothness", smoothnessImpactForUFR);
+    impactOnReluctance.get(AccessibilityProfile.UFR).put("incline", inclineImpactForUFR);
   }
 
   static double computeRegularWalkReluctanceWithAccessibilityProfile(
