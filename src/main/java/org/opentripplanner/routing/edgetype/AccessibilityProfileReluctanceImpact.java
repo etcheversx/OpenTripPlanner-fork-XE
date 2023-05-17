@@ -185,6 +185,16 @@ public class AccessibilityProfileReluctanceImpact {
     return result;
   };
 
+  private static final Function<Object, Integer> highwayImpactForUFR = value -> {
+    Integer result = 1;
+    if (value instanceof OSMHighway typedValue) {
+      if (typedValue.equals(OSMHighway.steps)) {
+        result = 5;
+      }
+    }
+    return result;
+  };
+
   private static final Function<Object, Integer> doNothing = value -> 1;
 
   static {
@@ -212,6 +222,7 @@ public class AccessibilityProfileReluctanceImpact {
     impactOnReluctance.get(AccessibilityProfile.UFR).put("surface", surfaceImpactForUFR);
     impactOnReluctance.get(AccessibilityProfile.UFR).put("smoothness", smoothnessImpactForUFR);
     impactOnReluctance.get(AccessibilityProfile.UFR).put("incline", inclineImpactForUFR);
+    impactOnReluctance.get(AccessibilityProfile.UFR).put("highway", highwayImpactForUFR);
   }
 
   static double computeRegularWalkReluctanceWithAccessibilityProfile(

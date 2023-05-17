@@ -391,6 +391,13 @@ class AccessibilityProfileReluctanceImpactTest {
       "PAM, elevator, 1.0",
       "PAM, corridor, 1.0",
       "PAM, residential, 1.0",
+      "UFR, , 1.0",
+      "UFR, pedestrian, 1.0",
+      "UFR, footway, 1.0",
+      "UFR, steps, 5.0",
+      "UFR, elevator, 1.0",
+      "UFR, corridor, 1.0",
+      "UFR, residential, 1.0",
     }
   )
   void testHighwayImpactOnReluctanceWithAccessibilityProfile(
