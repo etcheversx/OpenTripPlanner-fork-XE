@@ -23,7 +23,8 @@ public class AccessibilityPropertySet implements Serializable {
     @NotNull OptionalEnum highway,
     @NotNull OptionalEnum footway,
     @NotNull OptionalEnumAndDouble incline,
-    @NotNull OptionalNumber ressautMax
+    @NotNull OptionalNumber ressautMax,
+    OptionalNumber ressautMin
   ) {
     this.properties.put("width", width);
     this.properties.put("lit", lit);
@@ -34,6 +35,7 @@ public class AccessibilityPropertySet implements Serializable {
     this.properties.put("footway", footway);
     this.properties.put("incline", incline);
     this.properties.put("wgt:ressaut_max", ressautMax);
+    this.properties.put("wgt:ressaut_min", ressautMin);
   }
 
   public OptionalNumber getWidth() {
@@ -75,6 +77,10 @@ public class AccessibilityPropertySet implements Serializable {
     return (OptionalNumber) properties.getOrDefault("wgt:ressaut_max", OptionalNumber.empty());
   }
 
+  public OptionalNumber getRessautMin() {
+    return (OptionalNumber) properties.getOrDefault("wgt:ressaut_min", OptionalNumber.empty());
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;
@@ -103,6 +109,7 @@ public class AccessibilityPropertySet implements Serializable {
     private OptionalEnum footway = OptionalEnum.empty();
     private OptionalEnumAndDouble incline = OptionalEnumAndDouble.empty();
     private OptionalNumber ressautMax = OptionalNumber.empty();
+    private OptionalNumber ressautMin = OptionalNumber.empty();
 
     public Builder withWidth(OptionalNumber width) {
       this.width = width;
@@ -149,6 +156,11 @@ public class AccessibilityPropertySet implements Serializable {
       return this;
     }
 
+    public Builder withRessautMin(OptionalNumber ressautMin) {
+      this.ressautMin = ressautMin;
+      return this;
+    }
+
     public AccessibilityPropertySet build() {
       return new AccessibilityPropertySet(
         width,
@@ -159,7 +171,8 @@ public class AccessibilityPropertySet implements Serializable {
         highway,
         footway,
         incline,
-        ressautMax
+        ressautMax,
+        ressautMin
       );
     }
   }

@@ -36,6 +36,7 @@ public class AccessibilityPropertySetTest {
       "footway",
       "incline",
       "wgt:ressaut_max",
+      "wgt:ressaut_min",
     };
     String[] propertyKeys = accessibilityPropertySet.propertyKeys();
     assertArrayEquals(
@@ -133,5 +134,13 @@ public class AccessibilityPropertySetTest {
     accessibilityPropertySet =
       new AccessibilityPropertySet.Builder().withRessautMax(ressautMax).build();
     assertEquals(ressautMax, accessibilityPropertySet.getRessautMax());
+  }
+
+  @Test
+  void testRessautMinGetSet() {
+    OptionalNumber ressautMin = OptionalNumber.get("0.12");
+    accessibilityPropertySet =
+      new AccessibilityPropertySet.Builder().withRessautMin(ressautMin).build();
+    assertEquals(ressautMin, accessibilityPropertySet.getRessautMin());
   }
 }
