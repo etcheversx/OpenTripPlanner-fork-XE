@@ -190,10 +190,7 @@ public final class WalkPreferences implements Serializable {
       reluctedSmoothness.equals(that.reluctedSmoothness) &&
       doubleEquals(that.maximalIncline, maximalIncline) &&
       doubleEquals(that.ressautMax, ressautMax) &&
-      (
-        (accessibilityProfile == null && that.accessibilityProfile == null) ||
-        (accessibilityProfile != null && accessibilityProfile.equals(that.accessibilityProfile))
-      )
+      Objects.equals(accessibilityProfile, that.accessibilityProfile)
     );
   }
 
