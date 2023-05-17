@@ -39,6 +39,7 @@ public final class WalkPreferences implements Serializable {
   private final OSMSmoothness reluctedSmoothness;
   private final double maximalIncline;
   private final double ressautMax;
+  private final double ressautMin;
   private final AccessibilityProfile accessibilityProfile;
 
   private WalkPreferences() {
@@ -55,6 +56,7 @@ public final class WalkPreferences implements Serializable {
     this.reluctedSmoothness = OSMSmoothness.impassable;
     this.maximalIncline = Double.MAX_VALUE;
     this.ressautMax = Double.MAX_VALUE;
+    this.ressautMin = 0.0;
     this.accessibilityProfile = null;
   }
 
@@ -72,6 +74,7 @@ public final class WalkPreferences implements Serializable {
     this.reluctedSmoothness = builder.reluctedSmoothness;
     this.maximalIncline = builder.maximalIncline;
     this.ressautMax = builder.ressautMax;
+    this.ressautMin = builder.ressautMin;
     this.accessibilityProfile = builder.accessibilityProfile;
   }
 
@@ -167,6 +170,10 @@ public final class WalkPreferences implements Serializable {
     return ressautMax;
   }
 
+  public double ressautMin() {
+    return ressautMin;
+  }
+
   public AccessibilityProfile accessibilityProfile() {
     return accessibilityProfile;
   }
@@ -190,6 +197,7 @@ public final class WalkPreferences implements Serializable {
       reluctedSmoothness.equals(that.reluctedSmoothness) &&
       doubleEquals(that.maximalIncline, maximalIncline) &&
       doubleEquals(that.ressautMax, ressautMax) &&
+      doubleEquals(that.ressautMin, ressautMin) &&
       Objects.equals(accessibilityProfile, that.accessibilityProfile)
     );
   }
@@ -228,6 +236,7 @@ public final class WalkPreferences implements Serializable {
       )
       .addNum("maximalIncline", maximalIncline, DEFAULT.maximalIncline)
       .addNum("ressautMax", ressautMax, DEFAULT.ressautMax)
+      .addNum("ressautMin", ressautMin, DEFAULT.ressautMin)
       .addObj("accessibilityProfile", accessibilityProfile, null)
       .toString();
   }
@@ -248,6 +257,7 @@ public final class WalkPreferences implements Serializable {
     private OSMSmoothness reluctedSmoothness = OSMSmoothness.impassable;
     private double maximalIncline = 0.0;
     private double ressautMax = 0.0;
+    private double ressautMin = 0.0;
     private AccessibilityProfile accessibilityProfile = null;
 
     public Builder(WalkPreferences original) {
@@ -265,6 +275,7 @@ public final class WalkPreferences implements Serializable {
       this.reluctedSmoothness = original.reluctedSmoothness;
       this.maximalIncline = original.maximalIncline;
       this.ressautMax = original.ressautMax;
+      this.ressautMin = original.ressautMin;
       this.accessibilityProfile = original.accessibilityProfile;
     }
 
@@ -364,6 +375,11 @@ public final class WalkPreferences implements Serializable {
 
     public Builder withRessautMax(double ressautMax) {
       this.ressautMax = ressautMax;
+      return this;
+    }
+
+    public Builder withRessautMin(double ressautMin) {
+      this.ressautMin = ressautMin;
       return this;
     }
 
