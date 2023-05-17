@@ -352,8 +352,8 @@ public abstract class RoutingResource {
   @QueryParam("maximalIncline")
   protected Double maximalIncline;
 
-  @QueryParam("maximalTravHTrt")
-  protected Double maximalTravHTrt;
+  @QueryParam("ressautMax")
+  protected Double ressautMax;
 
   @QueryParam("accessibilityProfile")
   protected String accessibilityProfile;
