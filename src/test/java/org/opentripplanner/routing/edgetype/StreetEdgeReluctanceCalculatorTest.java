@@ -275,7 +275,7 @@ class StreetEdgeReluctanceCalculatorTest {
       expectedWalkReluctance,
       computeWalkReluctance(
         new AccessibilityPropertySet.Builder()
-          .withTravHTrt(
+          .withRessautMax(
             edgeTravHTrt != null
               ? OptionalNumber.get(edgeTravHTrt.toString())
               : OptionalNumber.empty()

@@ -346,7 +346,9 @@ class AccessibilityProfileReluctanceImpactTest {
         1.0,
         new AccessibilityPropertySet.Builder()
           .withIncline(
-            edgeIncline != null ? OptionalEnumAndDouble.get(edgeIncline.toString()) : OptionalEnumAndDouble.empty()
+            edgeIncline != null
+              ? OptionalEnumAndDouble.get(edgeIncline.toString())
+              : OptionalEnumAndDouble.empty()
           )
           .build(),
         accessibilityProfile
@@ -359,7 +361,9 @@ class AccessibilityProfileReluctanceImpactTest {
         1.0,
         new AccessibilityPropertySet.Builder()
           .withIncline(
-            (edgeIncline != null && !"up".equals(edgeIncline) && !"down".equals(edgeIncline)) ? OptionalEnumAndDouble.get(edgeIncline.toString()) : OptionalEnumAndDouble.empty()
+            (edgeIncline != null && !"up".equals(edgeIncline) && !"down".equals(edgeIncline))
+              ? OptionalEnumAndDouble.get(edgeIncline.toString())
+              : OptionalEnumAndDouble.empty()
           )
           .build(),
         accessibilityProfile

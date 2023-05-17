@@ -620,7 +620,7 @@ public class OpenStreetMapModule implements GraphBuilderModule {
         .withHighway(parseHighway(element))
         .withFootway(parseFootway(element))
         .withIncline(parseIncline(element))
-        .withTravHTrt(parseTravHTrt(element))
+        .withRessautMax(parseTravHTrt(element))
         .build();
     }
 

@@ -35,7 +35,7 @@ public class AccessibilityPropertySetTest {
       "highway",
       "footway",
       "incline",
-      "trav_h_trt",
+      "wgt:ressaut_max",
     };
     String[] propertyKeys = accessibilityPropertySet.propertyKeys();
     assertArrayEquals(
@@ -128,10 +128,10 @@ public class AccessibilityPropertySetTest {
   }
 
   @Test
-  void testTravHTrtGetSet() {
-    OptionalNumber travHTrt = OptionalNumber.get("0.25");
+  void testRessautMaxGetSet() {
+    OptionalNumber ressautMax = OptionalNumber.get("0.25");
     accessibilityPropertySet =
-      new AccessibilityPropertySet.Builder().withTravHTrt(travHTrt).build();
-    assertEquals(travHTrt, accessibilityPropertySet.getTravHTrt());
+      new AccessibilityPropertySet.Builder().withRessautMax(ressautMax).build();
+    assertEquals(ressautMax, accessibilityPropertySet.getRessautMax());
   }
 }

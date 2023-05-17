@@ -1,7 +1,6 @@
 package org.opentripplanner.graph_builder.module.osm;
 
 import java.io.Serializable;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import javax.validation.constraints.NotNull;
@@ -24,7 +23,7 @@ public class AccessibilityPropertySet implements Serializable {
     @NotNull OptionalEnum highway,
     @NotNull OptionalEnum footway,
     @NotNull OptionalEnumAndDouble incline,
-    @NotNull OptionalNumber travHTrt
+    @NotNull OptionalNumber ressautMax
   ) {
     this.properties.put("width", width);
     this.properties.put("lit", lit);
@@ -34,7 +33,7 @@ public class AccessibilityPropertySet implements Serializable {
     this.properties.put("highway", highway);
     this.properties.put("footway", footway);
     this.properties.put("incline", incline);
-    this.properties.put("trav_h_trt", travHTrt);
+    this.properties.put("wgt:ressaut_max", ressautMax);
   }
 
   public OptionalNumber getWidth() {
@@ -72,8 +71,8 @@ public class AccessibilityPropertySet implements Serializable {
     );
   }
 
-  public OptionalNumber getTravHTrt() {
-    return (OptionalNumber) properties.getOrDefault("trav_h_trt", OptionalNumber.empty());
+  public OptionalNumber getRessautMax() {
+    return (OptionalNumber) properties.getOrDefault("wgt:ressaut_max", OptionalNumber.empty());
   }
 
   @Override
@@ -103,7 +102,7 @@ public class AccessibilityPropertySet implements Serializable {
     private OptionalEnum highway = OptionalEnum.empty();
     private OptionalEnum footway = OptionalEnum.empty();
     private OptionalEnumAndDouble incline = OptionalEnumAndDouble.empty();
-    private OptionalNumber travHTrt = OptionalNumber.empty();
+    private OptionalNumber ressautMax = OptionalNumber.empty();
 
     public Builder withWidth(OptionalNumber width) {
       this.width = width;
@@ -145,8 +144,8 @@ public class AccessibilityPropertySet implements Serializable {
       return this;
     }
 
-    public Builder withTravHTrt(OptionalNumber travHTrt) {
-      this.travHTrt = travHTrt;
+    public Builder withRessautMax(OptionalNumber ressautMax) {
+      this.ressautMax = ressautMax;
       return this;
     }
 
@@ -160,7 +159,7 @@ public class AccessibilityPropertySet implements Serializable {
         highway,
         footway,
         incline,
-        travHTrt
+        ressautMax
       );
     }
   }

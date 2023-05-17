@@ -1259,7 +1259,7 @@ public class StreetEdge
           .withHighway(accessibilityProperties.getHighway())
           .withFootway(accessibilityProperties.getFootway())
           .withIncline(incline)
-          .withTravHTrt(accessibilityProperties.getTravHTrt())
+          .withRessautMax(accessibilityProperties.getRessautMax())
           .build();
     } else {
       this.accessibilityProperties = accessibilityProperties;

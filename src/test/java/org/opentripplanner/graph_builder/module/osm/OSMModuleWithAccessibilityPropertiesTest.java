@@ -377,11 +377,11 @@ public class OSMModuleWithAccessibilityPropertiesTest {
   }
 
   private static boolean isTravHTrtPresent(StreetEdge edge) {
-    return edge.getAccessibilityProperties().getTravHTrt().isPresent();
+    return edge.getAccessibilityProperties().getRessautMax().isPresent();
   }
 
   private static Object getTravHTrtValue(StreetEdge edge) {
-    return edge.getAccessibilityProperties().getTravHTrt().getAsTyped();
+    return edge.getAccessibilityProperties().getRessautMax().getAsTyped();
   }
 
   @ParameterizedTest(
