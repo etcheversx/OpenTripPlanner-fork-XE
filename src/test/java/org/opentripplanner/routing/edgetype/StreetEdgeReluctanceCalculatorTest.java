@@ -250,7 +250,7 @@ class StreetEdgeReluctanceCalculatorTest {
   }
 
   @ParameterizedTest(
-    name = "Walk reluctance with maximalTravHTrt={0} on edge with trav_h_trt={1} is {2}"
+    name = "Walk reluctance with ressautMax={0} on edge with wgt:ressaut_max={1} is {2}"
   )
   @CsvSource(
     {
@@ -262,13 +262,13 @@ class StreetEdgeReluctanceCalculatorTest {
       "0.15, 0.17, 4.0",
     }
   )
-  void testReluctanceProcessingWithTravHTrt(
-    Double maximalTravHTrt,
-    Double edgeTravHTrt,
+  void testReluctanceProcessingWithRessautMax(
+    Double ressautMax,
+    Double edgeRessautMax,
     Double expectedWalkReluctance
   ) {
-    if (maximalTravHTrt != null) {
-      routingPreferencesBuilder.withWalk(w -> w.withRessautMax(maximalTravHTrt));
+    if (ressautMax != null) {
+      routingPreferencesBuilder.withWalk(w -> w.withRessautMax(ressautMax));
     }
 
     assertEquals(
@@ -276,8 +276,8 @@ class StreetEdgeReluctanceCalculatorTest {
       computeWalkReluctance(
         new AccessibilityPropertySet.Builder()
           .withRessautMax(
-            edgeTravHTrt != null
-              ? OptionalNumber.get(edgeTravHTrt.toString())
+            edgeRessautMax != null
+              ? OptionalNumber.get(edgeRessautMax.toString())
               : OptionalNumber.empty()
           )
           .build()
