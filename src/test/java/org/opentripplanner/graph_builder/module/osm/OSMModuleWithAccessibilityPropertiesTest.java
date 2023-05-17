@@ -410,4 +410,39 @@ public class OSMModuleWithAccessibilityPropertiesTest {
       expectedValue
     );
   }
+
+  private static boolean isRessautMinPresent(StreetEdge edge) {
+    return edge.getAccessibilityProperties().getRessautMin().isPresent();
+  }
+
+  private static Object getRessautMinValue(StreetEdge edge) {
+    return edge.getAccessibilityProperties().getRessautMin().getAsTyped();
+  }
+
+  @ParameterizedTest(
+    name = "On edge from {0} to {1} wgt:ressaut_min expected presence is {2} and expected value is {3}"
+  )
+  @CsvSource(
+    {
+      "-1659017, -1659280, true, 0.03",
+      "-1659280, -1659017, true, 0.03",
+      "-1656814, -1659965, false, ",
+      "-1659965, -1656814, false, ",
+    }
+  )
+  public void testBuildGraphWithRessautMin(
+    String fromId,
+    String toId,
+    boolean expectedPresence,
+    Double expectedValue
+  ) {
+    checkProperty(
+      fromId,
+      toId,
+      OSMModuleWithAccessibilityPropertiesTest::isRessautMinPresent,
+      OSMModuleWithAccessibilityPropertiesTest::getRessautMinValue,
+      expectedPresence,
+      expectedValue
+    );
+  }
 }

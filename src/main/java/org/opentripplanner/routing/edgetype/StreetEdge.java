@@ -1260,6 +1260,7 @@ public class StreetEdge
           .withFootway(accessibilityProperties.getFootway())
           .withIncline(incline)
           .withRessautMax(accessibilityProperties.getRessautMax())
+          .withRessautMin(accessibilityProperties.getRessautMin())
           .build();
     } else {
       this.accessibilityProperties = accessibilityProperties;

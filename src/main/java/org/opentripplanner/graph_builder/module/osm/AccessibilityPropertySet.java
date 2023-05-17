@@ -24,7 +24,7 @@ public class AccessibilityPropertySet implements Serializable {
     @NotNull OptionalEnum footway,
     @NotNull OptionalEnumAndDouble incline,
     @NotNull OptionalNumber ressautMax,
-    OptionalNumber ressautMin
+    @NotNull OptionalNumber ressautMin
   ) {
     this.properties.put("width", width);
     this.properties.put("lit", lit);
