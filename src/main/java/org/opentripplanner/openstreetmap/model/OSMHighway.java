@@ -1,9 +1,11 @@
 package org.opentripplanner.openstreetmap.model;
 
 public enum OSMHighway {
-  steps,
-  footway,
-  residential,
+  any,
   pedestrian,
-  railway,
+  footway,
+  steps,
+  elevator,
+  corridor,
+  residential,
 }
