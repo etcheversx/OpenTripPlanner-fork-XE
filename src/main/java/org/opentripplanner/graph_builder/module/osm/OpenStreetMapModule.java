@@ -590,13 +590,13 @@ public class OpenStreetMapModule implements GraphBuilderModule {
       );
     }
 
-    private OptionalNumber parseTravHTrt(OSMWithTags element) {
+    private OptionalNumber parseRessautMax(OSMWithTags element) {
       OptionalDouble result = element.getTagAsDouble(
-        "trav_h_trt",
+        "wgt:ressaut_max",
         v ->
           issueStore.add(
             Issue.issue(
-              "InvalidTravHTrt",
+              "InvalidRessautMax",
               "Width for osm node %d is not a number: '%s'; it's replaced with '0.0' (unknown).",
               element.getId(),
               v
@@ -620,7 +620,7 @@ public class OpenStreetMapModule implements GraphBuilderModule {
         .withHighway(parseHighway(element))
         .withFootway(parseFootway(element))
         .withIncline(parseIncline(element))
-        .withRessautMax(parseTravHTrt(element))
+        .withRessautMax(parseRessautMax(element))
         .build();
     }
 

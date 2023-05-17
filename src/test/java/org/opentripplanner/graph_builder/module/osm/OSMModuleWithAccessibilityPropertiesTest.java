@@ -376,16 +376,16 @@ public class OSMModuleWithAccessibilityPropertiesTest {
     );
   }
 
-  private static boolean isTravHTrtPresent(StreetEdge edge) {
+  private static boolean isRessautMaxPresent(StreetEdge edge) {
     return edge.getAccessibilityProperties().getRessautMax().isPresent();
   }
 
-  private static Object getTravHTrtValue(StreetEdge edge) {
+  private static Object getRessautMaxValue(StreetEdge edge) {
     return edge.getAccessibilityProperties().getRessautMax().getAsTyped();
   }
 
   @ParameterizedTest(
-    name = "On edge from {0} to {1} trav_h_trt expected presence is {2} and expected value is {3}"
+    name = "On edge from {0} to {1} wgt:ressaut_max expected presence is {2} and expected value is {3}"
   )
   @CsvSource(
     {
@@ -395,7 +395,7 @@ public class OSMModuleWithAccessibilityPropertiesTest {
       "-1659965, -1656814, false, ",
     }
   )
-  public void testBuildGraphWithTravHTrt(
+  public void testBuildGraphWithRessautMax(
     String fromId,
     String toId,
     boolean expectedPresence,
@@ -404,8 +404,8 @@ public class OSMModuleWithAccessibilityPropertiesTest {
     checkProperty(
       fromId,
       toId,
-      OSMModuleWithAccessibilityPropertiesTest::isTravHTrtPresent,
-      OSMModuleWithAccessibilityPropertiesTest::getTravHTrtValue,
+      OSMModuleWithAccessibilityPropertiesTest::isRessautMaxPresent,
+      OSMModuleWithAccessibilityPropertiesTest::getRessautMaxValue,
       expectedPresence,
       expectedValue
     );
