@@ -1,6 +1,6 @@
 package org.opentripplanner.routing.edgetype;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -20,17 +20,6 @@ class AccessibilityProfileReluctanceImpactTest {
   )
   @CsvSource(
     {
-      "NONE, , 1.0",
-      "NONE, 100.0, 1.0",
-      "NONE, 99.99, 1.0",
-      "NONE, 1.4, 1.0",
-      "NONE, 1.39, 1.0",
-      "NONE, 1.2, 1.0",
-      "NONE, 1.19, 1.0",
-      "NONE, 0.90, 1.0",
-      "NONE, 0.89, 1.0",
-      "NONE, 0.80, 1.0",
-      "NONE, 0.79, 1.0",
       "PAM, , 1.0",
       "PAM, 100.0, 3.0",
       "PAM, 99.99, 1.0",
@@ -79,43 +68,6 @@ class AccessibilityProfileReluctanceImpactTest {
   )
   @CsvSource(
     {
-      "NONE, , 1.0",
-      "NONE, paved, 1",
-      "NONE, asphalt, 1",
-      "NONE, chipseal, 1",
-      "NONE, concrete, 1",
-      "NONE, concrete_lanes, 1",
-      "NONE, concrete_plates, 1",
-      "NONE, metal, 1",
-      "NONE, paving_stones, 1",
-      "NONE, sett, 1",
-      "NONE, cobblestone, 1",
-      "NONE, unhewn_cobblestone, 1",
-      "NONE, wood, 1",
-      "NONE, stepping_stones, 1",
-      "NONE, rubber, 1",
-      "NONE, unpaved, 1",
-      "NONE, compacted, 1",
-      "NONE, fine_gravel, 1",
-      "NONE, gravel, 1",
-      "NONE, rock, 1",
-      "NONE, pebblestone, 1",
-      "NONE, ground, 1",
-      "NONE, dirt, 1",
-      "NONE, earth, 1",
-      "NONE, grass, 1",
-      "NONE, grass_paver, 1",
-      "NONE, metal_grid, 1",
-      "NONE, mud, 1",
-      "NONE, sand, 1",
-      "NONE, woodchips, 1",
-      "NONE, snow, 1",
-      "NONE, ice, 1",
-      "NONE, clay, 1",
-      "NONE, tartan, 1",
-      "NONE, artificial_turf, 1",
-      "NONE, acrylic, 1",
-      "NONE, carpet, 1",
       "PAM, , 1.0",
       "PAM, paved, 1",
       "PAM, asphalt, 1",
@@ -216,15 +168,6 @@ class AccessibilityProfileReluctanceImpactTest {
   )
   @CsvSource(
     {
-      "NONE, , 1.0",
-      "NONE, impassable, 1.0",
-      "NONE, very_horrible, 1.0",
-      "NONE, horrible, 1.0",
-      "NONE, very_bad, 1.0",
-      "NONE, bad, 1.0",
-      "NONE, intermediate, 1.0",
-      "NONE, good, 1.0",
-      "NONE, excellent, 1.0",
       "PAM, , 1.0",
       "PAM, impassable, 5.0",
       "PAM, very_horrible, 5.0",
@@ -271,27 +214,6 @@ class AccessibilityProfileReluctanceImpactTest {
   )
   @CsvSource(
     {
-      "NONE, , 1.0",
-      "NONE, up, 1.0",
-      "NONE, down, 1.0",
-      "NONE, 4.0, 1.0",
-      "NONE, 4.01, 1.0",
-      "NONE, 5.0, 1.0",
-      "NONE, 5.01, 1.0",
-      "NONE, 6.0, 1.0",
-      "NONE, 6.01, 1.0",
-      "NONE, 7.0, 1.0",
-      "NONE, 7.01, 1.0",
-      "NONE, 8.0, 1.0",
-      "NONE, 8.01, 1.0",
-      "NONE, 9.0, 1.0",
-      "NONE, 9.01, 1.0",
-      "NONE, 10.0, 1.0",
-      "NONE, 10.01, 1.0",
-      "NONE, 11.0, 1.0",
-      "NONE, 11.01, 1.0",
-      "NONE, 12.0, 1.0",
-      "NONE, 12.01, 1.0",
       "PAM, , 1.0",
       "PAM, up, 1.0",
       "PAM, down, 1.0",
@@ -348,7 +270,7 @@ class AccessibilityProfileReluctanceImpactTest {
         new AccessibilityPropertySet.Builder()
           .withIncline(
             edgeIncline != null
-              ? OptionalEnumAndDouble.get(edgeIncline.toString())
+              ? OptionalEnumAndDouble.get(edgeIncline)
               : OptionalEnumAndDouble.empty()
           )
           .build(),
@@ -363,7 +285,7 @@ class AccessibilityProfileReluctanceImpactTest {
         new AccessibilityPropertySet.Builder()
           .withIncline(
             (edgeIncline != null && !"up".equals(edgeIncline) && !"down".equals(edgeIncline))
-              ? OptionalEnumAndDouble.get(edgeIncline.toString())
+              ? OptionalEnumAndDouble.get(edgeIncline)
               : OptionalEnumAndDouble.empty()
           )
           .build(),
@@ -377,13 +299,6 @@ class AccessibilityProfileReluctanceImpactTest {
   )
   @CsvSource(
     {
-      "NONE, , 1.0",
-      "NONE, pedestrian, 1.0",
-      "NONE, footway, 1.0",
-      "NONE, steps, 1.0",
-      "NONE, elevator, 1.0",
-      "NONE, corridor, 1.0",
-      "NONE, residential, 1.0",
       "PAM, , 1.0",
       "PAM, pedestrian, 1.0",
       "PAM, footway, 1.0",
@@ -411,9 +326,7 @@ class AccessibilityProfileReluctanceImpactTest {
         1.0,
         new AccessibilityPropertySet.Builder()
           .withHighway(
-            edgeHighway != null
-              ? OptionalEnum.get(edgeHighway.toString())
-              : OptionalEnum.empty()
+            edgeHighway != null ? OptionalEnum.get(edgeHighway.toString()) : OptionalEnum.empty()
           )
           .build(),
         accessibilityProfile
