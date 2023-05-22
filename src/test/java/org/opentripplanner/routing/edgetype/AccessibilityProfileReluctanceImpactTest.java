@@ -8,6 +8,7 @@ import org.opentripplanner.graph_builder.module.osm.AccessibilityPropertySet;
 import org.opentripplanner.openstreetmap.model.OSMHighway;
 import org.opentripplanner.openstreetmap.model.OSMSmoothness;
 import org.opentripplanner.openstreetmap.model.OSMSurface;
+import org.opentripplanner.openstreetmap.model.OptionalBoolean;
 import org.opentripplanner.openstreetmap.model.OptionalEnum;
 import org.opentripplanner.openstreetmap.model.OptionalEnumAndDouble;
 import org.opentripplanner.openstreetmap.model.OptionalNumber;
@@ -411,6 +412,37 @@ class AccessibilityProfileReluctanceImpactTest {
             edgeRessautMin != null
               ? OptionalNumber.get(edgeRessautMin.toString())
               : OptionalNumber.empty()
+          )
+          .build(),
+        accessibilityProfile
+      )
+    );
+  }
+
+  @ParameterizedTest(
+    name = "BevCtrast impact with accessibilityProfile={0} on edge with wgt:bev_ctrast={1} is {2}"
+  )
+  @CsvSource(
+    {
+      "PAM, , 1.0",
+      "PAM, false, 1.0",
+      "PAM, true, 3.0",
+    }
+  )
+  void testBevCtrastImpactOnReluctanceWithAccessibilityProfile(
+    AccessibilityProfile accessibilityProfile,
+    Boolean edgeBevCtrast,
+    Double expectedImpact
+  ) {
+    assertEquals(
+      expectedImpact,
+      AccessibilityProfileReluctanceImpact.computeRegularWalkReluctanceWithAccessibilityProfile(
+        1.0,
+        new AccessibilityPropertySet.Builder()
+          .withBevCtrast(
+            edgeBevCtrast != null
+              ? OptionalBoolean.of(edgeBevCtrast)
+              : OptionalBoolean.empty()
           )
           .build(),
         accessibilityProfile

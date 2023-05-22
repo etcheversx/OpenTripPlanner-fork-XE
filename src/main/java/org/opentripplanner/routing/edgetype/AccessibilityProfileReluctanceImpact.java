@@ -118,6 +118,14 @@ public class AccessibilityProfileReluctanceImpact {
     return result;
   };
 
+  private static final Function<Object, Integer> bevCtrastImpactForPAM = value -> {
+    Integer result = 1;
+    if (value instanceof Boolean valueAsBoolean) {
+      if (valueAsBoolean) result = 3; else result = 1;
+    }
+    return result;
+  };
+
   private static final Function<Object, Integer> widthImpactForUFR = value -> {
     Integer result = 1;
     if (value instanceof Double valueAsDouble) {
@@ -225,6 +233,7 @@ public class AccessibilityProfileReluctanceImpact {
     impactOnReluctance.get(AccessibilityProfile.PAM).put("highway", highwayImpactForPAM);
     impactOnReluctance.get(AccessibilityProfile.PAM).put("wgt:ressaut_max", ressautMaxImpactForPAM);
     impactOnReluctance.get(AccessibilityProfile.PAM).put("wgt:ressaut_min", ressautMinImpactForPAM);
+    impactOnReluctance.get(AccessibilityProfile.PAM).put("wgt:bev_ctrast", bevCtrastImpactForPAM);
 
     impactOnReluctance.put(AccessibilityProfile.UFR, new HashMap<>());
     for (String key : keys) {
