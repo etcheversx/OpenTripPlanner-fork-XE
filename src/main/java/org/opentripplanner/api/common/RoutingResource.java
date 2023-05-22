@@ -358,6 +358,9 @@ public abstract class RoutingResource {
   @QueryParam("ressautMin")
   protected Double ressautMin;
 
+  @QueryParam("bevCtrast")
+  protected Boolean bevCtrast;
+
   @QueryParam("accessibilityProfile")
   protected String accessibilityProfile;
 

@@ -62,6 +62,7 @@ class RequestToPreferencesMapper {
       setIfNotNull(req.maximalIncline, walk::withMaximalIncline);
       setIfNotNull(req.ressautMax, walk::withRessautMax);
       setIfNotNull(req.ressautMin, walk::withRessautMin);
+      setIfNotNull(req.bevCtrast, walk::withBevCtrast);
       setIfNotNull(
         AccessibilityProfile.weakValueOf(req.accessibilityProfile),
         walk::withAccessibilityProfile
