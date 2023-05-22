@@ -285,6 +285,42 @@ class StreetEdgeReluctanceCalculatorTest {
     );
   }
 
+  @ParameterizedTest(
+    name = "Walk reluctance with ressautMin={0} on edge with wgt:ressaut_min={1} is {2}"
+  )
+  @CsvSource(
+    {
+      ", , 2.0",
+      "0.02, , 2.0",
+      ", 0.03, 2.0",
+      "0.02, 0.03, 2.0",
+      "0.03, 0.03, 2.0",
+      "0.04, 0.03, 4.0",
+    }
+  )
+  void testReluctanceProcessingWithRessautMin(
+    Double ressautMin,
+    Double edgeRessautMin,
+    Double expectedWalkReluctance
+  ) {
+    if (ressautMin != null) {
+      routingPreferencesBuilder.withWalk(w -> w.withRessautMin(ressautMin));
+    }
+
+    assertEquals(
+      expectedWalkReluctance,
+      computeWalkReluctance(
+        new AccessibilityPropertySet.Builder()
+          .withRessautMin(
+            edgeRessautMin != null
+              ? OptionalNumber.get(edgeRessautMin.toString())
+              : OptionalNumber.empty()
+          )
+          .build()
+      )
+    );
+  }
+
   private double computeWalkReluctance(AccessibilityPropertySet edgeAccessibilityProperties) {
     return StreetEdgeReluctanceCalculator.computeReluctance(
       routingPreferencesBuilder.build(),

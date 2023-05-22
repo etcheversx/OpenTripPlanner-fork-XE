@@ -114,6 +114,10 @@ class StreetEdgeReluctanceCalculator {
     if (ressautMax.isPresent() && ressautMax.getAsTyped() > walkPreferences.ressautMax()) {
       reluctance *= 2;
     }
+    OptionalNumber ressautMin = edgeAccessibilityProperties.getRessautMin();
+    if (ressautMin.isPresent() && ressautMin.getAsTyped() < walkPreferences.ressautMin()) {
+      reluctance *= 2;
+    }
     return reluctance;
   }
 
