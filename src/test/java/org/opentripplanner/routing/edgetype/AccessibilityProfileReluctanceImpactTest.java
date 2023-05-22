@@ -333,4 +333,43 @@ class AccessibilityProfileReluctanceImpactTest {
       )
     );
   }
+
+  @ParameterizedTest(
+    name = "RessautMax impact with accessibilityProfile={0} on edge with wgt:ressaut_max={1} is {2}"
+  )
+  @CsvSource(
+    {
+      "PAM, , 1.0",
+      "PAM, 0.0, 3.0",
+      "PAM, 0.001, 1.0",
+      "PAM, 0.02, 1.0",
+      "PAM, 0.021, 2.0",
+      "PAM, 0.04, 2.0",
+      "PAM, 0.041, 2.0",
+      "PAM, 0.06, 2.0",
+      "PAM, 0.061, 3.0",
+      "PAM, 0.12, 3.0",
+      "PAM, 0.121, 3.0",
+    }
+  )
+  void testRessautMaxImpactOnReluctanceWithAccessibilityProfile(
+    AccessibilityProfile accessibilityProfile,
+    Double edgeRessautMax,
+    Double expectedImpact
+  ) {
+    assertEquals(
+      expectedImpact,
+      AccessibilityProfileReluctanceImpact.computeRegularWalkReluctanceWithAccessibilityProfile(
+        1.0,
+        new AccessibilityPropertySet.Builder()
+          .withRessautMax(
+            edgeRessautMax != null
+              ? OptionalNumber.get(edgeRessautMax.toString())
+              : OptionalNumber.empty()
+          )
+          .build(),
+        accessibilityProfile
+      )
+    );
+  }
 }
