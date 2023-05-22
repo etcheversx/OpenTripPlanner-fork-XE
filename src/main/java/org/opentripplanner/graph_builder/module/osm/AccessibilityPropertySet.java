@@ -24,7 +24,9 @@ public class AccessibilityPropertySet implements Serializable {
     @NotNull OptionalEnum footway,
     @NotNull OptionalEnumAndDouble incline,
     @NotNull OptionalNumber ressautMax,
-    @NotNull OptionalNumber ressautMin
+    @NotNull OptionalNumber ressautMin,
+    @NotNull OptionalEnum bevEtat,
+    @NotNull OptionalBoolean bevCtrast
   ) {
     this.properties.put("width", width);
     this.properties.put("lit", lit);
@@ -36,6 +38,8 @@ public class AccessibilityPropertySet implements Serializable {
     this.properties.put("incline", incline);
     this.properties.put("wgt:ressaut_max", ressautMax);
     this.properties.put("wgt:ressaut_min", ressautMin);
+    this.properties.put("wgt:bev_etat", bevEtat);
+    this.properties.put("wgt:bev_ctrast", bevCtrast);
   }
 
   public OptionalNumber getWidth() {
@@ -81,6 +85,14 @@ public class AccessibilityPropertySet implements Serializable {
     return (OptionalNumber) properties.getOrDefault("wgt:ressaut_min", OptionalNumber.empty());
   }
 
+  public OptionalEnum getBevEtat() {
+    return (OptionalEnum) properties.getOrDefault("wgt:bev_etat", OptionalEnum.empty());
+  }
+
+  public OptionalBoolean getBevCtrast() {
+    return (OptionalBoolean) properties.getOrDefault("wgt:bev_ctrast", OptionalBoolean.empty());
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;
@@ -110,6 +122,8 @@ public class AccessibilityPropertySet implements Serializable {
     private OptionalEnumAndDouble incline = OptionalEnumAndDouble.empty();
     private OptionalNumber ressautMax = OptionalNumber.empty();
     private OptionalNumber ressautMin = OptionalNumber.empty();
+    private OptionalEnum bevEtat = OptionalEnum.empty();
+    private OptionalBoolean bevCtrast = OptionalBoolean.empty();
 
     public Builder withWidth(OptionalNumber width) {
       this.width = width;
@@ -161,6 +175,16 @@ public class AccessibilityPropertySet implements Serializable {
       return this;
     }
 
+    public Builder withBevEtat(OptionalEnum bevEtat) {
+      this.bevEtat = bevEtat;
+      return this;
+    }
+
+    public Builder withBevCtrast(OptionalBoolean bevCtrast) {
+      this.bevCtrast = bevCtrast;
+      return this;
+    }
+
     public AccessibilityPropertySet build() {
       return new AccessibilityPropertySet(
         width,
@@ -172,7 +196,9 @@ public class AccessibilityPropertySet implements Serializable {
         footway,
         incline,
         ressautMax,
-        ressautMin
+        ressautMin,
+        bevEtat,
+        bevCtrast
       );
     }
   }

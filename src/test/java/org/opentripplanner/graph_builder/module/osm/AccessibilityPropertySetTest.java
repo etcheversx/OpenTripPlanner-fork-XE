@@ -37,6 +37,8 @@ public class AccessibilityPropertySetTest {
       "incline",
       "wgt:ressaut_max",
       "wgt:ressaut_min",
+      "wgt:bev_etat",
+      "wgt:bev_ctrast",
     };
     String[] propertyKeys = accessibilityPropertySet.propertyKeys();
     assertArrayEquals(
@@ -142,5 +144,20 @@ public class AccessibilityPropertySetTest {
     accessibilityPropertySet =
       new AccessibilityPropertySet.Builder().withRessautMin(ressautMin).build();
     assertEquals(ressautMin, accessibilityPropertySet.getRessautMin());
+  }
+
+  @Test
+  void testBevEtatGetSet() {
+    OptionalEnum bevEtat = optionalEnumOf("bad");
+    accessibilityPropertySet = new AccessibilityPropertySet.Builder().withBevEtat(bevEtat).build();
+    assertEquals(bevEtat, accessibilityPropertySet.getBevEtat());
+  }
+
+  @Test
+  void testBevCtrastGetSet() {
+    OptionalBoolean bevCtrast = OptionalBoolean.no();
+    accessibilityPropertySet =
+      new AccessibilityPropertySet.Builder().withBevCtrast(bevCtrast).build();
+    assertEquals(bevCtrast, accessibilityPropertySet.getBevCtrast());
   }
 }
