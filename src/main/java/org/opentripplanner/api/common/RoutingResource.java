@@ -355,6 +355,9 @@ public abstract class RoutingResource {
   @QueryParam("ressautMax")
   protected Double ressautMax;
 
+  @QueryParam("ressautMin")
+  protected Double ressautMin;
+
   @QueryParam("accessibilityProfile")
   protected String accessibilityProfile;
 
