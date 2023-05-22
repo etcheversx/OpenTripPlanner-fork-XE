@@ -118,6 +118,10 @@ class StreetEdgeReluctanceCalculator {
     if (ressautMin.isPresent() && ressautMin.getAsTyped() < walkPreferences.ressautMin()) {
       reluctance *= 2;
     }
+    OptionalBoolean bevCtrast = edgeAccessibilityProperties.getBevCtrast();
+    if (bevCtrast.isPresent() && !bevCtrast.getAsTyped() && walkPreferences.bevCtrast()) {
+      reluctance *= 2;
+    }
     return reluctance;
   }
 

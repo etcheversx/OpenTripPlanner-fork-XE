@@ -321,6 +321,41 @@ class StreetEdgeReluctanceCalculatorTest {
     );
   }
 
+  @ParameterizedTest(name = "Walk reluctance with bevCtrast={0} on edge with bevCtrast={1} is {2}")
+  @CsvSource(
+    {
+      ", , 2.0",
+      "true, , 2.0",
+      "false, , 2.0",
+      ", true, 2.0",
+      ", false, 2.0",
+      "true, true, 2.0",
+      "false, true, 2.0",
+      "true, false, 4.0",
+      "false, false, 2.0",
+    }
+  )
+  void testReluctanceProcessingWithBevCtrast(
+    Boolean bevCtrast,
+    Boolean edgeBevCtrast,
+    Double expectedWalkReluctance
+  ) {
+    if (bevCtrast != null) {
+      routingPreferencesBuilder.withWalk(w -> w.withBevCtrast(bevCtrast));
+    }
+
+    assertEquals(
+      expectedWalkReluctance,
+      computeWalkReluctance(
+        new AccessibilityPropertySet.Builder()
+          .withBevCtrast(
+            edgeBevCtrast != null ? OptionalBoolean.of(edgeBevCtrast) : OptionalBoolean.empty()
+          )
+          .build()
+      )
+    );
+  }
+
   private double computeWalkReluctance(AccessibilityPropertySet edgeAccessibilityProperties) {
     return StreetEdgeReluctanceCalculator.computeReluctance(
       routingPreferencesBuilder.build(),
