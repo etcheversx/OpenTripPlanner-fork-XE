@@ -445,4 +445,39 @@ public class OSMModuleWithAccessibilityPropertiesTest {
       expectedValue
     );
   }
+
+  private static boolean isBevCtrastPresent(StreetEdge edge) {
+    return edge.getAccessibilityProperties().getBevCtrast().isPresent();
+  }
+
+  private static Object getBevCtrastValue(StreetEdge edge) {
+    return edge.getAccessibilityProperties().getBevCtrast().getAsTyped();
+  }
+
+  @ParameterizedTest(
+    name = "On edge from {0} to {1} wgt:bev_ctrast expected presence is {2} and expected value is {3}"
+  )
+  @CsvSource(
+    {
+      "-1659017, -1659280, true, true",
+      "-1659280, -1659017, true, true",
+      "-1656814, -1659965, false, ",
+      "-1659965, -1656814, false, ",
+    }
+  )
+  public void testBuildGraphWithBevCtrast(
+    String fromId,
+    String toId,
+    boolean expectedPresence,
+    Boolean expectedValue
+  ) {
+    checkProperty(
+      fromId,
+      toId,
+      OSMModuleWithAccessibilityPropertiesTest::isBevCtrastPresent,
+      OSMModuleWithAccessibilityPropertiesTest::getBevCtrastValue,
+      expectedPresence,
+      expectedValue
+    );
+  }
 }

@@ -629,6 +629,21 @@ public class OpenStreetMapModule implements GraphBuilderModule {
       return OptionalNumber.empty();
     }
 
+    private OptionalBoolean parseBevCtrast(OSMWithTags element) {
+      return element.getTagAsBoolean(
+        "wgt:bev_ctrast",
+        v ->
+          issueStore.add(
+            Issue.issue(
+              "InvalidBevCtrast",
+              "BevCtrast for osm node %d is not a boolean: '%s'; it's replaced with empty.",
+              element.getId(),
+              v
+            )
+          )
+      );
+    }
+
     private AccessibilityPropertySet parseAccessibilityProperties(OSMWithTags element) {
       return new AccessibilityPropertySet.Builder()
         .withWidth(parseWidth(element))
@@ -641,6 +656,7 @@ public class OpenStreetMapModule implements GraphBuilderModule {
         .withIncline(parseIncline(element))
         .withRessautMax(parseRessautMax(element))
         .withRessautMin(parseRessautMin(element))
+        .withBevCtrast(parseBevCtrast(element))
         .build();
     }
 

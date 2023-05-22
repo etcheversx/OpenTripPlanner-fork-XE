@@ -81,7 +81,6 @@ public class OptionalEnum<T extends Enum<T>> implements OptionalValue<T> {
     createTypedOptionalEnum(OSMHighway.values());
     createTypedOptionalEnum(OSMFootway.values());
     createTypedOptionalEnum(OSMIncline.values());
-    createTypedOptionalEnum(OSMBEVEtat.values());
   }
 
   @Override

@@ -1261,6 +1261,7 @@ public class StreetEdge
           .withIncline(incline)
           .withRessautMax(accessibilityProperties.getRessautMax())
           .withRessautMin(accessibilityProperties.getRessautMin())
+          .withBevCtrast(accessibilityProperties.getBevCtrast())
           .build();
     } else {
       this.accessibilityProperties = accessibilityProperties;
