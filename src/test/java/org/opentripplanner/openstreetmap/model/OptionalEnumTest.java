@@ -107,7 +107,7 @@ class OptionalEnumTest {
 
     assertEquals(0, OptionalEnum.parseValues("").size());
 
-    ArrayList<OptionalEnum> parsedValues;
+    ArrayList<OptionalEnum<OSMSurface>> parsedValues;
     ArrayList<OptionalEnum> expectedValues;
 
     parsedValues = OptionalEnum.parseValues("sand");

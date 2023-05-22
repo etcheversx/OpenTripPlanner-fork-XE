@@ -8,15 +8,15 @@ import java.util.NoSuchElementException;
 import java.util.Objects;
 import javax.validation.constraints.NotNull;
 
-public class OptionalEnum implements OptionalValue<Enum<?>> {
+public class OptionalEnum<T extends Enum<T>> implements OptionalValue<T> {
 
-  private static final OptionalEnum empty = new OptionalEnum();
-  private static final Map<Enum<?>, OptionalEnum> optionalEnums = new HashMap<>();
-  private Enum<?> enumerate;
+  private static final OptionalEnum<?> empty = new OptionalEnum<>();
+  private static final Map<Enum<?>, OptionalEnum<?>> optionalEnums = new HashMap<>();
+  private T enumerate;
 
   private OptionalEnum() {}
 
-  private OptionalEnum(Enum<?> enumerate) {
+  private OptionalEnum(T enumerate) {
     this.enumerate = enumerate;
   }
 
@@ -24,7 +24,7 @@ public class OptionalEnum implements OptionalValue<Enum<?>> {
     return empty;
   }
 
-  public static OptionalEnum get(String value) throws Exception {
+  public static OptionalEnum<?> get(String value) throws Exception {
     for (Enum<?> enumerate : optionalEnums.keySet()) {
       if (enumerate.toString().equals(value)) {
         return optionalEnums.get(enumerate);
@@ -33,8 +33,8 @@ public class OptionalEnum implements OptionalValue<Enum<?>> {
     throw new Exception("Invalid enum value " + value);
   }
 
-  public static ArrayList<OptionalEnum> parseValues(String values) {
-    ArrayList<OptionalEnum> result = new ArrayList<>();
+  public static <E extends Enum<E>> ArrayList<OptionalEnum<E>> parseValues(String values) {
+    ArrayList<OptionalEnum<E>> result = new ArrayList<>();
     if (values == null) {
       return result;
     }
@@ -42,7 +42,7 @@ public class OptionalEnum implements OptionalValue<Enum<?>> {
       .stream(values.split(";"))
       .forEach(s -> {
         try {
-          OptionalEnum optionalEnum = OptionalEnum.get(s);
+          OptionalEnum<E> optionalEnum = (OptionalEnum<E>) get(s);
           if (!result.contains(optionalEnum)) {
             result.add(optionalEnum);
           }
@@ -62,16 +62,16 @@ public class OptionalEnum implements OptionalValue<Enum<?>> {
   }
 
   @Override
-  public Enum<?> getAsTyped() {
+  public T getAsTyped() {
     if (!isPresent()) {
       throw new NoSuchElementException("No value present");
     }
     return this.enumerate;
   }
 
-  private static void createTypedOptionalEnum(@NotNull Enum<?>[] values) {
-    for (Enum<?> value : values) {
-      optionalEnums.put(value, new OptionalEnum(value));
+  private static <E extends Enum<E>> void createTypedOptionalEnum(@NotNull E[] values) {
+    for (E value : values) {
+      optionalEnums.put(value, new OptionalEnum<>(value));
     }
   }
 
@@ -81,6 +81,7 @@ public class OptionalEnum implements OptionalValue<Enum<?>> {
     createTypedOptionalEnum(OSMHighway.values());
     createTypedOptionalEnum(OSMFootway.values());
     createTypedOptionalEnum(OSMIncline.values());
+    createTypedOptionalEnum(OSMBEVEtat.values());
   }
 
   @Override
