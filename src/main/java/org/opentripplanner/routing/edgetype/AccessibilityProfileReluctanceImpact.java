@@ -17,9 +17,12 @@ public class AccessibilityProfileReluctanceImpact {
   private static final Function<Object, Integer> widthImpactForPAM = value -> {
     Integer result = 1;
     if (value instanceof Double valueAsDouble) {
-      if (valueAsDouble < 0.8) result = 3; else if (valueAsDouble < 1.2) result = 2; else if (
+      if (valueAsDouble < 0.8) result = 3;
+      else if (valueAsDouble < 1.2) result = 2;
+      else if (
         valueAsDouble < 100.0
-      ) result = 1; else result = 3;
+      ) result = 1;
+      else result = 3;
     }
     return result;
   };
@@ -83,9 +86,12 @@ public class AccessibilityProfileReluctanceImpact {
     Integer result = 1;
     if (value instanceof Double valueAsDouble) {
       Double absValueAsDouble = Math.abs(valueAsDouble);
-      if (absValueAsDouble <= 4) result = 1; else if (absValueAsDouble <= 7) result = 2; else if (
+      if (absValueAsDouble <= 4) result = 1;
+      else if (absValueAsDouble <= 7) result = 2;
+      else if (
         absValueAsDouble <= 11
-      ) result = 3; else result = 4;
+      ) result = 3;
+      else result = 4;
     }
     return result;
   };
@@ -103,9 +109,12 @@ public class AccessibilityProfileReluctanceImpact {
   private static final Function<Object, Integer> ressautMaxImpactForPAM = value -> {
     Integer result = 1;
     if (value instanceof Double valueAsDouble) {
-      if (valueAsDouble == 0.0) result = 3; else if (valueAsDouble <= 0.02) result = 1; else if (
+      if (valueAsDouble == 0.0) result = 3;
+      else if (valueAsDouble <= 0.02) result = 1;
+      else if (
         valueAsDouble <= 0.06
-      ) result = 2; else result = 3;
+      ) result = 2;
+      else result = 3;
     }
     return result;
   };
@@ -113,9 +122,13 @@ public class AccessibilityProfileReluctanceImpact {
   private static final Function<Object, Integer> widthImpactForUFR = value -> {
     Integer result = 1;
     if (value instanceof Double valueAsDouble) {
-      if (valueAsDouble < 0.8) result = 5; else if (valueAsDouble < 0.9) result = 4; else if (
+      if (valueAsDouble < 0.8) result = 5;
+      else if (valueAsDouble < 0.9) result = 4;
+      else if (
         valueAsDouble < 1.2
-      ) result = 3; else if (valueAsDouble < 1.4) result = 2; else result = 1;
+      ) result = 3;
+      else if (valueAsDouble < 1.4) result = 2;
+      else result = 1;
     }
     return result;
   };
@@ -174,9 +187,13 @@ public class AccessibilityProfileReluctanceImpact {
     Integer result = 1;
     if (value instanceof Double valueAsDouble) {
       Double absValueAsDouble = Math.abs(valueAsDouble);
-      if (absValueAsDouble <= 4) result = 1; else if (absValueAsDouble <= 5) result = 2; else if (
+      if (absValueAsDouble <= 4) result = 1;
+      else if (absValueAsDouble <= 5) result = 2;
+      else if (
         absValueAsDouble <= 6
-      ) result = 3; else if (absValueAsDouble <= 7) result = 4; else result = 5;
+      ) result = 3;
+      else if (absValueAsDouble <= 7) result = 4;
+      else result = 5;
     }
     return result;
   };
@@ -187,6 +204,18 @@ public class AccessibilityProfileReluctanceImpact {
       if (typedValue.equals(OSMHighway.steps)) {
         result = 5;
       }
+    }
+    return result;
+  };
+
+  private static final Function<Object, Integer> ressautMaxImpactForUFR = value -> {
+    Integer result = 1;
+    if (value instanceof Double valueAsDouble) {
+      if (valueAsDouble <= 0.02) result = 1;
+      else if (valueAsDouble <= 0.04) result = 2;
+      else if (valueAsDouble <= 0.06) result = 3;
+      else if (valueAsDouble <= 0.12) result = 4;
+      else result = 5;
     }
     return result;
   };
@@ -216,6 +245,7 @@ public class AccessibilityProfileReluctanceImpact {
     impactOnReluctance.get(AccessibilityProfile.UFR).put("smoothness", smoothnessImpactForUFR);
     impactOnReluctance.get(AccessibilityProfile.UFR).put("incline", inclineImpactForUFR);
     impactOnReluctance.get(AccessibilityProfile.UFR).put("highway", highwayImpactForUFR);
+    impactOnReluctance.get(AccessibilityProfile.UFR).put("wgt:ressaut_max", ressautMaxImpactForUFR);
   }
 
   static double computeRegularWalkReluctanceWithAccessibilityProfile(

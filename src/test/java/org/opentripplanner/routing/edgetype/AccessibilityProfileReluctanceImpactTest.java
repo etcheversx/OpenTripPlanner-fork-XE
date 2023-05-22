@@ -350,6 +350,17 @@ class AccessibilityProfileReluctanceImpactTest {
       "PAM, 0.061, 3.0",
       "PAM, 0.12, 3.0",
       "PAM, 0.121, 3.0",
+      "UFR, , 1.0",
+      "UFR, 0.0, 1.0",
+      "UFR, 0.001, 1.0",
+      "UFR, 0.02, 1.0",
+      "UFR, 0.021, 2.0",
+      "UFR, 0.04, 2.0",
+      "UFR, 0.041, 3.0",
+      "UFR, 0.06, 3.0",
+      "UFR, 0.061, 4.0",
+      "UFR, 0.12, 4.0",
+      "UFR, 0.121, 5.0",
     }
   )
   void testRessautMaxImpactOnReluctanceWithAccessibilityProfile(
