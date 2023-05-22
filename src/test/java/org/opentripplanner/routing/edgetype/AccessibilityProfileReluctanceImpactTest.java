@@ -383,4 +383,35 @@ class AccessibilityProfileReluctanceImpactTest {
       )
     );
   }
+
+  @ParameterizedTest(
+    name = "RessautMin impact with accessibilityProfile={0} on edge with wgt:ressaut_min={1} is {2}"
+  )
+  @CsvSource(
+    {
+      "PAM, , 1.0",
+      "PAM, 0.0, 3.0",
+      "PAM, 0.001, 1.0",
+    }
+  )
+  void testRessautMinImpactOnReluctanceWithAccessibilityProfile(
+    AccessibilityProfile accessibilityProfile,
+    Double edgeRessautMin,
+    Double expectedImpact
+  ) {
+    assertEquals(
+      expectedImpact,
+      AccessibilityProfileReluctanceImpact.computeRegularWalkReluctanceWithAccessibilityProfile(
+        1.0,
+        new AccessibilityPropertySet.Builder()
+          .withRessautMin(
+            edgeRessautMin != null
+              ? OptionalNumber.get(edgeRessautMin.toString())
+              : OptionalNumber.empty()
+          )
+          .build(),
+        accessibilityProfile
+      )
+    );
+  }
 }

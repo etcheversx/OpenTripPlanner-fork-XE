@@ -119,6 +119,15 @@ public class AccessibilityProfileReluctanceImpact {
     return result;
   };
 
+  private static final Function<Object, Integer> ressautMinImpactForPAM = value -> {
+    Integer result = 1;
+    if (value instanceof Double valueAsDouble) {
+      if (valueAsDouble == 0.0) result = 3;
+      else result = 1;
+    }
+    return result;
+  };
+
   private static final Function<Object, Integer> widthImpactForUFR = value -> {
     Integer result = 1;
     if (value instanceof Double valueAsDouble) {
@@ -213,7 +222,9 @@ public class AccessibilityProfileReluctanceImpact {
     if (value instanceof Double valueAsDouble) {
       if (valueAsDouble <= 0.02) result = 1;
       else if (valueAsDouble <= 0.04) result = 2;
-      else if (valueAsDouble <= 0.06) result = 3;
+      else if (
+        valueAsDouble <= 0.06
+      ) result = 3;
       else if (valueAsDouble <= 0.12) result = 4;
       else result = 5;
     }
@@ -235,6 +246,7 @@ public class AccessibilityProfileReluctanceImpact {
     impactOnReluctance.get(AccessibilityProfile.PAM).put("incline", inclineImpactForPAM);
     impactOnReluctance.get(AccessibilityProfile.PAM).put("highway", highwayImpactForPAM);
     impactOnReluctance.get(AccessibilityProfile.PAM).put("wgt:ressaut_max", ressautMaxImpactForPAM);
+    impactOnReluctance.get(AccessibilityProfile.PAM).put("wgt:ressaut_min", ressautMinImpactForPAM);
 
     impactOnReluctance.put(AccessibilityProfile.UFR, new HashMap<>());
     for (String key : keys) {
