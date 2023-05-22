@@ -40,6 +40,7 @@ public final class WalkPreferences implements Serializable {
   private final double maximalIncline;
   private final double ressautMax;
   private final double ressautMin;
+  private final boolean bevCtrast;
   private final AccessibilityProfile accessibilityProfile;
 
   private WalkPreferences() {
@@ -57,6 +58,7 @@ public final class WalkPreferences implements Serializable {
     this.maximalIncline = Double.MAX_VALUE;
     this.ressautMax = Double.MAX_VALUE;
     this.ressautMin = 0.0;
+    this.bevCtrast = false;
     this.accessibilityProfile = null;
   }
 
@@ -75,6 +77,7 @@ public final class WalkPreferences implements Serializable {
     this.maximalIncline = builder.maximalIncline;
     this.ressautMax = builder.ressautMax;
     this.ressautMin = builder.ressautMin;
+    this.bevCtrast = builder.bevCtrast;
     this.accessibilityProfile = builder.accessibilityProfile;
   }
 
@@ -174,6 +177,10 @@ public final class WalkPreferences implements Serializable {
     return ressautMin;
   }
 
+  public boolean bevCtrast() {
+    return bevCtrast;
+  }
+
   public AccessibilityProfile accessibilityProfile() {
     return accessibilityProfile;
   }
@@ -198,6 +205,7 @@ public final class WalkPreferences implements Serializable {
       doubleEquals(that.maximalIncline, maximalIncline) &&
       doubleEquals(that.ressautMax, ressautMax) &&
       doubleEquals(that.ressautMin, ressautMin) &&
+      bevCtrast == that.bevCtrast &&
       Objects.equals(accessibilityProfile, that.accessibilityProfile)
     );
   }
@@ -237,6 +245,7 @@ public final class WalkPreferences implements Serializable {
       .addNum("maximalIncline", maximalIncline, DEFAULT.maximalIncline)
       .addNum("ressautMax", ressautMax, DEFAULT.ressautMax)
       .addNum("ressautMin", ressautMin, DEFAULT.ressautMin)
+      .addBoolIfTrue("bevCtrast", bevCtrast)
       .addObj("accessibilityProfile", accessibilityProfile, null)
       .toString();
   }
@@ -258,6 +267,7 @@ public final class WalkPreferences implements Serializable {
     private double maximalIncline = 0.0;
     private double ressautMax = 0.0;
     private double ressautMin = 0.0;
+    private boolean bevCtrast = true;
     private AccessibilityProfile accessibilityProfile = null;
 
     public Builder(WalkPreferences original) {
@@ -276,6 +286,7 @@ public final class WalkPreferences implements Serializable {
       this.maximalIncline = original.maximalIncline;
       this.ressautMax = original.ressautMax;
       this.ressautMin = original.ressautMin;
+      this.bevCtrast = original.bevCtrast;
       this.accessibilityProfile = original.accessibilityProfile;
     }
 
@@ -380,6 +391,11 @@ public final class WalkPreferences implements Serializable {
 
     public Builder withRessautMin(double ressautMin) {
       this.ressautMin = ressautMin;
+      return this;
+    }
+
+    public Builder withBevCtrast(boolean bevCtrast) {
+      this.bevCtrast = bevCtrast;
       return this;
     }
 

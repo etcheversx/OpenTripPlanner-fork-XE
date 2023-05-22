@@ -34,6 +34,7 @@ class WalkPreferencesTest {
   private static final double MAXIMAL_INCLINE = 1.25;
   private static final double RESSAUT_MAX = 0.17;
   private static final double RESSAUT_MIN = 0.03;
+  private static final boolean BEV_CTRAST = true;
   private static final AccessibilityProfile ACCESSIBILITY_PROFILE = AccessibilityProfile.PAM;
 
   private final WalkPreferences subject = WalkPreferences
@@ -52,6 +53,7 @@ class WalkPreferencesTest {
     .withMaximalIncline(MAXIMAL_INCLINE)
     .withRessautMax(RESSAUT_MAX)
     .withRessautMin(RESSAUT_MIN)
+    .withBevCtrast(BEV_CTRAST)
     .withAccessibilityProfile(ACCESSIBILITY_PROFILE)
     .build();
 
@@ -101,7 +103,7 @@ class WalkPreferencesTest {
   void testToString() {
     assertEquals("WalkPreferences{}", WalkPreferences.DEFAULT.toString());
     assertEquals(
-      "WalkPreferences{speed: 1.71, reluctance: 2.5, boardCost: 301, stairsReluctance: 3.0, stairsTimeFactor: 1.31, safetyFactor: 0.51, minimalWidth: 0.85, lightRequired, reluctedSurfaces: [sand, grass], tactilePaving, reluctedSmoothness: 'intermediate', maximalIncline: 1.25, ressautMax: 0.17, ressautMin: 0.03, accessibilityProfile: PAM}",
+      "WalkPreferences{speed: 1.71, reluctance: 2.5, boardCost: 301, stairsReluctance: 3.0, stairsTimeFactor: 1.31, safetyFactor: 0.51, minimalWidth: 0.85, lightRequired, reluctedSurfaces: [sand, grass], tactilePaving, reluctedSmoothness: 'intermediate', maximalIncline: 1.25, ressautMax: 0.17, ressautMin: 0.03, bevCtrast, accessibilityProfile: PAM}",
       subject.toString()
     );
   }
@@ -151,6 +153,11 @@ class WalkPreferencesTest {
   @Test
   void ressautMin() {
     assertEquals(RESSAUT_MIN, subject.ressautMin());
+  }
+
+  @Test
+  void bevCtrast() {
+    assertEquals(BEV_CTRAST, subject.bevCtrast());
   }
 
   @Test
