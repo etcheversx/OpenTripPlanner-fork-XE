@@ -17,6 +17,7 @@ import java.util.Map;
 import java.util.OptionalDouble;
 import java.util.OptionalInt;
 import java.util.Set;
+import java.util.function.Consumer;
 import java.util.stream.Collectors;
 import org.locationtech.jts.geom.Coordinate;
 import org.locationtech.jts.geom.Envelope;
@@ -269,7 +270,8 @@ public class OpenStreetMapModule implements GraphBuilderModule {
         osmdb.getWalkableAreas(),
         osmdb.getParkAndRideAreas(),
         osmdb.getBikeParkingAreas()
-      )) setWayName(area.parent);
+      ))
+        setWayName(area.parent);
 
       // figure out which nodes that are actually intersections
       initIntersectionNodes();
@@ -326,11 +328,12 @@ public class OpenStreetMapModule implements GraphBuilderModule {
           bestWalkSafety = (float) walkSafety;
         }
         if (notes != null) {
-          for (T2<StreetNote, NoteMatcher> note : notes) graph.streetNotesService.addStaticNote(
-            street,
-            note.first,
-            note.second
-          );
+          for (T2<StreetNote, NoteMatcher> note : notes)
+            graph.streetNotesService.addStaticNote(
+              street,
+              note.first,
+              note.second
+            );
         }
         street.setMotorVehicleNoThruTraffic(motorVehicleNoThrough);
         street.setBicycleNoThruTraffic(bicycleNoThrough);
@@ -349,11 +352,12 @@ public class OpenStreetMapModule implements GraphBuilderModule {
         }
         backStreet.setWalkSafetyFactor((float) walkSafety);
         if (notes != null) {
-          for (T2<StreetNote, NoteMatcher> note : notes) graph.streetNotesService.addStaticNote(
-            backStreet,
-            note.first,
-            note.second
-          );
+          for (T2<StreetNote, NoteMatcher> note : notes)
+            graph.streetNotesService.addStaticNote(
+              backStreet,
+              note.first,
+              note.second
+            );
         }
         backStreet.setMotorVehicleNoThruTraffic(motorVehicleNoThrough);
         backStreet.setBicycleNoThruTraffic(bicycleNoThrough);
@@ -471,18 +475,25 @@ public class OpenStreetMapModule implements GraphBuilderModule {
       return element.getTagAsInt("duration", v -> issueStore.add(invalidDuration(element, v)));
     }
 
+    private Consumer<String> errorHander(
+      OSMWithTags element,
+      String errorLabel,
+      String propertyName) {
+      return v ->
+        issueStore.add(
+          Issue.issue(
+            errorLabel,
+            propertyName + " for osm node %d is not valid: '%s'; it's replaced with empty.",
+            element.getId(),
+            v
+          )
+        );
+    }
+
     private OptionalNumber parseWidth(OSMWithTags element) {
       OptionalDouble result = element.getTagAsDouble(
         "width",
-        v ->
-          issueStore.add(
-            Issue.issue(
-              "InvalidWidth",
-              "Width for osm node %d is not a number: '%s'; it's replaced with '-1' (unknown).",
-              element.getId(),
-              v
-            )
-          )
+        errorHander(element, "InvalidWidth", "Width")
       );
       return (
         result.isPresent()
@@ -494,30 +505,14 @@ public class OpenStreetMapModule implements GraphBuilderModule {
     private OptionalBoolean parseLit(OSMWithTags element) {
       return element.getTagAsBoolean(
         "lit",
-        v ->
-          issueStore.add(
-            Issue.issue(
-              "InvalidLit",
-              "Lit for osm node %d is not a boolean: '%s'; it's replaced with unknown.",
-              element.getId(),
-              v
-            )
-          )
+        errorHander(element, "InvalidLit", "Lit")
       );
     }
 
     private OptionalEnum<OSMSurface> parseSurface(OSMWithTags element) {
       return element.getTagAsEnum(
         "surface",
-        v ->
-          issueStore.add(
-            Issue.issue(
-              "InvalidSurface",
-              "surface for osm node %d is not a valid value: '%s'; it's replaced with unknown.",
-              element.getId(),
-              v
-            )
-          ),
+        errorHander(element, "InvalidSurface", "Surface"),
         OSMSurface.class
       );
     }
@@ -525,30 +520,14 @@ public class OpenStreetMapModule implements GraphBuilderModule {
     private OptionalBoolean parseTactilePaving(OSMWithTags element) {
       return element.getTagAsBoolean(
         "tactile_paving",
-        v ->
-          issueStore.add(
-            Issue.issue(
-              "InvalidTactilePaving",
-              "tactile_paving for osm node %d is not a boolean: '%s'; it's replaced with unknown.",
-              element.getId(),
-              v
-            )
-          )
+        errorHander(element, "InvalidTactilePaving", "Tactile paving")
       );
     }
 
     private OptionalEnum<OSMSmoothness> parseSmoothness(OSMWithTags element) {
       return element.getTagAsEnum(
         "smoothness",
-        v ->
-          issueStore.add(
-            Issue.issue(
-              "InvalidSmoothness",
-              "smoothness for osm node %d is not a valid value: '%s'; it's replaced with unknown.",
-              element.getId(),
-              v
-            )
-          ),
+        errorHander(element, "InvalidSmoothness", "Smoothness"),
         OSMSmoothness.class
       );
     }
@@ -556,15 +535,7 @@ public class OpenStreetMapModule implements GraphBuilderModule {
     private OptionalEnum<OSMHighway> parseHighway(OSMWithTags element) {
       return element.getTagAsEnum(
         "highway",
-        v ->
-          issueStore.add(
-            Issue.issue(
-              "InvalidHighway",
-              "highway for osm node %d is not a valid value: '%s'; it's replaced with unknown.",
-              element.getId(),
-              v
-            )
-          ),
+        errorHander(element, "InvalidHighway", "Highway"),
         OSMHighway.class
       );
     }
@@ -572,15 +543,7 @@ public class OpenStreetMapModule implements GraphBuilderModule {
     private OptionalEnum<OSMFootway> parseFootway(OSMWithTags element) {
       return element.getTagAsEnum(
         "footway",
-        v ->
-          issueStore.add(
-            Issue.issue(
-              "InvalidFootway",
-              "footway for osm node %d is not a valid value: '%s'; it's replaced with unknown.",
-              element.getId(),
-              v
-            )
-          ),
+        errorHander(element, "InvalidFootway", "Footway"),
         OSMFootway.class
       );
     }
@@ -588,15 +551,7 @@ public class OpenStreetMapModule implements GraphBuilderModule {
     private OptionalEnumAndDouble parseIncline(OSMWithTags element) {
       return element.getTagAsEnumAndDouble(
         "incline",
-        v ->
-          issueStore.add(
-            Issue.issue(
-              "InvalidIncline",
-              "incline for osm node %d is not a valid value: '%s'; it's replaced with unknown.",
-              element.getId(),
-              v
-            )
-          ),
+        errorHander(element, "InvalidIncline", "Incline"),
         OSMIncline.class
       );
     }
@@ -604,15 +559,7 @@ public class OpenStreetMapModule implements GraphBuilderModule {
     private OptionalNumber parseRessautMax(OSMWithTags element) {
       OptionalDouble result = element.getTagAsDouble(
         "wgt:ressaut_max",
-        v ->
-          issueStore.add(
-            Issue.issue(
-              "InvalidRessautMax",
-              "Width for osm node %d is not a number: '%s'; it's replaced with '0.0' (unknown).",
-              element.getId(),
-              v
-            )
-          )
+        errorHander(element, "InvalidRessautMax", "RessautMax")
       );
       if (result.isPresent()) {
         return OptionalNumber.get(Double.valueOf(result.getAsDouble()).toString());
@@ -624,15 +571,7 @@ public class OpenStreetMapModule implements GraphBuilderModule {
     private OptionalNumber parseRessautMin(OSMWithTags element) {
       OptionalDouble result = element.getTagAsDouble(
         "wgt:ressaut_min",
-        v ->
-          issueStore.add(
-            Issue.issue(
-              "InvalidRessautMin",
-              "Width for osm node %d is not a number: '%s'; it's replaced with '0.0' (unknown).",
-              element.getId(),
-              v
-            )
-          )
+        errorHander(element, "InvalidRessautMin","RessautMin")
       );
       if (result.isPresent()) {
         return OptionalNumber.get(Double.valueOf(result.getAsDouble()).toString());
@@ -643,15 +582,7 @@ public class OpenStreetMapModule implements GraphBuilderModule {
     private OptionalEnum<OSMBEVEtat> parseBevEtat(OSMWithTags element) {
       return element.getTagAsEnum(
         "wgt:bev_etat",
-        v ->
-          issueStore.add(
-            Issue.issue(
-              "InvalidBevEtat",
-              "BevEtat for osm node %d is not a valid value: '%s'; it's replaced with empty.",
-              element.getId(),
-              v
-            )
-          ),
+        errorHander(element, "InvalidBevEtat","BevEtat"),
         OSMBEVEtat.class
       );
     }
@@ -659,15 +590,7 @@ public class OpenStreetMapModule implements GraphBuilderModule {
     private OptionalBoolean parseBevCtrast(OSMWithTags element) {
       return element.getTagAsBoolean(
         "wgt:bev_ctrast",
-        v ->
-          issueStore.add(
-            Issue.issue(
-              "InvalidBevCtrast",
-              "BevCtrast for osm node %d is not a boolean: '%s'; it's replaced with empty.",
-              element.getId(),
-              v
-            )
-          )
+        errorHander(element, "InvalidBevCtrast","BevCtrast")
       );
     }
 
@@ -888,8 +811,8 @@ public class OpenStreetMapModule implements GraphBuilderModule {
       VehicleParkingSpaces vehicleParkingSpaces = null;
       if (
         bicycleCapacity.isPresent() ||
-        carCapacity.isPresent() ||
-        wheelchairAccessibleCarCapacity.isPresent()
+          carCapacity.isPresent() ||
+          wheelchairAccessibleCarCapacity.isPresent()
       ) {
         vehicleParkingSpaces =
           VehicleParkingSpaces
@@ -907,7 +830,7 @@ public class OpenStreetMapModule implements GraphBuilderModule {
       var bicyclePlaces = !isCarParkAndRide || bicycleCapacity.orElse(0) > 0;
       var carPlaces =
         (isCarParkAndRide && wheelchairAccessibleCarCapacity.isEmpty() && carCapacity.isEmpty()) ||
-        carCapacity.orElse(0) > 0;
+          carCapacity.orElse(0) > 0;
       var wheelchairAccessibleCarPlaces = wheelchairAccessibleCarCapacity.orElse(0) > 0;
 
       var openingHours = parseOpeningHours(entity);
@@ -988,9 +911,9 @@ public class OpenStreetMapModule implements GraphBuilderModule {
         creativeName =
           new NonLocalizedString(
             "Park & Ride (%s/%d)".formatted(
-                osmWithTags.getClass().getSimpleName(),
-                osmWithTags.getId()
-              )
+              osmWithTags.getClass().getSimpleName(),
+              osmWithTags.getId()
+            )
           );
       }
       return creativeName;
@@ -1132,7 +1055,8 @@ public class OpenStreetMapModule implements GraphBuilderModule {
       ProgressTracker progress = ProgressTracker.track("Build street graph", 5_000, wayCount);
       LOG.info(progress.startMessage());
 
-      WAY:for (OSMWay way : osmdb.getWays()) {
+      WAY:
+      for (OSMWay way : osmdb.getWays()) {
         WayProperties wayData = way.getOsmProvider().getWayPropertySet().getDataForWay(way);
         setWayName(way);
         StreetTraversalPermission permissions = OSMFilter.getPermissionsForWay(
@@ -1150,7 +1074,7 @@ public class OpenStreetMapModule implements GraphBuilderModule {
         long last = -1;
         double lastLat = -1, lastLon = -1;
         String lastLevel = null;
-        for (TLongIterator iter = way.getNodeRefs().iterator(); iter.hasNext();) {
+        for (TLongIterator iter = way.getNodeRefs().iterator(); iter.hasNext(); ) {
           long nodeId = iter.next();
           OSMNode node = osmdb.getNode(nodeId);
           if (node == null) continue WAY;
@@ -1217,11 +1141,11 @@ public class OpenStreetMapModule implements GraphBuilderModule {
 
           if (
             intersectionNodes.containsKey(endNode) ||
-            i == nodes.size() - 2 ||
-            nodes.subList(0, i).contains(nodes.get(i)) ||
-            osmEndNode.hasTag("ele") ||
-            osmEndNode.isBoardingLocation() ||
-            osmEndNode.isBarrier()
+              i == nodes.size() - 2 ||
+              nodes.subList(0, i).contains(nodes.get(i)) ||
+              osmEndNode.hasTag("ele") ||
+              osmEndNode.isBoardingLocation() ||
+              osmEndNode.isBarrier()
           ) {
             segmentCoordinates.add(getCoordinate(osmEndNode));
 
@@ -1817,19 +1741,19 @@ public class OpenStreetMapModule implements GraphBuilderModule {
         cls = StreetEdge.CLASS_CROSSING;
       } else if (
         "footway".equals(highway) &&
-        way.isTag("footway", "crossing") &&
-        !way.isTag("bicycle", "designated")
+          way.isTag("footway", "crossing") &&
+          !way.isTag("bicycle", "designated")
       ) {
         cls = StreetEdge.CLASS_CROSSING;
       } else if (
         "residential".equals(highway) ||
-        "tertiary".equals(highway) ||
-        "secondary".equals(highway) ||
-        "secondary_link".equals(highway) ||
-        "primary".equals(highway) ||
-        "primary_link".equals(highway) ||
-        "trunk".equals(highway) ||
-        "trunk_link".equals(highway)
+          "tertiary".equals(highway) ||
+          "secondary".equals(highway) ||
+          "secondary_link".equals(highway) ||
+          "primary".equals(highway) ||
+          "primary_link".equals(highway) ||
+          "trunk".equals(highway) ||
+          "trunk_link".equals(highway)
       ) {
         cls = StreetEdge.CLASS_STREET;
       } else {
@@ -1849,7 +1773,7 @@ public class OpenStreetMapModule implements GraphBuilderModule {
       /* TODO: This should probably generalized somehow? */
       if (
         !ignoreWheelchairAccessibility &&
-        (way.isTagFalse("wheelchair") || (steps && !way.isTagTrue("wheelchair")))
+          (way.isTagFalse("wheelchair") || (steps && !way.isTagTrue("wheelchair")))
       ) {
         street.setWheelchairAccessible(false);
       }
