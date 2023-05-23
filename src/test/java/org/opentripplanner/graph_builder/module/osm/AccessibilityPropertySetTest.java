@@ -157,7 +157,7 @@ public class AccessibilityPropertySetTest {
 
   @Test
   void testBevEtatGetSet() {
-    OptionalEnum<?> bevEtat = optionalEnumOf("bad", OSMBEVEtat.class);
+    OptionalEnum<OSMBEVEtat> bevEtat = optionalEnumOf("bad", OSMBEVEtat.class);
     accessibilityPropertySet = new AccessibilityPropertySet.Builder().withBevEtat(bevEtat).build();
     assertEquals(bevEtat, accessibilityPropertySet.getBevEtat());
   }
