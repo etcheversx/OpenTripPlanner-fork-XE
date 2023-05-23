@@ -25,7 +25,7 @@ class OptionalEnumTest {
     supportedEnums.addAll(Arrays.stream(OSMSurface.values()).toList());
   }
 
-  private static <E extends Enum<E>> OptionalEnum<?> optionalEnumOf(
+  private static <E extends Enum<E>> OptionalEnum<E> optionalEnumOf(
     String value,
     Class<E> enumClass
   ) {
@@ -45,8 +45,8 @@ class OptionalEnumTest {
 
   @Test
   void testOptionalEnumCreation() {
-    OptionalEnum expectedOptionalEnum;
-    OptionalEnum optionalEnum;
+    OptionalEnum<?> expectedOptionalEnum;
+    OptionalEnum<?> optionalEnum;
 
     for (Enum<?> enumerate : supportedEnums) {
       optionalEnum = optionalEnumOf(enumerate.name(), enumerate.getClass());
@@ -114,7 +114,7 @@ class OptionalEnumTest {
     assertEquals(0, OptionalEnum.parseValues("", OSMSurface.class).size());
 
     ArrayList<OptionalEnum<OSMSurface>> parsedValues;
-    ArrayList<OptionalEnum> expectedValues;
+    ArrayList<OptionalEnum<OSMSurface>> expectedValues;
 
     parsedValues = OptionalEnum.parseValues("sand", OSMSurface.class);
     expectedValues = new ArrayList<>();

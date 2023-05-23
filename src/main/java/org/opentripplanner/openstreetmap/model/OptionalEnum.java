@@ -7,8 +7,6 @@ import java.util.Objects;
 
 public class OptionalEnum<T extends Enum<T>> implements OptionalValue<T> {
 
-  private static final OptionalEnum<?> empty = new OptionalEnum<>();
-
   private T enumerate;
 
   private OptionalEnum() {}
@@ -17,8 +15,8 @@ public class OptionalEnum<T extends Enum<T>> implements OptionalValue<T> {
     this.enumerate = enumerate;
   }
 
-  public static OptionalEnum<?> empty() {
-    return empty;
+  public static <E extends Enum<E>> OptionalEnum<E> empty() {
+    return new OptionalEnum<>();
   }
 
   public static <E extends Enum<E>> OptionalEnum<E> get(String value, Class<E> enumClass)
@@ -54,7 +52,7 @@ public class OptionalEnum<T extends Enum<T>> implements OptionalValue<T> {
 
   @Override
   public boolean isEmpty() {
-    return this.equals(empty);
+    return this.equals(empty());
   }
 
   @Override
