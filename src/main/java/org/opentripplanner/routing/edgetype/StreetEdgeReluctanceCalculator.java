@@ -1,6 +1,7 @@
 package org.opentripplanner.routing.edgetype;
 
 import org.opentripplanner.graph_builder.module.osm.AccessibilityPropertySet;
+import org.opentripplanner.openstreetmap.model.OSMBEVEtat;
 import org.opentripplanner.openstreetmap.model.OSMSmoothness;
 import org.opentripplanner.openstreetmap.model.OSMSurface;
 import org.opentripplanner.openstreetmap.model.OptionalBoolean;
@@ -121,6 +122,14 @@ class StreetEdgeReluctanceCalculator {
     OptionalBoolean bevCtrast = edgeAccessibilityProperties.getBevCtrast();
     if (bevCtrast.isPresent() && !bevCtrast.getAsTyped() && walkPreferences.bevCtrast()) {
       reluctance *= 2;
+    }
+    OptionalEnum<OSMBEVEtat> bevEtat = edgeAccessibilityProperties.getBevEtat();
+    if (bevEtat.isPresent()) {
+      if (
+        walkPreferences.bevEtat().compareTo((OSMBEVEtat) bevEtat.getAsTyped()) > 0
+      ) {
+        reluctance *= 2;
+      }
     }
     return reluctance;
   }

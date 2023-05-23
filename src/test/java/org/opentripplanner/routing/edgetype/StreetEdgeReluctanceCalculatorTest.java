@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.opentripplanner.graph_builder.module.osm.AccessibilityPropertySet;
+import org.opentripplanner.openstreetmap.model.OSMBEVEtat;
 import org.opentripplanner.openstreetmap.model.OSMIncline;
 import org.opentripplanner.openstreetmap.model.OSMSmoothness;
 import org.opentripplanner.openstreetmap.model.OSMSurface;
@@ -35,7 +36,7 @@ class StreetEdgeReluctanceCalculatorTest {
   }
 
   @ParameterizedTest(name = "Walk reluctance with minimalWidth={0} on edge with width={1} is {2}")
-  @CsvSource({ ", , 2.0", "0.9, , 2.0", ", 1.0, 2.0", "0.9, 1.0, 2.0", "0.9, 0.85, 4.0" })
+  @CsvSource({", , 2.0", "0.9, , 2.0", ", 1.0, 2.0", "0.9, 1.0, 2.0", "0.9, 0.85, 4.0"})
   void testReluctanceProcessingWithWidth(
     Double minimalWidth,
     Double edgeWidth,
@@ -316,6 +317,48 @@ class StreetEdgeReluctanceCalculatorTest {
             edgeRessautMin != null
               ? OptionalNumber.get(edgeRessautMin.toString())
               : OptionalNumber.empty()
+          )
+          .build()
+      )
+    );
+  }
+
+  @ParameterizedTest(name = "Walk reluctance with bevEtat={0} on edge with bevEtat={1} is {2}")
+  @CsvSource(
+    {
+      ", , 2.0",
+      "no, , 2.0",
+      "bad, , 2.0",
+      "yes, , 2.0",
+      ", no, 2.0",
+      ", bad, 2.0",
+      ", yes, 2.0",
+      "no, no, 2.0",
+      "no, bad, 2.0",
+      "no, yes, 2.0",
+      "bad, no, 4.0",
+      "bad, bad, 2.0",
+      "bad, yes, 2.0",
+      "yes, no, 4.0",
+      "yes, bad, 4.0",
+      "yes, yes, 2.0",
+    }
+  )
+  void testReluctanceProcessingWithBevEtat(
+    OSMBEVEtat bevEtat,
+    String edgeBevEtat,
+    Double expectedWalkReluctance
+  ) throws Exception {
+    if (bevEtat != null) {
+      routingPreferencesBuilder.withWalk(w -> w.withBevEtat(bevEtat));
+    }
+
+    assertEquals(
+      expectedWalkReluctance,
+      computeWalkReluctance(
+        new AccessibilityPropertySet.Builder()
+          .withBevEtat(
+            edgeBevEtat != null ? OptionalEnum.get(edgeBevEtat, OSMBEVEtat.class) : OptionalEnum.empty()
           )
           .build()
       )
