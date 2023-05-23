@@ -19,6 +19,7 @@ import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;
 import org.opentripplanner.api.parameter.QualifiedModeSet;
 import org.opentripplanner.ext.dataoverlay.api.DataOverlayParameters;
+import org.opentripplanner.openstreetmap.model.OSMBEVEtat;
 import org.opentripplanner.routing.api.request.RouteRequest;
 import org.opentripplanner.routing.core.BicycleOptimizeType;
 import org.opentripplanner.standalone.api.OtpServerRequestContext;
@@ -357,6 +358,9 @@ public abstract class RoutingResource {
 
   @QueryParam("ressautMin")
   protected Double ressautMin;
+
+  @QueryParam("bevEtat")
+  protected OSMBEVEtat bevEtat;
 
   @QueryParam("bevCtrast")
   protected Boolean bevCtrast;

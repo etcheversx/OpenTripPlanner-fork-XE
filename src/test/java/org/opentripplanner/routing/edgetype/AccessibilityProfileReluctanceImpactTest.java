@@ -425,7 +425,6 @@ class AccessibilityProfileReluctanceImpactTest {
     );
   }
 
-
   @ParameterizedTest(
     name = "BevEtat impact with accessibilityProfile={0} on edge with wgt:bev_etat={1} is {2}"
   )
@@ -434,7 +433,11 @@ class AccessibilityProfileReluctanceImpactTest {
       "PAM, , 1.0",
       "PAM, no, 4.0",
       "PAM, bad, 2.0",
-      "PAM, yes, 1.0"
+      "PAM, yes, 1.0",
+      "UFR, , 1.0",
+      "UFR, no, 1.0",
+      "UFR, bad, 1.0",
+      "UFR, yes, 1.0",
     }
   )
   void testBevEtatImpactOnReluctanceWithAccessibilityProfile(
@@ -448,7 +451,9 @@ class AccessibilityProfileReluctanceImpactTest {
         1.0,
         new AccessibilityPropertySet.Builder()
           .withBevEtat(
-            edgeBevEtat != null ? OptionalEnum.get(edgeBevEtat, OSMBEVEtat.class) : OptionalEnum.empty()
+            edgeBevEtat != null
+              ? OptionalEnum.get(edgeBevEtat, OSMBEVEtat.class)
+              : OptionalEnum.empty()
           )
           .build(),
         accessibilityProfile
