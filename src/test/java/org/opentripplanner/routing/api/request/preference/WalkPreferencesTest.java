@@ -9,6 +9,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.function.Consumer;
 import org.junit.jupiter.api.Test;
+import org.opentripplanner.openstreetmap.model.OSMBEVEtat;
 import org.opentripplanner.openstreetmap.model.OSMSmoothness;
 import org.opentripplanner.openstreetmap.model.OSMSurface;
 
@@ -34,6 +35,7 @@ class WalkPreferencesTest {
   private static final double MAXIMAL_INCLINE = 1.25;
   private static final double RESSAUT_MAX = 0.17;
   private static final double RESSAUT_MIN = 0.03;
+  private static final OSMBEVEtat BEV_ETAT = OSMBEVEtat.bad;
   private static final boolean BEV_CTRAST = true;
   private static final AccessibilityProfile ACCESSIBILITY_PROFILE = AccessibilityProfile.PAM;
 
@@ -53,6 +55,7 @@ class WalkPreferencesTest {
     .withMaximalIncline(MAXIMAL_INCLINE)
     .withRessautMax(RESSAUT_MAX)
     .withRessautMin(RESSAUT_MIN)
+    .withBevEtat(BEV_ETAT)
     .withBevCtrast(BEV_CTRAST)
     .withAccessibilityProfile(ACCESSIBILITY_PROFILE)
     .build();
@@ -103,7 +106,7 @@ class WalkPreferencesTest {
   void testToString() {
     assertEquals("WalkPreferences{}", WalkPreferences.DEFAULT.toString());
     assertEquals(
-      "WalkPreferences{speed: 1.71, reluctance: 2.5, boardCost: 301, stairsReluctance: 3.0, stairsTimeFactor: 1.31, safetyFactor: 0.51, minimalWidth: 0.85, lightRequired, reluctedSurfaces: [sand, grass], tactilePaving, reluctedSmoothness: 'intermediate', maximalIncline: 1.25, ressautMax: 0.17, ressautMin: 0.03, bevCtrast, accessibilityProfile: PAM}",
+      "WalkPreferences{speed: 1.71, reluctance: 2.5, boardCost: 301, stairsReluctance: 3.0, stairsTimeFactor: 1.31, safetyFactor: 0.51, minimalWidth: 0.85, lightRequired, reluctedSurfaces: [sand, grass], tactilePaving, reluctedSmoothness: 'intermediate', maximalIncline: 1.25, ressautMax: 0.17, ressautMin: 0.03, bevEtat: bad, bevCtrast, accessibilityProfile: PAM}",
       subject.toString()
     );
   }
@@ -153,6 +156,11 @@ class WalkPreferencesTest {
   @Test
   void ressautMin() {
     assertEquals(RESSAUT_MIN, subject.ressautMin());
+  }
+
+  @Test
+  void bevEtat() {
+    assertEquals(BEV_ETAT, subject.bevEtat());
   }
 
   @Test

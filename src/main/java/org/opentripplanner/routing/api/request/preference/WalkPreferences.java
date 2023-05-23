@@ -8,6 +8,7 @@ import java.util.Collection;
 import java.util.Objects;
 import java.util.function.Consumer;
 import javax.validation.constraints.NotNull;
+import org.opentripplanner.openstreetmap.model.OSMBEVEtat;
 import org.opentripplanner.openstreetmap.model.OSMSmoothness;
 import org.opentripplanner.openstreetmap.model.OSMSurface;
 import org.opentripplanner.routing.api.request.framework.Units;
@@ -40,6 +41,7 @@ public final class WalkPreferences implements Serializable {
   private final double maximalIncline;
   private final double ressautMax;
   private final double ressautMin;
+  private final OSMBEVEtat bevEtat;
   private final boolean bevCtrast;
   private final AccessibilityProfile accessibilityProfile;
 
@@ -58,6 +60,7 @@ public final class WalkPreferences implements Serializable {
     this.maximalIncline = Double.MAX_VALUE;
     this.ressautMax = Double.MAX_VALUE;
     this.ressautMin = 0.0;
+    this.bevEtat = OSMBEVEtat.no;
     this.bevCtrast = false;
     this.accessibilityProfile = null;
   }
@@ -77,6 +80,7 @@ public final class WalkPreferences implements Serializable {
     this.maximalIncline = builder.maximalIncline;
     this.ressautMax = builder.ressautMax;
     this.ressautMin = builder.ressautMin;
+    this.bevEtat = builder.bevEtat;
     this.bevCtrast = builder.bevCtrast;
     this.accessibilityProfile = builder.accessibilityProfile;
   }
@@ -177,6 +181,10 @@ public final class WalkPreferences implements Serializable {
     return ressautMin;
   }
 
+  public OSMBEVEtat bevEtat() {
+    return bevEtat;
+  }
+
   public boolean bevCtrast() {
     return bevCtrast;
   }
@@ -192,21 +200,22 @@ public final class WalkPreferences implements Serializable {
     WalkPreferences that = (WalkPreferences) o;
     return (
       doubleEquals(that.speed, speed) &&
-      doubleEquals(that.reluctance, reluctance) &&
-      boardCost == that.boardCost &&
-      doubleEquals(that.stairsReluctance, stairsReluctance) &&
-      doubleEquals(that.stairsTimeFactor, stairsTimeFactor) &&
-      doubleEquals(that.safetyFactor, safetyFactor) &&
-      doubleEquals(that.minimalWidth, minimalWidth) &&
-      lightRequired == that.lightRequired &&
-      reluctedSurfaces.equals(that.reluctedSurfaces) &&
-      tactilePaving == that.tactilePaving &&
-      reluctedSmoothness.equals(that.reluctedSmoothness) &&
-      doubleEquals(that.maximalIncline, maximalIncline) &&
-      doubleEquals(that.ressautMax, ressautMax) &&
-      doubleEquals(that.ressautMin, ressautMin) &&
-      bevCtrast == that.bevCtrast &&
-      Objects.equals(accessibilityProfile, that.accessibilityProfile)
+        doubleEquals(that.reluctance, reluctance) &&
+        boardCost == that.boardCost &&
+        doubleEquals(that.stairsReluctance, stairsReluctance) &&
+        doubleEquals(that.stairsTimeFactor, stairsTimeFactor) &&
+        doubleEquals(that.safetyFactor, safetyFactor) &&
+        doubleEquals(that.minimalWidth, minimalWidth) &&
+        lightRequired == that.lightRequired &&
+        reluctedSurfaces.equals(that.reluctedSurfaces) &&
+        tactilePaving == that.tactilePaving &&
+        reluctedSmoothness.equals(that.reluctedSmoothness) &&
+        doubleEquals(that.maximalIncline, maximalIncline) &&
+        doubleEquals(that.ressautMax, ressautMax) &&
+        doubleEquals(that.ressautMin, ressautMin) &&
+        bevEtat.equals(that.bevEtat) &&
+        bevCtrast == that.bevCtrast &&
+        Objects.equals(accessibilityProfile, that.accessibilityProfile)
     );
   }
 
@@ -245,6 +254,7 @@ public final class WalkPreferences implements Serializable {
       .addNum("maximalIncline", maximalIncline, DEFAULT.maximalIncline)
       .addNum("ressautMax", ressautMax, DEFAULT.ressautMax)
       .addNum("ressautMin", ressautMin, DEFAULT.ressautMin)
+      .addObj("bevEtat", bevEtat, OSMBEVEtat.no)
       .addBoolIfTrue("bevCtrast", bevCtrast)
       .addObj("accessibilityProfile", accessibilityProfile, null)
       .toString();
@@ -267,6 +277,7 @@ public final class WalkPreferences implements Serializable {
     private double maximalIncline = 0.0;
     private double ressautMax = 0.0;
     private double ressautMin = 0.0;
+    private OSMBEVEtat bevEtat = OSMBEVEtat.yes;
     private boolean bevCtrast = true;
     private AccessibilityProfile accessibilityProfile = null;
 
@@ -286,6 +297,7 @@ public final class WalkPreferences implements Serializable {
       this.maximalIncline = original.maximalIncline;
       this.ressautMax = original.ressautMax;
       this.ressautMin = original.ressautMin;
+      this.bevEtat = original.bevEtat;
       this.bevCtrast = original.bevCtrast;
       this.accessibilityProfile = original.accessibilityProfile;
     }
@@ -391,6 +403,11 @@ public final class WalkPreferences implements Serializable {
 
     public Builder withRessautMin(double ressautMin) {
       this.ressautMin = ressautMin;
+      return this;
+    }
+
+    public Builder withBevEtat(OSMBEVEtat bevEtat) {
+      this.bevEtat = bevEtat;
       return this;
     }
 
