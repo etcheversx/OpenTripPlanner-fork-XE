@@ -509,6 +509,14 @@ public class OpenStreetMapModule implements GraphBuilderModule {
       );
     }
 
+    private <E extends Enum<E>> OptionalEnum<E> parseEnum(OSMWithTags element, String tagLabel, String errorLabel, String propertyName, Class<E> enumClass) {
+      return element.getTagAsEnum(
+        tagLabel,
+        errorHander(element, errorLabel, propertyName),
+        enumClass
+      );
+    }
+
     private OptionalNumber parseWidth(OSMWithTags element) {
       return parseNumber(element, "width", "InvalidWidth", "Width");
     }
@@ -518,11 +526,7 @@ public class OpenStreetMapModule implements GraphBuilderModule {
     }
 
     private OptionalEnum<OSMSurface> parseSurface(OSMWithTags element) {
-      return element.getTagAsEnum(
-        "surface",
-        errorHander(element, "InvalidSurface", "Surface"),
-        OSMSurface.class
-      );
+      return parseEnum(element, "surface", "InvalidSurface", "Surface", OSMSurface.class);
     }
 
     private OptionalBoolean parseTactilePaving(OSMWithTags element) {
@@ -530,27 +534,15 @@ public class OpenStreetMapModule implements GraphBuilderModule {
     }
 
     private OptionalEnum<OSMSmoothness> parseSmoothness(OSMWithTags element) {
-      return element.getTagAsEnum(
-        "smoothness",
-        errorHander(element, "InvalidSmoothness", "Smoothness"),
-        OSMSmoothness.class
-      );
+      return parseEnum(element, "smoothness", "InvalidSmoothness", "Smoothness", OSMSmoothness.class);
     }
 
     private OptionalEnum<OSMHighway> parseHighway(OSMWithTags element) {
-      return element.getTagAsEnum(
-        "highway",
-        errorHander(element, "InvalidHighway", "Highway"),
-        OSMHighway.class
-      );
+      return parseEnum(element, "highway", "InvalidHighway", "Highway", OSMHighway.class);
     }
 
     private OptionalEnum<OSMFootway> parseFootway(OSMWithTags element) {
-      return element.getTagAsEnum(
-        "footway",
-        errorHander(element, "InvalidFootway", "Footway"),
-        OSMFootway.class
-      );
+      return parseEnum(element, "footway", "InvalidFootway", "Footway", OSMFootway.class);
     }
 
     private OptionalEnumAndDouble parseIncline(OSMWithTags element) {
@@ -570,11 +562,7 @@ public class OpenStreetMapModule implements GraphBuilderModule {
     }
 
     private OptionalEnum<OSMBEVEtat> parseBevEtat(OSMWithTags element) {
-      return element.getTagAsEnum(
-        "wgt:bev_etat",
-        errorHander(element, "InvalidBevEtat", "BevEtat"),
-        OSMBEVEtat.class
-      );
+      return parseEnum(element, "wgt:bev_etat", "InvalidBevEtat", "BevEtat", OSMBEVEtat.class);
     }
 
     private OptionalBoolean parseBevCtrast(OSMWithTags element) {
