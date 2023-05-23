@@ -225,9 +225,12 @@ public class OSMWithTagsTest {
     assertEquals("bar", errorHandlerForTest.invalidValue);
   }
 
-  private static OptionalEnum optionalEnumOf(String value) {
+  private static <E extends Enum<E>> OptionalEnum<?> optionalEnumOf(
+    String value,
+    Class<E> enumClass
+  ) {
     try {
-      return OptionalEnum.get(value);
+      return OptionalEnum.get(value, enumClass);
     } catch (Exception exc) {
       return OptionalEnum.empty();
     }
@@ -236,14 +239,17 @@ public class OSMWithTagsTest {
   @Test
   public void testGetTagAsEnum() {
     OSMWithTags o = new OSMWithTags();
-    assertEquals(o.getTagAsEnum("foo", null), OptionalEnum.empty());
+    assertEquals(o.getTagAsEnum("foo", null, OSMSurface.class), OptionalEnum.empty());
 
     o.addTag("surface", "sand");
-    assertEquals(optionalEnumOf("sand"), o.getTagAsEnum("surface", null));
+    assertEquals(
+      optionalEnumOf("sand", OSMSurface.class),
+      o.getTagAsEnum("surface", null, OSMSurface.class)
+    );
 
     o.addTag("foo", "bar");
     ErrorHandlerForTest errorHandlerForTest = new ErrorHandlerForTest();
-    o.getTagAsEnum("foo", errorHandlerForTest);
+    o.getTagAsEnum("foo", errorHandlerForTest, OSMSurface.class);
     assertEquals("bar", errorHandlerForTest.invalidValue);
   }
 }

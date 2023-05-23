@@ -1232,8 +1232,8 @@ public class StreetEdge
         if (inclineAsObject instanceof OSMIncline inclineAsEnum) {
           try {
             switch (inclineAsEnum) {
-              case up -> incline = OptionalEnumAndDouble.get("down");
-              case down -> incline = OptionalEnumAndDouble.get("up");
+              case up -> incline = OptionalEnumAndDouble.get("down", OSMIncline.class);
+              case down -> incline = OptionalEnumAndDouble.get("up", OSMIncline.class);
             }
           } catch (Exception exc) {
             incline = OptionalEnumAndDouble.empty();
@@ -1242,7 +1242,7 @@ public class StreetEdge
         if (inclineAsObject instanceof Double inclineAsDouble) {
           try {
             double opposite = inclineAsDouble * (-1);
-            incline = OptionalEnumAndDouble.get(Double.toString(opposite));
+            incline = OptionalEnumAndDouble.get(Double.toString(opposite), OSMIncline.class);
           } catch (Exception exc) {
             incline = OptionalEnumAndDouble.empty();
           }

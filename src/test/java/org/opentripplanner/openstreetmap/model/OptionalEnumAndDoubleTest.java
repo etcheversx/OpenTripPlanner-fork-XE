@@ -28,14 +28,14 @@ class OptionalEnumAndDoubleTest {
   @Test
   void testDoNotThrow() {
     for (Enum<?> e : supportedEnums) {
-      assertDoesNotThrow((Executable) () -> OptionalEnumAndDouble.get(e.name()));
+      assertDoesNotThrow((Executable) () -> OptionalEnumAndDouble.get(e.name(), e.getClass()));
     }
-    assertDoesNotThrow((Executable) () -> OptionalEnumAndDouble.get("5.1"));
+    assertDoesNotThrow((Executable) () -> OptionalEnumAndDouble.get("5.1", OSMIncline.class));
   }
 
   private OptionalEnumAndDouble createOptionalEnumAndDoubleOf(Enum<?> e) {
     try {
-      return OptionalEnumAndDouble.get(e.name());
+      return OptionalEnumAndDouble.get(e.name(), e.getClass());
     } catch (Exception exc) {
       return OptionalEnumAndDouble.empty();
     }
@@ -43,7 +43,7 @@ class OptionalEnumAndDoubleTest {
 
   private OptionalEnumAndDouble createOptionalEnumAndDoubleOf(double d) {
     try {
-      return OptionalEnumAndDouble.get(Double.toString(d));
+      return OptionalEnumAndDouble.get(Double.toString(d), OSMIncline.class);
     } catch (Exception exc) {
       return OptionalEnumAndDouble.empty();
     }
@@ -70,18 +70,24 @@ class OptionalEnumAndDoubleTest {
   @Test
   void testGet() {
     try {
-      assertEquals(createOptionalEnumAndDoubleOf(OSMIncline.up), OptionalEnumAndDouble.get("up"));
+      assertEquals(
+        createOptionalEnumAndDoubleOf(OSMIncline.up),
+        OptionalEnumAndDouble.get("up", OSMIncline.class)
+      );
       assertEquals(
         createOptionalEnumAndDoubleOf(OSMIncline.down),
-        OptionalEnumAndDouble.get("down")
+        OptionalEnumAndDouble.get("down", OSMIncline.class)
       );
-      assertEquals(createOptionalEnumAndDoubleOf(-2.33), OptionalEnumAndDouble.get("-2.33"));
+      assertEquals(
+        createOptionalEnumAndDoubleOf(-2.33),
+        OptionalEnumAndDouble.get("-2.33", OSMIncline.class)
+      );
     } catch (Exception exc) {
       fail("Get failed with: " + exc.getMessage());
     }
 
     try {
-      OptionalEnumAndDouble.get("foo");
+      OptionalEnumAndDouble.get("foo", OSMIncline.class);
       fail("Get should fail on foo value");
     } catch (Exception exc) {
       assertEquals("For input string: \"foo\"", exc.getMessage());

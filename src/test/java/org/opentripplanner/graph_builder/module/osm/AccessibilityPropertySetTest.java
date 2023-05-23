@@ -7,6 +7,12 @@ import static org.junit.jupiter.api.Assertions.fail;
 
 import java.util.Arrays;
 import org.junit.jupiter.api.Test;
+import org.opentripplanner.openstreetmap.model.OSMBEVEtat;
+import org.opentripplanner.openstreetmap.model.OSMFootway;
+import org.opentripplanner.openstreetmap.model.OSMHighway;
+import org.opentripplanner.openstreetmap.model.OSMIncline;
+import org.opentripplanner.openstreetmap.model.OSMSmoothness;
+import org.opentripplanner.openstreetmap.model.OSMSurface;
 import org.opentripplanner.openstreetmap.model.OptionalBoolean;
 import org.opentripplanner.openstreetmap.model.OptionalEnum;
 import org.opentripplanner.openstreetmap.model.OptionalEnumAndDouble;
@@ -73,9 +79,12 @@ public class AccessibilityPropertySetTest {
     assertEquals(lit, accessibilityPropertySet.getLit());
   }
 
-  private static OptionalEnum optionalEnumOf(String value) {
+  private static <E extends Enum<E>> OptionalEnum<?> optionalEnumOf(
+    String value,
+    Class<E> enumClass
+  ) {
     try {
-      return OptionalEnum.get(value);
+      return OptionalEnum.get(value, enumClass);
     } catch (Exception exc) {
       return OptionalEnum.empty();
     }
@@ -83,7 +92,7 @@ public class AccessibilityPropertySetTest {
 
   @Test
   void testSurfaceGetSet() {
-    OptionalEnum surface = optionalEnumOf("paved");
+    OptionalEnum surface = optionalEnumOf("paved", OSMSurface.class);
     accessibilityPropertySet = new AccessibilityPropertySet.Builder().withSurface(surface).build();
     assertEquals(surface, accessibilityPropertySet.getSurface());
   }
@@ -98,7 +107,7 @@ public class AccessibilityPropertySetTest {
 
   @Test
   void testSmoothnessGetSet() {
-    OptionalEnum smoothness = optionalEnumOf("intermediate");
+    OptionalEnum smoothness = optionalEnumOf("intermediate", OSMSmoothness.class);
     accessibilityPropertySet =
       new AccessibilityPropertySet.Builder().withSmoothness(smoothness).build();
     assertEquals(smoothness, accessibilityPropertySet.getSmoothness());
@@ -106,14 +115,14 @@ public class AccessibilityPropertySetTest {
 
   @Test
   void testHighwayGetSet() {
-    OptionalEnum highway = optionalEnumOf("footway");
+    OptionalEnum highway = optionalEnumOf("footway", OSMHighway.class);
     accessibilityPropertySet = new AccessibilityPropertySet.Builder().withHighway(highway).build();
     assertEquals(highway, accessibilityPropertySet.getHighway());
   }
 
   @Test
   void testFootwayGetSet() {
-    OptionalEnum footway = optionalEnumOf("crossing");
+    OptionalEnum footway = optionalEnumOf("crossing", OSMFootway.class);
     accessibilityPropertySet = new AccessibilityPropertySet.Builder().withFootway(footway).build();
     assertEquals(footway, accessibilityPropertySet.getFootway());
   }
@@ -122,7 +131,7 @@ public class AccessibilityPropertySetTest {
   void testInclineGetSet() {
     OptionalEnumAndDouble incline = OptionalEnumAndDouble.empty();
     try {
-      incline = OptionalEnumAndDouble.get("2.1");
+      incline = OptionalEnumAndDouble.get("2.1", OSMIncline.class);
     } catch (Exception exc) {
       fail("OptionalEnumAndDouble creation should not fail");
     }
@@ -148,7 +157,7 @@ public class AccessibilityPropertySetTest {
 
   @Test
   void testBevEtatGetSet() {
-    OptionalEnum bevEtat = optionalEnumOf("bad");
+    OptionalEnum<?> bevEtat = optionalEnumOf("bad", OSMBEVEtat.class);
     accessibilityPropertySet = new AccessibilityPropertySet.Builder().withBevEtat(bevEtat).build();
     assertEquals(bevEtat, accessibilityPropertySet.getBevEtat());
   }

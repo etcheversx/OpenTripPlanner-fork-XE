@@ -40,8 +40,13 @@ import org.opentripplanner.model.StreetNote;
 import org.opentripplanner.model.calendar.openinghours.OHCalendar;
 import org.opentripplanner.openstreetmap.OSMOpeningHoursParser;
 import org.opentripplanner.openstreetmap.OpenStreetMapProvider;
+import org.opentripplanner.openstreetmap.model.OSMFootway;
+import org.opentripplanner.openstreetmap.model.OSMHighway;
+import org.opentripplanner.openstreetmap.model.OSMIncline;
 import org.opentripplanner.openstreetmap.model.OSMLevel;
 import org.opentripplanner.openstreetmap.model.OSMNode;
+import org.opentripplanner.openstreetmap.model.OSMSmoothness;
+import org.opentripplanner.openstreetmap.model.OSMSurface;
 import org.opentripplanner.openstreetmap.model.OSMWay;
 import org.opentripplanner.openstreetmap.model.OSMWithTags;
 import org.opentripplanner.openstreetmap.model.OptionalBoolean;
@@ -511,7 +516,8 @@ public class OpenStreetMapModule implements GraphBuilderModule {
               element.getId(),
               v
             )
-          )
+          ),
+        OSMSurface.class
       );
     }
 
@@ -541,7 +547,8 @@ public class OpenStreetMapModule implements GraphBuilderModule {
               element.getId(),
               v
             )
-          )
+          ),
+        OSMSmoothness.class
       );
     }
 
@@ -556,7 +563,8 @@ public class OpenStreetMapModule implements GraphBuilderModule {
               element.getId(),
               v
             )
-          )
+          ),
+        OSMHighway.class
       );
     }
 
@@ -571,7 +579,8 @@ public class OpenStreetMapModule implements GraphBuilderModule {
               element.getId(),
               v
             )
-          )
+          ),
+        OSMFootway.class
       );
     }
 
@@ -586,7 +595,8 @@ public class OpenStreetMapModule implements GraphBuilderModule {
               element.getId(),
               v
             )
-          )
+          ),
+        OSMIncline.class
       );
     }
 

@@ -25,9 +25,12 @@ class OptionalEnumTest {
     supportedEnums.addAll(Arrays.stream(OSMSurface.values()).toList());
   }
 
-  private static OptionalEnum optionalEnumOf(String value) {
+  private static <E extends Enum<E>> OptionalEnum<?> optionalEnumOf(
+    String value,
+    Class<E> enumClass
+  ) {
     try {
-      return OptionalEnum.get(value);
+      return OptionalEnum.get(value, enumClass);
     } catch (Exception exc) {
       return OptionalEnum.empty();
     }
@@ -36,7 +39,7 @@ class OptionalEnumTest {
   @Test
   void testOptionalEnumsCreation() {
     for (Enum<?> e : supportedEnums) {
-      assertDoesNotThrow((Executable) () -> optionalEnumOf(e.name()));
+      assertDoesNotThrow((Executable) () -> optionalEnumOf(e.name(), e.getClass()));
     }
   }
 
@@ -46,23 +49,26 @@ class OptionalEnumTest {
     OptionalEnum optionalEnum;
 
     for (Enum<?> enumerate : supportedEnums) {
-      optionalEnum = optionalEnumOf(enumerate.name());
-      expectedOptionalEnum = optionalEnumOf(enumerate.name());
+      optionalEnum = optionalEnumOf(enumerate.name(), enumerate.getClass());
+      expectedOptionalEnum = optionalEnumOf(enumerate.name(), enumerate.getClass());
 
-      assertSame(expectedOptionalEnum, optionalEnum);
+      assertEquals(expectedOptionalEnum, optionalEnum);
     }
   }
 
   @Test
   void testGet() {
     try {
-      assertSame(optionalEnumOf("paved"), OptionalEnum.get("paved"));
+      assertEquals(
+        optionalEnumOf("paved", OSMSurface.class),
+        OptionalEnum.get("paved", OSMSurface.class)
+      );
     } catch (Exception exc) {
       fail("Get failed with: " + exc.getMessage());
     }
 
     try {
-      OptionalEnum.get("foo");
+      OptionalEnum.get("foo", OSMSurface.class);
       fail("Get should fail on foo value");
     } catch (Exception exc) {
       assertEquals("Invalid enum value foo", exc.getMessage());
@@ -73,7 +79,7 @@ class OptionalEnumTest {
   void testIsEmpty() {
     assertTrue(OptionalEnum.empty().isEmpty());
     for (Enum<?> enumerate : supportedEnums) {
-      assertFalse(optionalEnumOf(enumerate.toString()).isEmpty());
+      assertFalse(optionalEnumOf(enumerate.name(), enumerate.getClass()).isEmpty());
     }
   }
 
@@ -81,14 +87,14 @@ class OptionalEnumTest {
   void testIsPresent() {
     assertFalse(OptionalEnum.empty().isPresent());
     for (Enum<?> enumerate : supportedEnums) {
-      assertTrue(optionalEnumOf(enumerate.toString()).isPresent());
+      assertTrue(optionalEnumOf(enumerate.name(), enumerate.getClass()).isPresent());
     }
   }
 
   @Test
   void testGetAsEnum() {
     for (Enum<?> enumerate : supportedEnums) {
-      assertSame(enumerate, optionalEnumOf(enumerate.toString()).getAsTyped());
+      assertSame(enumerate, optionalEnumOf(enumerate.name(), enumerate.getClass()).getAsTyped());
     }
 
     try {
@@ -103,33 +109,33 @@ class OptionalEnumTest {
 
   @Test
   void testParseValues() {
-    assertEquals(0, OptionalEnum.parseValues(null).size());
+    assertEquals(0, OptionalEnum.parseValues(null, OSMSurface.class).size());
 
-    assertEquals(0, OptionalEnum.parseValues("").size());
+    assertEquals(0, OptionalEnum.parseValues("", OSMSurface.class).size());
 
     ArrayList<OptionalEnum<OSMSurface>> parsedValues;
     ArrayList<OptionalEnum> expectedValues;
 
-    parsedValues = OptionalEnum.parseValues("sand");
+    parsedValues = OptionalEnum.parseValues("sand", OSMSurface.class);
     expectedValues = new ArrayList<>();
-    expectedValues.add(optionalEnumOf("sand"));
+    expectedValues.add(optionalEnumOf("sand", OSMSurface.class));
     assertEquals(expectedValues, parsedValues);
 
-    parsedValues = OptionalEnum.parseValues("sand;grass");
+    parsedValues = OptionalEnum.parseValues("sand;grass", OSMSurface.class);
     expectedValues = new ArrayList<>();
-    expectedValues.add(optionalEnumOf("sand"));
-    expectedValues.add(optionalEnumOf("grass"));
+    expectedValues.add(optionalEnumOf("sand", OSMSurface.class));
+    expectedValues.add(optionalEnumOf("grass", OSMSurface.class));
     assertEquals(expectedValues, parsedValues);
 
-    parsedValues = OptionalEnum.parseValues("sand;foo;grass");
+    parsedValues = OptionalEnum.parseValues("sand;foo;grass", OSMSurface.class);
     expectedValues = new ArrayList<>();
-    expectedValues.add(optionalEnumOf("sand"));
-    expectedValues.add(optionalEnumOf("grass"));
+    expectedValues.add(optionalEnumOf("sand", OSMSurface.class));
+    expectedValues.add(optionalEnumOf("grass", OSMSurface.class));
     assertEquals(expectedValues, parsedValues);
 
-    parsedValues = OptionalEnum.parseValues("sand;sand");
+    parsedValues = OptionalEnum.parseValues("sand;sand", OSMSurface.class);
     expectedValues = new ArrayList<>();
-    expectedValues.add(optionalEnumOf("sand"));
+    expectedValues.add(optionalEnumOf("sand", OSMSurface.class));
     assertEquals(expectedValues, parsedValues);
   }
 }

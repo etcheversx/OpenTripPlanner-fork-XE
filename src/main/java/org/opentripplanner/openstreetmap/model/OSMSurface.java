@@ -53,7 +53,9 @@ public enum OSMSurface {
 
   public static Collection<OSMSurface> parseValues(String values) {
     Collection<OSMSurface> result = new ArrayList<>();
-    OptionalEnum.parseValues(values).forEach(e -> result.add((OSMSurface) e.getAsTyped()));
+    OptionalEnum
+      .parseValues(values, OSMSurface.class)
+      .forEach(e -> result.add((OSMSurface) e.getAsTyped()));
     return result;
   }
 

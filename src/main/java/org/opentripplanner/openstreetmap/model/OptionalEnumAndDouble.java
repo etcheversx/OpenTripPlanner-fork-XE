@@ -31,10 +31,11 @@ public class OptionalEnumAndDouble implements OptionalValue<Object>, Serializabl
     this(OptionalEnum.empty(), optionalDouble);
   }
 
-  public static OptionalEnumAndDouble get(String value) throws Exception {
+  public static <E extends Enum<E>> OptionalEnumAndDouble get(String value, Class<E> enumClass)
+    throws Exception {
     OptionalEnumAndDouble result;
     try {
-      result = new OptionalEnumAndDouble(OptionalEnum.get(value));
+      result = new OptionalEnumAndDouble(OptionalEnum.get(value, enumClass));
     } catch (Exception exc) {
       result = new OptionalEnumAndDouble(OptionalDouble.of(Double.parseDouble(value)));
     }

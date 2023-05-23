@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.opentripplanner.graph_builder.module.osm.AccessibilityPropertySet;
+import org.opentripplanner.openstreetmap.model.OSMIncline;
 import org.opentripplanner.openstreetmap.model.OSMSmoothness;
 import org.opentripplanner.openstreetmap.model.OSMSurface;
 import org.opentripplanner.openstreetmap.model.OptionalBoolean;
@@ -115,7 +116,7 @@ class StreetEdgeReluctanceCalculatorTest {
       }
 
       OptionalEnum edgeSurface = edgeSurfaceString != null
-        ? OptionalEnum.get(edgeSurfaceString)
+        ? OptionalEnum.get(edgeSurfaceString, OSMSurface.class)
         : OptionalEnum.empty();
 
       assertEquals(
@@ -192,7 +193,7 @@ class StreetEdgeReluctanceCalculatorTest {
       }
 
       OptionalEnum edgeSmoothness = edgeSmoothnessString != null
-        ? OptionalEnum.get(edgeSmoothnessString)
+        ? OptionalEnum.get(edgeSmoothnessString, OSMSmoothness.class)
         : OptionalEnum.empty();
 
       assertEquals(
@@ -241,7 +242,7 @@ class StreetEdgeReluctanceCalculatorTest {
         new AccessibilityPropertySet.Builder()
           .withIncline(
             edgeIncline != null
-              ? OptionalEnumAndDouble.get(edgeIncline)
+              ? OptionalEnumAndDouble.get(edgeIncline, OSMIncline.class)
               : OptionalEnumAndDouble.empty()
           )
           .build()

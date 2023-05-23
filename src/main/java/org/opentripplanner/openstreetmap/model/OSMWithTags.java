@@ -209,11 +209,15 @@ public class OSMWithTags {
    * Get tag and convert it to an enum. If the tag exists, but can not be parsed into a number, then
    * the error handler is called with the value witch failed to be parsed.
    */
-  public OptionalEnum getTagAsEnum(String tag, Consumer<String> errorHandler) {
+  public <E extends Enum<E>> OptionalEnum<?> getTagAsEnum(
+    String tag,
+    Consumer<String> errorHandler,
+    Class<E> enumClass
+  ) {
     String value = getTag(tag);
     if (value != null) {
       try {
-        return OptionalEnum.get(value);
+        return OptionalEnum.get(value, enumClass);
       } catch (Exception e) {
         errorHandler.accept(value);
       }
@@ -221,11 +225,15 @@ public class OSMWithTags {
     return OptionalEnum.empty();
   }
 
-  public OptionalEnumAndDouble getTagAsEnumAndDouble(String tag, Consumer<String> errorHandler) {
+  public <E extends Enum<E>> OptionalEnumAndDouble getTagAsEnumAndDouble(
+    String tag,
+    Consumer<String> errorHandler,
+    Class<E> enumClass
+  ) {
     String value = getTag(tag);
     if (value != null) {
       try {
-        return OptionalEnumAndDouble.get(value);
+        return OptionalEnumAndDouble.get(value, enumClass);
       } catch (Exception e) {
         errorHandler.accept(value);
       }

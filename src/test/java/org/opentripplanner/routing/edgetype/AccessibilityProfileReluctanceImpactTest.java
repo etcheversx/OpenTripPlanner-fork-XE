@@ -6,6 +6,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.opentripplanner.graph_builder.module.osm.AccessibilityPropertySet;
 import org.opentripplanner.openstreetmap.model.OSMHighway;
+import org.opentripplanner.openstreetmap.model.OSMIncline;
 import org.opentripplanner.openstreetmap.model.OSMSmoothness;
 import org.opentripplanner.openstreetmap.model.OSMSurface;
 import org.opentripplanner.openstreetmap.model.OptionalBoolean;
@@ -156,7 +157,9 @@ class AccessibilityProfileReluctanceImpactTest {
         1.0,
         new AccessibilityPropertySet.Builder()
           .withSurface(
-            edgeSurface != null ? OptionalEnum.get(edgeSurface.toString()) : OptionalEnum.empty()
+            edgeSurface != null
+              ? OptionalEnum.get(edgeSurface.name(), OSMSurface.class)
+              : OptionalEnum.empty()
           )
           .build(),
         accessibilityProfile
@@ -201,7 +204,7 @@ class AccessibilityProfileReluctanceImpactTest {
         new AccessibilityPropertySet.Builder()
           .withSmoothness(
             edgeSmoothness != null
-              ? OptionalEnum.get(edgeSmoothness.toString())
+              ? OptionalEnum.get(edgeSmoothness.toString(), OSMSmoothness.class)
               : OptionalEnum.empty()
           )
           .build(),
@@ -271,7 +274,7 @@ class AccessibilityProfileReluctanceImpactTest {
         new AccessibilityPropertySet.Builder()
           .withIncline(
             edgeIncline != null
-              ? OptionalEnumAndDouble.get(edgeIncline)
+              ? OptionalEnumAndDouble.get(edgeIncline, OSMIncline.class)
               : OptionalEnumAndDouble.empty()
           )
           .build(),
@@ -286,7 +289,7 @@ class AccessibilityProfileReluctanceImpactTest {
         new AccessibilityPropertySet.Builder()
           .withIncline(
             (edgeIncline != null && !"up".equals(edgeIncline) && !"down".equals(edgeIncline))
-              ? OptionalEnumAndDouble.get(edgeIncline)
+              ? OptionalEnumAndDouble.get(edgeIncline, OSMIncline.class)
               : OptionalEnumAndDouble.empty()
           )
           .build(),
@@ -327,7 +330,9 @@ class AccessibilityProfileReluctanceImpactTest {
         1.0,
         new AccessibilityPropertySet.Builder()
           .withHighway(
-            edgeHighway != null ? OptionalEnum.get(edgeHighway.toString()) : OptionalEnum.empty()
+            edgeHighway != null
+              ? OptionalEnum.get(edgeHighway.toString(), OSMHighway.class)
+              : OptionalEnum.empty()
           )
           .build(),
         accessibilityProfile
@@ -443,9 +448,7 @@ class AccessibilityProfileReluctanceImpactTest {
         1.0,
         new AccessibilityPropertySet.Builder()
           .withBevCtrast(
-            edgeBevCtrast != null
-              ? OptionalBoolean.of(edgeBevCtrast)
-              : OptionalBoolean.empty()
+            edgeBevCtrast != null ? OptionalBoolean.of(edgeBevCtrast) : OptionalBoolean.empty()
           )
           .build(),
         accessibilityProfile

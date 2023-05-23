@@ -2,16 +2,13 @@ package org.opentripplanner.openstreetmap.model;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.Objects;
-import javax.validation.constraints.NotNull;
 
 public class OptionalEnum<T extends Enum<T>> implements OptionalValue<T> {
 
   private static final OptionalEnum<?> empty = new OptionalEnum<>();
-  private static final Map<Enum<?>, OptionalEnum<?>> optionalEnums = new HashMap<>();
+
   private T enumerate;
 
   private OptionalEnum() {}
@@ -20,20 +17,24 @@ public class OptionalEnum<T extends Enum<T>> implements OptionalValue<T> {
     this.enumerate = enumerate;
   }
 
-  public static OptionalEnum empty() {
+  public static OptionalEnum<?> empty() {
     return empty;
   }
 
-  public static OptionalEnum<?> get(String value) throws Exception {
-    for (Enum<?> enumerate : optionalEnums.keySet()) {
-      if (enumerate.toString().equals(value)) {
-        return optionalEnums.get(enumerate);
-      }
+  public static <E extends Enum<E>> OptionalEnum<E> get(String value, Class<E> enumClass)
+    throws Exception {
+    try {
+      E enumerate = Enum.valueOf(enumClass, value);
+      return new OptionalEnum<>(enumerate);
+    } catch (Exception exc) {
+      throw new Exception("Invalid enum value " + value);
     }
-    throw new Exception("Invalid enum value " + value);
   }
 
-  public static <E extends Enum<E>> ArrayList<OptionalEnum<E>> parseValues(String values) {
+  public static <E extends Enum<E>> ArrayList<OptionalEnum<E>> parseValues(
+    String values,
+    Class<E> enumClass
+  ) {
     ArrayList<OptionalEnum<E>> result = new ArrayList<>();
     if (values == null) {
       return result;
@@ -42,7 +43,7 @@ public class OptionalEnum<T extends Enum<T>> implements OptionalValue<T> {
       .stream(values.split(";"))
       .forEach(s -> {
         try {
-          OptionalEnum<E> optionalEnum = (OptionalEnum<E>) get(s);
+          OptionalEnum<E> optionalEnum = get(s, enumClass);
           if (!result.contains(optionalEnum)) {
             result.add(optionalEnum);
           }
@@ -67,20 +68,6 @@ public class OptionalEnum<T extends Enum<T>> implements OptionalValue<T> {
       throw new NoSuchElementException("No value present");
     }
     return this.enumerate;
-  }
-
-  private static <E extends Enum<E>> void createTypedOptionalEnum(@NotNull E[] values) {
-    for (E value : values) {
-      optionalEnums.put(value, new OptionalEnum<>(value));
-    }
-  }
-
-  static {
-    createTypedOptionalEnum(OSMSmoothness.values());
-    createTypedOptionalEnum(OSMSurface.values());
-    createTypedOptionalEnum(OSMHighway.values());
-    createTypedOptionalEnum(OSMFootway.values());
-    createTypedOptionalEnum(OSMIncline.values());
   }
 
   @Override
