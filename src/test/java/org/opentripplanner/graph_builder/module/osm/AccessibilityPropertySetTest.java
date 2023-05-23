@@ -79,7 +79,7 @@ public class AccessibilityPropertySetTest {
     assertEquals(lit, accessibilityPropertySet.getLit());
   }
 
-  private static <E extends Enum<E>> OptionalEnum<?> optionalEnumOf(
+  private static <E extends Enum<E>> OptionalEnum<E> optionalEnumOf(
     String value,
     Class<E> enumClass
   ) {
@@ -92,7 +92,7 @@ public class AccessibilityPropertySetTest {
 
   @Test
   void testSurfaceGetSet() {
-    OptionalEnum surface = optionalEnumOf("paved", OSMSurface.class);
+    OptionalEnum<OSMSurface> surface = optionalEnumOf("paved", OSMSurface.class);
     accessibilityPropertySet = new AccessibilityPropertySet.Builder().withSurface(surface).build();
     assertEquals(surface, accessibilityPropertySet.getSurface());
   }
@@ -107,7 +107,7 @@ public class AccessibilityPropertySetTest {
 
   @Test
   void testSmoothnessGetSet() {
-    OptionalEnum smoothness = optionalEnumOf("intermediate", OSMSmoothness.class);
+    OptionalEnum<OSMSmoothness> smoothness = optionalEnumOf("intermediate", OSMSmoothness.class);
     accessibilityPropertySet =
       new AccessibilityPropertySet.Builder().withSmoothness(smoothness).build();
     assertEquals(smoothness, accessibilityPropertySet.getSmoothness());
@@ -115,14 +115,14 @@ public class AccessibilityPropertySetTest {
 
   @Test
   void testHighwayGetSet() {
-    OptionalEnum highway = optionalEnumOf("footway", OSMHighway.class);
+    OptionalEnum<OSMHighway> highway = optionalEnumOf("footway", OSMHighway.class);
     accessibilityPropertySet = new AccessibilityPropertySet.Builder().withHighway(highway).build();
     assertEquals(highway, accessibilityPropertySet.getHighway());
   }
 
   @Test
   void testFootwayGetSet() {
-    OptionalEnum footway = optionalEnumOf("crossing", OSMFootway.class);
+    OptionalEnum<OSMFootway> footway = optionalEnumOf("crossing", OSMFootway.class);
     accessibilityPropertySet = new AccessibilityPropertySet.Builder().withFootway(footway).build();
     assertEquals(footway, accessibilityPropertySet.getFootway());
   }
