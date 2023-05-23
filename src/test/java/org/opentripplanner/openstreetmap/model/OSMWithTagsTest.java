@@ -225,7 +225,7 @@ public class OSMWithTagsTest {
     assertEquals("bar", errorHandlerForTest.invalidValue);
   }
 
-  private static <E extends Enum<E>> OptionalEnum<?> optionalEnumOf(
+  private static <E extends Enum<E>> OptionalEnum<E> optionalEnumOf(
     String value,
     Class<E> enumClass
   ) {

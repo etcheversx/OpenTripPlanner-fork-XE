@@ -40,6 +40,7 @@ import org.opentripplanner.model.StreetNote;
 import org.opentripplanner.model.calendar.openinghours.OHCalendar;
 import org.opentripplanner.openstreetmap.OSMOpeningHoursParser;
 import org.opentripplanner.openstreetmap.OpenStreetMapProvider;
+import org.opentripplanner.openstreetmap.model.OSMBEVEtat;
 import org.opentripplanner.openstreetmap.model.OSMFootway;
 import org.opentripplanner.openstreetmap.model.OSMHighway;
 import org.opentripplanner.openstreetmap.model.OSMIncline;
@@ -505,7 +506,7 @@ public class OpenStreetMapModule implements GraphBuilderModule {
       );
     }
 
-    private OptionalEnum parseSurface(OSMWithTags element) {
+    private OptionalEnum<OSMSurface> parseSurface(OSMWithTags element) {
       return element.getTagAsEnum(
         "surface",
         v ->
@@ -536,7 +537,7 @@ public class OpenStreetMapModule implements GraphBuilderModule {
       );
     }
 
-    private OptionalEnum parseSmoothness(OSMWithTags element) {
+    private OptionalEnum<OSMSmoothness> parseSmoothness(OSMWithTags element) {
       return element.getTagAsEnum(
         "smoothness",
         v ->
@@ -552,7 +553,7 @@ public class OpenStreetMapModule implements GraphBuilderModule {
       );
     }
 
-    private OptionalEnum parseHighway(OSMWithTags element) {
+    private OptionalEnum<OSMHighway> parseHighway(OSMWithTags element) {
       return element.getTagAsEnum(
         "highway",
         v ->
@@ -568,7 +569,7 @@ public class OpenStreetMapModule implements GraphBuilderModule {
       );
     }
 
-    private OptionalEnum parseFootway(OSMWithTags element) {
+    private OptionalEnum<OSMFootway> parseFootway(OSMWithTags element) {
       return element.getTagAsEnum(
         "footway",
         v ->
@@ -639,6 +640,22 @@ public class OpenStreetMapModule implements GraphBuilderModule {
       return OptionalNumber.empty();
     }
 
+    private OptionalEnum<OSMBEVEtat> parseBevEtat(OSMWithTags element) {
+      return element.getTagAsEnum(
+        "wgt:bev_etat",
+        v ->
+          issueStore.add(
+            Issue.issue(
+              "InvalidBevEtat",
+              "BevEtat for osm node %d is not a valid value: '%s'; it's replaced with empty.",
+              element.getId(),
+              v
+            )
+          ),
+        OSMBEVEtat.class
+      );
+    }
+
     private OptionalBoolean parseBevCtrast(OSMWithTags element) {
       return element.getTagAsBoolean(
         "wgt:bev_ctrast",
@@ -666,6 +683,7 @@ public class OpenStreetMapModule implements GraphBuilderModule {
         .withIncline(parseIncline(element))
         .withRessautMax(parseRessautMax(element))
         .withRessautMin(parseRessautMin(element))
+        .withBevEtat(parseBevEtat(element))
         .withBevCtrast(parseBevCtrast(element))
         .build();
     }

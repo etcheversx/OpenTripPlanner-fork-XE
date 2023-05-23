@@ -16,6 +16,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.opentripplanner.graph_builder.module.osm.tagmapping.DefaultMapper;
 import org.opentripplanner.openstreetmap.OpenStreetMapProvider;
+import org.opentripplanner.openstreetmap.model.OSMBEVEtat;
 import org.opentripplanner.openstreetmap.model.OSMFootway;
 import org.opentripplanner.openstreetmap.model.OSMHighway;
 import org.opentripplanner.openstreetmap.model.OSMSmoothness;
@@ -441,6 +442,41 @@ public class OSMModuleWithAccessibilityPropertiesTest {
       toId,
       OSMModuleWithAccessibilityPropertiesTest::isRessautMinPresent,
       OSMModuleWithAccessibilityPropertiesTest::getRessautMinValue,
+      expectedPresence,
+      expectedValue
+    );
+  }
+
+  private static boolean isBevEtatPresent(StreetEdge edge) {
+    return edge.getAccessibilityProperties().getBevEtat().isPresent();
+  }
+
+  private static Object getBevEtatValue(StreetEdge edge) {
+    return edge.getAccessibilityProperties().getBevEtat().getAsTyped();
+  }
+
+  @ParameterizedTest(
+    name = "On edge from {0} to {1} wgt:bev_etat expected presence is {2} and expected value is {3}"
+  )
+  @CsvSource(
+    {
+      "-1659017, -1659280, true, bad",
+      "-1659280, -1659017, true, bad",
+      "-1656814, -1659965, false, ",
+      "-1659965, -1656814, false, ",
+    }
+  )
+  public void testBuildGraphWithBevEtat(
+    String fromId,
+    String toId,
+    boolean expectedPresence,
+    OSMBEVEtat expectedValue
+  ) {
+    checkProperty(
+      fromId,
+      toId,
+      OSMModuleWithAccessibilityPropertiesTest::isBevEtatPresent,
+      OSMModuleWithAccessibilityPropertiesTest::getBevEtatValue,
       expectedPresence,
       expectedValue
     );

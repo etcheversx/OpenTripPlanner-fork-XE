@@ -209,7 +209,7 @@ public class OSMWithTags {
    * Get tag and convert it to an enum. If the tag exists, but can not be parsed into a number, then
    * the error handler is called with the value witch failed to be parsed.
    */
-  public <E extends Enum<E>> OptionalEnum<?> getTagAsEnum(
+  public <E extends Enum<E>> OptionalEnum<E> getTagAsEnum(
     String tag,
     Consumer<String> errorHandler,
     Class<E> enumClass
