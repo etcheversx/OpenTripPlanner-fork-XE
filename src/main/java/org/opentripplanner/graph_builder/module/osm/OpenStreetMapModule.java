@@ -490,10 +490,10 @@ public class OpenStreetMapModule implements GraphBuilderModule {
         );
     }
 
-    private OptionalNumber parseWidth(OSMWithTags element) {
+    private OptionalNumber parseNumber(OSMWithTags element, String tagLabel, String errorLabel, String propertyName) {
       OptionalDouble result = element.getTagAsDouble(
-        "width",
-        errorHander(element, "InvalidWidth", "Width")
+        tagLabel,
+        errorHander(element, errorLabel, propertyName)
       );
       return (
         result.isPresent()
@@ -502,11 +502,19 @@ public class OpenStreetMapModule implements GraphBuilderModule {
       );
     }
 
-    private OptionalBoolean parseLit(OSMWithTags element) {
+    private OptionalBoolean parseBoolean(OSMWithTags element, String tagLabel, String errorLabel, String propertyName) {
       return element.getTagAsBoolean(
-        "lit",
-        errorHander(element, "InvalidLit", "Lit")
+        tagLabel,
+        errorHander(element, errorLabel, propertyName)
       );
+    }
+
+    private OptionalNumber parseWidth(OSMWithTags element) {
+      return parseNumber(element, "width", "InvalidWidth", "Width");
+    }
+
+    private OptionalBoolean parseLit(OSMWithTags element) {
+      return parseBoolean(element, "lit", "InvalidLit", "Lit");
     }
 
     private OptionalEnum<OSMSurface> parseSurface(OSMWithTags element) {
@@ -518,10 +526,7 @@ public class OpenStreetMapModule implements GraphBuilderModule {
     }
 
     private OptionalBoolean parseTactilePaving(OSMWithTags element) {
-      return element.getTagAsBoolean(
-        "tactile_paving",
-        errorHander(element, "InvalidTactilePaving", "Tactile paving")
-      );
+      return parseBoolean(element, "tactile_paving", "InvalidTactilePaving", "Tactile paving");
     }
 
     private OptionalEnum<OSMSmoothness> parseSmoothness(OSMWithTags element) {
@@ -557,41 +562,23 @@ public class OpenStreetMapModule implements GraphBuilderModule {
     }
 
     private OptionalNumber parseRessautMax(OSMWithTags element) {
-      OptionalDouble result = element.getTagAsDouble(
-        "wgt:ressaut_max",
-        errorHander(element, "InvalidRessautMax", "RessautMax")
-      );
-      if (result.isPresent()) {
-        return OptionalNumber.get(Double.valueOf(result.getAsDouble()).toString());
-      } else {
-        return OptionalNumber.empty();
-      }
+      return parseNumber(element, "wgt:ressaut_max", "InvalidRessautMax", "RessautMax");
     }
 
     private OptionalNumber parseRessautMin(OSMWithTags element) {
-      OptionalDouble result = element.getTagAsDouble(
-        "wgt:ressaut_min",
-        errorHander(element, "InvalidRessautMin","RessautMin")
-      );
-      if (result.isPresent()) {
-        return OptionalNumber.get(Double.valueOf(result.getAsDouble()).toString());
-      }
-      return OptionalNumber.empty();
+      return parseNumber(element, "wgt:ressaut_min", "InvalidRessautMin", "RessautMin");
     }
 
     private OptionalEnum<OSMBEVEtat> parseBevEtat(OSMWithTags element) {
       return element.getTagAsEnum(
         "wgt:bev_etat",
-        errorHander(element, "InvalidBevEtat","BevEtat"),
+        errorHander(element, "InvalidBevEtat", "BevEtat"),
         OSMBEVEtat.class
       );
     }
 
     private OptionalBoolean parseBevCtrast(OSMWithTags element) {
-      return element.getTagAsBoolean(
-        "wgt:bev_ctrast",
-        errorHander(element, "InvalidBevCtrast","BevCtrast")
-      );
+      return parseBoolean(element, "wgt:bev_ctrast", "InvalidBevCtrast", "BevCtrast");
     }
 
     private AccessibilityPropertySet parseAccessibilityProperties(OSMWithTags element) {
