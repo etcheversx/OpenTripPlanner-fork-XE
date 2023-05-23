@@ -125,9 +125,7 @@ class StreetEdgeReluctanceCalculator {
     }
     OptionalEnum<OSMBEVEtat> bevEtat = edgeAccessibilityProperties.getBevEtat();
     if (bevEtat.isPresent()) {
-      if (
-        walkPreferences.bevEtat().compareTo((OSMBEVEtat) bevEtat.getAsTyped()) > 0
-      ) {
+      if (walkPreferences.bevEtat().compareTo((OSMBEVEtat) bevEtat.getAsTyped()) > 0) {
         reluctance *= 2;
       }
     }

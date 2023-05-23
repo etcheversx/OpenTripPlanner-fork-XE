@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.opentripplanner.graph_builder.module.osm.AccessibilityPropertySet;
+import org.opentripplanner.openstreetmap.model.OSMBEVEtat;
 import org.opentripplanner.openstreetmap.model.OSMHighway;
 import org.opentripplanner.openstreetmap.model.OSMIncline;
 import org.opentripplanner.openstreetmap.model.OSMSmoothness;
@@ -417,6 +418,37 @@ class AccessibilityProfileReluctanceImpactTest {
             edgeRessautMin != null
               ? OptionalNumber.get(edgeRessautMin.toString())
               : OptionalNumber.empty()
+          )
+          .build(),
+        accessibilityProfile
+      )
+    );
+  }
+
+
+  @ParameterizedTest(
+    name = "BevEtat impact with accessibilityProfile={0} on edge with wgt:bev_etat={1} is {2}"
+  )
+  @CsvSource(
+    {
+      "PAM, , 1.0",
+      "PAM, no, 4.0",
+      "PAM, bad, 2.0",
+      "PAM, yes, 1.0"
+    }
+  )
+  void testBevEtatImpactOnReluctanceWithAccessibilityProfile(
+    AccessibilityProfile accessibilityProfile,
+    String edgeBevEtat,
+    Double expectedImpact
+  ) throws Exception {
+    assertEquals(
+      expectedImpact,
+      AccessibilityProfileReluctanceImpact.computeRegularWalkReluctanceWithAccessibilityProfile(
+        1.0,
+        new AccessibilityPropertySet.Builder()
+          .withBevEtat(
+            edgeBevEtat != null ? OptionalEnum.get(edgeBevEtat, OSMBEVEtat.class) : OptionalEnum.empty()
           )
           .build(),
         accessibilityProfile
