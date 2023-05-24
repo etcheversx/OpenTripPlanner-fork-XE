@@ -467,8 +467,8 @@ class AccessibilityProfileReluctanceImpactTest {
   @CsvSource(
     {
       "PAM, , 1.0",
-      "PAM, false, 1.0",
-      "PAM, true, 3.0",
+      "PAM, false, 3.0",
+      "PAM, true, 1.0",
       "UFR, , 1.0",
       "UFR, false, 1.0",
       "UFR, true, 1.0",

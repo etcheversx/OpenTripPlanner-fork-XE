@@ -133,7 +133,7 @@ public class AccessibilityProfileReluctanceImpact {
   private static final Function<Object, Integer> bevCtrastImpactForPAM = value -> {
     Integer result = 1;
     if (value instanceof Boolean valueAsBoolean) {
-      if (valueAsBoolean) result = 3; else result = 1;
+      if (valueAsBoolean) result = 1; else result = 3;
     }
     return result;
   };
