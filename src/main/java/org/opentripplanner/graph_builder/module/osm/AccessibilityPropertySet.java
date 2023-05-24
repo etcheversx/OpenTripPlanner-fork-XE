@@ -17,7 +17,7 @@ import org.opentripplanner.openstreetmap.model.OptionalValue;
 
 public class AccessibilityPropertySet implements Serializable {
 
-  private final Map<String, OptionalValue<?>> properties = new HashMap<>();
+  private final Map<String, OptionalValue> properties = new HashMap<>();
 
   private AccessibilityPropertySet(
     @NotNull OptionalNumber width,
@@ -63,7 +63,7 @@ public class AccessibilityPropertySet implements Serializable {
     return getEnumValue("surface");
   }
 
-    public OptionalBoolean getTactilePaving() {
+  public OptionalBoolean getTactilePaving() {
     return (OptionalBoolean) properties.getOrDefault("tactile_paving", OptionalBoolean.empty());
   }
 
@@ -115,7 +115,7 @@ public class AccessibilityPropertySet implements Serializable {
     return properties.keySet().toArray(result);
   }
 
-  public OptionalValue<?> getProperty(String key) {
+  public OptionalValue getProperty(String key) {
     return properties.get(key);
   }
 

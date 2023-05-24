@@ -3,7 +3,7 @@ package org.opentripplanner.openstreetmap.model;
 import java.util.NoSuchElementException;
 import java.util.Objects;
 
-public class OptionalBoolean implements OptionalValue<Boolean> {
+public class OptionalBoolean implements OptionalValue {
 
   private static final OptionalBoolean empty = new OptionalBoolean();
   private static final OptionalBoolean yes = new OptionalBoolean("true");

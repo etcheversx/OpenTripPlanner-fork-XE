@@ -3,8 +3,9 @@ package org.opentripplanner.openstreetmap.model;
 import java.util.NoSuchElementException;
 import java.util.Objects;
 import java.util.OptionalDouble;
+import javax.validation.constraints.NotNull;
 
-public class OptionalNumber implements OptionalValue<Double> {
+public class OptionalNumber implements OptionalValue {
 
   private static final OptionalNumber empty = new OptionalNumber();
   private final OptionalDouble value;
@@ -13,7 +14,7 @@ public class OptionalNumber implements OptionalValue<Double> {
     this.value = OptionalDouble.empty();
   }
 
-  private OptionalNumber(OptionalDouble value) {
+  private OptionalNumber(@NotNull OptionalDouble value) {
     this.value = value;
   }
 

@@ -44,6 +44,6 @@ class OptionalBooleanTest {
       assertEquals(expectedException.getMessage(), exc.getMessage());
       return;
     }
-    fail("getAsBoolean should faild with NoSuchElementException");
+    fail("getAsBoolean should fail with NoSuchElementException");
   }
 }

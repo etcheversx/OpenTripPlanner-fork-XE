@@ -1,9 +1,9 @@
 package org.opentripplanner.openstreetmap.model;
 
-public interface OptionalValue<T> {
+public interface OptionalValue {
   boolean isEmpty();
 
   boolean isPresent();
 
-  T getAsTyped();
+  Object getAsTyped();
 }

@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.NoSuchElementException;
 import java.util.Objects;
 
-public class OptionalEnum<T extends Enum<T>> implements OptionalValue<T> {
+public class OptionalEnum<T extends Enum<T>> implements OptionalValue {
 
   private T enumerate;
 

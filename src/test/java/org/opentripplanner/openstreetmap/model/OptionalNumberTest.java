@@ -3,7 +3,6 @@ package org.opentripplanner.openstreetmap.model;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
 
@@ -18,7 +17,7 @@ class OptionalNumberTest {
     assertDoesNotThrow((Executable) () -> OptionalNumber.get("5.1"));
   }
 
-  private OptionalNumber createOptionalNuberOf(double d) {
+  private OptionalNumber createOptionalNumberOf(double d) {
     try {
       return OptionalNumber.get(Double.toString(d));
     } catch (Exception exc) {
@@ -31,8 +30,8 @@ class OptionalNumberTest {
     OptionalNumber expectedValue;
     OptionalNumber optionalNumber;
 
-    optionalNumber = createOptionalNuberOf(0.31);
-    expectedValue = createOptionalNuberOf(0.31);
+    optionalNumber = createOptionalNumberOf(0.31);
+    expectedValue = createOptionalNumberOf(0.31);
 
     assertEquals(expectedValue, optionalNumber);
   }
@@ -40,7 +39,7 @@ class OptionalNumberTest {
   @Test
   void testGet() {
     try {
-      assertEquals(createOptionalNuberOf(-2.33), OptionalNumber.get("-2.33"));
+      assertEquals(createOptionalNumberOf(-2.33), OptionalNumber.get("-2.33"));
     } catch (Exception exc) {
       fail("Get failed with: " + exc.getMessage());
     }
@@ -65,7 +64,7 @@ class OptionalNumberTest {
 
   @Test
   void testGetAsObject() {
-    assertEquals(-12.3, createOptionalNuberOf(-12.3).getAsTyped());
+    assertEquals(-12.3, createOptionalNumberOf(-12.3).getAsTyped());
 
     try {
       OptionalNumber.empty().getAsTyped();

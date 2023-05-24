@@ -267,7 +267,7 @@ public class AccessibilityProfileReluctanceImpact {
     AccessibilityProfile accessibilityProfile
   ) {
     for (String propertyKey : edgeAccessibilityProperties.propertyKeys()) {
-      OptionalValue<?> optionalProperty = edgeAccessibilityProperties.getProperty(propertyKey);
+      OptionalValue optionalProperty = edgeAccessibilityProperties.getProperty(propertyKey);
       if (optionalProperty.isPresent()) {
         reluctance *=
           impactOnReluctance

@@ -6,7 +6,7 @@ import java.util.Objects;
 import java.util.OptionalDouble;
 import javax.validation.constraints.NotNull;
 
-public class OptionalEnumAndDouble implements OptionalValue<Object>, Serializable {
+public class OptionalEnumAndDouble implements OptionalValue, Serializable {
 
   private static final OptionalEnumAndDouble _EMPTY = new OptionalEnumAndDouble(
     OptionalEnum.empty(),
