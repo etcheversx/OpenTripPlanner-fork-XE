@@ -95,6 +95,9 @@ public class ApiWalkStep {
   public String footway;
   public String incline;
   public Double ressautMax;
+  public Double ressautMin;
+  public String bevEtat;
+  public Boolean bevCtrast;
 
   public String toString() {
     String direction = absoluteDirection.toString();

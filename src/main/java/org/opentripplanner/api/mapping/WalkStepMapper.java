@@ -11,9 +11,6 @@ import java.util.stream.Collectors;
 import org.opentripplanner.api.model.ApiWalkStep;
 import org.opentripplanner.graph_builder.module.osm.AccessibilityPropertySet;
 import org.opentripplanner.model.plan.WalkStep;
-import org.opentripplanner.openstreetmap.model.OSMFootway;
-import org.opentripplanner.openstreetmap.model.OSMHighway;
-import org.opentripplanner.openstreetmap.model.OSMSmoothness;
 
 public class WalkStepMapper {
 
@@ -74,13 +71,13 @@ public class WalkStepMapper {
     var tactile_paving = accessibilityProperties.getTactilePaving();
     api.tactilePaving = tactile_paving.isPresent() ? tactile_paving.getAsTyped() : null;
 
-    var smoothness = accessibilityProperties.<OSMSmoothness>getEnumValue("smoothness");
+    var smoothness = accessibilityProperties.getEnumValue("smoothness");
     api.smoothness = smoothness.isPresent() ? smoothness.getAsTyped().name() : null;
 
-    var highway = accessibilityProperties.<OSMHighway>getEnumValue("highway");
+    var highway = accessibilityProperties.getEnumValue("highway");
     api.highway = highway.isPresent() ? highway.getAsTyped().name() : null;
 
-    var footway = accessibilityProperties.<OSMFootway>getEnumValue("footway");
+    var footway = accessibilityProperties.getEnumValue("footway");
     api.footway = footway.isPresent() ? footway.getAsTyped().name() : null;
 
     var incline = accessibilityProperties.getIncline();
@@ -88,5 +85,14 @@ public class WalkStepMapper {
 
     var ressautMax = accessibilityProperties.getRessautMax();
     api.ressautMax = ressautMax.isPresent() ? ressautMax.getAsTyped() : null;
+
+    var ressautMin = accessibilityProperties.getRessautMin();
+    api.ressautMin = ressautMin.isPresent() ? ressautMin.getAsTyped() : null;
+
+    var bevEtat = accessibilityProperties.getEnumValue("wgt:bev_etat");
+    api.bevEtat = bevEtat.isPresent() ? bevEtat.getAsTyped().toString() : null;
+
+    var bevCtrast = accessibilityProperties.getBevCtrast();
+    api.bevCtrast = bevCtrast.isPresent() ? bevCtrast.getAsTyped() : null;
   }
 }
