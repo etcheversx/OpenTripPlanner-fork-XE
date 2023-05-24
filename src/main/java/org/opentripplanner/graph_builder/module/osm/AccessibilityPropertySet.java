@@ -55,24 +55,28 @@ public class AccessibilityPropertySet implements Serializable {
     return (OptionalBoolean) properties.getOrDefault("lit", OptionalBoolean.empty());
   }
 
-  public OptionalEnum<OSMSurface> getSurface() {
-    return (OptionalEnum<OSMSurface>) properties.getOrDefault("surface", OptionalEnum.empty());
+  private <E extends Enum<E>> OptionalEnum<E> getEnumValue(String propertyName) {
+    return ((OptionalEnum<E>) properties.getOrDefault(propertyName, OptionalEnum.empty()));
   }
 
-  public OptionalBoolean getTactilePaving() {
+  public OptionalEnum<OSMSurface> getSurface() {
+    return getEnumValue("surface");
+  }
+
+    public OptionalBoolean getTactilePaving() {
     return (OptionalBoolean) properties.getOrDefault("tactile_paving", OptionalBoolean.empty());
   }
 
   public OptionalEnum<OSMSmoothness> getSmoothness() {
-    return (OptionalEnum<OSMSmoothness>) properties.getOrDefault("smoothness", OptionalEnum.empty());
+    return getEnumValue("smoothness");
   }
 
   public OptionalEnum<OSMHighway> getHighway() {
-    return (OptionalEnum<OSMHighway>) properties.getOrDefault("highway", OptionalEnum.empty());
+    return getEnumValue("highway");
   }
 
   public OptionalEnum<OSMFootway> getFootway() {
-    return (OptionalEnum<OSMFootway>) properties.getOrDefault("footway", OptionalEnum.empty());
+    return getEnumValue("footway");
   }
 
   public OptionalEnumAndDouble getIncline() {
@@ -91,7 +95,7 @@ public class AccessibilityPropertySet implements Serializable {
   }
 
   public OptionalEnum<OSMBEVEtat> getBevEtat() {
-    return (OptionalEnum<OSMBEVEtat>) properties.getOrDefault("wgt:bev_etat", OptionalEnum.empty());
+    return getEnumValue("wgt:bev_etat");
   }
 
   public OptionalBoolean getBevCtrast() {
@@ -111,7 +115,7 @@ public class AccessibilityPropertySet implements Serializable {
     return properties.keySet().toArray(result);
   }
 
-  public OptionalValue getProperty(String key) {
+  public OptionalValue<?> getProperty(String key) {
     return properties.get(key);
   }
 
