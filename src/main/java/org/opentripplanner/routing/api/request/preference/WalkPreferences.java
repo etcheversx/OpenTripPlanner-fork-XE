@@ -269,17 +269,17 @@ public final class WalkPreferences implements Serializable {
     private double stairsReluctance;
     private double stairsTimeFactor;
     private double safetyFactor;
-    private double minimalWidth = 0.0;
-    private boolean lightRequired = false;
-    private Collection<OSMSurface> reluctedSurfaces = new ArrayList<>();
-    private boolean tactilePaving = false;
-    private OSMSmoothness reluctedSmoothness = OSMSmoothness.impassable;
-    private double maximalIncline = 0.0;
-    private double ressautMax = 0.0;
-    private double ressautMin = 0.0;
-    private OSMBEVEtat bevEtat = OSMBEVEtat.yes;
-    private boolean bevCtrast = true;
-    private AccessibilityProfile accessibilityProfile = null;
+    private double minimalWidth;
+    private boolean lightRequired;
+    private Collection<OSMSurface> reluctedSurfaces;
+    private boolean tactilePaving;
+    private OSMSmoothness reluctedSmoothness;
+    private double maximalIncline;
+    private double ressautMax;
+    private double ressautMin;
+    private OSMBEVEtat bevEtat;
+    private boolean bevCtrast;
+    private AccessibilityProfile accessibilityProfile;
 
     public Builder(WalkPreferences original) {
       this.original = original;
