@@ -6,24 +6,20 @@ import java.util.Objects;
 import java.util.OptionalDouble;
 import javax.validation.constraints.NotNull;
 
-public class OptionalEnumAndDouble implements OptionalValue, Serializable {
+public class OptionalEnumAndDouble<T extends Enum<T>> implements OptionalValue, Serializable {
 
-  private static final OptionalEnumAndDouble _EMPTY = new OptionalEnumAndDouble(
-    OptionalEnum.empty(),
-    OptionalDouble.empty()
-  );
-  private final OptionalEnum optionalEnum;
+  private final OptionalEnum<T> optionalEnum;
   private final OptionalDouble optionalDouble;
 
   private OptionalEnumAndDouble(
-    @NotNull OptionalEnum optionalEnum,
+    @NotNull OptionalEnum<T> optionalEnum,
     @NotNull OptionalDouble optionalDouble
   ) {
     this.optionalEnum = optionalEnum;
     this.optionalDouble = optionalDouble;
   }
 
-  private OptionalEnumAndDouble(@NotNull OptionalEnum optionalEnum) {
+  private OptionalEnumAndDouble(@NotNull OptionalEnum<T> optionalEnum) {
     this(optionalEnum, OptionalDouble.empty());
   }
 
@@ -31,19 +27,19 @@ public class OptionalEnumAndDouble implements OptionalValue, Serializable {
     this(OptionalEnum.empty(), optionalDouble);
   }
 
-  public static <E extends Enum<E>> OptionalEnumAndDouble get(String value, Class<E> enumClass)
+  public static <E extends Enum<E>> OptionalEnumAndDouble<E> get(String value, Class<E> enumClass)
     throws Exception {
-    OptionalEnumAndDouble result;
+    OptionalEnumAndDouble<E> result;
     try {
-      result = new OptionalEnumAndDouble(OptionalEnum.get(value, enumClass));
+      result = new OptionalEnumAndDouble<>(OptionalEnum.get(value, enumClass));
     } catch (Exception exc) {
-      result = new OptionalEnumAndDouble(OptionalDouble.of(Double.parseDouble(value)));
+      result = new OptionalEnumAndDouble<>(OptionalDouble.of(Double.parseDouble(value)));
     }
     return result;
   }
 
-  public static OptionalEnumAndDouble empty() {
-    return _EMPTY;
+  public static <E extends Enum<E>> OptionalEnumAndDouble<E> empty() {
+    return new OptionalEnumAndDouble<E>(OptionalEnum.empty(), OptionalDouble.empty());
   }
 
   @Override
@@ -53,7 +49,7 @@ public class OptionalEnumAndDouble implements OptionalValue, Serializable {
     OptionalEnumAndDouble that = (OptionalEnumAndDouble) o;
     return (
       Objects.equals(optionalEnum, that.optionalEnum) &&
-      Objects.equals(optionalDouble, that.optionalDouble)
+        Objects.equals(optionalDouble, that.optionalDouble)
     );
   }
 
@@ -64,7 +60,7 @@ public class OptionalEnumAndDouble implements OptionalValue, Serializable {
 
   @Override
   public boolean isEmpty() {
-    return equals(_EMPTY);
+    return this.optionalDouble.isEmpty() && this.optionalEnum.isEmpty();
   }
 
   @Override
