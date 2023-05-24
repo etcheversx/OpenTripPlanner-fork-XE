@@ -19,6 +19,7 @@ import org.opentripplanner.openstreetmap.OpenStreetMapProvider;
 import org.opentripplanner.openstreetmap.model.OSMBEVEtat;
 import org.opentripplanner.openstreetmap.model.OSMFootway;
 import org.opentripplanner.openstreetmap.model.OSMHighway;
+import org.opentripplanner.openstreetmap.model.OSMIncline;
 import org.opentripplanner.openstreetmap.model.OSMSmoothness;
 import org.opentripplanner.openstreetmap.model.OSMSurface;
 import org.opentripplanner.openstreetmap.model.OptionalEnumAndDouble;
@@ -338,7 +339,7 @@ public class OSMModuleWithAccessibilityPropertiesTest {
   }
 
   private static Object getInclineValue(StreetEdge edge) {
-    OptionalEnumAndDouble incline = edge.getAccessibilityProperties().getIncline();
+    OptionalEnumAndDouble<OSMIncline> incline = edge.getAccessibilityProperties().getIncline();
     try {
       return incline.getAsTyped().toString();
     } catch (Exception exc) {

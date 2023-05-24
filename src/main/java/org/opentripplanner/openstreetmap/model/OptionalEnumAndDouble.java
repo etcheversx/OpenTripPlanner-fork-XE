@@ -49,7 +49,7 @@ public class OptionalEnumAndDouble<T extends Enum<T>> implements OptionalValue, 
     OptionalEnumAndDouble that = (OptionalEnumAndDouble) o;
     return (
       Objects.equals(optionalEnum, that.optionalEnum) &&
-        Objects.equals(optionalDouble, that.optionalDouble)
+      Objects.equals(optionalDouble, that.optionalDouble)
     );
   }
 

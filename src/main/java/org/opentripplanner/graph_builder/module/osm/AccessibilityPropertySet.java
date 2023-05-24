@@ -7,6 +7,7 @@ import javax.validation.constraints.NotNull;
 import org.opentripplanner.openstreetmap.model.OSMBEVEtat;
 import org.opentripplanner.openstreetmap.model.OSMFootway;
 import org.opentripplanner.openstreetmap.model.OSMHighway;
+import org.opentripplanner.openstreetmap.model.OSMIncline;
 import org.opentripplanner.openstreetmap.model.OSMSmoothness;
 import org.opentripplanner.openstreetmap.model.OSMSurface;
 import org.opentripplanner.openstreetmap.model.OptionalBoolean;
@@ -27,7 +28,7 @@ public class AccessibilityPropertySet implements Serializable {
     @NotNull OptionalEnum<OSMSmoothness> smoothness,
     @NotNull OptionalEnum<OSMHighway> highway,
     @NotNull OptionalEnum<OSMFootway> footway,
-    @NotNull OptionalEnumAndDouble incline,
+    @NotNull OptionalEnumAndDouble<OSMIncline> incline,
     @NotNull OptionalNumber ressautMax,
     @NotNull OptionalNumber ressautMin,
     @NotNull OptionalEnum<OSMBEVEtat> bevEtat,
@@ -79,8 +80,8 @@ public class AccessibilityPropertySet implements Serializable {
     return getEnumValue("footway");
   }
 
-  public OptionalEnumAndDouble getIncline() {
-    return (OptionalEnumAndDouble) properties.getOrDefault(
+  public OptionalEnumAndDouble<OSMIncline> getIncline() {
+    return (OptionalEnumAndDouble<OSMIncline>) properties.getOrDefault(
       "incline",
       OptionalEnumAndDouble.empty()
     );
@@ -128,7 +129,7 @@ public class AccessibilityPropertySet implements Serializable {
     private OptionalEnum<OSMSmoothness> smoothness = OptionalEnum.empty();
     private OptionalEnum<OSMHighway> highway = OptionalEnum.empty();
     private OptionalEnum<OSMFootway> footway = OptionalEnum.empty();
-    private OptionalEnumAndDouble incline = OptionalEnumAndDouble.empty();
+    private OptionalEnumAndDouble<OSMIncline> incline = OptionalEnumAndDouble.empty();
     private OptionalNumber ressautMax = OptionalNumber.empty();
     private OptionalNumber ressautMin = OptionalNumber.empty();
     private OptionalEnum<OSMBEVEtat> bevEtat = OptionalEnum.empty();
@@ -169,7 +170,7 @@ public class AccessibilityPropertySet implements Serializable {
       return this;
     }
 
-    public Builder withIncline(OptionalEnumAndDouble incline) {
+    public Builder withIncline(OptionalEnumAndDouble<OSMIncline> incline) {
       this.incline = incline;
       return this;
     }

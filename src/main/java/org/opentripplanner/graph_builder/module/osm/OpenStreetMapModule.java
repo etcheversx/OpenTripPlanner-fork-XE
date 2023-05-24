@@ -562,7 +562,7 @@ public class OpenStreetMapModule implements GraphBuilderModule {
       return parseEnum(element, "footway", "InvalidFootway", "Footway", OSMFootway.class);
     }
 
-    private OptionalEnumAndDouble parseIncline(OSMWithTags element) {
+    private OptionalEnumAndDouble<OSMIncline> parseIncline(OSMWithTags element) {
       return element.getTagAsEnumAndDouble(
         "incline",
         errorHander(element, "InvalidIncline", "Incline"),
