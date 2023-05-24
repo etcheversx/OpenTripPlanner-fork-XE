@@ -1,13 +1,6 @@
 package org.opentripplanner.routing.edgetype;
 
 import org.opentripplanner.graph_builder.module.osm.AccessibilityPropertySet;
-import org.opentripplanner.openstreetmap.model.OSMBEVEtat;
-import org.opentripplanner.openstreetmap.model.OSMSmoothness;
-import org.opentripplanner.openstreetmap.model.OSMSurface;
-import org.opentripplanner.openstreetmap.model.OptionalBoolean;
-import org.opentripplanner.openstreetmap.model.OptionalEnum;
-import org.opentripplanner.openstreetmap.model.OptionalEnumAndDouble;
-import org.opentripplanner.openstreetmap.model.OptionalNumber;
 import org.opentripplanner.routing.api.request.preference.RoutingPreferences;
 import org.opentripplanner.routing.api.request.preference.WalkPreferences;
 import org.opentripplanner.routing.core.TraverseMode;
@@ -73,36 +66,31 @@ class StreetEdgeReluctanceCalculator {
     AccessibilityPropertySet edgeAccessibilityProperties,
     WalkPreferences walkPreferences
   ) {
-    OptionalNumber width = edgeAccessibilityProperties.getWidth();
+    var width = edgeAccessibilityProperties.getWidth();
     if (width.isPresent() && width.getAsTyped() < walkPreferences.minimalWidth()) {
       reluctance *= 2;
     }
-    OptionalBoolean lit = edgeAccessibilityProperties.getLit();
+    var lit = edgeAccessibilityProperties.getLit();
     if (lit.isPresent() && !lit.getAsTyped() && walkPreferences.lightRequired()) {
       reluctance *= 2;
     }
-    OptionalEnum surface = edgeAccessibilityProperties.getSurface();
-    if (
-      surface.isPresent() &&
-      walkPreferences.reluctedSurfaces().contains((OSMSurface) surface.getAsTyped())
-    ) {
+    var surface = edgeAccessibilityProperties.getSurface();
+    if (surface.isPresent() && walkPreferences.reluctedSurfaces().contains(surface.getAsTyped())) {
       reluctance *= 2;
     }
-    OptionalBoolean tactilePaving = edgeAccessibilityProperties.getTactilePaving();
+    var tactilePaving = edgeAccessibilityProperties.getTactilePaving();
     if (
       tactilePaving.isPresent() && !tactilePaving.getAsTyped() && walkPreferences.tactilePaving()
     ) {
       reluctance *= 2;
     }
-    OptionalEnum smoothness = edgeAccessibilityProperties.getSmoothness();
+    var smoothness = edgeAccessibilityProperties.getSmoothness();
     if (smoothness.isPresent()) {
-      if (
-        walkPreferences.reluctedSmoothness().compareTo((OSMSmoothness) smoothness.getAsTyped()) > 0
-      ) {
+      if (walkPreferences.reluctedSmoothness().compareTo(smoothness.getAsTyped()) > 0) {
         reluctance *= 2;
       }
     }
-    OptionalEnumAndDouble incline = edgeAccessibilityProperties.getIncline();
+    var incline = edgeAccessibilityProperties.getIncline();
     if (incline.isPresent()) {
       Object inclineAsObject = incline.getAsTyped();
       if (inclineAsObject instanceof Double inclineAsDouble) {
@@ -111,21 +99,21 @@ class StreetEdgeReluctanceCalculator {
         }
       }
     }
-    OptionalNumber ressautMax = edgeAccessibilityProperties.getRessautMax();
+    var ressautMax = edgeAccessibilityProperties.getRessautMax();
     if (ressautMax.isPresent() && ressautMax.getAsTyped() > walkPreferences.ressautMax()) {
       reluctance *= 2;
     }
-    OptionalNumber ressautMin = edgeAccessibilityProperties.getRessautMin();
+    var ressautMin = edgeAccessibilityProperties.getRessautMin();
     if (ressautMin.isPresent() && ressautMin.getAsTyped() < walkPreferences.ressautMin()) {
       reluctance *= 2;
     }
-    OptionalBoolean bevCtrast = edgeAccessibilityProperties.getBevCtrast();
+    var bevCtrast = edgeAccessibilityProperties.getBevCtrast();
     if (bevCtrast.isPresent() && !bevCtrast.getAsTyped() && walkPreferences.bevCtrast()) {
       reluctance *= 2;
     }
-    OptionalEnum<OSMBEVEtat> bevEtat = edgeAccessibilityProperties.getBevEtat();
+    var bevEtat = edgeAccessibilityProperties.getBevEtat();
     if (bevEtat.isPresent()) {
-      if (walkPreferences.bevEtat().compareTo((OSMBEVEtat) bevEtat.getAsTyped()) > 0) {
+      if (walkPreferences.bevEtat().compareTo(bevEtat.getAsTyped()) > 0) {
         reluctance *= 2;
       }
     }

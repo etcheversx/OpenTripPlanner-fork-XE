@@ -1,4 +1,4 @@
-package org.opentripplanner.openstreetmap.model;
+package org.opentripplanner.common.optional;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -22,7 +22,7 @@ class OptionalEnumAndDoubleTest {
   @BeforeEach
   void setup() {
     supportedEnums = new ArrayList<>();
-    supportedEnums.addAll(Arrays.stream(OSMIncline.values()).toList());
+    supportedEnums.addAll(Arrays.stream(TestEnum.values()).toList());
   }
 
   @Test
@@ -30,7 +30,7 @@ class OptionalEnumAndDoubleTest {
     for (Enum<?> e : supportedEnums) {
       assertDoesNotThrow((Executable) () -> OptionalEnumAndDouble.get(e.name(), e.getClass()));
     }
-    assertDoesNotThrow((Executable) () -> OptionalEnumAndDouble.get("5.1", OSMIncline.class));
+    assertDoesNotThrow((Executable) () -> OptionalEnumAndDouble.get("5.1", TestEnum.class));
   }
 
   private OptionalEnumAndDouble createOptionalEnumAndDoubleOf(Enum<?> e) {
@@ -43,7 +43,7 @@ class OptionalEnumAndDoubleTest {
 
   private OptionalEnumAndDouble createOptionalEnumAndDoubleOf(double d) {
     try {
-      return OptionalEnumAndDouble.get(Double.toString(d), OSMIncline.class);
+      return OptionalEnumAndDouble.get(Double.toString(d), TestEnum.class);
     } catch (Exception exc) {
       return OptionalEnumAndDouble.empty();
     }
@@ -71,23 +71,23 @@ class OptionalEnumAndDoubleTest {
   void testGet() {
     try {
       assertEquals(
-        createOptionalEnumAndDoubleOf(OSMIncline.up),
-        OptionalEnumAndDouble.get("up", OSMIncline.class)
+        createOptionalEnumAndDoubleOf(TestEnum.up),
+        OptionalEnumAndDouble.get("up", TestEnum.class)
       );
       assertEquals(
-        createOptionalEnumAndDoubleOf(OSMIncline.down),
-        OptionalEnumAndDouble.get("down", OSMIncline.class)
+        createOptionalEnumAndDoubleOf(TestEnum.down),
+        OptionalEnumAndDouble.get("down", TestEnum.class)
       );
       assertEquals(
         createOptionalEnumAndDoubleOf(-2.33),
-        OptionalEnumAndDouble.get("-2.33", OSMIncline.class)
+        OptionalEnumAndDouble.get("-2.33", TestEnum.class)
       );
     } catch (Exception exc) {
       fail("Get failed with: " + exc.getMessage());
     }
 
     try {
-      OptionalEnumAndDouble.get("foo", OSMIncline.class);
+      OptionalEnumAndDouble.get("foo", TestEnum.class);
       fail("Get should fail on foo value");
     } catch (Exception exc) {
       assertEquals("For input string: \"foo\"", exc.getMessage());

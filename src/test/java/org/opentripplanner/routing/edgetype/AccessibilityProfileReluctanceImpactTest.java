@@ -4,16 +4,16 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.opentripplanner.common.optional.OptionalBoolean;
+import org.opentripplanner.common.optional.OptionalEnum;
+import org.opentripplanner.common.optional.OptionalEnumAndDouble;
+import org.opentripplanner.common.optional.OptionalNumber;
 import org.opentripplanner.graph_builder.module.osm.AccessibilityPropertySet;
 import org.opentripplanner.openstreetmap.model.OSMBEVEtat;
 import org.opentripplanner.openstreetmap.model.OSMHighway;
 import org.opentripplanner.openstreetmap.model.OSMIncline;
 import org.opentripplanner.openstreetmap.model.OSMSmoothness;
 import org.opentripplanner.openstreetmap.model.OSMSurface;
-import org.opentripplanner.openstreetmap.model.OptionalBoolean;
-import org.opentripplanner.openstreetmap.model.OptionalEnum;
-import org.opentripplanner.openstreetmap.model.OptionalEnumAndDouble;
-import org.opentripplanner.openstreetmap.model.OptionalNumber;
 import org.opentripplanner.routing.api.request.preference.AccessibilityProfile;
 
 class AccessibilityProfileReluctanceImpactTest {

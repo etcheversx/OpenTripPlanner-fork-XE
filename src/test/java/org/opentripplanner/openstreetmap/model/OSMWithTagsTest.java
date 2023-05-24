@@ -10,6 +10,8 @@ import java.util.OptionalDouble;
 import java.util.Set;
 import java.util.function.Consumer;
 import org.junit.jupiter.api.Test;
+import org.opentripplanner.common.optional.OptionalBoolean;
+import org.opentripplanner.common.optional.OptionalEnum;
 
 public class OSMWithTagsTest {
 

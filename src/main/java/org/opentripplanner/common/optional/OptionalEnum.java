@@ -1,4 +1,4 @@
-package org.opentripplanner.openstreetmap.model;
+package org.opentripplanner.common.optional;
 
 import java.util.ArrayList;
 import java.util.Arrays;

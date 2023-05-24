@@ -1,4 +1,4 @@
-package org.opentripplanner.openstreetmap.model;
+package org.opentripplanner.common.optional;
 
 import java.io.Serializable;
 import java.util.NoSuchElementException;

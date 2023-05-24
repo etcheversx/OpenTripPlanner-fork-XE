@@ -8,7 +8,6 @@ import org.opentripplanner.openstreetmap.model.OSMBEVEtat;
 import org.opentripplanner.openstreetmap.model.OSMHighway;
 import org.opentripplanner.openstreetmap.model.OSMSmoothness;
 import org.opentripplanner.openstreetmap.model.OSMSurface;
-import org.opentripplanner.openstreetmap.model.OptionalValue;
 import org.opentripplanner.routing.api.request.preference.AccessibilityProfile;
 
 public class AccessibilityProfileReluctanceImpact {
@@ -267,7 +266,7 @@ public class AccessibilityProfileReluctanceImpact {
     AccessibilityProfile accessibilityProfile
   ) {
     for (String propertyKey : edgeAccessibilityProperties.propertyKeys()) {
-      OptionalValue optionalProperty = edgeAccessibilityProperties.getProperty(propertyKey);
+      var optionalProperty = edgeAccessibilityProperties.getProperty(propertyKey);
       if (optionalProperty.isPresent()) {
         reluctance *=
           impactOnReluctance

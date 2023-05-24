@@ -16,11 +16,11 @@ import org.opentripplanner.common.TurnRestrictionType;
 import org.opentripplanner.common.geometry.DirectionUtils;
 import org.opentripplanner.common.geometry.SphericalDistanceLibrary;
 import org.opentripplanner.common.model.P2;
+import org.opentripplanner.common.optional.OptionalEnumAndDouble;
 import org.opentripplanner.graph_builder.linking.DisposableEdgeCollection;
 import org.opentripplanner.graph_builder.linking.LinkingDirection;
 import org.opentripplanner.graph_builder.module.osm.AccessibilityPropertySet;
 import org.opentripplanner.openstreetmap.model.OSMIncline;
-import org.opentripplanner.openstreetmap.model.OptionalEnumAndDouble;
 import org.opentripplanner.routing.api.request.preference.RoutingPreferences;
 import org.opentripplanner.routing.core.State;
 import org.opentripplanner.routing.core.StateEditor;
@@ -1226,7 +1226,7 @@ public class StreetEdge
 
   public void setAccessibilityProperties(AccessibilityPropertySet accessibilityProperties) {
     if (isBack()) {
-      OptionalEnumAndDouble incline = accessibilityProperties.getIncline();
+      OptionalEnumAndDouble<OSMIncline> incline = accessibilityProperties.getIncline();
       if (incline.isPresent()) {
         Object inclineAsObject = incline.getAsTyped();
         if (inclineAsObject instanceof OSMIncline inclineAsEnum) {

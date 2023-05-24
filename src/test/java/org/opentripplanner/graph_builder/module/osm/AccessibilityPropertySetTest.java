@@ -7,16 +7,16 @@ import static org.junit.jupiter.api.Assertions.fail;
 
 import java.util.Arrays;
 import org.junit.jupiter.api.Test;
+import org.opentripplanner.common.optional.OptionalBoolean;
+import org.opentripplanner.common.optional.OptionalEnum;
+import org.opentripplanner.common.optional.OptionalEnumAndDouble;
+import org.opentripplanner.common.optional.OptionalNumber;
 import org.opentripplanner.openstreetmap.model.OSMBEVEtat;
 import org.opentripplanner.openstreetmap.model.OSMFootway;
 import org.opentripplanner.openstreetmap.model.OSMHighway;
 import org.opentripplanner.openstreetmap.model.OSMIncline;
 import org.opentripplanner.openstreetmap.model.OSMSmoothness;
 import org.opentripplanner.openstreetmap.model.OSMSurface;
-import org.opentripplanner.openstreetmap.model.OptionalBoolean;
-import org.opentripplanner.openstreetmap.model.OptionalEnum;
-import org.opentripplanner.openstreetmap.model.OptionalEnumAndDouble;
-import org.opentripplanner.openstreetmap.model.OptionalNumber;
 
 public class AccessibilityPropertySetTest {
 

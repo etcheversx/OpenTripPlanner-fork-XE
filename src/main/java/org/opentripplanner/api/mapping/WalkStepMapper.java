@@ -11,10 +11,9 @@ import java.util.stream.Collectors;
 import org.opentripplanner.api.model.ApiWalkStep;
 import org.opentripplanner.graph_builder.module.osm.AccessibilityPropertySet;
 import org.opentripplanner.model.plan.WalkStep;
-import org.opentripplanner.openstreetmap.model.OptionalBoolean;
-import org.opentripplanner.openstreetmap.model.OptionalEnum;
-import org.opentripplanner.openstreetmap.model.OptionalEnumAndDouble;
-import org.opentripplanner.openstreetmap.model.OptionalNumber;
+import org.opentripplanner.openstreetmap.model.OSMFootway;
+import org.opentripplanner.openstreetmap.model.OSMHighway;
+import org.opentripplanner.openstreetmap.model.OSMSmoothness;
 
 public class WalkStepMapper {
 
@@ -63,30 +62,31 @@ public class WalkStepMapper {
     ApiWalkStep api,
     AccessibilityPropertySet accessibilityProperties
   ) {
-    OptionalNumber width = accessibilityProperties.getWidth();
+    var width = accessibilityProperties.getWidth();
     api.width = width.isPresent() ? width.getAsTyped() : null;
 
-    OptionalBoolean lit = accessibilityProperties.getLit();
+    var lit = accessibilityProperties.getLit();
     api.lit = lit.isPresent() ? lit.getAsTyped() : null;
 
-    OptionalEnum surface = accessibilityProperties.getSurface();
+    var surface = accessibilityProperties.getEnumValue("surface");
     api.surface = surface.isPresent() ? surface.getAsTyped().name() : null;
-    OptionalBoolean tactile_paving = accessibilityProperties.getTactilePaving();
 
+    var tactile_paving = accessibilityProperties.getTactilePaving();
     api.tactilePaving = tactile_paving.isPresent() ? tactile_paving.getAsTyped() : null;
-    OptionalEnum smoothness = accessibilityProperties.getSmoothness();
+
+    var smoothness = accessibilityProperties.<OSMSmoothness>getEnumValue("smoothness");
     api.smoothness = smoothness.isPresent() ? smoothness.getAsTyped().name() : null;
 
-    OptionalEnum highway = accessibilityProperties.getHighway();
+    var highway = accessibilityProperties.<OSMHighway>getEnumValue("highway");
     api.highway = highway.isPresent() ? highway.getAsTyped().name() : null;
-    OptionalEnum footway = accessibilityProperties.getFootway();
 
+    var footway = accessibilityProperties.<OSMFootway>getEnumValue("footway");
     api.footway = footway.isPresent() ? footway.getAsTyped().name() : null;
-    OptionalEnumAndDouble incline = accessibilityProperties.getIncline();
 
+    var incline = accessibilityProperties.getIncline();
     api.incline = incline.isPresent() ? incline.getAsTyped().toString() : null;
-    OptionalNumber travHTrt = accessibilityProperties.getRessautMax();
 
-    api.travHTrt = travHTrt.isPresent() ? travHTrt.getAsTyped() : null;
+    var ressautMax = accessibilityProperties.getRessautMax();
+    api.ressautMax = ressautMax.isPresent() ? ressautMax.getAsTyped() : null;
   }
 }

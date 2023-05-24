@@ -7,15 +7,15 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.opentripplanner.common.optional.OptionalBoolean;
+import org.opentripplanner.common.optional.OptionalEnum;
+import org.opentripplanner.common.optional.OptionalEnumAndDouble;
+import org.opentripplanner.common.optional.OptionalNumber;
 import org.opentripplanner.graph_builder.module.osm.AccessibilityPropertySet;
 import org.opentripplanner.openstreetmap.model.OSMBEVEtat;
 import org.opentripplanner.openstreetmap.model.OSMIncline;
 import org.opentripplanner.openstreetmap.model.OSMSmoothness;
 import org.opentripplanner.openstreetmap.model.OSMSurface;
-import org.opentripplanner.openstreetmap.model.OptionalBoolean;
-import org.opentripplanner.openstreetmap.model.OptionalEnum;
-import org.opentripplanner.openstreetmap.model.OptionalEnumAndDouble;
-import org.opentripplanner.openstreetmap.model.OptionalNumber;
 import org.opentripplanner.routing.api.request.preference.AccessibilityProfile;
 import org.opentripplanner.routing.api.request.preference.RoutingPreferences;
 import org.opentripplanner.routing.api.request.preference.WalkPreferences;
@@ -116,7 +116,7 @@ class StreetEdgeReluctanceCalculatorTest {
         );
       }
 
-      OptionalEnum edgeSurface = edgeSurfaceString != null
+      OptionalEnum<OSMSurface> edgeSurface = edgeSurfaceString != null
         ? OptionalEnum.get(edgeSurfaceString, OSMSurface.class)
         : OptionalEnum.empty();
 
@@ -193,7 +193,7 @@ class StreetEdgeReluctanceCalculatorTest {
         );
       }
 
-      OptionalEnum edgeSmoothness = edgeSmoothnessString != null
+      OptionalEnum<OSMSmoothness> edgeSmoothness = edgeSmoothnessString != null
         ? OptionalEnum.get(edgeSmoothnessString, OSMSmoothness.class)
         : OptionalEnum.empty();
 

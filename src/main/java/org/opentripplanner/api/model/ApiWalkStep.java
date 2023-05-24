@@ -1,7 +1,6 @@
 package org.opentripplanner.api.model;
 
 import java.util.List;
-import java.util.OptionalDouble;
 
 /**
  * Represents one instruction in walking directions. Three examples from New York City:
@@ -95,7 +94,7 @@ public class ApiWalkStep {
   public String highway;
   public String footway;
   public String incline;
-  public Double travHTrt;
+  public Double ressautMax;
 
   public String toString() {
     String direction = absoluteDirection.toString();

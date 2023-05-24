@@ -1,4 +1,4 @@
-package org.opentripplanner.openstreetmap.model;
+package org.opentripplanner.common.optional;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -22,7 +22,7 @@ class OptionalEnumTest {
   @BeforeEach
   void setup() {
     supportedEnums = new ArrayList<>();
-    supportedEnums.addAll(Arrays.stream(OSMSurface.values()).toList());
+    supportedEnums.addAll(Arrays.stream(TestEnum.values()).toList());
   }
 
   private static <E extends Enum<E>> OptionalEnum<E> optionalEnumOf(
@@ -60,15 +60,15 @@ class OptionalEnumTest {
   void testGet() {
     try {
       assertEquals(
-        optionalEnumOf("paved", OSMSurface.class),
-        OptionalEnum.get("paved", OSMSurface.class)
+        optionalEnumOf("paved", TestEnum.class),
+        OptionalEnum.get("paved", TestEnum.class)
       );
     } catch (Exception exc) {
       fail("Get failed with: " + exc.getMessage());
     }
 
     try {
-      OptionalEnum.get("foo", OSMSurface.class);
+      OptionalEnum.get("foo", TestEnum.class);
       fail("Get should fail on foo value");
     } catch (Exception exc) {
       assertEquals("Invalid enum value foo", exc.getMessage());
@@ -109,33 +109,33 @@ class OptionalEnumTest {
 
   @Test
   void testParseValues() {
-    assertEquals(0, OptionalEnum.parseValues(null, OSMSurface.class).size());
+    assertEquals(0, OptionalEnum.parseValues(null, TestEnum.class).size());
 
-    assertEquals(0, OptionalEnum.parseValues("", OSMSurface.class).size());
+    assertEquals(0, OptionalEnum.parseValues("", TestEnum.class).size());
 
-    ArrayList<OptionalEnum<OSMSurface>> parsedValues;
-    ArrayList<OptionalEnum<OSMSurface>> expectedValues;
+    ArrayList<OptionalEnum<TestEnum>> parsedValues;
+    ArrayList<OptionalEnum<TestEnum>> expectedValues;
 
-    parsedValues = OptionalEnum.parseValues("sand", OSMSurface.class);
+    parsedValues = OptionalEnum.parseValues("sand", TestEnum.class);
     expectedValues = new ArrayList<>();
-    expectedValues.add(optionalEnumOf("sand", OSMSurface.class));
+    expectedValues.add(optionalEnumOf("sand", TestEnum.class));
     assertEquals(expectedValues, parsedValues);
 
-    parsedValues = OptionalEnum.parseValues("sand;grass", OSMSurface.class);
+    parsedValues = OptionalEnum.parseValues("sand;grass", TestEnum.class);
     expectedValues = new ArrayList<>();
-    expectedValues.add(optionalEnumOf("sand", OSMSurface.class));
-    expectedValues.add(optionalEnumOf("grass", OSMSurface.class));
+    expectedValues.add(optionalEnumOf("sand", TestEnum.class));
+    expectedValues.add(optionalEnumOf("grass", TestEnum.class));
     assertEquals(expectedValues, parsedValues);
 
-    parsedValues = OptionalEnum.parseValues("sand;foo;grass", OSMSurface.class);
+    parsedValues = OptionalEnum.parseValues("sand;foo;grass", TestEnum.class);
     expectedValues = new ArrayList<>();
-    expectedValues.add(optionalEnumOf("sand", OSMSurface.class));
-    expectedValues.add(optionalEnumOf("grass", OSMSurface.class));
+    expectedValues.add(optionalEnumOf("sand", TestEnum.class));
+    expectedValues.add(optionalEnumOf("grass", TestEnum.class));
     assertEquals(expectedValues, parsedValues);
 
-    parsedValues = OptionalEnum.parseValues("sand;sand", OSMSurface.class);
+    parsedValues = OptionalEnum.parseValues("sand;sand", TestEnum.class);
     expectedValues = new ArrayList<>();
-    expectedValues.add(optionalEnumOf("sand", OSMSurface.class));
+    expectedValues.add(optionalEnumOf("sand", TestEnum.class));
     assertEquals(expectedValues, parsedValues);
   }
 }

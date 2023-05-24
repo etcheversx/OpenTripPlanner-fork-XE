@@ -2,6 +2,7 @@ package org.opentripplanner.openstreetmap.model;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import org.opentripplanner.common.optional.OptionalEnum;
 
 public enum OSMSurface {
   paved,
