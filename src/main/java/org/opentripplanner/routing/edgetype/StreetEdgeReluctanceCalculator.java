@@ -119,10 +119,11 @@ class StreetEdgeReluctanceCalculator {
       reluctance *= 2;
     }
     var highway = edgeAccessibilityProperties.getHighway();
-    if (highway.isPresent()
-      && walkPreferences.reluctanceOnHighway()
+    if (highway.isPresent() && walkPreferences.reluctanceOnHighway()) {
+      if (
+        highway.getAsTyped().equals(OSMHighway.residential) ||
+        highway.getAsTyped().equals(OSMHighway.unclassified)
       ) {
-      if (highway.getAsTyped().equals(OSMHighway.residential) || highway.getAsTyped().equals(OSMHighway.unclassified)) {
         reluctance *= 2;
       }
     }

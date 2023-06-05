@@ -64,6 +64,7 @@ class RequestToPreferencesMapper {
       setIfNotNull(req.ressautMin, walk::withRessautMin);
       setIfNotNull(req.bevEtat, walk::withBevEtat);
       setIfNotNull(req.bevCtrast, walk::withBevCtrast);
+      setIfNotNull(req.reluctanceOnHighway, walk::withReluctanceOnHighway);
       setIfNotNull(
         AccessibilityProfile.weakValueOf(req.accessibilityProfile),
         walk::withAccessibilityProfile

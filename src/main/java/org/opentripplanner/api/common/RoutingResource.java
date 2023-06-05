@@ -365,6 +365,9 @@ public abstract class RoutingResource {
   @QueryParam("bevCtrast")
   protected Boolean bevCtrast;
 
+  @QueryParam("reluctanceOnHighway")
+  protected Boolean reluctanceOnHighway;
+
   @QueryParam("accessibilityProfile")
   protected String accessibilityProfile;
 

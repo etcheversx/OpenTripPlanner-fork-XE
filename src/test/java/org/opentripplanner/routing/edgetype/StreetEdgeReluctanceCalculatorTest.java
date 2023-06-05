@@ -403,7 +403,9 @@ class StreetEdgeReluctanceCalculatorTest {
     );
   }
 
-  @ParameterizedTest(name = "Walk reluctance with reluctanceOnHighway={0} on edge with highway={1} is {2}")
+  @ParameterizedTest(
+    name = "Walk reluctance with reluctanceOnHighway={0} on edge with highway={1} is {2}"
+  )
   @CsvSource(
     {
       ", , 2.0",
@@ -446,7 +448,9 @@ class StreetEdgeReluctanceCalculatorTest {
       computeWalkReluctance(
         new AccessibilityPropertySet.Builder()
           .withHighway(
-            edgeHighway != null ? OptionalEnum.get(edgeHighway, OSMHighway.class) : OptionalEnum.empty()
+            edgeHighway != null
+              ? OptionalEnum.get(edgeHighway, OSMHighway.class)
+              : OptionalEnum.empty()
           )
           .build()
       )
