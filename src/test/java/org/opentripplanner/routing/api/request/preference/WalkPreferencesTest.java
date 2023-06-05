@@ -10,6 +10,7 @@ import java.util.Collection;
 import java.util.function.Consumer;
 import org.junit.jupiter.api.Test;
 import org.opentripplanner.openstreetmap.model.OSMBEVEtat;
+import org.opentripplanner.openstreetmap.model.OSMHighway;
 import org.opentripplanner.openstreetmap.model.OSMSmoothness;
 import org.opentripplanner.openstreetmap.model.OSMSurface;
 
@@ -37,6 +38,7 @@ class WalkPreferencesTest {
   private static final double RESSAUT_MIN = 0.03;
   private static final OSMBEVEtat BEV_ETAT = OSMBEVEtat.bad;
   private static final boolean BEV_CTRAST = true;
+  private static final boolean RELUCTANCE_ON_HIGHWAY = true;
   private static final AccessibilityProfile ACCESSIBILITY_PROFILE = AccessibilityProfile.PAM;
 
   private final WalkPreferences subject = WalkPreferences
@@ -57,6 +59,7 @@ class WalkPreferencesTest {
     .withRessautMin(RESSAUT_MIN)
     .withBevEtat(BEV_ETAT)
     .withBevCtrast(BEV_CTRAST)
+    .withReluctanceOnHighway(RELUCTANCE_ON_HIGHWAY)
     .withAccessibilityProfile(ACCESSIBILITY_PROFILE)
     .build();
 
@@ -106,7 +109,7 @@ class WalkPreferencesTest {
   void testToString() {
     assertEquals("WalkPreferences{}", WalkPreferences.DEFAULT.toString());
     assertEquals(
-      "WalkPreferences{speed: 1.71, reluctance: 2.5, boardCost: 301, stairsReluctance: 3.0, stairsTimeFactor: 1.31, safetyFactor: 0.51, minimalWidth: 0.85, lightRequired, reluctedSurfaces: [sand, grass], tactilePaving, reluctedSmoothness: 'intermediate', maximalIncline: 1.25, ressautMax: 0.17, ressautMin: 0.03, bevEtat: bad, bevCtrast, accessibilityProfile: PAM}",
+      "WalkPreferences{speed: 1.71, reluctance: 2.5, boardCost: 301, stairsReluctance: 3.0, stairsTimeFactor: 1.31, safetyFactor: 0.51, minimalWidth: 0.85, lightRequired, reluctedSurfaces: [sand, grass], tactilePaving, reluctedSmoothness: 'intermediate', maximalIncline: 1.25, ressautMax: 0.17, ressautMin: 0.03, bevEtat: bad, bevCtrast, reluctanceOnHighway, accessibilityProfile: PAM}",
       subject.toString()
     );
   }
@@ -166,6 +169,11 @@ class WalkPreferencesTest {
   @Test
   void bevCtrast() {
     assertEquals(BEV_CTRAST, subject.bevCtrast());
+  }
+
+  @Test
+  void reluctanceOnHighway() {
+    assertEquals(RELUCTANCE_ON_HIGHWAY, subject.reluctanceOnHighway());
   }
 
   @Test

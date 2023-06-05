@@ -43,6 +43,7 @@ public final class WalkPreferences implements Serializable {
   private final double ressautMin;
   private final OSMBEVEtat bevEtat;
   private final boolean bevCtrast;
+  private final boolean reluctanceOnHighway;
   private final AccessibilityProfile accessibilityProfile;
 
   private WalkPreferences() {
@@ -62,6 +63,7 @@ public final class WalkPreferences implements Serializable {
     this.ressautMin = 0.0;
     this.bevEtat = OSMBEVEtat.no;
     this.bevCtrast = false;
+    this.reluctanceOnHighway = false;
     this.accessibilityProfile = null;
   }
 
@@ -82,6 +84,7 @@ public final class WalkPreferences implements Serializable {
     this.ressautMin = builder.ressautMin;
     this.bevEtat = builder.bevEtat;
     this.bevCtrast = builder.bevCtrast;
+    this.reluctanceOnHighway = builder.reluctanceOnHighway;
     this.accessibilityProfile = builder.accessibilityProfile;
   }
 
@@ -189,6 +192,10 @@ public final class WalkPreferences implements Serializable {
     return bevCtrast;
   }
 
+  public boolean reluctanceOnHighway() {
+    return reluctanceOnHighway;
+  }
+
   public AccessibilityProfile accessibilityProfile() {
     return accessibilityProfile;
   }
@@ -200,22 +207,23 @@ public final class WalkPreferences implements Serializable {
     WalkPreferences that = (WalkPreferences) o;
     return (
       doubleEquals(that.speed, speed) &&
-      doubleEquals(that.reluctance, reluctance) &&
-      boardCost == that.boardCost &&
-      doubleEquals(that.stairsReluctance, stairsReluctance) &&
-      doubleEquals(that.stairsTimeFactor, stairsTimeFactor) &&
-      doubleEquals(that.safetyFactor, safetyFactor) &&
-      doubleEquals(that.minimalWidth, minimalWidth) &&
-      lightRequired == that.lightRequired &&
-      reluctedSurfaces.equals(that.reluctedSurfaces) &&
-      tactilePaving == that.tactilePaving &&
-      reluctedSmoothness.equals(that.reluctedSmoothness) &&
-      doubleEquals(that.maximalIncline, maximalIncline) &&
-      doubleEquals(that.ressautMax, ressautMax) &&
-      doubleEquals(that.ressautMin, ressautMin) &&
-      bevEtat.equals(that.bevEtat) &&
-      bevCtrast == that.bevCtrast &&
-      Objects.equals(accessibilityProfile, that.accessibilityProfile)
+        doubleEquals(that.reluctance, reluctance) &&
+        boardCost == that.boardCost &&
+        doubleEquals(that.stairsReluctance, stairsReluctance) &&
+        doubleEquals(that.stairsTimeFactor, stairsTimeFactor) &&
+        doubleEquals(that.safetyFactor, safetyFactor) &&
+        doubleEquals(that.minimalWidth, minimalWidth) &&
+        lightRequired == that.lightRequired &&
+        reluctedSurfaces.equals(that.reluctedSurfaces) &&
+        tactilePaving == that.tactilePaving &&
+        reluctedSmoothness.equals(that.reluctedSmoothness) &&
+        doubleEquals(that.maximalIncline, maximalIncline) &&
+        doubleEquals(that.ressautMax, ressautMax) &&
+        doubleEquals(that.ressautMin, ressautMin) &&
+        bevEtat.equals(that.bevEtat) &&
+        bevCtrast == that.bevCtrast &&
+        reluctanceOnHighway == that.reluctanceOnHighway &&
+        Objects.equals(accessibilityProfile, that.accessibilityProfile)
     );
   }
 
@@ -256,6 +264,7 @@ public final class WalkPreferences implements Serializable {
       .addNum("ressautMin", ressautMin, DEFAULT.ressautMin)
       .addObj("bevEtat", bevEtat, OSMBEVEtat.no)
       .addBoolIfTrue("bevCtrast", bevCtrast)
+      .addBoolIfTrue("reluctanceOnHighway", reluctanceOnHighway)
       .addObj("accessibilityProfile", accessibilityProfile, null)
       .toString();
   }
@@ -279,6 +288,7 @@ public final class WalkPreferences implements Serializable {
     private double ressautMin;
     private OSMBEVEtat bevEtat;
     private boolean bevCtrast;
+    private boolean reluctanceOnHighway;
     private AccessibilityProfile accessibilityProfile;
 
     public Builder(WalkPreferences original) {
@@ -299,6 +309,7 @@ public final class WalkPreferences implements Serializable {
       this.ressautMin = original.ressautMin;
       this.bevEtat = original.bevEtat;
       this.bevCtrast = original.bevCtrast;
+      this.reluctanceOnHighway = original.reluctanceOnHighway;
       this.accessibilityProfile = original.accessibilityProfile;
     }
 
@@ -413,6 +424,11 @@ public final class WalkPreferences implements Serializable {
 
     public Builder withBevCtrast(boolean bevCtrast) {
       this.bevCtrast = bevCtrast;
+      return this;
+    }
+
+    public Builder withReluctanceOnHighway(boolean reluctanceOnHighway) {
+      this.reluctanceOnHighway = reluctanceOnHighway;
       return this;
     }
 
