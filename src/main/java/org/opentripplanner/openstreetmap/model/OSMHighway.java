@@ -7,5 +7,5 @@ public enum OSMHighway {
   elevator,
   corridor,
   residential,
-  unclassified
+  unclassified,
 }

@@ -1,6 +1,7 @@
 package org.opentripplanner.routing.edgetype;
 
 import org.opentripplanner.graph_builder.module.osm.AccessibilityPropertySet;
+import org.opentripplanner.openstreetmap.model.OSMHighway;
 import org.opentripplanner.routing.api.request.preference.RoutingPreferences;
 import org.opentripplanner.routing.api.request.preference.WalkPreferences;
 import org.opentripplanner.routing.core.TraverseMode;
@@ -107,13 +108,21 @@ class StreetEdgeReluctanceCalculator {
     if (ressautMin.isPresent() && ressautMin.getAsTyped() < walkPreferences.ressautMin()) {
       reluctance *= 2;
     }
+    var bevEtat = edgeAccessibilityProperties.getBevEtat();
+    if (bevEtat.isPresent()) {
+      if (walkPreferences.bevEtat().compareTo(bevEtat.getAsTyped()) > 0) {
+        reluctance *= 2;
+      }
+    }
     var bevCtrast = edgeAccessibilityProperties.getBevCtrast();
     if (bevCtrast.isPresent() && !bevCtrast.getAsTyped() && walkPreferences.bevCtrast()) {
       reluctance *= 2;
     }
-    var bevEtat = edgeAccessibilityProperties.getBevEtat();
-    if (bevEtat.isPresent()) {
-      if (walkPreferences.bevEtat().compareTo(bevEtat.getAsTyped()) > 0) {
+    var highway = edgeAccessibilityProperties.getHighway();
+    if (highway.isPresent()
+      && walkPreferences.reluctanceOnHighway()
+      ) {
+      if (highway.getAsTyped().equals(OSMHighway.residential) || highway.getAsTyped().equals(OSMHighway.unclassified)) {
         reluctance *= 2;
       }
     }

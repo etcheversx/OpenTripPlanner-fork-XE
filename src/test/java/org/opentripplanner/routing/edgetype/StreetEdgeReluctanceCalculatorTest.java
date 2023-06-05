@@ -13,6 +13,7 @@ import org.opentripplanner.common.optional.OptionalEnumAndDouble;
 import org.opentripplanner.common.optional.OptionalNumber;
 import org.opentripplanner.graph_builder.module.osm.AccessibilityPropertySet;
 import org.opentripplanner.openstreetmap.model.OSMBEVEtat;
+import org.opentripplanner.openstreetmap.model.OSMHighway;
 import org.opentripplanner.openstreetmap.model.OSMIncline;
 import org.opentripplanner.openstreetmap.model.OSMSmoothness;
 import org.opentripplanner.openstreetmap.model.OSMSurface;
@@ -396,6 +397,56 @@ class StreetEdgeReluctanceCalculatorTest {
         new AccessibilityPropertySet.Builder()
           .withBevCtrast(
             edgeBevCtrast != null ? OptionalBoolean.of(edgeBevCtrast) : OptionalBoolean.empty()
+          )
+          .build()
+      )
+    );
+  }
+
+  @ParameterizedTest(name = "Walk reluctance with reluctanceOnHighway={0} on edge with highway={1} is {2}")
+  @CsvSource(
+    {
+      ", , 2.0",
+      ", pedestrian, 2.0",
+      ", footway, 2.0",
+      ", steps, 2.0",
+      ", elevator, 2.0",
+      ", corridor, 2.0",
+      ", residential, 2.0",
+      ", unclassified, 2.0",
+      "false, , 2.0",
+      "false, pedestrian, 2.0",
+      "false, footway, 2.0",
+      "false, steps, 2.0",
+      "false, elevator, 2.0",
+      "false, corridor, 2.0",
+      "false, residential, 2.0",
+      "false, unclassified, 2.0",
+      "true, , 2.0",
+      "true, pedestrian, 2.0",
+      "true, footway, 2.0",
+      "true, steps, 2.0",
+      "true, elevator, 2.0",
+      "true, corridor, 2.0",
+      "true, residential, 4.0",
+      "true, unclassified, 4.0",
+    }
+  )
+  void testReluctanceProcessingWithHighway(
+    Boolean reluctanceOnHighway,
+    String edgeHighway,
+    Double expectedWalkReluctance
+  ) throws Exception {
+    if (reluctanceOnHighway != null) {
+      routingPreferencesBuilder.withWalk(w -> w.withReluctanceOnHighway(reluctanceOnHighway));
+    }
+
+    assertEquals(
+      expectedWalkReluctance,
+      computeWalkReluctance(
+        new AccessibilityPropertySet.Builder()
+          .withHighway(
+            edgeHighway != null ? OptionalEnum.get(edgeHighway, OSMHighway.class) : OptionalEnum.empty()
           )
           .build()
       )

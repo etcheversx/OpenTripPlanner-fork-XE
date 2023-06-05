@@ -207,23 +207,23 @@ public final class WalkPreferences implements Serializable {
     WalkPreferences that = (WalkPreferences) o;
     return (
       doubleEquals(that.speed, speed) &&
-        doubleEquals(that.reluctance, reluctance) &&
-        boardCost == that.boardCost &&
-        doubleEquals(that.stairsReluctance, stairsReluctance) &&
-        doubleEquals(that.stairsTimeFactor, stairsTimeFactor) &&
-        doubleEquals(that.safetyFactor, safetyFactor) &&
-        doubleEquals(that.minimalWidth, minimalWidth) &&
-        lightRequired == that.lightRequired &&
-        reluctedSurfaces.equals(that.reluctedSurfaces) &&
-        tactilePaving == that.tactilePaving &&
-        reluctedSmoothness.equals(that.reluctedSmoothness) &&
-        doubleEquals(that.maximalIncline, maximalIncline) &&
-        doubleEquals(that.ressautMax, ressautMax) &&
-        doubleEquals(that.ressautMin, ressautMin) &&
-        bevEtat.equals(that.bevEtat) &&
-        bevCtrast == that.bevCtrast &&
-        reluctanceOnHighway == that.reluctanceOnHighway &&
-        Objects.equals(accessibilityProfile, that.accessibilityProfile)
+      doubleEquals(that.reluctance, reluctance) &&
+      boardCost == that.boardCost &&
+      doubleEquals(that.stairsReluctance, stairsReluctance) &&
+      doubleEquals(that.stairsTimeFactor, stairsTimeFactor) &&
+      doubleEquals(that.safetyFactor, safetyFactor) &&
+      doubleEquals(that.minimalWidth, minimalWidth) &&
+      lightRequired == that.lightRequired &&
+      reluctedSurfaces.equals(that.reluctedSurfaces) &&
+      tactilePaving == that.tactilePaving &&
+      reluctedSmoothness.equals(that.reluctedSmoothness) &&
+      doubleEquals(that.maximalIncline, maximalIncline) &&
+      doubleEquals(that.ressautMax, ressautMax) &&
+      doubleEquals(that.ressautMin, ressautMin) &&
+      bevEtat.equals(that.bevEtat) &&
+      bevCtrast == that.bevCtrast &&
+      reluctanceOnHighway == that.reluctanceOnHighway &&
+      Objects.equals(accessibilityProfile, that.accessibilityProfile)
     );
   }
 
