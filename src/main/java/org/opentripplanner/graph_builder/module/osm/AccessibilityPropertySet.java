@@ -3,6 +3,7 @@ package org.opentripplanner.graph_builder.module.osm;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.function.BiConsumer;
 import javax.validation.constraints.NotNull;
 import org.opentripplanner.common.optional.OptionalBoolean;
 import org.opentripplanner.common.optional.OptionalEnum;
@@ -118,6 +119,19 @@ public class AccessibilityPropertySet implements Serializable {
 
   public OptionalValue getProperty(String key) {
     return properties.get(key);
+  }
+
+  @Override
+  public String toString() {
+    StringBuilder result = new StringBuilder("{");
+    for (var key : propertyKeys()) {
+      var value = properties.get(key);
+      if (value.isPresent()) {
+        result.append(key).append(": ").append(value.getAsTyped().toString()).append(", ");
+      }
+    }
+    result.append("}");
+    return result.toString();
   }
 
   public static class Builder {

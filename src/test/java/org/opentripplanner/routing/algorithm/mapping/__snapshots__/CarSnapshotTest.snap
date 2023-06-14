@@ -43,6 +43,9 @@ org.opentripplanner.routing.algorithm.mapping.CarSnapshotTest.directCarPark=[
               "area": false,
               "bogusName": false,
               "distance": 0.72,
+              "edges": [
+                "from: null, to: null, props: {}"
+              ],
               "elevation": "",
               "lat": 45.5326129,
               "lon": -122.7007501,
@@ -56,6 +59,9 @@ org.opentripplanner.routing.algorithm.mapping.CarSnapshotTest.directCarPark=[
               "area": false,
               "bogusName": false,
               "distance": 80.22,
+              "edges": [
+                "from: {osm:node:40518456 lat,lng=45.5326127,-122.7007593}, to: {osm:node:40601548 lat,lng=45.5318916,-122.70072830000001}, props: {highway: residential, }"
+              ],
               "elevation": "",
               "highway": "residential",
               "lat": 45.5326127,
@@ -70,6 +76,9 @@ org.opentripplanner.routing.algorithm.mapping.CarSnapshotTest.directCarPark=[
               "area": false,
               "bogusName": false,
               "distance": 74.04,
+              "edges": [
+                "from: {osm:node:40601548 lat,lng=45.5318916,-122.70072830000001}, to: {osm:node:-102439 lat,lng=45.5318763,-122.70167860000001}, props: {highway: residential, }"
+              ],
               "elevation": "",
               "highway": "residential",
               "lat": 45.5318916,
@@ -84,6 +93,9 @@ org.opentripplanner.routing.algorithm.mapping.CarSnapshotTest.directCarPark=[
               "area": false,
               "bogusName": true,
               "distance": 26.38,
+              "edges": [
+                "from: {osm:node:-102439 lat,lng=45.5318763,-122.70167860000001}, to: {osm:node:-102438 lat,lng=45.5316391,-122.7016859}, props: {}"
+              ],
               "elevation": "",
               "lat": 45.5318763,
               "lon": -122.7016786,
@@ -164,6 +176,9 @@ org.opentripplanner.routing.algorithm.mapping.CarSnapshotTest.directCarPark=[
               "area": false,
               "bogusName": true,
               "distance": 26.38,
+              "edges": [
+                "from: {osm:node:-102437 lat,lng=45.531401900000006,-122.70169310000001}, to: {osm:node:-102436 lat,lng=45.531164700000005,-122.70170040000001}, props: {highway: footway, }"
+              ],
               "elevation": "",
               "highway": "footway",
               "lat": 45.5314019,
@@ -178,6 +193,9 @@ org.opentripplanner.routing.algorithm.mapping.CarSnapshotTest.directCarPark=[
               "area": false,
               "bogusName": false,
               "distance": 77.46,
+              "edges": [
+                "from: {osm:node:-102436 lat,lng=45.531164700000005,-122.70170040000001}, to: {osm:node:40677827 lat,lng=45.531181000000004,-122.70070630000001}, props: {highway: residential, }"
+              ],
               "elevation": "",
               "highway": "residential",
               "lat": 45.5311647,
@@ -192,6 +210,10 @@ org.opentripplanner.routing.algorithm.mapping.CarSnapshotTest.directCarPark=[
               "area": false,
               "bogusName": false,
               "distance": 80.22,
+              "edges": [
+                "from: {osm:node:40677827 lat,lng=45.531181000000004,-122.70070630000001}, to: {osm:node:40677822 lat,lng=45.530474100000006,-122.70067780000001}, props: {highway: residential, }",
+                "from: null, to: null, props: {}"
+              ],
               "elevation": "",
               "highway": "residential",
               "lat": 45.531181,
@@ -271,6 +293,12 @@ org.opentripplanner.routing.algorithm.mapping.CarSnapshotTest.directCarPickupWit
               "area": false,
               "bogusName": true,
               "distance": 108.24,
+              "edges": [
+                "from: null, to: null, props: {}",
+                "from: {osm:node:1313818348 lat,lng=45.533243000000006,-122.70517020000001}, to: {osm:node:1315920476 lat,lng=45.5329568,-122.70522290000001}, props: {highway: footway, }",
+                "from: {osm:node:1315920476 lat,lng=45.5329568,-122.70522290000001}, to: {osm:node:1313818329 lat,lng=45.5325776,-122.7048415}, props: {highway: footway, }",
+                "from: {osm:node:1313818329 lat,lng=45.5325776,-122.7048415}, to: {osm:node:1313818334 lat,lng=45.5325089,-122.7048383}, props: {}"
+              ],
               "elevation": "",
               "lat": 45.5333498,
               "lon": -122.7051771,
@@ -323,6 +351,13 @@ org.opentripplanner.routing.algorithm.mapping.CarSnapshotTest.directCarPickupWit
               "area": false,
               "bogusName": false,
               "distance": 635.27,
+              "edges": [
+                "from: {osm:node:1313818334 lat,lng=45.5325089,-122.7048383}, to: {osm:node:40518468 lat,lng=45.532511,-122.7047378}, props: {highway: residential, }",
+                "from: {osm:node:40518468 lat,lng=45.532511,-122.7047378}, to: {osm:node:40495671 lat,lng=45.532567900000004,-122.70274450000001}, props: {highway: residential, }",
+                "from: {osm:node:40495671 lat,lng=45.532567900000004,-122.70274450000001}, to: {osm:node:40518456 lat,lng=45.5326127,-122.7007593}, props: {highway: residential, }",
+                "from: {osm:node:40518456 lat,lng=45.5326127,-122.7007593}, to: {osm:node:40518455 lat,lng=45.532648,-122.69872000000001}, props: {highway: residential, }",
+                "from: {osm:node:40518455 lat,lng=45.532648,-122.69872000000001}, to: {osm:node:40518446 lat,lng=45.5326803,-122.69669110000001}, props: {highway: residential, }"
+              ],
               "elevation": "",
               "highway": "residential",
               "lat": 45.5325089,
@@ -337,6 +372,12 @@ org.opentripplanner.routing.algorithm.mapping.CarSnapshotTest.directCarPickupWit
               "area": false,
               "bogusName": false,
               "distance": 229.42,
+              "edges": [
+                "from: {osm:node:40518446 lat,lng=45.5326803,-122.69669110000001}, to: {osm:node:40601540 lat,lng=45.531974700000006,-122.6966677}, props: {highway: residential, }",
+                "from: {osm:node:40601540 lat,lng=45.531974700000006,-122.6966677}, to: {osm:node:1703374687 lat,lng=45.5313121,-122.69664110000001}, props: {highway: residential, }",
+                "from: {osm:node:1703374687 lat,lng=45.5313121,-122.69664110000001}, to: {osm:node:40707697 lat,lng=45.5312508,-122.69663860000001}, props: {highway: residential, }",
+                "from: {osm:node:40707697 lat,lng=45.5312508,-122.69663860000001}, to: {osm:node:1367502227 lat,lng=45.5306177,-122.69661880000001}, props: {highway: residential, }"
+              ],
               "elevation": "",
               "highway": "residential",
               "lat": 45.5326803,
@@ -390,6 +431,10 @@ org.opentripplanner.routing.algorithm.mapping.CarSnapshotTest.directCarPickupWit
               "area": false,
               "bogusName": true,
               "distance": 85.65,
+              "edges": [
+                "from: {osm:node:1367502227 lat,lng=45.5306177,-122.69661880000001}, to: {osm:node:1367502226 lat,lng=45.5306237,-122.6967264}, props: {surface: paved, highway: footway, }",
+                "from: null, to: null, props: {}"
+              ],
               "elevation": "",
               "highway": "footway",
               "lat": 45.5306177,
@@ -470,6 +515,12 @@ org.opentripplanner.routing.algorithm.mapping.CarSnapshotTest.directCarPickupWit
               "area": false,
               "bogusName": true,
               "distance": 108.24,
+              "edges": [
+                "from: null, to: null, props: {}",
+                "from: {osm:node:1313818348 lat,lng=45.533243000000006,-122.70517020000001}, to: {osm:node:1315920476 lat,lng=45.5329568,-122.70522290000001}, props: {highway: footway, }",
+                "from: {osm:node:1315920476 lat,lng=45.5329568,-122.70522290000001}, to: {osm:node:1313818329 lat,lng=45.5325776,-122.7048415}, props: {highway: footway, }",
+                "from: {osm:node:1313818329 lat,lng=45.5325776,-122.7048415}, to: {osm:node:1313818334 lat,lng=45.5325089,-122.7048383}, props: {}"
+              ],
               "elevation": "",
               "lat": 45.5333498,
               "lon": -122.7051771,
@@ -522,6 +573,13 @@ org.opentripplanner.routing.algorithm.mapping.CarSnapshotTest.directCarPickupWit
               "area": false,
               "bogusName": false,
               "distance": 635.27,
+              "edges": [
+                "from: {osm:node:1313818334 lat,lng=45.5325089,-122.7048383}, to: {osm:node:40518468 lat,lng=45.532511,-122.7047378}, props: {highway: residential, }",
+                "from: {osm:node:40518468 lat,lng=45.532511,-122.7047378}, to: {osm:node:40495671 lat,lng=45.532567900000004,-122.70274450000001}, props: {highway: residential, }",
+                "from: {osm:node:40495671 lat,lng=45.532567900000004,-122.70274450000001}, to: {osm:node:40518456 lat,lng=45.5326127,-122.7007593}, props: {highway: residential, }",
+                "from: {osm:node:40518456 lat,lng=45.5326127,-122.7007593}, to: {osm:node:40518455 lat,lng=45.532648,-122.69872000000001}, props: {highway: residential, }",
+                "from: {osm:node:40518455 lat,lng=45.532648,-122.69872000000001}, to: {osm:node:40518446 lat,lng=45.5326803,-122.69669110000001}, props: {highway: residential, }"
+              ],
               "elevation": "",
               "highway": "residential",
               "lat": 45.5325089,
@@ -536,6 +594,12 @@ org.opentripplanner.routing.algorithm.mapping.CarSnapshotTest.directCarPickupWit
               "area": false,
               "bogusName": false,
               "distance": 229.42,
+              "edges": [
+                "from: {osm:node:40518446 lat,lng=45.5326803,-122.69669110000001}, to: {osm:node:40601540 lat,lng=45.531974700000006,-122.6966677}, props: {highway: residential, }",
+                "from: {osm:node:40601540 lat,lng=45.531974700000006,-122.6966677}, to: {osm:node:1703374687 lat,lng=45.5313121,-122.69664110000001}, props: {highway: residential, }",
+                "from: {osm:node:1703374687 lat,lng=45.5313121,-122.69664110000001}, to: {osm:node:40707697 lat,lng=45.5312508,-122.69663860000001}, props: {highway: residential, }",
+                "from: {osm:node:40707697 lat,lng=45.5312508,-122.69663860000001}, to: {osm:node:1367502227 lat,lng=45.5306177,-122.69661880000001}, props: {highway: residential, }"
+              ],
               "elevation": "",
               "highway": "residential",
               "lat": 45.5326803,
@@ -589,6 +653,10 @@ org.opentripplanner.routing.algorithm.mapping.CarSnapshotTest.directCarPickupWit
               "area": false,
               "bogusName": true,
               "distance": 85.65,
+              "edges": [
+                "from: {osm:node:1367502227 lat,lng=45.5306177,-122.69661880000001}, to: {osm:node:1367502226 lat,lng=45.5306237,-122.6967264}, props: {surface: paved, highway: footway, }",
+                "from: null, to: null, props: {}"
+              ],
               "elevation": "",
               "highway": "footway",
               "lat": 45.5306177,
@@ -669,6 +737,9 @@ org.opentripplanner.routing.algorithm.mapping.CarSnapshotTest.directCarPickupWit
               "area": false,
               "bogusName": false,
               "distance": 0.72,
+              "edges": [
+                "from: null, to: null, props: {}"
+              ],
               "elevation": "",
               "lat": 45.5326129,
               "lon": -122.7007501,
@@ -682,6 +753,12 @@ org.opentripplanner.routing.algorithm.mapping.CarSnapshotTest.directCarPickupWit
               "area": false,
               "bogusName": false,
               "distance": 239.47,
+              "edges": [
+                "from: {osm:node:40518456 lat,lng=45.5326127,-122.7007593}, to: {osm:node:40601548 lat,lng=45.5318916,-122.70072830000001}, props: {highway: residential, }",
+                "from: {osm:node:40601548 lat,lng=45.5318916,-122.70072830000001}, to: {osm:node:40677827 lat,lng=45.531181000000004,-122.70070630000001}, props: {highway: residential, }",
+                "from: {osm:node:40677827 lat,lng=45.531181000000004,-122.70070630000001}, to: {osm:node:40677822 lat,lng=45.530474100000006,-122.70067780000001}, props: {highway: residential, }",
+                "from: null, to: null, props: {}"
+              ],
               "elevation": "",
               "highway": "residential",
               "lat": 45.5326127,

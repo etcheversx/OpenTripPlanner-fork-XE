@@ -43,6 +43,28 @@ org.opentripplanner.routing.algorithm.mapping.TransitSnapshotTest.test_trip_plan
               "area": false,
               "bogusName": false,
               "distance": 857.89,
+              "edges": [
+                "from: null, to: null, props: {}",
+                "from: {osm:node:40501926 lat,lng=45.517186300000006,-122.6485801}, to: {split_419 lat,lng=45.517189072086715,-122.649266303844}, props: {}",
+                "from: {split_419 lat,lng=45.517189072086715,-122.649266303844}, to: {osm:node:40501921 lat,lng=45.5171903,-122.64959560000001}, props: {}",
+                "from: {osm:node:40501921 lat,lng=45.5171903,-122.64959560000001}, to: {osm:node:40501919 lat,lng=45.5171943,-122.6506102}, props: {}",
+                "from: {osm:node:40501919 lat,lng=45.5171943,-122.6506102}, to: {split_421 lat,lng=45.517195181619066,-122.65135413955707}, props: {}",
+                "from: {split_421 lat,lng=45.517195181619066,-122.65135413955707}, to: {osm:node:40501914 lat,lng=45.5171955,-122.65162280000001}, props: {}",
+                "from: {osm:node:40501914 lat,lng=45.5171955,-122.65162280000001}, to: {osm:node:40501910 lat,lng=45.5171998,-122.6526302}, props: {}",
+                "from: {osm:node:40501910 lat,lng=45.5171998,-122.6526302}, to: {osm:node:40501909 lat,lng=45.5172031,-122.6536511}, props: {}",
+                "from: {osm:node:40501909 lat,lng=45.5172031,-122.6536511}, to: {split_414 lat,lng=45.517201762508755,-122.65406748482502}, props: {}",
+                "from: {split_414 lat,lng=45.517201762508755,-122.65406748482502}, to: {osm:node:40501907 lat,lng=45.5172107,-122.65466760000001}, props: {}",
+                "from: {osm:node:40501907 lat,lng=45.5172107,-122.65466760000001}, to: {osm:node:40501903 lat,lng=45.517220800000004,-122.65568780000001}, props: {}",
+                "from: {osm:node:40501903 lat,lng=45.517220800000004,-122.65568780000001}, to: {split_455 lat,lng=45.51722341378209,-122.65656341699926}, props: {}",
+                "from: {split_455 lat,lng=45.51722341378209,-122.65656341699926}, to: {osm:node:40501901 lat,lng=45.517223800000004,-122.6566928}, props: {}",
+                "from: {osm:node:40501901 lat,lng=45.517223800000004,-122.6566928}, to: {osm:node:40501899 lat,lng=45.517226900000004,-122.65771430000001}, props: {}",
+                "from: {osm:node:40501899 lat,lng=45.517226900000004,-122.65771430000001}, to: {osm:node:2667852262 lat,lng=45.5172271,-122.65805270000001}, props: {}",
+                "from: {osm:node:2667852262 lat,lng=45.5172271,-122.65805270000001}, to: {osm:node:2667839549 lat,lng=45.5172273,-122.6583253}, props: {}",
+                "from: {osm:node:2667839549 lat,lng=45.5172273,-122.6583253}, to: {osm:node:2667839558 lat,lng=45.5172274,-122.6584097}, props: {}",
+                "from: {osm:node:2667839558 lat,lng=45.5172274,-122.6584097}, to: {osm:node:40501896 lat,lng=45.517228900000006,-122.65868490000001}, props: {}",
+                "from: {osm:node:40501896 lat,lng=45.517228900000006,-122.65868490000001}, to: {osm:node:2668189870 lat,lng=45.5172308,-122.6589766}, props: {}",
+                "from: {osm:node:2668189870 lat,lng=45.5172308,-122.6589766}, to: {osm:node:2668189878 lat,lng=45.517229,-122.6594795}, props: {}"
+              ],
               "elevation": "",
               "lat": 45.517186,
               "lon": -122.6484704,
@@ -56,6 +78,9 @@ org.opentripplanner.routing.algorithm.mapping.TransitSnapshotTest.test_trip_plan
               "area": false,
               "bogusName": true,
               "distance": 69.99,
+              "edges": [
+                "from: {osm:node:2668189878 lat,lng=45.517229,-122.6594795}, to: {osm:node:2668189881 lat,lng=45.5167705,-122.65974310000001}, props: {}"
+              ],
               "elevation": "",
               "lat": 45.517229,
               "lon": -122.6594795,
@@ -69,6 +94,10 @@ org.opentripplanner.routing.algorithm.mapping.TransitSnapshotTest.test_trip_plan
               "area": false,
               "bogusName": false,
               "distance": 28.34,
+              "edges": [
+                "from: {osm:node:2668189881 lat,lng=45.5167705,-122.65974310000001}, to: {osm:node:2668189868 lat,lng=45.5166587,-122.6597438}, props: {highway: residential, }",
+                "from: {osm:node:2668189868 lat,lng=45.5166587,-122.6597438}, to: {osm:node:40553401 lat,lng=45.516515600000005,-122.6597447}, props: {highway: residential, }"
+              ],
               "elevation": "",
               "highway": "residential",
               "lat": 45.5167705,
@@ -83,6 +112,10 @@ org.opentripplanner.routing.algorithm.mapping.TransitSnapshotTest.test_trip_plan
               "area": false,
               "bogusName": false,
               "distance": 78.11,
+              "edges": [
+                "from: {osm:node:40553401 lat,lng=45.516515600000005,-122.6597447}, to: {osm:node:2629403591 lat,lng=45.516517400000005,-122.6603525}, props: {}",
+                "from: {osm:node:2629403591 lat,lng=45.516517400000005,-122.6603525}, to: {osm:node:40553399 lat,lng=45.516518500000004,-122.66074710000001}, props: {}"
+              ],
               "elevation": "",
               "lat": 45.5165156,
               "lon": -122.6597447,
@@ -96,6 +129,13 @@ org.opentripplanner.routing.algorithm.mapping.TransitSnapshotTest.test_trip_plan
               "area": false,
               "bogusName": false,
               "distance": 401.95,
+              "edges": [
+                "from: {osm:node:40553399 lat,lng=45.516518500000004,-122.66074710000001}, to: {osm:node:2629403608 lat,lng=45.5164229,-122.6614703}, props: {highway: residential, }",
+                "from: {osm:node:2629403608 lat,lng=45.5164229,-122.6614703}, to: {osm:node:40553363 lat,lng=45.5164647,-122.66181920000001}, props: {highway: residential, }",
+                "from: {osm:node:40553363 lat,lng=45.5164647,-122.66181920000001}, to: {osm:node:40553360 lat,lng=45.5164844,-122.662789}, props: {highway: residential, }",
+                "from: {osm:node:40553360 lat,lng=45.5164844,-122.662789}, to: {osm:node:40553356 lat,lng=45.5164836,-122.66381690000001}, props: {highway: residential, }",
+                "from: {osm:node:40553356 lat,lng=45.5164836,-122.66381690000001}, to: {osm:node:40542117 lat,lng=45.5165001,-122.6658345}, props: {highway: residential, }"
+              ],
               "elevation": "",
               "highway": "residential",
               "lat": 45.5165185,
@@ -110,6 +150,9 @@ org.opentripplanner.routing.algorithm.mapping.TransitSnapshotTest.test_trip_plan
               "area": false,
               "bogusName": true,
               "distance": 8.77,
+              "edges": [
+                "from: {osm:node:40542117 lat,lng=45.5165001,-122.6658345}, to: {osm:node:1369494463 lat,lng=45.516499800000005,-122.665947}, props: {highway: footway, }"
+              ],
               "elevation": "",
               "highway": "footway",
               "lat": 45.5165001,
@@ -124,6 +167,11 @@ org.opentripplanner.routing.algorithm.mapping.TransitSnapshotTest.test_trip_plan
               "area": false,
               "bogusName": false,
               "distance": 43.8,
+              "edges": [
+                "from: {osm:node:1369494463 lat,lng=45.516499800000005,-122.665947}, to: {osm:node:1369494461 lat,lng=45.516238200000004,-122.66595020000001}, props: {footway: sidewalk, highway: footway, }",
+                "from: {osm:node:1369494461 lat,lng=45.516238200000004,-122.66595020000001}, to: {osm:node:1375333449 lat,lng=45.516202,-122.6659506}, props: {footway: crossing, highway: footway, }",
+                "from: {osm:node:1375333449 lat,lng=45.516202,-122.6659506}, to: {osm:node:1354151082 lat,lng=45.516128800000004,-122.6660075}, props: {footway: crossing, highway: footway, }"
+              ],
               "elevation": "",
               "footway": "sidewalk",
               "highway": "footway",
@@ -139,6 +187,18 @@ org.opentripplanner.routing.algorithm.mapping.TransitSnapshotTest.test_trip_plan
               "area": false,
               "bogusName": false,
               "distance": 697.32,
+              "edges": [
+                "from: {osm:node:1354151082 lat,lng=45.516128800000004,-122.6660075}, to: {osm:node:40425785 lat,lng=45.516201300000006,-122.66652380000001}, props: {surface: paved, }",
+                "from: {osm:node:40425785 lat,lng=45.516201300000006,-122.66652380000001}, to: {osm:node:1307380012 lat,lng=45.5163552,-122.66674990000001}, props: {surface: paved, }",
+                "from: {osm:node:1307380012 lat,lng=45.5163552,-122.66674990000001}, to: {osm:node:1545229245 lat,lng=45.5168831,-122.6673695}, props: {surface: paved, }",
+                "from: {osm:node:1545229245 lat,lng=45.5168831,-122.6673695}, to: {osm:node:1644884632 lat,lng=45.5177393,-122.669723}, props: {surface: paved, }",
+                "from: {osm:node:1644884632 lat,lng=45.5177393,-122.669723}, to: {osm:node:1307380008 lat,lng=45.518364500000004,-122.67262040000001}, props: {surface: paved, }",
+                "from: {osm:node:1307380008 lat,lng=45.518364500000004,-122.67262040000001}, to: {osm:node:1579259342 lat,lng=45.5183625,-122.67265750000001}, props: {surface: paved, }",
+                "from: {osm:node:1579259342 lat,lng=45.5183625,-122.67265750000001}, to: {osm:node:1579259349 lat,lng=45.518405200000004,-122.672662}, props: {surface: paved, footway: crossing, highway: footway, }",
+                "from: {osm:node:1579259349 lat,lng=45.518405200000004,-122.672662}, to: {osm:node:1579259353 lat,lng=45.5184324,-122.6726646}, props: {surface: paved, footway: crossing, highway: footway, }",
+                "from: {osm:node:1579259353 lat,lng=45.5184324,-122.6726646}, to: {osm:node:1579259390 lat,lng=45.518534,-122.67345510000001}, props: {surface: paved, footway: sidewalk, highway: footway, }",
+                "from: {osm:node:1579259390 lat,lng=45.518534,-122.67345510000001}, to: {osm:node:1579259394 lat,lng=45.5185836,-122.6738909}, props: {surface: paved, footway: sidewalk, highway: footway, }"
+              ],
               "elevation": "",
               "lat": 45.5161288,
               "lon": -122.6660075,
@@ -153,6 +213,9 @@ org.opentripplanner.routing.algorithm.mapping.TransitSnapshotTest.test_trip_plan
               "area": false,
               "bogusName": true,
               "distance": 5.12,
+              "edges": [
+                "from: {osm:node:1579259394 lat,lng=45.5185836,-122.6738909}, to: {osm:node:1579259391 lat,lng=45.5185401,-122.67391230000001}, props: {surface: paved, footway: crossing, highway: footway, }"
+              ],
               "elevation": "",
               "footway": "crossing",
               "highway": "footway",
@@ -169,6 +232,32 @@ org.opentripplanner.routing.algorithm.mapping.TransitSnapshotTest.test_trip_plan
               "area": false,
               "bogusName": false,
               "distance": 1368.86,
+              "edges": [
+                "from: {osm:node:1579259391 lat,lng=45.5185401,-122.67391230000001}, to: {osm:node:40425441 lat,lng=45.518663200000006,-122.67420340000001}, props: {}",
+                "from: {osm:node:40425441 lat,lng=45.518663200000006,-122.67420340000001}, to: {osm:node:1378074006 lat,lng=45.518691200000006,-122.6743086}, props: {}",
+                "from: {osm:node:1378074006 lat,lng=45.518691200000006,-122.6743086}, to: {osm:node:40605609 lat,lng=45.518924000000005,-122.67518430000001}, props: {}",
+                "from: {osm:node:40605609 lat,lng=45.518924000000005,-122.67518430000001}, to: {osm:node:40609745 lat,lng=45.519195700000004,-122.67620660000001}, props: {}",
+                "from: {osm:node:40609745 lat,lng=45.519195700000004,-122.67620660000001}, to: {osm:node:40531461 lat,lng=45.519457200000005,-122.6771901}, props: {}",
+                "from: {osm:node:40531461 lat,lng=45.519457200000005,-122.6771901}, to: {split_98 lat,lng=45.51949258131103,-122.67732215665585}, props: {}",
+                "from: {split_98 lat,lng=45.51949258131103,-122.67732215665585}, to: {osm:node:40609749 lat,lng=45.519751400000004,-122.67829680000001}, props: {}",
+                "from: {osm:node:40609749 lat,lng=45.519751400000004,-122.67829680000001}, to: {osm:node:40609752 lat,lng=45.5200089,-122.6792654}, props: {}",
+                "from: {osm:node:40609752 lat,lng=45.5200089,-122.6792654}, to: {osm:node:40528436 lat,lng=45.520277300000004,-122.68024700000001}, props: {}",
+                "from: {osm:node:40528436 lat,lng=45.520277300000004,-122.68024700000001}, to: {osm:node:40553677 lat,lng=45.520419100000005,-122.6807804}, props: {}",
+                "from: {osm:node:40553677 lat,lng=45.520419100000005,-122.6807804}, to: {osm:node:1387003148 lat,lng=45.520648800000004,-122.6816447}, props: {}",
+                "from: {osm:node:1387003148 lat,lng=45.520648800000004,-122.6816447}, to: {osm:node:662764987 lat,lng=45.520676400000006,-122.6817474}, props: {}",
+                "from: {osm:node:662764987 lat,lng=45.520676400000006,-122.6817474}, to: {osm:node:40536563 lat,lng=45.5209489,-122.6827717}, props: {}",
+                "from: {osm:node:40536563 lat,lng=45.5209489,-122.6827717}, to: {osm:node:1385439460 lat,lng=45.5209781,-122.68288530000001}, props: {}",
+                "from: {osm:node:1385439460 lat,lng=45.5209781,-122.68288530000001}, to: {osm:node:40609759 lat,lng=45.521224100000005,-122.68379870000001}, props: {}",
+                "from: {osm:node:40609759 lat,lng=45.521224100000005,-122.68379870000001}, to: {osm:node:40523758 lat,lng=45.5215004,-122.68479350000001}, props: {}",
+                "from: {osm:node:40523758 lat,lng=45.5215004,-122.68479350000001}, to: {osm:node:356079454 lat,lng=45.5216428,-122.68532080000001}, props: {}",
+                "from: {osm:node:356079454 lat,lng=45.5216428,-122.68532080000001}, to: {osm:node:40609763 lat,lng=45.521782,-122.68584360000001}, props: {}",
+                "from: {osm:node:40609763 lat,lng=45.521782,-122.68584360000001}, to: {osm:node:2003857100 lat,lng=45.521806700000006,-122.68593910000001}, props: {}",
+                "from: {osm:node:2003857100 lat,lng=45.521806700000006,-122.68593910000001}, to: {osm:node:40492025 lat,lng=45.5220354,-122.68681660000001}, props: {}",
+                "from: {osm:node:40492025 lat,lng=45.5220354,-122.68681660000001}, to: {osm:node:40609766 lat,lng=45.5222891,-122.68778030000001}, props: {}",
+                "from: {osm:node:40609766 lat,lng=45.5222891,-122.68778030000001}, to: {osm:node:40533630 lat,lng=45.522562,-122.6887885}, props: {}",
+                "from: {osm:node:40533630 lat,lng=45.522562,-122.6887885}, to: {osm:node:40609770 lat,lng=45.5227963,-122.6896844}, props: {}",
+                "from: {osm:node:40609770 lat,lng=45.5227963,-122.6896844}, to: {osm:node:40516340 lat,lng=45.523017100000004,-122.69024660000001}, props: {}"
+              ],
               "elevation": "",
               "lat": 45.5185401,
               "lon": -122.6739123,
@@ -182,6 +271,21 @@ org.opentripplanner.routing.algorithm.mapping.TransitSnapshotTest.test_trip_plan
               "area": false,
               "bogusName": false,
               "distance": 477.25,
+              "edges": [
+                "from: {osm:node:40516340 lat,lng=45.523017100000004,-122.69024660000001}, to: {osm:node:2480399311 lat,lng=45.5230325,-122.6905641}, props: {}",
+                "from: {osm:node:2480399311 lat,lng=45.5230325,-122.6905641}, to: {osm:node:40516341 lat,lng=45.5230679,-122.69127390000001}, props: {}",
+                "from: {osm:node:40516341 lat,lng=45.5230679,-122.69127390000001}, to: {split_1456 lat,lng=45.52311225019989,-122.69214560750795}, props: {}",
+                "from: {split_1456 lat,lng=45.52311225019989,-122.69214560750795}, to: {osm:node:40516345 lat,lng=45.5231196,-122.6922976}, props: {}",
+                "from: {osm:node:40516345 lat,lng=45.5231196,-122.6922976}, to: {split_246 lat,lng=45.5231320838306,-122.69256271852731}, props: {}",
+                "from: {split_246 lat,lng=45.5231320838306,-122.69256271852731}, to: {split_1458 lat,lng=45.52316004672721,-122.69313595790791}, props: {}",
+                "from: {split_1458 lat,lng=45.52316004672721,-122.69313595790791}, to: {osm:node:40516348 lat,lng=45.5231694,-122.6933245}, props: {}",
+                "from: {osm:node:40516348 lat,lng=45.5231694,-122.6933245}, to: {osm:node:40516350 lat,lng=45.5231958,-122.69386130000001}, props: {}",
+                "from: {osm:node:40516350 lat,lng=45.5231958,-122.69386130000001}, to: {osm:node:40516355 lat,lng=45.523221,-122.69431050000001}, props: {}",
+                "from: {osm:node:40516355 lat,lng=45.523221,-122.69431050000001}, to: {split_1460 lat,lng=45.523249092859054,-122.69490673448706}, props: {}",
+                "from: {split_1460 lat,lng=45.523249092859054,-122.69490673448706}, to: {osm:node:40516357 lat,lng=45.523254,-122.69501640000001}, props: {}",
+                "from: {osm:node:40516357 lat,lng=45.523254,-122.69501640000001}, to: {osm:node:40516361 lat,lng=45.5232712,-122.69540900000001}, props: {}",
+                "from: {osm:node:40516361 lat,lng=45.5232712,-122.69540900000001}, to: {osm:node:40516364 lat,lng=45.5233204,-122.696357}, props: {}"
+              ],
               "elevation": "",
               "lat": 45.5230171,
               "lon": -122.6902466,
@@ -195,6 +299,26 @@ org.opentripplanner.routing.algorithm.mapping.TransitSnapshotTest.test_trip_plan
               "area": false,
               "bogusName": false,
               "distance": 882.16,
+              "edges": [
+                "from: {osm:node:40516364 lat,lng=45.5233204,-122.696357}, to: {osm:node:40508526 lat,lng=45.5241309,-122.6963783}, props: {highway: residential, }",
+                "from: {osm:node:40508526 lat,lng=45.5241309,-122.6963783}, to: {osm:node:40450505 lat,lng=45.5248384,-122.6964075}, props: {highway: residential, }",
+                "from: {osm:node:40450505 lat,lng=45.5248384,-122.6964075}, to: {osm:node:40612042 lat,lng=45.5255558,-122.6964308}, props: {highway: residential, }",
+                "from: {osm:node:40612042 lat,lng=45.5255558,-122.6964308}, to: {osm:node:40684667 lat,lng=45.5262655,-122.69645500000001}, props: {highway: residential, }",
+                "from: {osm:node:40684667 lat,lng=45.5262655,-122.69645500000001}, to: {osm:node:40730558 lat,lng=45.526986300000004,-122.696481}, props: {highway: residential, }",
+                "from: {osm:node:40730558 lat,lng=45.526986300000004,-122.696481}, to: {osm:node:40549861 lat,lng=45.527689800000005,-122.6965055}, props: {highway: residential, }",
+                "from: {osm:node:40549861 lat,lng=45.527689800000005,-122.6965055}, to: {osm:node:40724790 lat,lng=45.528407200000004,-122.69652520000001}, props: {highway: residential, }",
+                "from: {osm:node:40724790 lat,lng=45.528407200000004,-122.69652520000001}, to: {split_2125 lat,lng=45.52854045127028,-122.69652999495611}, props: {}",
+                "from: {split_2125 lat,lng=45.52854045127028,-122.69652999495611}, to: {osm:node:40638134 lat,lng=45.5291214,-122.6965509}, props: {}",
+                "from: {osm:node:40638134 lat,lng=45.5291214,-122.6965509}, to: {osm:node:1364928150 lat,lng=45.5292753,-122.6965571}, props: {highway: residential, }",
+                "from: {osm:node:1364928150 lat,lng=45.5292753,-122.6965571}, to: {osm:node:1364928127 lat,lng=45.529401,-122.6965622}, props: {highway: residential, }",
+                "from: {osm:node:1364928127 lat,lng=45.529401,-122.6965622}, to: {osm:node:1559803884 lat,lng=45.5297585,-122.69657660000001}, props: {highway: residential, }",
+                "from: {osm:node:1559803884 lat,lng=45.5297585,-122.69657660000001}, to: {osm:node:40648318 lat,lng=45.5298309,-122.69657950000001}, props: {highway: residential, }",
+                "from: {osm:node:40648318 lat,lng=45.5298309,-122.69657950000001}, to: {osm:node:1367502276 lat,lng=45.530013100000005,-122.696583}, props: {highway: residential, }",
+                "from: {osm:node:1367502276 lat,lng=45.530013100000005,-122.696583}, to: {osm:node:40717610 lat,lng=45.5305413,-122.69660780000001}, props: {highway: residential, }",
+                "from: {osm:node:40717610 lat,lng=45.5305413,-122.69660780000001}, to: {osm:node:1367502126 lat,lng=45.5305629,-122.6966108}, props: {highway: residential, }",
+                "from: {osm:node:1367502126 lat,lng=45.5305629,-122.6966108}, to: {osm:node:1367502227 lat,lng=45.5306177,-122.69661880000001}, props: {highway: residential, }",
+                "from: {osm:node:1367502227 lat,lng=45.5306177,-122.69661880000001}, to: {osm:node:40707697 lat,lng=45.5312508,-122.69663860000001}, props: {highway: residential, }"
+              ],
               "elevation": "",
               "highway": "residential",
               "lat": 45.5233204,
@@ -209,6 +333,9 @@ org.opentripplanner.routing.algorithm.mapping.TransitSnapshotTest.test_trip_plan
               "area": false,
               "bogusName": false,
               "distance": 3.68,
+              "edges": [
+                "from: null, to: null, props: {}"
+              ],
               "elevation": "",
               "lat": 45.5312508,
               "lon": -122.6966386,
@@ -315,6 +442,11 @@ org.opentripplanner.routing.algorithm.mapping.TransitSnapshotTest.test_trip_plan
               "area": false,
               "bogusName": false,
               "distance": 87.68,
+              "edges": [
+                "from: null, to: null, props: {}",
+                "from: {osm:node:40501926 lat,lng=45.517186300000006,-122.6485801}, to: {split_419 lat,lng=45.517189072086715,-122.649266303844}, props: {}",
+                "from: {split_419 lat,lng=45.517189072086715,-122.649266303844}, to: {osm:node:40501921 lat,lng=45.5171903,-122.64959560000001}, props: {}"
+              ],
               "elevation": "",
               "lat": 45.517186,
               "lon": -122.6484704,
@@ -328,6 +460,16 @@ org.opentripplanner.routing.algorithm.mapping.TransitSnapshotTest.test_trip_plan
               "area": false,
               "bogusName": false,
               "distance": 641.04,
+              "edges": [
+                "from: {osm:node:40501921 lat,lng=45.5171903,-122.64959560000001}, to: {osm:node:40642033 lat,lng=45.517904400000006,-122.64959030000001}, props: {highway: residential, }",
+                "from: {osm:node:40642033 lat,lng=45.517904400000006,-122.64959030000001}, to: {osm:node:40746134 lat,lng=45.5186232,-122.649585}, props: {highway: residential, }",
+                "from: {osm:node:40746134 lat,lng=45.5186232,-122.649585}, to: {osm:node:40637262 lat,lng=45.5193388,-122.64957980000001}, props: {highway: residential, }",
+                "from: {osm:node:40637262 lat,lng=45.5193388,-122.64957980000001}, to: {osm:node:40477325 lat,lng=45.5200503,-122.64957450000001}, props: {highway: residential, }",
+                "from: {osm:node:40477325 lat,lng=45.5200503,-122.64957450000001}, to: {osm:node:40557183 lat,lng=45.520762500000004,-122.64956930000001}, props: {highway: residential, }",
+                "from: {osm:node:40557183 lat,lng=45.520762500000004,-122.64956930000001}, to: {osm:node:1710211748 lat,lng=45.5214104,-122.64956450000001}, props: {highway: residential, }",
+                "from: {osm:node:1710211798 lat,lng=45.521523300000005,-122.649563}, to: {osm:node:40622252 lat,lng=45.522184100000004,-122.6495632}, props: {highway: residential, }",
+                "from: {osm:node:40622252 lat,lng=45.522184100000004,-122.6495632}, to: {osm:node:40639319 lat,lng=45.522891200000004,-122.64955280000001}, props: {highway: residential, }"
+              ],
               "elevation": "",
               "highway": "residential",
               "lat": 45.5171903,
@@ -342,6 +484,10 @@ org.opentripplanner.routing.algorithm.mapping.TransitSnapshotTest.test_trip_plan
               "area": false,
               "bogusName": false,
               "distance": 168.89,
+              "edges": [
+                "from: {osm:node:40639319 lat,lng=45.522891200000004,-122.64955280000001}, to: {osm:node:40683016 lat,lng=45.5236072,-122.64955}, props: {}",
+                "from: {osm:node:40683016 lat,lng=45.5236072,-122.64955}, to: {osm:node:40559489 lat,lng=45.524409000000006,-122.6495675}, props: {}"
+              ],
               "elevation": "",
               "lat": 45.5228912,
               "lon": -122.6495528,
@@ -355,6 +501,9 @@ org.opentripplanner.routing.algorithm.mapping.TransitSnapshotTest.test_trip_plan
               "area": false,
               "bogusName": false,
               "distance": 22.74,
+              "edges": [
+                "from: {osm:node:40559489 lat,lng=45.524409000000006,-122.6495675}, to: {split_474 lat,lng=45.52450640104038,-122.64931080431207}, props: {}"
+              ],
               "elevation": "",
               "lat": 45.524409,
               "lon": -122.6495675,
@@ -654,6 +803,11 @@ org.opentripplanner.routing.algorithm.mapping.TransitSnapshotTest.test_trip_plan
               "area": false,
               "bogusName": false,
               "distance": 113.27,
+              "edges": [
+                "from: {split_1460 lat,lng=45.523249092859054,-122.69490673448706}, to: {osm:node:40516357 lat,lng=45.523254,-122.69501640000001}, props: {}",
+                "from: {osm:node:40516357 lat,lng=45.523254,-122.69501640000001}, to: {osm:node:40516361 lat,lng=45.5232712,-122.69540900000001}, props: {}",
+                "from: {osm:node:40516361 lat,lng=45.5232712,-122.69540900000001}, to: {osm:node:40516364 lat,lng=45.5233204,-122.696357}, props: {}"
+              ],
               "elevation": "",
               "lat": 45.5232491,
               "lon": -122.6949067,
@@ -667,6 +821,26 @@ org.opentripplanner.routing.algorithm.mapping.TransitSnapshotTest.test_trip_plan
               "area": false,
               "bogusName": false,
               "distance": 882.16,
+              "edges": [
+                "from: {osm:node:40516364 lat,lng=45.5233204,-122.696357}, to: {osm:node:40508526 lat,lng=45.5241309,-122.6963783}, props: {highway: residential, }",
+                "from: {osm:node:40508526 lat,lng=45.5241309,-122.6963783}, to: {osm:node:40450505 lat,lng=45.5248384,-122.6964075}, props: {highway: residential, }",
+                "from: {osm:node:40450505 lat,lng=45.5248384,-122.6964075}, to: {osm:node:40612042 lat,lng=45.5255558,-122.6964308}, props: {highway: residential, }",
+                "from: {osm:node:40612042 lat,lng=45.5255558,-122.6964308}, to: {osm:node:40684667 lat,lng=45.5262655,-122.69645500000001}, props: {highway: residential, }",
+                "from: {osm:node:40684667 lat,lng=45.5262655,-122.69645500000001}, to: {osm:node:40730558 lat,lng=45.526986300000004,-122.696481}, props: {highway: residential, }",
+                "from: {osm:node:40730558 lat,lng=45.526986300000004,-122.696481}, to: {osm:node:40549861 lat,lng=45.527689800000005,-122.6965055}, props: {highway: residential, }",
+                "from: {osm:node:40549861 lat,lng=45.527689800000005,-122.6965055}, to: {osm:node:40724790 lat,lng=45.528407200000004,-122.69652520000001}, props: {highway: residential, }",
+                "from: {osm:node:40724790 lat,lng=45.528407200000004,-122.69652520000001}, to: {split_2125 lat,lng=45.52854045127028,-122.69652999495611}, props: {}",
+                "from: {split_2125 lat,lng=45.52854045127028,-122.69652999495611}, to: {osm:node:40638134 lat,lng=45.5291214,-122.6965509}, props: {}",
+                "from: {osm:node:40638134 lat,lng=45.5291214,-122.6965509}, to: {osm:node:1364928150 lat,lng=45.5292753,-122.6965571}, props: {highway: residential, }",
+                "from: {osm:node:1364928150 lat,lng=45.5292753,-122.6965571}, to: {osm:node:1364928127 lat,lng=45.529401,-122.6965622}, props: {highway: residential, }",
+                "from: {osm:node:1364928127 lat,lng=45.529401,-122.6965622}, to: {osm:node:1559803884 lat,lng=45.5297585,-122.69657660000001}, props: {highway: residential, }",
+                "from: {osm:node:1559803884 lat,lng=45.5297585,-122.69657660000001}, to: {osm:node:40648318 lat,lng=45.5298309,-122.69657950000001}, props: {highway: residential, }",
+                "from: {osm:node:40648318 lat,lng=45.5298309,-122.69657950000001}, to: {osm:node:1367502276 lat,lng=45.530013100000005,-122.696583}, props: {highway: residential, }",
+                "from: {osm:node:1367502276 lat,lng=45.530013100000005,-122.696583}, to: {osm:node:40717610 lat,lng=45.5305413,-122.69660780000001}, props: {highway: residential, }",
+                "from: {osm:node:40717610 lat,lng=45.5305413,-122.69660780000001}, to: {osm:node:1367502126 lat,lng=45.5305629,-122.6966108}, props: {highway: residential, }",
+                "from: {osm:node:1367502126 lat,lng=45.5305629,-122.6966108}, to: {osm:node:1367502227 lat,lng=45.5306177,-122.69661880000001}, props: {highway: residential, }",
+                "from: {osm:node:1367502227 lat,lng=45.5306177,-122.69661880000001}, to: {osm:node:40707697 lat,lng=45.5312508,-122.69663860000001}, props: {highway: residential, }"
+              ],
               "elevation": "",
               "highway": "residential",
               "lat": 45.5233204,
@@ -681,6 +855,9 @@ org.opentripplanner.routing.algorithm.mapping.TransitSnapshotTest.test_trip_plan
               "area": false,
               "bogusName": false,
               "distance": 3.68,
+              "edges": [
+                "from: null, to: null, props: {}"
+              ],
               "elevation": "",
               "lat": 45.5312508,
               "lon": -122.6966386,
@@ -787,6 +964,10 @@ org.opentripplanner.routing.algorithm.mapping.TransitSnapshotTest.test_trip_plan
               "area": false,
               "bogusName": false,
               "distance": 62.02,
+              "edges": [
+                "from: null, to: null, props: {}",
+                "from: {osm:node:40501926 lat,lng=45.517186300000006,-122.6485801}, to: {split_419 lat,lng=45.517189072086715,-122.649266303844}, props: {}"
+              ],
               "elevation": "",
               "lat": 45.517186,
               "lon": -122.6484704,
@@ -1203,6 +1384,11 @@ org.opentripplanner.routing.algorithm.mapping.TransitSnapshotTest.test_trip_plan
               "area": false,
               "bogusName": false,
               "distance": 104.46,
+              "edges": [
+                "from: {split_618 lat,lng=45.53215782420268,-122.69870264831422}, to: {split_1956 lat,lng=45.53203011005053,-122.69869819057767}, props: {}",
+                "from: {split_1956 lat,lng=45.53203011005053,-122.69869819057767}, to: {osm:node:40577086 lat,lng=45.531934,-122.698695}, props: {}",
+                "from: {osm:node:40577086 lat,lng=45.531934,-122.698695}, to: {osm:node:40577082 lat,lng=45.531218800000005,-122.69866750000001}, props: {}"
+              ],
               "elevation": "",
               "lat": 45.5321578,
               "lon": -122.6987026,
@@ -1216,6 +1402,11 @@ org.opentripplanner.routing.algorithm.mapping.TransitSnapshotTest.test_trip_plan
               "area": false,
               "bogusName": false,
               "distance": 161.77,
+              "edges": [
+                "from: {osm:node:40577082 lat,lng=45.531218800000005,-122.69866750000001}, to: {osm:node:1367502008 lat,lng=45.5312229,-122.6980922}, props: {}",
+                "from: {osm:node:1367502008 lat,lng=45.5312229,-122.6980922}, to: {osm:node:40707697 lat,lng=45.5312508,-122.69663860000001}, props: {}",
+                "from: null, to: null, props: {}"
+              ],
               "elevation": "",
               "lat": 45.5312188,
               "lon": -122.6986675,
@@ -1322,6 +1513,11 @@ org.opentripplanner.routing.algorithm.mapping.TransitSnapshotTest.test_trip_plan
               "area": false,
               "bogusName": false,
               "distance": 87.68,
+              "edges": [
+                "from: null, to: null, props: {}",
+                "from: {osm:node:40501926 lat,lng=45.517186300000006,-122.6485801}, to: {split_419 lat,lng=45.517189072086715,-122.649266303844}, props: {}",
+                "from: {split_419 lat,lng=45.517189072086715,-122.649266303844}, to: {osm:node:40501921 lat,lng=45.5171903,-122.64959560000001}, props: {}"
+              ],
               "elevation": "",
               "lat": 45.517186,
               "lon": -122.6484704,
@@ -1335,6 +1531,16 @@ org.opentripplanner.routing.algorithm.mapping.TransitSnapshotTest.test_trip_plan
               "area": false,
               "bogusName": false,
               "distance": 641.04,
+              "edges": [
+                "from: {osm:node:40501921 lat,lng=45.5171903,-122.64959560000001}, to: {osm:node:40642033 lat,lng=45.517904400000006,-122.64959030000001}, props: {highway: residential, }",
+                "from: {osm:node:40642033 lat,lng=45.517904400000006,-122.64959030000001}, to: {osm:node:40746134 lat,lng=45.5186232,-122.649585}, props: {highway: residential, }",
+                "from: {osm:node:40746134 lat,lng=45.5186232,-122.649585}, to: {osm:node:40637262 lat,lng=45.5193388,-122.64957980000001}, props: {highway: residential, }",
+                "from: {osm:node:40637262 lat,lng=45.5193388,-122.64957980000001}, to: {osm:node:40477325 lat,lng=45.5200503,-122.64957450000001}, props: {highway: residential, }",
+                "from: {osm:node:40477325 lat,lng=45.5200503,-122.64957450000001}, to: {osm:node:40557183 lat,lng=45.520762500000004,-122.64956930000001}, props: {highway: residential, }",
+                "from: {osm:node:40557183 lat,lng=45.520762500000004,-122.64956930000001}, to: {osm:node:1710211748 lat,lng=45.5214104,-122.64956450000001}, props: {highway: residential, }",
+                "from: {osm:node:1710211798 lat,lng=45.521523300000005,-122.649563}, to: {osm:node:40622252 lat,lng=45.522184100000004,-122.6495632}, props: {highway: residential, }",
+                "from: {osm:node:40622252 lat,lng=45.522184100000004,-122.6495632}, to: {osm:node:40639319 lat,lng=45.522891200000004,-122.64955280000001}, props: {highway: residential, }"
+              ],
               "elevation": "",
               "highway": "residential",
               "lat": 45.5171903,
@@ -1349,6 +1555,10 @@ org.opentripplanner.routing.algorithm.mapping.TransitSnapshotTest.test_trip_plan
               "area": false,
               "bogusName": false,
               "distance": 168.89,
+              "edges": [
+                "from: {osm:node:40639319 lat,lng=45.522891200000004,-122.64955280000001}, to: {osm:node:40683016 lat,lng=45.5236072,-122.64955}, props: {}",
+                "from: {osm:node:40683016 lat,lng=45.5236072,-122.64955}, to: {osm:node:40559489 lat,lng=45.524409000000006,-122.6495675}, props: {}"
+              ],
               "elevation": "",
               "lat": 45.5228912,
               "lon": -122.6495528,
@@ -1362,6 +1572,9 @@ org.opentripplanner.routing.algorithm.mapping.TransitSnapshotTest.test_trip_plan
               "area": false,
               "bogusName": false,
               "distance": 22.74,
+              "edges": [
+                "from: {osm:node:40559489 lat,lng=45.524409000000006,-122.6495675}, to: {split_474 lat,lng=45.52450640104038,-122.64931080431207}, props: {}"
+              ],
               "elevation": "",
               "lat": 45.524409,
               "lon": -122.6495675,
@@ -1661,6 +1874,11 @@ org.opentripplanner.routing.algorithm.mapping.TransitSnapshotTest.test_trip_plan
               "area": false,
               "bogusName": false,
               "distance": 113.27,
+              "edges": [
+                "from: {split_1460 lat,lng=45.523249092859054,-122.69490673448706}, to: {osm:node:40516357 lat,lng=45.523254,-122.69501640000001}, props: {}",
+                "from: {osm:node:40516357 lat,lng=45.523254,-122.69501640000001}, to: {osm:node:40516361 lat,lng=45.5232712,-122.69540900000001}, props: {}",
+                "from: {osm:node:40516361 lat,lng=45.5232712,-122.69540900000001}, to: {osm:node:40516364 lat,lng=45.5233204,-122.696357}, props: {}"
+              ],
               "elevation": "",
               "lat": 45.5232491,
               "lon": -122.6949067,
@@ -1674,6 +1892,26 @@ org.opentripplanner.routing.algorithm.mapping.TransitSnapshotTest.test_trip_plan
               "area": false,
               "bogusName": false,
               "distance": 882.16,
+              "edges": [
+                "from: {osm:node:40516364 lat,lng=45.5233204,-122.696357}, to: {osm:node:40508526 lat,lng=45.5241309,-122.6963783}, props: {highway: residential, }",
+                "from: {osm:node:40508526 lat,lng=45.5241309,-122.6963783}, to: {osm:node:40450505 lat,lng=45.5248384,-122.6964075}, props: {highway: residential, }",
+                "from: {osm:node:40450505 lat,lng=45.5248384,-122.6964075}, to: {osm:node:40612042 lat,lng=45.5255558,-122.6964308}, props: {highway: residential, }",
+                "from: {osm:node:40612042 lat,lng=45.5255558,-122.6964308}, to: {osm:node:40684667 lat,lng=45.5262655,-122.69645500000001}, props: {highway: residential, }",
+                "from: {osm:node:40684667 lat,lng=45.5262655,-122.69645500000001}, to: {osm:node:40730558 lat,lng=45.526986300000004,-122.696481}, props: {highway: residential, }",
+                "from: {osm:node:40730558 lat,lng=45.526986300000004,-122.696481}, to: {osm:node:40549861 lat,lng=45.527689800000005,-122.6965055}, props: {highway: residential, }",
+                "from: {osm:node:40549861 lat,lng=45.527689800000005,-122.6965055}, to: {osm:node:40724790 lat,lng=45.528407200000004,-122.69652520000001}, props: {highway: residential, }",
+                "from: {osm:node:40724790 lat,lng=45.528407200000004,-122.69652520000001}, to: {split_2125 lat,lng=45.52854045127028,-122.69652999495611}, props: {}",
+                "from: {split_2125 lat,lng=45.52854045127028,-122.69652999495611}, to: {osm:node:40638134 lat,lng=45.5291214,-122.6965509}, props: {}",
+                "from: {osm:node:40638134 lat,lng=45.5291214,-122.6965509}, to: {osm:node:1364928150 lat,lng=45.5292753,-122.6965571}, props: {highway: residential, }",
+                "from: {osm:node:1364928150 lat,lng=45.5292753,-122.6965571}, to: {osm:node:1364928127 lat,lng=45.529401,-122.6965622}, props: {highway: residential, }",
+                "from: {osm:node:1364928127 lat,lng=45.529401,-122.6965622}, to: {osm:node:1559803884 lat,lng=45.5297585,-122.69657660000001}, props: {highway: residential, }",
+                "from: {osm:node:1559803884 lat,lng=45.5297585,-122.69657660000001}, to: {osm:node:40648318 lat,lng=45.5298309,-122.69657950000001}, props: {highway: residential, }",
+                "from: {osm:node:40648318 lat,lng=45.5298309,-122.69657950000001}, to: {osm:node:1367502276 lat,lng=45.530013100000005,-122.696583}, props: {highway: residential, }",
+                "from: {osm:node:1367502276 lat,lng=45.530013100000005,-122.696583}, to: {osm:node:40717610 lat,lng=45.5305413,-122.69660780000001}, props: {highway: residential, }",
+                "from: {osm:node:40717610 lat,lng=45.5305413,-122.69660780000001}, to: {osm:node:1367502126 lat,lng=45.5305629,-122.6966108}, props: {highway: residential, }",
+                "from: {osm:node:1367502126 lat,lng=45.5305629,-122.6966108}, to: {osm:node:1367502227 lat,lng=45.5306177,-122.69661880000001}, props: {highway: residential, }",
+                "from: {osm:node:1367502227 lat,lng=45.5306177,-122.69661880000001}, to: {osm:node:40707697 lat,lng=45.5312508,-122.69663860000001}, props: {highway: residential, }"
+              ],
               "elevation": "",
               "highway": "residential",
               "lat": 45.5233204,
@@ -1688,6 +1926,9 @@ org.opentripplanner.routing.algorithm.mapping.TransitSnapshotTest.test_trip_plan
               "area": false,
               "bogusName": false,
               "distance": 3.68,
+              "edges": [
+                "from: null, to: null, props: {}"
+              ],
               "elevation": "",
               "lat": 45.5312508,
               "lon": -122.6966386,
@@ -1794,6 +2035,10 @@ org.opentripplanner.routing.algorithm.mapping.TransitSnapshotTest.test_trip_plan
               "area": false,
               "bogusName": false,
               "distance": 62.02,
+              "edges": [
+                "from: null, to: null, props: {}",
+                "from: {osm:node:40501926 lat,lng=45.517186300000006,-122.6485801}, to: {split_419 lat,lng=45.517189072086715,-122.649266303844}, props: {}"
+              ],
               "elevation": "",
               "lat": 45.517186,
               "lon": -122.6484704,
@@ -2210,6 +2455,11 @@ org.opentripplanner.routing.algorithm.mapping.TransitSnapshotTest.test_trip_plan
               "area": false,
               "bogusName": false,
               "distance": 104.46,
+              "edges": [
+                "from: {split_618 lat,lng=45.53215782420268,-122.69870264831422}, to: {split_1956 lat,lng=45.53203011005053,-122.69869819057767}, props: {}",
+                "from: {split_1956 lat,lng=45.53203011005053,-122.69869819057767}, to: {osm:node:40577086 lat,lng=45.531934,-122.698695}, props: {}",
+                "from: {osm:node:40577086 lat,lng=45.531934,-122.698695}, to: {osm:node:40577082 lat,lng=45.531218800000005,-122.69866750000001}, props: {}"
+              ],
               "elevation": "",
               "lat": 45.5321578,
               "lon": -122.6987026,
@@ -2223,6 +2473,11 @@ org.opentripplanner.routing.algorithm.mapping.TransitSnapshotTest.test_trip_plan
               "area": false,
               "bogusName": false,
               "distance": 161.77,
+              "edges": [
+                "from: {osm:node:40577082 lat,lng=45.531218800000005,-122.69866750000001}, to: {osm:node:1367502008 lat,lng=45.5312229,-122.6980922}, props: {}",
+                "from: {osm:node:1367502008 lat,lng=45.5312229,-122.6980922}, to: {osm:node:40707697 lat,lng=45.5312508,-122.69663860000001}, props: {}",
+                "from: null, to: null, props: {}"
+              ],
               "elevation": "",
               "lat": 45.5312188,
               "lon": -122.6986675,
@@ -2333,6 +2588,16 @@ org.opentripplanner.routing.algorithm.mapping.TransitSnapshotTest.test_trip_plan
               "area": false,
               "bogusName": false,
               "distance": 403.66,
+              "edges": [
+                "from: null, to: null, props: {}",
+                "from: {osm:node:40501926 lat,lng=45.517186300000006,-122.6485801}, to: {split_419 lat,lng=45.517189072086715,-122.649266303844}, props: {}",
+                "from: {split_419 lat,lng=45.517189072086715,-122.649266303844}, to: {osm:node:40501921 lat,lng=45.5171903,-122.64959560000001}, props: {}",
+                "from: {osm:node:40501921 lat,lng=45.5171903,-122.64959560000001}, to: {osm:node:40501919 lat,lng=45.5171943,-122.6506102}, props: {}",
+                "from: {osm:node:40501919 lat,lng=45.5171943,-122.6506102}, to: {split_421 lat,lng=45.517195181619066,-122.65135413955707}, props: {}",
+                "from: {split_421 lat,lng=45.517195181619066,-122.65135413955707}, to: {osm:node:40501914 lat,lng=45.5171955,-122.65162280000001}, props: {}",
+                "from: {osm:node:40501914 lat,lng=45.5171955,-122.65162280000001}, to: {osm:node:40501910 lat,lng=45.5171998,-122.6526302}, props: {}",
+                "from: {osm:node:40501910 lat,lng=45.5171998,-122.6526302}, to: {osm:node:40501909 lat,lng=45.5172031,-122.6536511}, props: {}"
+              ],
               "elevation": "",
               "lat": 45.517186,
               "lon": -122.6484704,
@@ -2346,6 +2611,9 @@ org.opentripplanner.routing.algorithm.mapping.TransitSnapshotTest.test_trip_plan
               "area": false,
               "bogusName": false,
               "distance": 15.96,
+              "edges": [
+                "from: {osm:node:40501909 lat,lng=45.5172031,-122.6536511}, to: {split_388 lat,lng=45.51705958037544,-122.65365302657665}, props: {}"
+              ],
               "elevation": "",
               "lat": 45.5172031,
               "lon": -122.6536511,
@@ -2743,6 +3011,10 @@ org.opentripplanner.routing.algorithm.mapping.TransitSnapshotTest.test_trip_plan
               "area": false,
               "bogusName": false,
               "distance": 18.81,
+              "edges": [
+                "from: {split_1726 lat,lng=45.53130187189895,-122.69644484256081}, to: {osm:node:1703374700 lat,lng=45.531313700000005,-122.6965368}, props: {}",
+                "from: null, to: null, props: {}"
+              ],
               "elevation": "",
               "lat": 45.5313019,
               "lon": -122.6964448,
@@ -2824,6 +3096,11 @@ org.opentripplanner.routing.algorithm.mapping.TransitSnapshotTest.test_trip_plan
               "area": false,
               "bogusName": false,
               "distance": 51.53,
+              "edges": [
+                "from: {split_408 lat,lng=45.52336838632084,-122.65362253301092}, to: {split_403 lat,lng=45.52318191367419,-122.65362851554825}, props: {}",
+                "from: {split_403 lat,lng=45.52318191367419,-122.65362851554825}, to: {osm:node:1375333460 lat,lng=45.523017200000005,-122.65363380000001}, props: {}",
+                "from: {osm:node:1375333460 lat,lng=45.523017200000005,-122.65363380000001}, to: {osm:node:40639328 lat,lng=45.5229051,-122.6536312}, props: {}"
+              ],
               "elevation": "",
               "lat": 45.5233684,
               "lon": -122.6536225,
@@ -2837,6 +3114,31 @@ org.opentripplanner.routing.algorithm.mapping.TransitSnapshotTest.test_trip_plan
               "area": false,
               "bogusName": false,
               "distance": 877.28,
+              "edges": [
+                "from: {osm:node:40639328 lat,lng=45.5229051,-122.6536312}, to: {osm:node:40572710 lat,lng=45.522915600000005,-122.65462860000001}, props: {width: 11.0, }",
+                "from: {osm:node:40572710 lat,lng=45.522915600000005,-122.65462860000001}, to: {osm:node:40639330 lat,lng=45.5229182,-122.65564250000001}, props: {width: 11.0, }",
+                "from: {osm:node:40639330 lat,lng=45.5229182,-122.65564250000001}, to: {osm:node:40502607 lat,lng=45.5229209,-122.65665530000001}, props: {width: 11.0, }",
+                "from: {osm:node:40502607 lat,lng=45.5229209,-122.65665530000001}, to: {osm:node:1963188170 lat,lng=45.5229219,-122.6570276}, props: {width: 11.0, }",
+                "from: {osm:node:1963188170 lat,lng=45.5229219,-122.6570276}, to: {split_1480 lat,lng=45.52292238778506,-122.65726457485168}, props: {}",
+                "from: {split_1480 lat,lng=45.52292238778506,-122.65726457485168}, to: {osm:node:40461334 lat,lng=45.522923500000005,-122.6576708}, props: {}",
+                "from: {osm:node:40461334 lat,lng=45.522923500000005,-122.6576708}, to: {osm:node:1963188171 lat,lng=45.5229252,-122.65831240000001}, props: {width: 11.0, }",
+                "from: {osm:node:1963188171 lat,lng=45.5229252,-122.65831240000001}, to: {osm:node:2670905937 lat,lng=45.5229252,-122.65832900000001}, props: {width: 11.0, }",
+                "from: {osm:node:2670905937 lat,lng=45.5229252,-122.65832900000001}, to: {osm:node:40534485 lat,lng=45.5229262,-122.65868540000001}, props: {width: 11.0, }",
+                "from: {osm:node:40534485 lat,lng=45.5229262,-122.65868540000001}, to: {osm:node:2664610932 lat,lng=45.522927900000006,-122.65921290000001}, props: {width: 11.0, }",
+                "from: {osm:node:2664610932 lat,lng=45.522927900000006,-122.65921290000001}, to: {split_1482 lat,lng=45.522928341600995,-122.65936549321457}, props: {}",
+                "from: {split_1482 lat,lng=45.522928341600995,-122.65936549321457}, to: {osm:node:40639337 lat,lng=45.522928900000004,-122.65969960000001}, props: {}",
+                "from: {osm:node:40639337 lat,lng=45.522928900000004,-122.65969960000001}, to: {osm:node:2664598671 lat,lng=45.522930900000006,-122.66049830000001}, props: {width: 11.0, }",
+                "from: {osm:node:2664598671 lat,lng=45.522930900000006,-122.66049830000001}, to: {osm:node:1368361407 lat,lng=45.5229311,-122.66057350000001}, props: {width: 11.0, }",
+                "from: {osm:node:1368361407 lat,lng=45.5229311,-122.66057350000001}, to: {osm:node:40561550 lat,lng=45.522931500000006,-122.66071740000001}, props: {width: 11.0, }",
+                "from: {osm:node:40561550 lat,lng=45.522931500000006,-122.66071740000001}, to: {split_1588 lat,lng=45.52293300001889,-122.66123850726254}, props: {}",
+                "from: {split_1588 lat,lng=45.52293300001889,-122.66123850726254}, to: {split_1591 lat,lng=45.52293376964989,-122.66153443038148}, props: {}",
+                "from: {split_1591 lat,lng=45.52293376964989,-122.66153443038148}, to: {osm:node:40515537 lat,lng=45.5229343,-122.66176650000001}, props: {}",
+                "from: {osm:node:40515537 lat,lng=45.5229343,-122.66176650000001}, to: {osm:node:1275171715 lat,lng=45.5229293,-122.6619017}, props: {}",
+                "from: {osm:node:1275171715 lat,lng=45.5229293,-122.6619017}, to: {osm:node:1350842055 lat,lng=45.522921200000006,-122.66227370000001}, props: {}",
+                "from: {osm:node:1350842055 lat,lng=45.522921200000006,-122.66227370000001}, to: {osm:node:355466611 lat,lng=45.5229176,-122.6625693}, props: {}",
+                "from: {osm:node:355466611 lat,lng=45.5229176,-122.6625693}, to: {osm:node:1275171711 lat,lng=45.522964,-122.66303060000001}, props: {}",
+                "from: {osm:node:1275171711 lat,lng=45.522964,-122.66303060000001}, to: {osm:node:1328062042 lat,lng=45.523001,-122.6648816}, props: {}"
+              ],
               "elevation": "",
               "lat": 45.5229051,
               "lon": -122.6536312,
@@ -2851,6 +3153,12 @@ org.opentripplanner.routing.algorithm.mapping.TransitSnapshotTest.test_trip_plan
               "area": false,
               "bogusName": false,
               "distance": 407.38,
+              "edges": [
+                "from: {osm:node:1328062042 lat,lng=45.523001,-122.6648816}, to: {osm:node:2523794338 lat,lng=45.5230455,-122.6671101}, props: {}",
+                "from: {osm:node:2523794338 lat,lng=45.5230455,-122.6671101}, to: {osm:node:1328062041 lat,lng=45.5230545,-122.66756360000001}, props: {}",
+                "from: {osm:node:1328062041 lat,lng=45.5230545,-122.66756360000001}, to: {osm:node:2523794339 lat,lng=45.523063500000006,-122.66801410000001}, props: {}",
+                "from: {osm:node:2523794339 lat,lng=45.523063500000006,-122.66801410000001}, to: {osm:node:40723784 lat,lng=45.523105400000006,-122.67010870000001}, props: {}"
+              ],
               "elevation": "",
               "lat": 45.523001,
               "lon": -122.6648816,
@@ -2864,6 +3172,13 @@ org.opentripplanner.routing.algorithm.mapping.TransitSnapshotTest.test_trip_plan
               "area": false,
               "bogusName": false,
               "distance": 256.85,
+              "edges": [
+                "from: {osm:node:40723784 lat,lng=45.523105400000006,-122.67010870000001}, to: {split_1897 lat,lng=45.52312904214818,-122.67129367312349}, props: {}",
+                "from: {split_1897 lat,lng=45.52312904214818,-122.67129367312349}, to: {split_1891 lat,lng=45.52312919968969,-122.67130156929505}, props: {}",
+                "from: {split_1891 lat,lng=45.52312919968969,-122.67130156929505}, to: {osm:node:155699810 lat,lng=45.523135100000005,-122.6715973}, props: {}",
+                "from: {osm:node:155699810 lat,lng=45.523135100000005,-122.6715973}, to: {osm:node:40516268 lat,lng=45.5231958,-122.6723802}, props: {}",
+                "from: {osm:node:40516268 lat,lng=45.5231958,-122.6723802}, to: {osm:node:567256143 lat,lng=45.523177600000004,-122.67338950000001}, props: {}"
+              ],
               "elevation": "",
               "lat": 45.5231054,
               "lon": -122.6701087,
@@ -2877,6 +3192,25 @@ org.opentripplanner.routing.algorithm.mapping.TransitSnapshotTest.test_trip_plan
               "area": false,
               "bogusName": false,
               "distance": 460.65,
+              "edges": [
+                "from: {osm:node:567256143 lat,lng=45.523177600000004,-122.67338950000001}, to: {osm:node:40644438 lat,lng=45.523833200000006,-122.67341630000001}, props: {}",
+                "from: {osm:node:40644438 lat,lng=45.523833200000006,-122.67341630000001}, to: {osm:node:40508548 lat,lng=45.5245425,-122.67344630000001}, props: {}",
+                "from: {osm:node:40508548 lat,lng=45.5245425,-122.67344630000001}, to: {osm:node:2563930230 lat,lng=45.524964000000004,-122.6734562}, props: {}",
+                "from: {osm:node:2563930230 lat,lng=45.524964000000004,-122.6734562}, to: {osm:node:2563930225 lat,lng=45.525094100000004,-122.6734595}, props: {}",
+                "from: {osm:node:2563930225 lat,lng=45.525094100000004,-122.6734595}, to: {osm:node:40450453 lat,lng=45.525260100000004,-122.6734622}, props: {}",
+                "from: {osm:node:40450453 lat,lng=45.525260100000004,-122.6734622}, to: {osm:node:2576292887 lat,lng=45.5254192,-122.67346710000001}, props: {}",
+                "from: {osm:node:2576292887 lat,lng=45.5254192,-122.67346710000001}, to: {osm:node:40612055 lat,lng=45.5259696,-122.673484}, props: {}",
+                "from: {osm:node:40612055 lat,lng=45.5259696,-122.673484}, to: {osm:node:2563943733 lat,lng=45.526107200000006,-122.67348820000001}, props: {}",
+                "from: {osm:node:2563943733 lat,lng=45.526107200000006,-122.67348820000001}, to: {osm:node:2563942163 lat,lng=45.526125500000006,-122.6734888}, props: {}",
+                "from: {osm:node:2563942163 lat,lng=45.526125500000006,-122.6734888}, to: {osm:node:2172293512 lat,lng=45.5262405,-122.6734924}, props: {}",
+                "from: {osm:node:2172293512 lat,lng=45.5262405,-122.6734924}, to: {osm:node:2172293515 lat,lng=45.5263822,-122.6734967}, props: {}",
+                "from: {osm:node:2172293515 lat,lng=45.5263822,-122.6734967}, to: {osm:node:2172293519 lat,lng=45.526533,-122.6735014}, props: {}",
+                "from: {osm:node:2172293519 lat,lng=45.526533,-122.6735014}, to: {osm:node:1323150085 lat,lng=45.526567400000005,-122.6735024}, props: {}",
+                "from: {osm:node:40671300 lat,lng=45.5266158,-122.6735349}, to: {osm:node:1685221963 lat,lng=45.526668400000005,-122.6735441}, props: {}",
+                "from: {osm:node:1685221963 lat,lng=45.526668400000005,-122.6735441}, to: {osm:node:40671302 lat,lng=45.5268151,-122.67357290000001}, props: {}",
+                "from: {osm:node:40671302 lat,lng=45.5268151,-122.67357290000001}, to: {osm:node:1325907905 lat,lng=45.526898800000005,-122.67358320000001}, props: {highway: residential, }",
+                "from: {osm:node:1325907905 lat,lng=45.526898800000005,-122.67358320000001}, to: {osm:node:40671304 lat,lng=45.527286600000004,-122.67371650000001}, props: {highway: residential, }"
+              ],
               "elevation": "",
               "lat": 45.5231776,
               "lon": -122.6733895,
@@ -2890,6 +3224,12 @@ org.opentripplanner.routing.algorithm.mapping.TransitSnapshotTest.test_trip_plan
               "area": false,
               "bogusName": false,
               "distance": 145.82,
+              "edges": [
+                "from: {osm:node:40671304 lat,lng=45.527286600000004,-122.67371650000001}, to: {osm:node:40730574 lat,lng=45.5273763,-122.6745606}, props: {highway: residential, }",
+                "from: {osm:node:40730574 lat,lng=45.5273763,-122.6745606}, to: {osm:node:2172293547 lat,lng=45.5273705,-122.6747802}, props: {}",
+                "from: {osm:node:2172293547 lat,lng=45.5273705,-122.6747802}, to: {osm:node:2172293546 lat,lng=45.527365200000006,-122.67497680000001}, props: {}",
+                "from: {osm:node:2172293546 lat,lng=45.527365200000006,-122.67497680000001}, to: {osm:node:40602163 lat,lng=45.5273496,-122.6755629}, props: {}"
+              ],
               "elevation": "",
               "highway": "residential",
               "lat": 45.5272866,
@@ -2904,6 +3244,11 @@ org.opentripplanner.routing.algorithm.mapping.TransitSnapshotTest.test_trip_plan
               "area": false,
               "bogusName": false,
               "distance": 77.35,
+              "edges": [
+                "from: {osm:node:40602163 lat,lng=45.5273496,-122.6755629}, to: {osm:node:1728428812 lat,lng=45.5276361,-122.6755749}, props: {}",
+                "from: {osm:node:1728428812 lat,lng=45.5276361,-122.6755749}, to: {split_1779 lat,lng=45.52772806967024,-122.67557837869025}, props: {}",
+                "from: {split_1779 lat,lng=45.52772806967024,-122.67557837869025}, to: {osm:node:40549836 lat,lng=45.528044900000005,-122.6755935}, props: {}"
+              ],
               "elevation": "",
               "lat": 45.5273496,
               "lon": -122.6755629,
@@ -2917,6 +3262,10 @@ org.opentripplanner.routing.algorithm.mapping.TransitSnapshotTest.test_trip_plan
               "area": false,
               "bogusName": false,
               "distance": 80.53,
+              "edges": [
+                "from: {osm:node:40549836 lat,lng=45.528044900000005,-122.6755935}, to: {osm:node:1427526887 lat,lng=45.528047400000005,-122.67634880000001}, props: {}",
+                "from: {osm:node:1427526887 lat,lng=45.528047400000005,-122.67634880000001}, to: {osm:node:40469256 lat,lng=45.528051500000004,-122.67662320000001}, props: {}"
+              ],
               "elevation": "",
               "lat": 45.5280449,
               "lon": -122.6755935,
@@ -2930,6 +3279,22 @@ org.opentripplanner.routing.algorithm.mapping.TransitSnapshotTest.test_trip_plan
               "area": false,
               "bogusName": false,
               "distance": 465.44,
+              "edges": [
+                "from: {osm:node:40469256 lat,lng=45.528051500000004,-122.67662320000001}, to: {osm:node:1254614418 lat,lng=45.5281237,-122.67663100000001}, props: {}",
+                "from: {osm:node:1254614418 lat,lng=45.5281237,-122.67663100000001}, to: {osm:node:299642715 lat,lng=45.5282877,-122.6767327}, props: {}",
+                "from: {osm:node:299642715 lat,lng=45.5282877,-122.6767327}, to: {osm:node:2011831684 lat,lng=45.528334900000004,-122.6767908}, props: {}",
+                "from: {osm:node:2011831684 lat,lng=45.528334900000004,-122.6767908}, to: {split_2043 lat,lng=45.52844030306341,-122.67692057728078}, props: {}",
+                "from: {split_2043 lat,lng=45.52844030306341,-122.67692057728078}, to: {osm:node:1392884845 lat,lng=45.5286082,-122.67712730000001}, props: {}",
+                "from: {osm:node:1392884845 lat,lng=45.5286082,-122.67712730000001}, to: {osm:node:299642703 lat,lng=45.5286692,-122.67720130000001}, props: {}",
+                "from: {osm:node:299642703 lat,lng=45.5286692,-122.67720130000001}, to: {split_2036 lat,lng=45.528759489074304,-122.67730686066217}, props: {}",
+                "from: {split_2036 lat,lng=45.528759489074304,-122.67730686066217}, to: {osm:node:299642265 lat,lng=45.528857800000004,-122.6774218}, props: {}",
+                "from: {osm:node:299642265 lat,lng=45.528857800000004,-122.6774218}, to: {osm:node:2011831688 lat,lng=45.5288945,-122.6774632}, props: {}",
+                "from: {osm:node:2011831688 lat,lng=45.5288945,-122.6774632}, to: {osm:node:1661749445 lat,lng=45.5293623,-122.67771210000001}, props: {}",
+                "from: {osm:node:1661749445 lat,lng=45.5293623,-122.67771210000001}, to: {osm:node:1661750264 lat,lng=45.5302093,-122.67798540000001}, props: {}",
+                "from: {osm:node:1661750264 lat,lng=45.5302093,-122.67798540000001}, to: {osm:node:40664439 lat,lng=45.530256400000006,-122.67804880000001}, props: {}",
+                "from: {osm:node:40664439 lat,lng=45.530256400000006,-122.67804880000001}, to: {osm:node:299641729 lat,lng=45.5310549,-122.6789875}, props: {highway: residential, }",
+                "from: {osm:node:299641729 lat,lng=45.5310549,-122.6789875}, to: {osm:node:40707670 lat,lng=45.531545200000004,-122.679511}, props: {highway: residential, }"
+              ],
               "elevation": "",
               "lat": 45.5280515,
               "lon": -122.6766232,
@@ -2943,6 +3308,41 @@ org.opentripplanner.routing.algorithm.mapping.TransitSnapshotTest.test_trip_plan
               "area": false,
               "bogusName": false,
               "distance": 1620.15,
+              "edges": [
+                "from: {osm:node:40707670 lat,lng=45.531545200000004,-122.679511}, to: {osm:node:40621304 lat,lng=45.531553300000006,-122.6804139}, props: {highway: residential, }",
+                "from: {osm:node:40621304 lat,lng=45.531553300000006,-122.6804139}, to: {osm:node:1686721932 lat,lng=45.5315433,-122.68094760000001}, props: {}",
+                "from: {osm:node:1686721932 lat,lng=45.5315433,-122.68094760000001}, to: {split_2038 lat,lng=45.53153898579443,-122.68119144920183}, props: {}",
+                "from: {split_2038 lat,lng=45.53153898579443,-122.68119144920183}, to: {osm:node:1703374762 lat,lng=45.5315366,-122.68132630000001}, props: {}",
+                "from: {osm:node:1703374762 lat,lng=45.5315366,-122.68132630000001}, to: {osm:node:40707678 lat,lng=45.5315309,-122.6814307}, props: {}",
+                "from: {osm:node:40707678 lat,lng=45.5315309,-122.6814307}, to: {osm:node:40707680 lat,lng=45.5315251,-122.6815298}, props: {}",
+                "from: {osm:node:40707680 lat,lng=45.5315251,-122.6815298}, to: {osm:node:40538109 lat,lng=45.5315117,-122.68244770000001}, props: {}",
+                "from: {osm:node:40538109 lat,lng=45.5315117,-122.68244770000001}, to: {osm:node:1703267063 lat,lng=45.5315105,-122.68251070000001}, props: {}",
+                "from: {osm:node:1703267063 lat,lng=45.5315105,-122.68251070000001}, to: {osm:node:479697573 lat,lng=45.531501000000006,-122.68300140000001}, props: {}",
+                "from: {osm:node:479697573 lat,lng=45.531501000000006,-122.68300140000001}, to: {osm:node:1703267060 lat,lng=45.531494200000004,-122.68335830000001}, props: {}",
+                "from: {osm:node:1703267060 lat,lng=45.531494200000004,-122.68335830000001}, to: {osm:node:40689970 lat,lng=45.531492300000004,-122.68345590000001}, props: {}",
+                "from: {osm:node:40689970 lat,lng=45.531492300000004,-122.68345590000001}, to: {osm:node:40527883 lat,lng=45.5314757,-122.6844856}, props: {}",
+                "from: {osm:node:40527883 lat,lng=45.5314757,-122.6844856}, to: {osm:node:1703288023 lat,lng=45.531474800000005,-122.68456880000001}, props: {}",
+                "from: {osm:node:1703288023 lat,lng=45.531474800000005,-122.68456880000001}, to: {osm:node:1392981359 lat,lng=45.5314588,-122.68538980000001}, props: {}",
+                "from: {osm:node:1392981359 lat,lng=45.5314588,-122.68538980000001}, to: {osm:node:40675767 lat,lng=45.5314582,-122.6854847}, props: {}",
+                "from: {osm:node:40675767 lat,lng=45.5314582,-122.6854847}, to: {osm:node:40493552 lat,lng=45.531441400000006,-122.6865235}, props: {}",
+                "from: {osm:node:40493552 lat,lng=45.531441400000006,-122.6865235}, to: {osm:node:40707690 lat,lng=45.5314241,-122.68751400000001}, props: {}",
+                "from: {osm:node:40707690 lat,lng=45.5314241,-122.68751400000001}, to: {osm:node:40536217 lat,lng=45.5314008,-122.6885311}, props: {}",
+                "from: {osm:node:40536217 lat,lng=45.5314008,-122.6885311}, to: {osm:node:1703288003 lat,lng=45.5313992,-122.68861620000001}, props: {}",
+                "from: {osm:node:1703288003 lat,lng=45.5313992,-122.68861620000001}, to: {osm:node:1393110517 lat,lng=45.531383700000006,-122.6894513}, props: {}",
+                "from: {osm:node:1393110517 lat,lng=45.531383700000006,-122.6894513}, to: {osm:node:40686585 lat,lng=45.531381700000004,-122.6895695}, props: {}",
+                "from: {osm:node:40686585 lat,lng=45.531381700000004,-122.6895695}, to: {osm:node:662765006 lat,lng=45.5313639,-122.6905679}, props: {}",
+                "from: {osm:node:662765006 lat,lng=45.5313639,-122.6905679}, to: {osm:node:40652719 lat,lng=45.5313262,-122.69258130000001}, props: {}",
+                "from: {osm:node:40652719 lat,lng=45.5313262,-122.69258130000001}, to: {osm:node:1703302526 lat,lng=45.531324600000005,-122.69268930000001}, props: {}",
+                "from: {osm:node:1703302526 lat,lng=45.531324600000005,-122.69268930000001}, to: {osm:node:1391859417 lat,lng=45.5312962,-122.6945187}, props: {}",
+                "from: {osm:node:1391859417 lat,lng=45.5312962,-122.6945187}, to: {osm:node:40639708 lat,lng=45.5312952,-122.6946111}, props: {}",
+                "from: {osm:node:40639708 lat,lng=45.5312952,-122.6946111}, to: {osm:node:1391859416 lat,lng=45.531294200000005,-122.69470460000001}, props: {}",
+                "from: {osm:node:1391859416 lat,lng=45.531294200000005,-122.69470460000001}, to: {osm:node:1703374679 lat,lng=45.5312531,-122.6965349}, props: {}",
+                "from: {osm:node:1703374679 lat,lng=45.5312531,-122.6965349}, to: {osm:node:40707697 lat,lng=45.5312508,-122.69663860000001}, props: {}",
+                "from: {osm:node:40707697 lat,lng=45.5312508,-122.69663860000001}, to: {osm:node:1367502008 lat,lng=45.5312229,-122.6980922}, props: {}",
+                "from: {osm:node:1367502008 lat,lng=45.5312229,-122.6980922}, to: {osm:node:40577082 lat,lng=45.531218800000005,-122.69866750000001}, props: {}",
+                "from: {osm:node:40577082 lat,lng=45.531218800000005,-122.69866750000001}, to: {osm:node:1703374657 lat,lng=45.5312184,-122.698768}, props: {highway: residential, }",
+                "from: null, to: null, props: {}"
+              ],
               "elevation": "",
               "highway": "residential",
               "lat": 45.5315452,
@@ -3053,6 +3453,10 @@ org.opentripplanner.routing.algorithm.mapping.TransitSnapshotTest.test_trip_plan
               "area": false,
               "bogusName": false,
               "distance": 39.06,
+              "edges": [
+                "from: {split_408 lat,lng=45.52336838632084,-122.65362253301092}, to: {split_403 lat,lng=45.52318191367419,-122.65362851554825}, props: {}",
+                "from: {split_403 lat,lng=45.52318191367419,-122.65362851554825}, to: {osm:node:1375333460 lat,lng=45.523017200000005,-122.65363380000001}, props: {}"
+              ],
               "elevation": "",
               "lat": 45.5233684,
               "lon": -122.6536225,
@@ -3066,6 +3470,10 @@ org.opentripplanner.routing.algorithm.mapping.TransitSnapshotTest.test_trip_plan
               "area": false,
               "bogusName": true,
               "distance": 47.96,
+              "edges": [
+                "from: {osm:node:1375333460 lat,lng=45.523017200000005,-122.65363380000001}, to: {osm:node:1676016244 lat,lng=45.523014800000006,-122.6534611}, props: {footway: crossing, highway: footway, }",
+                "from: {osm:node:1676016244 lat,lng=45.523014800000006,-122.6534611}, to: {split_469 lat,lng=45.52311311424974,-122.6530727670171}, props: {}"
+              ],
               "elevation": "",
               "footway": "crossing",
               "highway": "footway",
@@ -3367,6 +3775,10 @@ org.opentripplanner.routing.algorithm.mapping.TransitSnapshotTest.test_trip_plan
               "area": false,
               "bogusName": false,
               "distance": 54.63,
+              "edges": [
+                "from: {split_2112 lat,lng=45.523815597641374,-122.70071990797962}, to: {osm:node:1291114599 lat,lng=45.5238426,-122.70083500000001}, props: {}",
+                "from: {osm:node:1291114599 lat,lng=45.5238426,-122.70083500000001}, to: {osm:node:40516386 lat,lng=45.5239733,-122.701384}, props: {}"
+              ],
               "elevation": "",
               "lat": 45.5238156,
               "lon": -122.7007199,
@@ -3380,6 +3792,10 @@ org.opentripplanner.routing.algorithm.mapping.TransitSnapshotTest.test_trip_plan
               "area": false,
               "bogusName": false,
               "distance": 176.41,
+              "edges": [
+                "from: {osm:node:40516386 lat,lng=45.5239733,-122.701384}, to: {osm:node:40442537 lat,lng=45.524647200000004,-122.7008244}, props: {}",
+                "from: {osm:node:40442537 lat,lng=45.524647200000004,-122.7008244}, to: {osm:node:1318429891 lat,lng=45.5253583,-122.70033570000001}, props: {}"
+              ],
               "elevation": "",
               "lat": 45.5239733,
               "lon": -122.701384,
@@ -3393,6 +3809,9 @@ org.opentripplanner.routing.algorithm.mapping.TransitSnapshotTest.test_trip_plan
               "area": false,
               "bogusName": false,
               "distance": 15.26,
+              "edges": [
+                "from: {osm:node:1318429891 lat,lng=45.5253583,-122.70033570000001}, to: {osm:node:40442506 lat,lng=45.525472400000005,-122.7004445}, props: {}"
+              ],
               "elevation": "",
               "lat": 45.5253583,
               "lon": -122.7003357,
@@ -3406,6 +3825,17 @@ org.opentripplanner.routing.algorithm.mapping.TransitSnapshotTest.test_trip_plan
               "area": false,
               "bogusName": false,
               "distance": 635.66,
+              "edges": [
+                "from: {osm:node:40442506 lat,lng=45.525472400000005,-122.7004445}, to: {osm:node:1222453389 lat,lng=45.526155,-122.70051020000001}, props: {highway: residential, }",
+                "from: {osm:node:1222453389 lat,lng=45.526155,-122.70051020000001}, to: {osm:node:40677810 lat,lng=45.5261994,-122.70053360000001}, props: {highway: residential, }",
+                "from: {osm:node:40677810 lat,lng=45.5261994,-122.70053360000001}, to: {osm:node:40677811 lat,lng=45.526915300000006,-122.70055540000001}, props: {highway: residential, }",
+                "from: {osm:node:40677811 lat,lng=45.526915300000006,-122.70055540000001}, to: {osm:node:40549868 lat,lng=45.527613800000005,-122.70058100000001}, props: {highway: residential, }",
+                "from: {osm:node:40549868 lat,lng=45.527613800000005,-122.70058100000001}, to: {osm:node:40677816 lat,lng=45.5283327,-122.70059660000001}, props: {highway: residential, }",
+                "from: {osm:node:40677816 lat,lng=45.5283327,-122.70059660000001}, to: {osm:node:40638137 lat,lng=45.5290495,-122.70061810000001}, props: {highway: residential, }",
+                "from: {osm:node:40638137 lat,lng=45.5290495,-122.70061810000001}, to: {osm:node:40648323 lat,lng=45.529755,-122.70064880000001}, props: {highway: residential, }",
+                "from: {osm:node:40648323 lat,lng=45.529755,-122.70064880000001}, to: {osm:node:40677822 lat,lng=45.530474100000006,-122.70067780000001}, props: {highway: residential, }",
+                "from: {osm:node:40677822 lat,lng=45.530474100000006,-122.70067780000001}, to: {osm:node:40677827 lat,lng=45.531181000000004,-122.70070630000001}, props: {highway: residential, }"
+              ],
               "elevation": "",
               "highway": "residential",
               "lat": 45.5254724,
@@ -3420,6 +3850,9 @@ org.opentripplanner.routing.algorithm.mapping.TransitSnapshotTest.test_trip_plan
               "area": false,
               "bogusName": false,
               "distance": 31.86,
+              "edges": [
+                "from: null, to: null, props: {}"
+              ],
               "elevation": "",
               "lat": 45.531181,
               "lon": -122.7007063,
@@ -3529,6 +3962,10 @@ org.opentripplanner.routing.algorithm.mapping.TransitSnapshotTest.test_trip_plan
               "area": false,
               "bogusName": false,
               "distance": 39.06,
+              "edges": [
+                "from: {split_408 lat,lng=45.52336838632084,-122.65362253301092}, to: {split_403 lat,lng=45.52318191367419,-122.65362851554825}, props: {}",
+                "from: {split_403 lat,lng=45.52318191367419,-122.65362851554825}, to: {osm:node:1375333460 lat,lng=45.523017200000005,-122.65363380000001}, props: {}"
+              ],
               "elevation": "",
               "lat": 45.5233684,
               "lon": -122.6536225,
@@ -3542,6 +3979,10 @@ org.opentripplanner.routing.algorithm.mapping.TransitSnapshotTest.test_trip_plan
               "area": false,
               "bogusName": true,
               "distance": 47.96,
+              "edges": [
+                "from: {osm:node:1375333460 lat,lng=45.523017200000005,-122.65363380000001}, to: {osm:node:1676016244 lat,lng=45.523014800000006,-122.6534611}, props: {footway: crossing, highway: footway, }",
+                "from: {osm:node:1676016244 lat,lng=45.523014800000006,-122.6534611}, to: {split_469 lat,lng=45.52311311424974,-122.6530727670171}, props: {}"
+              ],
               "elevation": "",
               "footway": "crossing",
               "highway": "footway",
@@ -3843,6 +4284,10 @@ org.opentripplanner.routing.algorithm.mapping.TransitSnapshotTest.test_trip_plan
               "area": false,
               "bogusName": false,
               "distance": 54.63,
+              "edges": [
+                "from: {split_2112 lat,lng=45.523815597641374,-122.70071990797962}, to: {osm:node:1291114599 lat,lng=45.5238426,-122.70083500000001}, props: {}",
+                "from: {osm:node:1291114599 lat,lng=45.5238426,-122.70083500000001}, to: {osm:node:40516386 lat,lng=45.5239733,-122.701384}, props: {}"
+              ],
               "elevation": "",
               "lat": 45.5238156,
               "lon": -122.7007199,
@@ -3856,6 +4301,10 @@ org.opentripplanner.routing.algorithm.mapping.TransitSnapshotTest.test_trip_plan
               "area": false,
               "bogusName": false,
               "distance": 176.41,
+              "edges": [
+                "from: {osm:node:40516386 lat,lng=45.5239733,-122.701384}, to: {osm:node:40442537 lat,lng=45.524647200000004,-122.7008244}, props: {}",
+                "from: {osm:node:40442537 lat,lng=45.524647200000004,-122.7008244}, to: {osm:node:1318429891 lat,lng=45.5253583,-122.70033570000001}, props: {}"
+              ],
               "elevation": "",
               "lat": 45.5239733,
               "lon": -122.701384,
@@ -3869,6 +4318,9 @@ org.opentripplanner.routing.algorithm.mapping.TransitSnapshotTest.test_trip_plan
               "area": false,
               "bogusName": false,
               "distance": 15.26,
+              "edges": [
+                "from: {osm:node:1318429891 lat,lng=45.5253583,-122.70033570000001}, to: {osm:node:40442506 lat,lng=45.525472400000005,-122.7004445}, props: {}"
+              ],
               "elevation": "",
               "lat": 45.5253583,
               "lon": -122.7003357,
@@ -3882,6 +4334,17 @@ org.opentripplanner.routing.algorithm.mapping.TransitSnapshotTest.test_trip_plan
               "area": false,
               "bogusName": false,
               "distance": 635.66,
+              "edges": [
+                "from: {osm:node:40442506 lat,lng=45.525472400000005,-122.7004445}, to: {osm:node:1222453389 lat,lng=45.526155,-122.70051020000001}, props: {highway: residential, }",
+                "from: {osm:node:1222453389 lat,lng=45.526155,-122.70051020000001}, to: {osm:node:40677810 lat,lng=45.5261994,-122.70053360000001}, props: {highway: residential, }",
+                "from: {osm:node:40677810 lat,lng=45.5261994,-122.70053360000001}, to: {osm:node:40677811 lat,lng=45.526915300000006,-122.70055540000001}, props: {highway: residential, }",
+                "from: {osm:node:40677811 lat,lng=45.526915300000006,-122.70055540000001}, to: {osm:node:40549868 lat,lng=45.527613800000005,-122.70058100000001}, props: {highway: residential, }",
+                "from: {osm:node:40549868 lat,lng=45.527613800000005,-122.70058100000001}, to: {osm:node:40677816 lat,lng=45.5283327,-122.70059660000001}, props: {highway: residential, }",
+                "from: {osm:node:40677816 lat,lng=45.5283327,-122.70059660000001}, to: {osm:node:40638137 lat,lng=45.5290495,-122.70061810000001}, props: {highway: residential, }",
+                "from: {osm:node:40638137 lat,lng=45.5290495,-122.70061810000001}, to: {osm:node:40648323 lat,lng=45.529755,-122.70064880000001}, props: {highway: residential, }",
+                "from: {osm:node:40648323 lat,lng=45.529755,-122.70064880000001}, to: {osm:node:40677822 lat,lng=45.530474100000006,-122.70067780000001}, props: {highway: residential, }",
+                "from: {osm:node:40677822 lat,lng=45.530474100000006,-122.70067780000001}, to: {osm:node:40677827 lat,lng=45.531181000000004,-122.70070630000001}, props: {highway: residential, }"
+              ],
               "elevation": "",
               "highway": "residential",
               "lat": 45.5254724,
@@ -3896,6 +4359,9 @@ org.opentripplanner.routing.algorithm.mapping.TransitSnapshotTest.test_trip_plan
               "area": false,
               "bogusName": false,
               "distance": 31.86,
+              "edges": [
+                "from: null, to: null, props: {}"
+              ],
               "elevation": "",
               "lat": 45.531181,
               "lon": -122.7007063,
@@ -4005,6 +4471,10 @@ org.opentripplanner.routing.algorithm.mapping.TransitSnapshotTest.test_trip_plan
               "area": false,
               "bogusName": false,
               "distance": 39.06,
+              "edges": [
+                "from: {split_408 lat,lng=45.52336838632084,-122.65362253301092}, to: {split_403 lat,lng=45.52318191367419,-122.65362851554825}, props: {}",
+                "from: {split_403 lat,lng=45.52318191367419,-122.65362851554825}, to: {osm:node:1375333460 lat,lng=45.523017200000005,-122.65363380000001}, props: {}"
+              ],
               "elevation": "",
               "lat": 45.5233684,
               "lon": -122.6536225,
@@ -4018,6 +4488,10 @@ org.opentripplanner.routing.algorithm.mapping.TransitSnapshotTest.test_trip_plan
               "area": false,
               "bogusName": true,
               "distance": 47.96,
+              "edges": [
+                "from: {osm:node:1375333460 lat,lng=45.523017200000005,-122.65363380000001}, to: {osm:node:1676016244 lat,lng=45.523014800000006,-122.6534611}, props: {footway: crossing, highway: footway, }",
+                "from: {osm:node:1676016244 lat,lng=45.523014800000006,-122.6534611}, to: {split_469 lat,lng=45.52311311424974,-122.6530727670171}, props: {}"
+              ],
               "elevation": "",
               "footway": "crossing",
               "highway": "footway",
@@ -4319,6 +4793,10 @@ org.opentripplanner.routing.algorithm.mapping.TransitSnapshotTest.test_trip_plan
               "area": false,
               "bogusName": false,
               "distance": 54.63,
+              "edges": [
+                "from: {split_2112 lat,lng=45.523815597641374,-122.70071990797962}, to: {osm:node:1291114599 lat,lng=45.5238426,-122.70083500000001}, props: {}",
+                "from: {osm:node:1291114599 lat,lng=45.5238426,-122.70083500000001}, to: {osm:node:40516386 lat,lng=45.5239733,-122.701384}, props: {}"
+              ],
               "elevation": "",
               "lat": 45.5238156,
               "lon": -122.7007199,
@@ -4332,6 +4810,10 @@ org.opentripplanner.routing.algorithm.mapping.TransitSnapshotTest.test_trip_plan
               "area": false,
               "bogusName": false,
               "distance": 176.41,
+              "edges": [
+                "from: {osm:node:40516386 lat,lng=45.5239733,-122.701384}, to: {osm:node:40442537 lat,lng=45.524647200000004,-122.7008244}, props: {}",
+                "from: {osm:node:40442537 lat,lng=45.524647200000004,-122.7008244}, to: {osm:node:1318429891 lat,lng=45.5253583,-122.70033570000001}, props: {}"
+              ],
               "elevation": "",
               "lat": 45.5239733,
               "lon": -122.701384,
@@ -4345,6 +4827,9 @@ org.opentripplanner.routing.algorithm.mapping.TransitSnapshotTest.test_trip_plan
               "area": false,
               "bogusName": false,
               "distance": 15.26,
+              "edges": [
+                "from: {osm:node:1318429891 lat,lng=45.5253583,-122.70033570000001}, to: {osm:node:40442506 lat,lng=45.525472400000005,-122.7004445}, props: {}"
+              ],
               "elevation": "",
               "lat": 45.5253583,
               "lon": -122.7003357,
@@ -4358,6 +4843,17 @@ org.opentripplanner.routing.algorithm.mapping.TransitSnapshotTest.test_trip_plan
               "area": false,
               "bogusName": false,
               "distance": 635.66,
+              "edges": [
+                "from: {osm:node:40442506 lat,lng=45.525472400000005,-122.7004445}, to: {osm:node:1222453389 lat,lng=45.526155,-122.70051020000001}, props: {highway: residential, }",
+                "from: {osm:node:1222453389 lat,lng=45.526155,-122.70051020000001}, to: {osm:node:40677810 lat,lng=45.5261994,-122.70053360000001}, props: {highway: residential, }",
+                "from: {osm:node:40677810 lat,lng=45.5261994,-122.70053360000001}, to: {osm:node:40677811 lat,lng=45.526915300000006,-122.70055540000001}, props: {highway: residential, }",
+                "from: {osm:node:40677811 lat,lng=45.526915300000006,-122.70055540000001}, to: {osm:node:40549868 lat,lng=45.527613800000005,-122.70058100000001}, props: {highway: residential, }",
+                "from: {osm:node:40549868 lat,lng=45.527613800000005,-122.70058100000001}, to: {osm:node:40677816 lat,lng=45.5283327,-122.70059660000001}, props: {highway: residential, }",
+                "from: {osm:node:40677816 lat,lng=45.5283327,-122.70059660000001}, to: {osm:node:40638137 lat,lng=45.5290495,-122.70061810000001}, props: {highway: residential, }",
+                "from: {osm:node:40638137 lat,lng=45.5290495,-122.70061810000001}, to: {osm:node:40648323 lat,lng=45.529755,-122.70064880000001}, props: {highway: residential, }",
+                "from: {osm:node:40648323 lat,lng=45.529755,-122.70064880000001}, to: {osm:node:40677822 lat,lng=45.530474100000006,-122.70067780000001}, props: {highway: residential, }",
+                "from: {osm:node:40677822 lat,lng=45.530474100000006,-122.70067780000001}, to: {osm:node:40677827 lat,lng=45.531181000000004,-122.70070630000001}, props: {highway: residential, }"
+              ],
               "elevation": "",
               "highway": "residential",
               "lat": 45.5254724,
@@ -4372,6 +4868,9 @@ org.opentripplanner.routing.algorithm.mapping.TransitSnapshotTest.test_trip_plan
               "area": false,
               "bogusName": false,
               "distance": 31.86,
+              "edges": [
+                "from: null, to: null, props: {}"
+              ],
               "elevation": "",
               "lat": 45.531181,
               "lon": -122.7007063,
@@ -4485,6 +4984,9 @@ org.opentripplanner.routing.algorithm.mapping.TransitSnapshotTest.test_trip_plan
               "area": false,
               "bogusName": false,
               "distance": 20.74,
+              "edges": [
+                "from: {split_408 lat,lng=45.52336838632084,-122.65362253301092}, to: {split_403 lat,lng=45.52318191367419,-122.65362851554825}, props: {}"
+              ],
               "elevation": "",
               "lat": 45.5233684,
               "lon": -122.6536225,
@@ -4856,6 +5358,11 @@ org.opentripplanner.routing.algorithm.mapping.TransitSnapshotTest.test_trip_plan
               "area": false,
               "bogusName": false,
               "distance": 104.46,
+              "edges": [
+                "from: {split_618 lat,lng=45.53215782420268,-122.69870264831422}, to: {split_1956 lat,lng=45.53203011005053,-122.69869819057767}, props: {}",
+                "from: {split_1956 lat,lng=45.53203011005053,-122.69869819057767}, to: {osm:node:40577086 lat,lng=45.531934,-122.698695}, props: {}",
+                "from: {osm:node:40577086 lat,lng=45.531934,-122.698695}, to: {osm:node:40577082 lat,lng=45.531218800000005,-122.69866750000001}, props: {}"
+              ],
               "elevation": "",
               "lat": 45.5321578,
               "lon": -122.6987026,
@@ -4869,6 +5376,10 @@ org.opentripplanner.routing.algorithm.mapping.TransitSnapshotTest.test_trip_plan
               "area": false,
               "bogusName": false,
               "distance": 127.01,
+              "edges": [
+                "from: {osm:node:40577082 lat,lng=45.531218800000005,-122.69866750000001}, to: {osm:node:1703374657 lat,lng=45.5312184,-122.698768}, props: {highway: residential, }",
+                "from: null, to: null, props: {}"
+              ],
               "elevation": "",
               "highway": "residential",
               "lat": 45.5312188,
@@ -4983,6 +5494,10 @@ org.opentripplanner.routing.algorithm.mapping.TransitSnapshotTest.test_trip_plan
               "area": false,
               "bogusName": false,
               "distance": 39.06,
+              "edges": [
+                "from: {split_408 lat,lng=45.52336838632084,-122.65362253301092}, to: {split_403 lat,lng=45.52318191367419,-122.65362851554825}, props: {}",
+                "from: {split_403 lat,lng=45.52318191367419,-122.65362851554825}, to: {osm:node:1375333460 lat,lng=45.523017200000005,-122.65363380000001}, props: {}"
+              ],
               "elevation": "",
               "lat": 45.5233684,
               "lon": -122.6536225,
@@ -4996,6 +5511,10 @@ org.opentripplanner.routing.algorithm.mapping.TransitSnapshotTest.test_trip_plan
               "area": false,
               "bogusName": true,
               "distance": 47.96,
+              "edges": [
+                "from: {osm:node:1375333460 lat,lng=45.523017200000005,-122.65363380000001}, to: {osm:node:1676016244 lat,lng=45.523014800000006,-122.6534611}, props: {footway: crossing, highway: footway, }",
+                "from: {osm:node:1676016244 lat,lng=45.523014800000006,-122.6534611}, to: {split_469 lat,lng=45.52311311424974,-122.6530727670171}, props: {}"
+              ],
               "elevation": "",
               "footway": "crossing",
               "highway": "footway",
@@ -5382,6 +5901,11 @@ org.opentripplanner.routing.algorithm.mapping.TransitSnapshotTest.test_trip_plan
               "area": false,
               "bogusName": false,
               "distance": 104.46,
+              "edges": [
+                "from: {split_618 lat,lng=45.53215782420268,-122.69870264831422}, to: {split_1956 lat,lng=45.53203011005053,-122.69869819057767}, props: {}",
+                "from: {split_1956 lat,lng=45.53203011005053,-122.69869819057767}, to: {osm:node:40577086 lat,lng=45.531934,-122.698695}, props: {}",
+                "from: {osm:node:40577086 lat,lng=45.531934,-122.698695}, to: {osm:node:40577082 lat,lng=45.531218800000005,-122.69866750000001}, props: {}"
+              ],
               "elevation": "",
               "lat": 45.5321578,
               "lon": -122.6987026,
@@ -5395,6 +5919,10 @@ org.opentripplanner.routing.algorithm.mapping.TransitSnapshotTest.test_trip_plan
               "area": false,
               "bogusName": false,
               "distance": 127.01,
+              "edges": [
+                "from: {osm:node:40577082 lat,lng=45.531218800000005,-122.69866750000001}, to: {osm:node:1703374657 lat,lng=45.5312184,-122.698768}, props: {highway: residential, }",
+                "from: null, to: null, props: {}"
+              ],
               "elevation": "",
               "highway": "residential",
               "lat": 45.5312188,
@@ -5474,6 +6002,9 @@ org.opentripplanner.routing.algorithm.mapping.TransitSnapshotTest.test_trip_plan
               "area": false,
               "bogusName": false,
               "distance": 0.69,
+              "edges": [
+                "from: null, to: null, props: {}"
+              ],
               "elevation": "",
               "lat": 45.51932,
               "lon": -122.6485648,
@@ -5487,6 +6018,14 @@ org.opentripplanner.routing.algorithm.mapping.TransitSnapshotTest.test_trip_plan
               "area": false,
               "bogusName": false,
               "distance": 402.49,
+              "edges": [
+                "from: {osm:node:40569876 lat,lng=45.5193262,-122.6485648}, to: {osm:node:40637262 lat,lng=45.5193388,-122.64957980000001}, props: {}",
+                "from: {osm:node:40637262 lat,lng=45.5193388,-122.64957980000001}, to: {osm:node:40583812 lat,lng=45.5193396,-122.6505965}, props: {}",
+                "from: {osm:node:40583812 lat,lng=45.5193396,-122.6505965}, to: {osm:node:40637260 lat,lng=45.519340400000004,-122.6516081}, props: {}",
+                "from: {osm:node:40637260 lat,lng=45.519340400000004,-122.6516081}, to: {osm:node:40607727 lat,lng=45.5193412,-122.6526254}, props: {}",
+                "from: {osm:node:40607727 lat,lng=45.5193412,-122.6526254}, to: {osm:node:40637256 lat,lng=45.5193421,-122.65363970000001}, props: {}",
+                "from: {osm:node:40637256 lat,lng=45.5193421,-122.65363970000001}, to: {osm:node:1368553150 lat,lng=45.5193421,-122.65373050000001}, props: {}"
+              ],
               "elevation": "",
               "lat": 45.5193262,
               "lon": -122.6485648,
@@ -5500,6 +6039,15 @@ org.opentripplanner.routing.algorithm.mapping.TransitSnapshotTest.test_trip_plan
               "area": false,
               "bogusName": true,
               "distance": 131.76,
+              "edges": [
+                "from: {osm:node:1368553150 lat,lng=45.5193421,-122.65373050000001}, to: {osm:node:2352590776 lat,lng=45.5194058,-122.6537325}, props: {footway: crossing, highway: footway, }",
+                "from: {osm:node:2352590776 lat,lng=45.5194058,-122.6537325}, to: {osm:node:2352590813 lat,lng=45.5196271,-122.65431720000001}, props: {surface: paved, width: 1.5, highway: footway, }",
+                "from: {osm:node:2352590813 lat,lng=45.5196271,-122.65431720000001}, to: {osm:node:2352590816 lat,lng=45.5196508,-122.65430860000001}, props: {surface: paved, width: 1.5, highway: footway, }",
+                "from: {osm:node:2352590816 lat,lng=45.5196508,-122.65430860000001}, to: {osm:node:2352590831 lat,lng=45.519733200000005,-122.65423750000001}, props: {surface: wood, width: 1.5, highway: footway, }",
+                "from: {osm:node:2352590831 lat,lng=45.519733200000005,-122.65423750000001}, to: {osm:node:2352590848 lat,lng=45.519838400000005,-122.65426240000001}, props: {surface: paved, width: 1.5, highway: footway, }",
+                "from: {osm:node:2352590848 lat,lng=45.519838400000005,-122.65426240000001}, to: {osm:node:2352590885 lat,lng=45.519992900000005,-122.65447010000001}, props: {surface: paved, width: 1.5, highway: footway, }",
+                "from: {osm:node:2352590885 lat,lng=45.519992900000005,-122.65447010000001}, to: {osm:node:40477311 lat,lng=45.5200623,-122.6546522}, props: {surface: paved, width: 1.5, highway: footway, }"
+              ],
               "elevation": "",
               "footway": "crossing",
               "highway": "footway",
@@ -5515,6 +6063,19 @@ org.opentripplanner.routing.algorithm.mapping.TransitSnapshotTest.test_trip_plan
               "area": false,
               "bogusName": false,
               "distance": 516.5,
+              "edges": [
+                "from: {osm:node:40477311 lat,lng=45.5200623,-122.6546522}, to: {osm:node:40477308 lat,lng=45.5200657,-122.6556695}, props: {highway: residential, }",
+                "from: {osm:node:40477308 lat,lng=45.5200657,-122.6556695}, to: {osm:node:40477305 lat,lng=45.520069,-122.6566684}, props: {highway: residential, }",
+                "from: {osm:node:40477305 lat,lng=45.520069,-122.6566684}, to: {osm:node:40477302 lat,lng=45.520070700000005,-122.6571765}, props: {highway: residential, }",
+                "from: {osm:node:40477302 lat,lng=45.520070700000005,-122.6571765}, to: {osm:node:40477298 lat,lng=45.5200715,-122.65768460000001}, props: {highway: residential, }",
+                "from: {osm:node:40477298 lat,lng=45.5200715,-122.65768460000001}, to: {osm:node:40477295 lat,lng=45.5200758,-122.65871390000001}, props: {highway: residential, }",
+                "from: {osm:node:40477295 lat,lng=45.5200758,-122.65871390000001}, to: {osm:node:2667615924 lat,lng=45.5200769,-122.65904090000001}, props: {highway: residential, }",
+                "from: {osm:node:2667615924 lat,lng=45.5200769,-122.65904090000001}, to: {osm:node:2667602420 lat,lng=45.520077300000004,-122.65915720000001}, props: {highway: residential, }",
+                "from: {osm:node:2667602420 lat,lng=45.520077300000004,-122.65915720000001}, to: {osm:node:40477292 lat,lng=45.520079100000004,-122.659721}, props: {highway: residential, }",
+                "from: {osm:node:40477292 lat,lng=45.520079100000004,-122.659721}, to: {osm:node:40477289 lat,lng=45.5200825,-122.66073420000001}, props: {highway: residential, }",
+                "from: {osm:node:40477289 lat,lng=45.5200825,-122.66073420000001}, to: {osm:node:2626809430 lat,lng=45.5200833,-122.6610213}, props: {highway: residential, }",
+                "from: {osm:node:2626809430 lat,lng=45.5200833,-122.6610213}, to: {osm:node:2626809434 lat,lng=45.5200842,-122.66128140000001}, props: {highway: residential, }"
+              ],
               "elevation": "",
               "highway": "residential",
               "lat": 45.5200623,
@@ -5529,6 +6090,9 @@ org.opentripplanner.routing.algorithm.mapping.TransitSnapshotTest.test_trip_plan
               "area": false,
               "bogusName": true,
               "distance": 70.84,
+              "edges": [
+                "from: {osm:node:2626809434 lat,lng=45.5200842,-122.66128140000001}, to: {osm:node:2626809432 lat,lng=45.520373600000006,-122.66178300000001}, props: {}"
+              ],
               "elevation": "",
               "lat": 45.5200842,
               "lon": -122.6612814,
@@ -5542,6 +6106,20 @@ org.opentripplanner.routing.algorithm.mapping.TransitSnapshotTest.test_trip_plan
               "area": false,
               "bogusName": false,
               "distance": 284.75,
+              "edges": [
+                "from: {osm:node:2626809432 lat,lng=45.520373600000006,-122.66178300000001}, to: {osm:node:40557153 lat,lng=45.520808900000006,-122.66178020000001}, props: {}",
+                "from: {osm:node:40557153 lat,lng=45.520808900000006,-122.66178020000001}, to: {osm:node:2626606823 lat,lng=45.5210905,-122.66177830000001}, props: {}",
+                "from: {osm:node:2626606823 lat,lng=45.5210905,-122.66177830000001}, to: {osm:node:2662856739 lat,lng=45.5212026,-122.66177760000001}, props: {}",
+                "from: {osm:node:2662856739 lat,lng=45.5212026,-122.66177760000001}, to: {osm:node:40614148 lat,lng=45.5215097,-122.6617755}, props: {}",
+                "from: {osm:node:40614148 lat,lng=45.5215097,-122.6617755}, to: {split_1029 lat,lng=45.52158981846931,-122.66177523252695}, props: {}",
+                "from: {split_1029 lat,lng=45.52158981846931,-122.66177523252695}, to: {osm:node:1369413773 lat,lng=45.521899100000006,-122.66177420000001}, props: {}",
+                "from: {osm:node:1369413773 lat,lng=45.521899100000006,-122.66177420000001}, to: {osm:node:2626600723 lat,lng=45.521927500000004,-122.66177390000001}, props: {}",
+                "from: {osm:node:2626600723 lat,lng=45.521927500000004,-122.66177390000001}, to: {osm:node:40622229 lat,lng=45.5222193,-122.6617705}, props: {}",
+                "from: {osm:node:40622229 lat,lng=45.5222193,-122.6617705}, to: {osm:node:2664598625 lat,lng=45.522374400000004,-122.66176960000001}, props: {}",
+                "from: {osm:node:2664598625 lat,lng=45.522374400000004,-122.66176960000001}, to: {osm:node:2664598644 lat,lng=45.522547800000005,-122.66176870000001}, props: {}",
+                "from: {osm:node:2664598644 lat,lng=45.522547800000005,-122.66176870000001}, to: {osm:node:1325763886 lat,lng=45.5228156,-122.66176720000001}, props: {}",
+                "from: {osm:node:1325763886 lat,lng=45.5228156,-122.66176720000001}, to: {osm:node:40515537 lat,lng=45.5229343,-122.66176650000001}, props: {}"
+              ],
               "elevation": "",
               "lat": 45.5203736,
               "lon": -122.661783,
@@ -5555,6 +6133,13 @@ org.opentripplanner.routing.algorithm.mapping.TransitSnapshotTest.test_trip_plan
               "area": false,
               "bogusName": false,
               "distance": 243.45,
+              "edges": [
+                "from: {osm:node:40515537 lat,lng=45.5229343,-122.66176650000001}, to: {osm:node:1275171715 lat,lng=45.5229293,-122.6619017}, props: {}",
+                "from: {osm:node:1275171715 lat,lng=45.5229293,-122.6619017}, to: {osm:node:1350842055 lat,lng=45.522921200000006,-122.66227370000001}, props: {}",
+                "from: {osm:node:1350842055 lat,lng=45.522921200000006,-122.66227370000001}, to: {osm:node:355466611 lat,lng=45.5229176,-122.6625693}, props: {}",
+                "from: {osm:node:355466611 lat,lng=45.5229176,-122.6625693}, to: {osm:node:1275171711 lat,lng=45.522964,-122.66303060000001}, props: {}",
+                "from: {osm:node:1275171711 lat,lng=45.522964,-122.66303060000001}, to: {osm:node:1328062042 lat,lng=45.523001,-122.6648816}, props: {}"
+              ],
               "elevation": "",
               "lat": 45.5229343,
               "lon": -122.6617665,
@@ -5568,6 +6153,12 @@ org.opentripplanner.routing.algorithm.mapping.TransitSnapshotTest.test_trip_plan
               "area": false,
               "bogusName": false,
               "distance": 407.38,
+              "edges": [
+                "from: {osm:node:1328062042 lat,lng=45.523001,-122.6648816}, to: {osm:node:2523794338 lat,lng=45.5230455,-122.6671101}, props: {}",
+                "from: {osm:node:2523794338 lat,lng=45.5230455,-122.6671101}, to: {osm:node:1328062041 lat,lng=45.5230545,-122.66756360000001}, props: {}",
+                "from: {osm:node:1328062041 lat,lng=45.5230545,-122.66756360000001}, to: {osm:node:2523794339 lat,lng=45.523063500000006,-122.66801410000001}, props: {}",
+                "from: {osm:node:2523794339 lat,lng=45.523063500000006,-122.66801410000001}, to: {osm:node:40723784 lat,lng=45.523105400000006,-122.67010870000001}, props: {}"
+              ],
               "elevation": "",
               "lat": 45.523001,
               "lon": -122.6648816,
@@ -5581,6 +6172,13 @@ org.opentripplanner.routing.algorithm.mapping.TransitSnapshotTest.test_trip_plan
               "area": false,
               "bogusName": false,
               "distance": 256.85,
+              "edges": [
+                "from: {osm:node:40723784 lat,lng=45.523105400000006,-122.67010870000001}, to: {split_1897 lat,lng=45.52312904214818,-122.67129367312349}, props: {}",
+                "from: {split_1897 lat,lng=45.52312904214818,-122.67129367312349}, to: {split_1891 lat,lng=45.52312919968969,-122.67130156929505}, props: {}",
+                "from: {split_1891 lat,lng=45.52312919968969,-122.67130156929505}, to: {osm:node:155699810 lat,lng=45.523135100000005,-122.6715973}, props: {}",
+                "from: {osm:node:155699810 lat,lng=45.523135100000005,-122.6715973}, to: {osm:node:40516268 lat,lng=45.5231958,-122.6723802}, props: {}",
+                "from: {osm:node:40516268 lat,lng=45.5231958,-122.6723802}, to: {osm:node:567256143 lat,lng=45.523177600000004,-122.67338950000001}, props: {}"
+              ],
               "elevation": "",
               "lat": 45.5231054,
               "lon": -122.6701087,
@@ -5594,6 +6192,25 @@ org.opentripplanner.routing.algorithm.mapping.TransitSnapshotTest.test_trip_plan
               "area": false,
               "bogusName": false,
               "distance": 460.65,
+              "edges": [
+                "from: {osm:node:567256143 lat,lng=45.523177600000004,-122.67338950000001}, to: {osm:node:40644438 lat,lng=45.523833200000006,-122.67341630000001}, props: {}",
+                "from: {osm:node:40644438 lat,lng=45.523833200000006,-122.67341630000001}, to: {osm:node:40508548 lat,lng=45.5245425,-122.67344630000001}, props: {}",
+                "from: {osm:node:40508548 lat,lng=45.5245425,-122.67344630000001}, to: {osm:node:2563930230 lat,lng=45.524964000000004,-122.6734562}, props: {}",
+                "from: {osm:node:2563930230 lat,lng=45.524964000000004,-122.6734562}, to: {osm:node:2563930225 lat,lng=45.525094100000004,-122.6734595}, props: {}",
+                "from: {osm:node:2563930225 lat,lng=45.525094100000004,-122.6734595}, to: {osm:node:40450453 lat,lng=45.525260100000004,-122.6734622}, props: {}",
+                "from: {osm:node:40450453 lat,lng=45.525260100000004,-122.6734622}, to: {osm:node:2576292887 lat,lng=45.5254192,-122.67346710000001}, props: {}",
+                "from: {osm:node:2576292887 lat,lng=45.5254192,-122.67346710000001}, to: {osm:node:40612055 lat,lng=45.5259696,-122.673484}, props: {}",
+                "from: {osm:node:40612055 lat,lng=45.5259696,-122.673484}, to: {osm:node:2563943733 lat,lng=45.526107200000006,-122.67348820000001}, props: {}",
+                "from: {osm:node:2563943733 lat,lng=45.526107200000006,-122.67348820000001}, to: {osm:node:2563942163 lat,lng=45.526125500000006,-122.6734888}, props: {}",
+                "from: {osm:node:2563942163 lat,lng=45.526125500000006,-122.6734888}, to: {osm:node:2172293512 lat,lng=45.5262405,-122.6734924}, props: {}",
+                "from: {osm:node:2172293512 lat,lng=45.5262405,-122.6734924}, to: {osm:node:2172293515 lat,lng=45.5263822,-122.6734967}, props: {}",
+                "from: {osm:node:2172293515 lat,lng=45.5263822,-122.6734967}, to: {osm:node:2172293519 lat,lng=45.526533,-122.6735014}, props: {}",
+                "from: {osm:node:2172293519 lat,lng=45.526533,-122.6735014}, to: {osm:node:1323150085 lat,lng=45.526567400000005,-122.6735024}, props: {}",
+                "from: {osm:node:40671300 lat,lng=45.5266158,-122.6735349}, to: {osm:node:1685221963 lat,lng=45.526668400000005,-122.6735441}, props: {}",
+                "from: {osm:node:1685221963 lat,lng=45.526668400000005,-122.6735441}, to: {osm:node:40671302 lat,lng=45.5268151,-122.67357290000001}, props: {}",
+                "from: {osm:node:40671302 lat,lng=45.5268151,-122.67357290000001}, to: {osm:node:1325907905 lat,lng=45.526898800000005,-122.67358320000001}, props: {highway: residential, }",
+                "from: {osm:node:1325907905 lat,lng=45.526898800000005,-122.67358320000001}, to: {osm:node:40671304 lat,lng=45.527286600000004,-122.67371650000001}, props: {highway: residential, }"
+              ],
               "elevation": "",
               "lat": 45.5231776,
               "lon": -122.6733895,
@@ -5607,6 +6224,12 @@ org.opentripplanner.routing.algorithm.mapping.TransitSnapshotTest.test_trip_plan
               "area": false,
               "bogusName": false,
               "distance": 145.82,
+              "edges": [
+                "from: {osm:node:40671304 lat,lng=45.527286600000004,-122.67371650000001}, to: {osm:node:40730574 lat,lng=45.5273763,-122.6745606}, props: {highway: residential, }",
+                "from: {osm:node:40730574 lat,lng=45.5273763,-122.6745606}, to: {osm:node:2172293547 lat,lng=45.5273705,-122.6747802}, props: {}",
+                "from: {osm:node:2172293547 lat,lng=45.5273705,-122.6747802}, to: {osm:node:2172293546 lat,lng=45.527365200000006,-122.67497680000001}, props: {}",
+                "from: {osm:node:2172293546 lat,lng=45.527365200000006,-122.67497680000001}, to: {osm:node:40602163 lat,lng=45.5273496,-122.6755629}, props: {}"
+              ],
               "elevation": "",
               "highway": "residential",
               "lat": 45.5272866,
@@ -5621,6 +6244,11 @@ org.opentripplanner.routing.algorithm.mapping.TransitSnapshotTest.test_trip_plan
               "area": false,
               "bogusName": false,
               "distance": 77.35,
+              "edges": [
+                "from: {osm:node:40602163 lat,lng=45.5273496,-122.6755629}, to: {osm:node:1728428812 lat,lng=45.5276361,-122.6755749}, props: {}",
+                "from: {osm:node:1728428812 lat,lng=45.5276361,-122.6755749}, to: {split_1779 lat,lng=45.52772806967024,-122.67557837869025}, props: {}",
+                "from: {split_1779 lat,lng=45.52772806967024,-122.67557837869025}, to: {osm:node:40549836 lat,lng=45.528044900000005,-122.6755935}, props: {}"
+              ],
               "elevation": "",
               "lat": 45.5273496,
               "lon": -122.6755629,
@@ -5634,6 +6262,10 @@ org.opentripplanner.routing.algorithm.mapping.TransitSnapshotTest.test_trip_plan
               "area": false,
               "bogusName": false,
               "distance": 80.53,
+              "edges": [
+                "from: {osm:node:40549836 lat,lng=45.528044900000005,-122.6755935}, to: {osm:node:1427526887 lat,lng=45.528047400000005,-122.67634880000001}, props: {}",
+                "from: {osm:node:1427526887 lat,lng=45.528047400000005,-122.67634880000001}, to: {osm:node:40469256 lat,lng=45.528051500000004,-122.67662320000001}, props: {}"
+              ],
               "elevation": "",
               "lat": 45.5280449,
               "lon": -122.6755935,
@@ -5647,6 +6279,22 @@ org.opentripplanner.routing.algorithm.mapping.TransitSnapshotTest.test_trip_plan
               "area": false,
               "bogusName": false,
               "distance": 465.44,
+              "edges": [
+                "from: {osm:node:40469256 lat,lng=45.528051500000004,-122.67662320000001}, to: {osm:node:1254614418 lat,lng=45.5281237,-122.67663100000001}, props: {}",
+                "from: {osm:node:1254614418 lat,lng=45.5281237,-122.67663100000001}, to: {osm:node:299642715 lat,lng=45.5282877,-122.6767327}, props: {}",
+                "from: {osm:node:299642715 lat,lng=45.5282877,-122.6767327}, to: {osm:node:2011831684 lat,lng=45.528334900000004,-122.6767908}, props: {}",
+                "from: {osm:node:2011831684 lat,lng=45.528334900000004,-122.6767908}, to: {split_2043 lat,lng=45.52844030306341,-122.67692057728078}, props: {}",
+                "from: {split_2043 lat,lng=45.52844030306341,-122.67692057728078}, to: {osm:node:1392884845 lat,lng=45.5286082,-122.67712730000001}, props: {}",
+                "from: {osm:node:1392884845 lat,lng=45.5286082,-122.67712730000001}, to: {osm:node:299642703 lat,lng=45.5286692,-122.67720130000001}, props: {}",
+                "from: {osm:node:299642703 lat,lng=45.5286692,-122.67720130000001}, to: {split_2036 lat,lng=45.528759489074304,-122.67730686066217}, props: {}",
+                "from: {split_2036 lat,lng=45.528759489074304,-122.67730686066217}, to: {osm:node:299642265 lat,lng=45.528857800000004,-122.6774218}, props: {}",
+                "from: {osm:node:299642265 lat,lng=45.528857800000004,-122.6774218}, to: {osm:node:2011831688 lat,lng=45.5288945,-122.6774632}, props: {}",
+                "from: {osm:node:2011831688 lat,lng=45.5288945,-122.6774632}, to: {osm:node:1661749445 lat,lng=45.5293623,-122.67771210000001}, props: {}",
+                "from: {osm:node:1661749445 lat,lng=45.5293623,-122.67771210000001}, to: {osm:node:1661750264 lat,lng=45.5302093,-122.67798540000001}, props: {}",
+                "from: {osm:node:1661750264 lat,lng=45.5302093,-122.67798540000001}, to: {osm:node:40664439 lat,lng=45.530256400000006,-122.67804880000001}, props: {}",
+                "from: {osm:node:40664439 lat,lng=45.530256400000006,-122.67804880000001}, to: {osm:node:299641729 lat,lng=45.5310549,-122.6789875}, props: {highway: residential, }",
+                "from: {osm:node:299641729 lat,lng=45.5310549,-122.6789875}, to: {osm:node:40707670 lat,lng=45.531545200000004,-122.679511}, props: {highway: residential, }"
+              ],
               "elevation": "",
               "lat": 45.5280515,
               "lon": -122.6766232,
@@ -5660,6 +6308,37 @@ org.opentripplanner.routing.algorithm.mapping.TransitSnapshotTest.test_trip_plan
               "area": false,
               "bogusName": false,
               "distance": 1331.38,
+              "edges": [
+                "from: {osm:node:40707670 lat,lng=45.531545200000004,-122.679511}, to: {osm:node:40621304 lat,lng=45.531553300000006,-122.6804139}, props: {highway: residential, }",
+                "from: {osm:node:40621304 lat,lng=45.531553300000006,-122.6804139}, to: {osm:node:1686721932 lat,lng=45.5315433,-122.68094760000001}, props: {}",
+                "from: {osm:node:1686721932 lat,lng=45.5315433,-122.68094760000001}, to: {split_2038 lat,lng=45.53153898579443,-122.68119144920183}, props: {}",
+                "from: {split_2038 lat,lng=45.53153898579443,-122.68119144920183}, to: {osm:node:1703374762 lat,lng=45.5315366,-122.68132630000001}, props: {}",
+                "from: {osm:node:1703374762 lat,lng=45.5315366,-122.68132630000001}, to: {osm:node:40707678 lat,lng=45.5315309,-122.6814307}, props: {}",
+                "from: {osm:node:40707678 lat,lng=45.5315309,-122.6814307}, to: {osm:node:40707680 lat,lng=45.5315251,-122.6815298}, props: {}",
+                "from: {osm:node:40707680 lat,lng=45.5315251,-122.6815298}, to: {osm:node:40538109 lat,lng=45.5315117,-122.68244770000001}, props: {}",
+                "from: {osm:node:40538109 lat,lng=45.5315117,-122.68244770000001}, to: {osm:node:1703267063 lat,lng=45.5315105,-122.68251070000001}, props: {}",
+                "from: {osm:node:1703267063 lat,lng=45.5315105,-122.68251070000001}, to: {osm:node:479697573 lat,lng=45.531501000000006,-122.68300140000001}, props: {}",
+                "from: {osm:node:479697573 lat,lng=45.531501000000006,-122.68300140000001}, to: {osm:node:1703267060 lat,lng=45.531494200000004,-122.68335830000001}, props: {}",
+                "from: {osm:node:1703267060 lat,lng=45.531494200000004,-122.68335830000001}, to: {osm:node:40689970 lat,lng=45.531492300000004,-122.68345590000001}, props: {}",
+                "from: {osm:node:40689970 lat,lng=45.531492300000004,-122.68345590000001}, to: {osm:node:40527883 lat,lng=45.5314757,-122.6844856}, props: {}",
+                "from: {osm:node:40527883 lat,lng=45.5314757,-122.6844856}, to: {osm:node:1703288023 lat,lng=45.531474800000005,-122.68456880000001}, props: {}",
+                "from: {osm:node:1703288023 lat,lng=45.531474800000005,-122.68456880000001}, to: {osm:node:1392981359 lat,lng=45.5314588,-122.68538980000001}, props: {}",
+                "from: {osm:node:1392981359 lat,lng=45.5314588,-122.68538980000001}, to: {osm:node:40675767 lat,lng=45.5314582,-122.6854847}, props: {}",
+                "from: {osm:node:40675767 lat,lng=45.5314582,-122.6854847}, to: {osm:node:40493552 lat,lng=45.531441400000006,-122.6865235}, props: {}",
+                "from: {osm:node:40493552 lat,lng=45.531441400000006,-122.6865235}, to: {osm:node:40707690 lat,lng=45.5314241,-122.68751400000001}, props: {}",
+                "from: {osm:node:40707690 lat,lng=45.5314241,-122.68751400000001}, to: {osm:node:40536217 lat,lng=45.5314008,-122.6885311}, props: {}",
+                "from: {osm:node:40536217 lat,lng=45.5314008,-122.6885311}, to: {osm:node:1703288003 lat,lng=45.5313992,-122.68861620000001}, props: {}",
+                "from: {osm:node:1703288003 lat,lng=45.5313992,-122.68861620000001}, to: {osm:node:1393110517 lat,lng=45.531383700000006,-122.6894513}, props: {}",
+                "from: {osm:node:1393110517 lat,lng=45.531383700000006,-122.6894513}, to: {osm:node:40686585 lat,lng=45.531381700000004,-122.6895695}, props: {}",
+                "from: {osm:node:40686585 lat,lng=45.531381700000004,-122.6895695}, to: {osm:node:662765006 lat,lng=45.5313639,-122.6905679}, props: {}",
+                "from: {osm:node:662765006 lat,lng=45.5313639,-122.6905679}, to: {osm:node:40652719 lat,lng=45.5313262,-122.69258130000001}, props: {}",
+                "from: {osm:node:40652719 lat,lng=45.5313262,-122.69258130000001}, to: {osm:node:1703302526 lat,lng=45.531324600000005,-122.69268930000001}, props: {}",
+                "from: {osm:node:1703302526 lat,lng=45.531324600000005,-122.69268930000001}, to: {osm:node:1391859417 lat,lng=45.5312962,-122.6945187}, props: {}",
+                "from: {osm:node:1391859417 lat,lng=45.5312962,-122.6945187}, to: {osm:node:40639708 lat,lng=45.5312952,-122.6946111}, props: {}",
+                "from: {osm:node:40639708 lat,lng=45.5312952,-122.6946111}, to: {osm:node:1391859416 lat,lng=45.531294200000005,-122.69470460000001}, props: {}",
+                "from: {osm:node:1391859416 lat,lng=45.531294200000005,-122.69470460000001}, to: {osm:node:1703374679 lat,lng=45.5312531,-122.6965349}, props: {}",
+                "from: null, to: null, props: {}"
+              ],
               "elevation": "",
               "highway": "residential",
               "lat": 45.5315452,
@@ -5742,6 +6421,11 @@ org.opentripplanner.routing.algorithm.mapping.TransitSnapshotTest.test_trip_plan
               "area": false,
               "bogusName": false,
               "distance": 51.53,
+              "edges": [
+                "from: {split_408 lat,lng=45.52336838632084,-122.65362253301092}, to: {split_403 lat,lng=45.52318191367419,-122.65362851554825}, props: {}",
+                "from: {split_403 lat,lng=45.52318191367419,-122.65362851554825}, to: {osm:node:1375333460 lat,lng=45.523017200000005,-122.65363380000001}, props: {}",
+                "from: {osm:node:1375333460 lat,lng=45.523017200000005,-122.65363380000001}, to: {osm:node:40639328 lat,lng=45.5229051,-122.6536312}, props: {}"
+              ],
               "elevation": "",
               "lat": 45.5233684,
               "lon": -122.6536225,
@@ -5755,6 +6439,31 @@ org.opentripplanner.routing.algorithm.mapping.TransitSnapshotTest.test_trip_plan
               "area": false,
               "bogusName": false,
               "distance": 877.28,
+              "edges": [
+                "from: {osm:node:40639328 lat,lng=45.5229051,-122.6536312}, to: {osm:node:40572710 lat,lng=45.522915600000005,-122.65462860000001}, props: {width: 11.0, }",
+                "from: {osm:node:40572710 lat,lng=45.522915600000005,-122.65462860000001}, to: {osm:node:40639330 lat,lng=45.5229182,-122.65564250000001}, props: {width: 11.0, }",
+                "from: {osm:node:40639330 lat,lng=45.5229182,-122.65564250000001}, to: {osm:node:40502607 lat,lng=45.5229209,-122.65665530000001}, props: {width: 11.0, }",
+                "from: {osm:node:40502607 lat,lng=45.5229209,-122.65665530000001}, to: {osm:node:1963188170 lat,lng=45.5229219,-122.6570276}, props: {width: 11.0, }",
+                "from: {osm:node:1963188170 lat,lng=45.5229219,-122.6570276}, to: {split_1480 lat,lng=45.52292238778506,-122.65726457485168}, props: {}",
+                "from: {split_1480 lat,lng=45.52292238778506,-122.65726457485168}, to: {osm:node:40461334 lat,lng=45.522923500000005,-122.6576708}, props: {}",
+                "from: {osm:node:40461334 lat,lng=45.522923500000005,-122.6576708}, to: {osm:node:1963188171 lat,lng=45.5229252,-122.65831240000001}, props: {width: 11.0, }",
+                "from: {osm:node:1963188171 lat,lng=45.5229252,-122.65831240000001}, to: {osm:node:2670905937 lat,lng=45.5229252,-122.65832900000001}, props: {width: 11.0, }",
+                "from: {osm:node:2670905937 lat,lng=45.5229252,-122.65832900000001}, to: {osm:node:40534485 lat,lng=45.5229262,-122.65868540000001}, props: {width: 11.0, }",
+                "from: {osm:node:40534485 lat,lng=45.5229262,-122.65868540000001}, to: {osm:node:2664610932 lat,lng=45.522927900000006,-122.65921290000001}, props: {width: 11.0, }",
+                "from: {osm:node:2664610932 lat,lng=45.522927900000006,-122.65921290000001}, to: {split_1482 lat,lng=45.522928341600995,-122.65936549321457}, props: {}",
+                "from: {split_1482 lat,lng=45.522928341600995,-122.65936549321457}, to: {osm:node:40639337 lat,lng=45.522928900000004,-122.65969960000001}, props: {}",
+                "from: {osm:node:40639337 lat,lng=45.522928900000004,-122.65969960000001}, to: {osm:node:2664598671 lat,lng=45.522930900000006,-122.66049830000001}, props: {width: 11.0, }",
+                "from: {osm:node:2664598671 lat,lng=45.522930900000006,-122.66049830000001}, to: {osm:node:1368361407 lat,lng=45.5229311,-122.66057350000001}, props: {width: 11.0, }",
+                "from: {osm:node:1368361407 lat,lng=45.5229311,-122.66057350000001}, to: {osm:node:40561550 lat,lng=45.522931500000006,-122.66071740000001}, props: {width: 11.0, }",
+                "from: {osm:node:40561550 lat,lng=45.522931500000006,-122.66071740000001}, to: {split_1588 lat,lng=45.52293300001889,-122.66123850726254}, props: {}",
+                "from: {split_1588 lat,lng=45.52293300001889,-122.66123850726254}, to: {split_1591 lat,lng=45.52293376964989,-122.66153443038148}, props: {}",
+                "from: {split_1591 lat,lng=45.52293376964989,-122.66153443038148}, to: {osm:node:40515537 lat,lng=45.5229343,-122.66176650000001}, props: {}",
+                "from: {osm:node:40515537 lat,lng=45.5229343,-122.66176650000001}, to: {osm:node:1275171715 lat,lng=45.5229293,-122.6619017}, props: {}",
+                "from: {osm:node:1275171715 lat,lng=45.5229293,-122.6619017}, to: {osm:node:1350842055 lat,lng=45.522921200000006,-122.66227370000001}, props: {}",
+                "from: {osm:node:1350842055 lat,lng=45.522921200000006,-122.66227370000001}, to: {osm:node:355466611 lat,lng=45.5229176,-122.6625693}, props: {}",
+                "from: {osm:node:355466611 lat,lng=45.5229176,-122.6625693}, to: {osm:node:1275171711 lat,lng=45.522964,-122.66303060000001}, props: {}",
+                "from: {osm:node:1275171711 lat,lng=45.522964,-122.66303060000001}, to: {osm:node:1328062042 lat,lng=45.523001,-122.6648816}, props: {}"
+              ],
               "elevation": "",
               "lat": 45.5229051,
               "lon": -122.6536312,
@@ -5769,6 +6478,12 @@ org.opentripplanner.routing.algorithm.mapping.TransitSnapshotTest.test_trip_plan
               "area": false,
               "bogusName": false,
               "distance": 407.38,
+              "edges": [
+                "from: {osm:node:1328062042 lat,lng=45.523001,-122.6648816}, to: {osm:node:2523794338 lat,lng=45.5230455,-122.6671101}, props: {}",
+                "from: {osm:node:2523794338 lat,lng=45.5230455,-122.6671101}, to: {osm:node:1328062041 lat,lng=45.5230545,-122.66756360000001}, props: {}",
+                "from: {osm:node:1328062041 lat,lng=45.5230545,-122.66756360000001}, to: {osm:node:2523794339 lat,lng=45.523063500000006,-122.66801410000001}, props: {}",
+                "from: {osm:node:2523794339 lat,lng=45.523063500000006,-122.66801410000001}, to: {osm:node:40723784 lat,lng=45.523105400000006,-122.67010870000001}, props: {}"
+              ],
               "elevation": "",
               "lat": 45.523001,
               "lon": -122.6648816,
@@ -5782,6 +6497,13 @@ org.opentripplanner.routing.algorithm.mapping.TransitSnapshotTest.test_trip_plan
               "area": false,
               "bogusName": false,
               "distance": 256.85,
+              "edges": [
+                "from: {osm:node:40723784 lat,lng=45.523105400000006,-122.67010870000001}, to: {split_1897 lat,lng=45.52312904214818,-122.67129367312349}, props: {}",
+                "from: {split_1897 lat,lng=45.52312904214818,-122.67129367312349}, to: {split_1891 lat,lng=45.52312919968969,-122.67130156929505}, props: {}",
+                "from: {split_1891 lat,lng=45.52312919968969,-122.67130156929505}, to: {osm:node:155699810 lat,lng=45.523135100000005,-122.6715973}, props: {}",
+                "from: {osm:node:155699810 lat,lng=45.523135100000005,-122.6715973}, to: {osm:node:40516268 lat,lng=45.5231958,-122.6723802}, props: {}",
+                "from: {osm:node:40516268 lat,lng=45.5231958,-122.6723802}, to: {osm:node:567256143 lat,lng=45.523177600000004,-122.67338950000001}, props: {}"
+              ],
               "elevation": "",
               "lat": 45.5231054,
               "lon": -122.6701087,
@@ -5795,6 +6517,25 @@ org.opentripplanner.routing.algorithm.mapping.TransitSnapshotTest.test_trip_plan
               "area": false,
               "bogusName": false,
               "distance": 460.65,
+              "edges": [
+                "from: {osm:node:567256143 lat,lng=45.523177600000004,-122.67338950000001}, to: {osm:node:40644438 lat,lng=45.523833200000006,-122.67341630000001}, props: {}",
+                "from: {osm:node:40644438 lat,lng=45.523833200000006,-122.67341630000001}, to: {osm:node:40508548 lat,lng=45.5245425,-122.67344630000001}, props: {}",
+                "from: {osm:node:40508548 lat,lng=45.5245425,-122.67344630000001}, to: {osm:node:2563930230 lat,lng=45.524964000000004,-122.6734562}, props: {}",
+                "from: {osm:node:2563930230 lat,lng=45.524964000000004,-122.6734562}, to: {osm:node:2563930225 lat,lng=45.525094100000004,-122.6734595}, props: {}",
+                "from: {osm:node:2563930225 lat,lng=45.525094100000004,-122.6734595}, to: {osm:node:40450453 lat,lng=45.525260100000004,-122.6734622}, props: {}",
+                "from: {osm:node:40450453 lat,lng=45.525260100000004,-122.6734622}, to: {osm:node:2576292887 lat,lng=45.5254192,-122.67346710000001}, props: {}",
+                "from: {osm:node:2576292887 lat,lng=45.5254192,-122.67346710000001}, to: {osm:node:40612055 lat,lng=45.5259696,-122.673484}, props: {}",
+                "from: {osm:node:40612055 lat,lng=45.5259696,-122.673484}, to: {osm:node:2563943733 lat,lng=45.526107200000006,-122.67348820000001}, props: {}",
+                "from: {osm:node:2563943733 lat,lng=45.526107200000006,-122.67348820000001}, to: {osm:node:2563942163 lat,lng=45.526125500000006,-122.6734888}, props: {}",
+                "from: {osm:node:2563942163 lat,lng=45.526125500000006,-122.6734888}, to: {osm:node:2172293512 lat,lng=45.5262405,-122.6734924}, props: {}",
+                "from: {osm:node:2172293512 lat,lng=45.5262405,-122.6734924}, to: {osm:node:2172293515 lat,lng=45.5263822,-122.6734967}, props: {}",
+                "from: {osm:node:2172293515 lat,lng=45.5263822,-122.6734967}, to: {osm:node:2172293519 lat,lng=45.526533,-122.6735014}, props: {}",
+                "from: {osm:node:2172293519 lat,lng=45.526533,-122.6735014}, to: {osm:node:1323150085 lat,lng=45.526567400000005,-122.6735024}, props: {}",
+                "from: {osm:node:40671300 lat,lng=45.5266158,-122.6735349}, to: {osm:node:1685221963 lat,lng=45.526668400000005,-122.6735441}, props: {}",
+                "from: {osm:node:1685221963 lat,lng=45.526668400000005,-122.6735441}, to: {osm:node:40671302 lat,lng=45.5268151,-122.67357290000001}, props: {}",
+                "from: {osm:node:40671302 lat,lng=45.5268151,-122.67357290000001}, to: {osm:node:1325907905 lat,lng=45.526898800000005,-122.67358320000001}, props: {highway: residential, }",
+                "from: {osm:node:1325907905 lat,lng=45.526898800000005,-122.67358320000001}, to: {osm:node:40671304 lat,lng=45.527286600000004,-122.67371650000001}, props: {highway: residential, }"
+              ],
               "elevation": "",
               "lat": 45.5231776,
               "lon": -122.6733895,
@@ -5808,6 +6549,12 @@ org.opentripplanner.routing.algorithm.mapping.TransitSnapshotTest.test_trip_plan
               "area": false,
               "bogusName": false,
               "distance": 145.82,
+              "edges": [
+                "from: {osm:node:40671304 lat,lng=45.527286600000004,-122.67371650000001}, to: {osm:node:40730574 lat,lng=45.5273763,-122.6745606}, props: {highway: residential, }",
+                "from: {osm:node:40730574 lat,lng=45.5273763,-122.6745606}, to: {osm:node:2172293547 lat,lng=45.5273705,-122.6747802}, props: {}",
+                "from: {osm:node:2172293547 lat,lng=45.5273705,-122.6747802}, to: {osm:node:2172293546 lat,lng=45.527365200000006,-122.67497680000001}, props: {}",
+                "from: {osm:node:2172293546 lat,lng=45.527365200000006,-122.67497680000001}, to: {osm:node:40602163 lat,lng=45.5273496,-122.6755629}, props: {}"
+              ],
               "elevation": "",
               "highway": "residential",
               "lat": 45.5272866,
@@ -5822,6 +6569,11 @@ org.opentripplanner.routing.algorithm.mapping.TransitSnapshotTest.test_trip_plan
               "area": false,
               "bogusName": false,
               "distance": 77.35,
+              "edges": [
+                "from: {osm:node:40602163 lat,lng=45.5273496,-122.6755629}, to: {osm:node:1728428812 lat,lng=45.5276361,-122.6755749}, props: {}",
+                "from: {osm:node:1728428812 lat,lng=45.5276361,-122.6755749}, to: {split_1779 lat,lng=45.52772806967024,-122.67557837869025}, props: {}",
+                "from: {split_1779 lat,lng=45.52772806967024,-122.67557837869025}, to: {osm:node:40549836 lat,lng=45.528044900000005,-122.6755935}, props: {}"
+              ],
               "elevation": "",
               "lat": 45.5273496,
               "lon": -122.6755629,
@@ -5835,6 +6587,10 @@ org.opentripplanner.routing.algorithm.mapping.TransitSnapshotTest.test_trip_plan
               "area": false,
               "bogusName": false,
               "distance": 80.53,
+              "edges": [
+                "from: {osm:node:40549836 lat,lng=45.528044900000005,-122.6755935}, to: {osm:node:1427526887 lat,lng=45.528047400000005,-122.67634880000001}, props: {}",
+                "from: {osm:node:1427526887 lat,lng=45.528047400000005,-122.67634880000001}, to: {osm:node:40469256 lat,lng=45.528051500000004,-122.67662320000001}, props: {}"
+              ],
               "elevation": "",
               "lat": 45.5280449,
               "lon": -122.6755935,
@@ -5848,6 +6604,22 @@ org.opentripplanner.routing.algorithm.mapping.TransitSnapshotTest.test_trip_plan
               "area": false,
               "bogusName": false,
               "distance": 465.44,
+              "edges": [
+                "from: {osm:node:40469256 lat,lng=45.528051500000004,-122.67662320000001}, to: {osm:node:1254614418 lat,lng=45.5281237,-122.67663100000001}, props: {}",
+                "from: {osm:node:1254614418 lat,lng=45.5281237,-122.67663100000001}, to: {osm:node:299642715 lat,lng=45.5282877,-122.6767327}, props: {}",
+                "from: {osm:node:299642715 lat,lng=45.5282877,-122.6767327}, to: {osm:node:2011831684 lat,lng=45.528334900000004,-122.6767908}, props: {}",
+                "from: {osm:node:2011831684 lat,lng=45.528334900000004,-122.6767908}, to: {split_2043 lat,lng=45.52844030306341,-122.67692057728078}, props: {}",
+                "from: {split_2043 lat,lng=45.52844030306341,-122.67692057728078}, to: {osm:node:1392884845 lat,lng=45.5286082,-122.67712730000001}, props: {}",
+                "from: {osm:node:1392884845 lat,lng=45.5286082,-122.67712730000001}, to: {osm:node:299642703 lat,lng=45.5286692,-122.67720130000001}, props: {}",
+                "from: {osm:node:299642703 lat,lng=45.5286692,-122.67720130000001}, to: {split_2036 lat,lng=45.528759489074304,-122.67730686066217}, props: {}",
+                "from: {split_2036 lat,lng=45.528759489074304,-122.67730686066217}, to: {osm:node:299642265 lat,lng=45.528857800000004,-122.6774218}, props: {}",
+                "from: {osm:node:299642265 lat,lng=45.528857800000004,-122.6774218}, to: {osm:node:2011831688 lat,lng=45.5288945,-122.6774632}, props: {}",
+                "from: {osm:node:2011831688 lat,lng=45.5288945,-122.6774632}, to: {osm:node:1661749445 lat,lng=45.5293623,-122.67771210000001}, props: {}",
+                "from: {osm:node:1661749445 lat,lng=45.5293623,-122.67771210000001}, to: {osm:node:1661750264 lat,lng=45.5302093,-122.67798540000001}, props: {}",
+                "from: {osm:node:1661750264 lat,lng=45.5302093,-122.67798540000001}, to: {osm:node:40664439 lat,lng=45.530256400000006,-122.67804880000001}, props: {}",
+                "from: {osm:node:40664439 lat,lng=45.530256400000006,-122.67804880000001}, to: {osm:node:299641729 lat,lng=45.5310549,-122.6789875}, props: {highway: residential, }",
+                "from: {osm:node:299641729 lat,lng=45.5310549,-122.6789875}, to: {osm:node:40707670 lat,lng=45.531545200000004,-122.679511}, props: {highway: residential, }"
+              ],
               "elevation": "",
               "lat": 45.5280515,
               "lon": -122.6766232,
@@ -5861,6 +6633,37 @@ org.opentripplanner.routing.algorithm.mapping.TransitSnapshotTest.test_trip_plan
               "area": false,
               "bogusName": false,
               "distance": 1331.38,
+              "edges": [
+                "from: {osm:node:40707670 lat,lng=45.531545200000004,-122.679511}, to: {osm:node:40621304 lat,lng=45.531553300000006,-122.6804139}, props: {highway: residential, }",
+                "from: {osm:node:40621304 lat,lng=45.531553300000006,-122.6804139}, to: {osm:node:1686721932 lat,lng=45.5315433,-122.68094760000001}, props: {}",
+                "from: {osm:node:1686721932 lat,lng=45.5315433,-122.68094760000001}, to: {split_2038 lat,lng=45.53153898579443,-122.68119144920183}, props: {}",
+                "from: {split_2038 lat,lng=45.53153898579443,-122.68119144920183}, to: {osm:node:1703374762 lat,lng=45.5315366,-122.68132630000001}, props: {}",
+                "from: {osm:node:1703374762 lat,lng=45.5315366,-122.68132630000001}, to: {osm:node:40707678 lat,lng=45.5315309,-122.6814307}, props: {}",
+                "from: {osm:node:40707678 lat,lng=45.5315309,-122.6814307}, to: {osm:node:40707680 lat,lng=45.5315251,-122.6815298}, props: {}",
+                "from: {osm:node:40707680 lat,lng=45.5315251,-122.6815298}, to: {osm:node:40538109 lat,lng=45.5315117,-122.68244770000001}, props: {}",
+                "from: {osm:node:40538109 lat,lng=45.5315117,-122.68244770000001}, to: {osm:node:1703267063 lat,lng=45.5315105,-122.68251070000001}, props: {}",
+                "from: {osm:node:1703267063 lat,lng=45.5315105,-122.68251070000001}, to: {osm:node:479697573 lat,lng=45.531501000000006,-122.68300140000001}, props: {}",
+                "from: {osm:node:479697573 lat,lng=45.531501000000006,-122.68300140000001}, to: {osm:node:1703267060 lat,lng=45.531494200000004,-122.68335830000001}, props: {}",
+                "from: {osm:node:1703267060 lat,lng=45.531494200000004,-122.68335830000001}, to: {osm:node:40689970 lat,lng=45.531492300000004,-122.68345590000001}, props: {}",
+                "from: {osm:node:40689970 lat,lng=45.531492300000004,-122.68345590000001}, to: {osm:node:40527883 lat,lng=45.5314757,-122.6844856}, props: {}",
+                "from: {osm:node:40527883 lat,lng=45.5314757,-122.6844856}, to: {osm:node:1703288023 lat,lng=45.531474800000005,-122.68456880000001}, props: {}",
+                "from: {osm:node:1703288023 lat,lng=45.531474800000005,-122.68456880000001}, to: {osm:node:1392981359 lat,lng=45.5314588,-122.68538980000001}, props: {}",
+                "from: {osm:node:1392981359 lat,lng=45.5314588,-122.68538980000001}, to: {osm:node:40675767 lat,lng=45.5314582,-122.6854847}, props: {}",
+                "from: {osm:node:40675767 lat,lng=45.5314582,-122.6854847}, to: {osm:node:40493552 lat,lng=45.531441400000006,-122.6865235}, props: {}",
+                "from: {osm:node:40493552 lat,lng=45.531441400000006,-122.6865235}, to: {osm:node:40707690 lat,lng=45.5314241,-122.68751400000001}, props: {}",
+                "from: {osm:node:40707690 lat,lng=45.5314241,-122.68751400000001}, to: {osm:node:40536217 lat,lng=45.5314008,-122.6885311}, props: {}",
+                "from: {osm:node:40536217 lat,lng=45.5314008,-122.6885311}, to: {osm:node:1703288003 lat,lng=45.5313992,-122.68861620000001}, props: {}",
+                "from: {osm:node:1703288003 lat,lng=45.5313992,-122.68861620000001}, to: {osm:node:1393110517 lat,lng=45.531383700000006,-122.6894513}, props: {}",
+                "from: {osm:node:1393110517 lat,lng=45.531383700000006,-122.6894513}, to: {osm:node:40686585 lat,lng=45.531381700000004,-122.6895695}, props: {}",
+                "from: {osm:node:40686585 lat,lng=45.531381700000004,-122.6895695}, to: {osm:node:662765006 lat,lng=45.5313639,-122.6905679}, props: {}",
+                "from: {osm:node:662765006 lat,lng=45.5313639,-122.6905679}, to: {osm:node:40652719 lat,lng=45.5313262,-122.69258130000001}, props: {}",
+                "from: {osm:node:40652719 lat,lng=45.5313262,-122.69258130000001}, to: {osm:node:1703302526 lat,lng=45.531324600000005,-122.69268930000001}, props: {}",
+                "from: {osm:node:1703302526 lat,lng=45.531324600000005,-122.69268930000001}, to: {osm:node:1391859417 lat,lng=45.5312962,-122.6945187}, props: {}",
+                "from: {osm:node:1391859417 lat,lng=45.5312962,-122.6945187}, to: {osm:node:40639708 lat,lng=45.5312952,-122.6946111}, props: {}",
+                "from: {osm:node:40639708 lat,lng=45.5312952,-122.6946111}, to: {osm:node:1391859416 lat,lng=45.531294200000005,-122.69470460000001}, props: {}",
+                "from: {osm:node:1391859416 lat,lng=45.531294200000005,-122.69470460000001}, to: {osm:node:1703374679 lat,lng=45.5312531,-122.6965349}, props: {}",
+                "from: null, to: null, props: {}"
+              ],
               "elevation": "",
               "highway": "residential",
               "lat": 45.5315452,
@@ -5943,6 +6746,9 @@ org.opentripplanner.routing.algorithm.mapping.TransitSnapshotTest.test_trip_plan
               "area": false,
               "bogusName": false,
               "distance": 39.04,
+              "edges": [
+                "from: {split_1932 lat,lng=45.53024090735772,-122.66779676192563}, to: {osm:node:664384269 lat,lng=45.530427100000004,-122.66822160000001}, props: {}"
+              ],
               "elevation": "",
               "lat": 45.5302409,
               "lon": -122.6677968,
@@ -5956,6 +6762,10 @@ org.opentripplanner.routing.algorithm.mapping.TransitSnapshotTest.test_trip_plan
               "area": false,
               "bogusName": true,
               "distance": 20.61,
+              "edges": [
+                "from: {osm:node:664384269 lat,lng=45.530427100000004,-122.66822160000001}, to: {osm:node:664384270 lat,lng=45.530323900000006,-122.6683189}, props: {footway: crossing, highway: footway, }",
+                "from: {osm:node:664384270 lat,lng=45.530323900000006,-122.6683189}, to: {osm:node:1164547675 lat,lng=45.5302724,-122.66836730000001}, props: {footway: crossing, highway: footway, }"
+              ],
               "elevation": "",
               "footway": "crossing",
               "highway": "footway",
@@ -5971,6 +6781,13 @@ org.opentripplanner.routing.algorithm.mapping.TransitSnapshotTest.test_trip_plan
               "area": false,
               "bogusName": false,
               "distance": 410.02,
+              "edges": [
+                "from: {osm:node:1164547675 lat,lng=45.5302724,-122.66836730000001}, to: {osm:node:1402840768 lat,lng=45.5309277,-122.6696366}, props: {}",
+                "from: {osm:node:1402840768 lat,lng=45.5309277,-122.6696366}, to: {osm:node:255993199 lat,lng=45.530990900000006,-122.66973780000001}, props: {}",
+                "from: {osm:node:255993199 lat,lng=45.530990900000006,-122.66973780000001}, to: {osm:node:663525162 lat,lng=45.532093,-122.67111430000001}, props: {}",
+                "from: {osm:node:663525162 lat,lng=45.532093,-122.67111430000001}, to: {split_1840 lat,lng=45.53222330869768,-122.67126569654582}, props: {}",
+                "from: {split_1840 lat,lng=45.53222330869768,-122.67126569654582}, to: {osm:node:1321229972 lat,lng=45.532912800000005,-122.67197920000001}, props: {}"
+              ],
               "elevation": "",
               "lat": 45.5302724,
               "lon": -122.6683673,
@@ -5984,6 +6801,9 @@ org.opentripplanner.routing.algorithm.mapping.TransitSnapshotTest.test_trip_plan
               "area": false,
               "bogusName": true,
               "distance": 20.18,
+              "edges": [
+                "from: {osm:node:1321229972 lat,lng=45.532912800000005,-122.67197920000001}, to: {osm:node:1321229872 lat,lng=45.532907900000005,-122.67202800000001}, props: {surface: paved, highway: steps, }"
+              ],
               "elevation": "",
               "highway": "steps",
               "lat": 45.5329128,
@@ -5999,6 +6819,9 @@ org.opentripplanner.routing.algorithm.mapping.TransitSnapshotTest.test_trip_plan
               "area": false,
               "bogusName": true,
               "distance": 2.25,
+              "edges": [
+                "from: {osm:node:1321229872 lat,lng=45.532907900000005,-122.67202800000001}, to: {osm:node:830720570 lat,lng=45.5329251,-122.67204310000001}, props: {surface: paved, highway: footway, }"
+              ],
               "elevation": "",
               "highway": "footway",
               "lat": 45.5329079,
@@ -6014,6 +6837,11 @@ org.opentripplanner.routing.algorithm.mapping.TransitSnapshotTest.test_trip_plan
               "area": false,
               "bogusName": false,
               "distance": 543.67,
+              "edges": [
+                "from: {osm:node:830720570 lat,lng=45.5329251,-122.67204310000001}, to: {osm:node:1910942124 lat,lng=45.531826800000005,-122.67400660000001}, props: {surface: paved, }",
+                "from: {osm:node:1910942124 lat,lng=45.531826800000005,-122.67400660000001}, to: {osm:node:1392884846 lat,lng=45.5305714,-122.67625100000001}, props: {surface: paved, }",
+                "from: {osm:node:1392884846 lat,lng=45.5305714,-122.67625100000001}, to: {osm:node:830720574 lat,lng=45.5298506,-122.67746670000001}, props: {surface: paved, }"
+              ],
               "elevation": "",
               "lat": 45.5329251,
               "lon": -122.6720431,
@@ -6028,6 +6856,9 @@ org.opentripplanner.routing.algorithm.mapping.TransitSnapshotTest.test_trip_plan
               "area": false,
               "bogusName": false,
               "distance": 14.16,
+              "edges": [
+                "from: {osm:node:830720574 lat,lng=45.5298506,-122.67746670000001}, to: {osm:node:1661749483 lat,lng=45.5297386,-122.67755210000001}, props: {surface: paved, }"
+              ],
               "elevation": "",
               "lat": 45.5298506,
               "lon": -122.6774667,
@@ -6042,6 +6873,9 @@ org.opentripplanner.routing.algorithm.mapping.TransitSnapshotTest.test_trip_plan
               "area": false,
               "bogusName": false,
               "distance": 23.67,
+              "edges": [
+                "from: {osm:node:1661749501 lat,lng=45.5297871,-122.67780010000001}, to: {osm:node:1687720259 lat,lng=45.529817200000004,-122.6778163}, props: {surface: paved, footway: sidewalk, highway: footway, }"
+              ],
               "elevation": "",
               "footway": "sidewalk",
               "highway": "footway",
@@ -6058,6 +6892,15 @@ org.opentripplanner.routing.algorithm.mapping.TransitSnapshotTest.test_trip_plan
               "area": false,
               "bogusName": false,
               "distance": 298.37,
+              "edges": [
+                "from: {osm:node:1687720259 lat,lng=45.529817200000004,-122.6778163}, to: {osm:node:1687720265 lat,lng=45.529837300000004,-122.67784730000001}, props: {surface: paved, footway: sidewalk, highway: footway, }",
+                "from: {osm:node:1687720265 lat,lng=45.529837300000004,-122.67784730000001}, to: {osm:node:1687720316 lat,lng=45.5300066,-122.6793291}, props: {surface: paved, footway: sidewalk, highway: footway, }",
+                "from: {osm:node:1687720316 lat,lng=45.5300066,-122.6793291}, to: {osm:node:1687720317 lat,lng=45.530012500000005,-122.68025250000001}, props: {surface: paved, footway: sidewalk, highway: footway, }",
+                "from: {osm:node:1687720317 lat,lng=45.530012500000005,-122.68025250000001}, to: {osm:node:1393021958 lat,lng=45.5300115,-122.68035880000001}, props: {footway: crossing, highway: footway, }",
+                "from: {osm:node:40621296 lat,lng=45.5301221,-122.68036300000001}, to: {osm:node:1666297778 lat,lng=45.530109,-122.68102470000001}, props: {}",
+                "from: {osm:node:1666297778 lat,lng=45.530109,-122.68102470000001}, to: {osm:node:1666297836 lat,lng=45.5301679,-122.6812773}, props: {}",
+                "from: {osm:node:1666297836 lat,lng=45.5301679,-122.6812773}, to: {osm:node:1666297844 lat,lng=45.5302432,-122.6813836}, props: {}"
+              ],
               "elevation": "",
               "footway": "sidewalk",
               "highway": "footway",
@@ -6074,6 +6917,13 @@ org.opentripplanner.routing.algorithm.mapping.TransitSnapshotTest.test_trip_plan
               "area": false,
               "bogusName": false,
               "distance": 143.24,
+              "edges": [
+                "from: {osm:node:1666297844 lat,lng=45.5302432,-122.6813836}, to: {osm:node:1703316689 lat,lng=45.5307405,-122.6814018}, props: {}",
+                "from: {osm:node:1703316689 lat,lng=45.5307405,-122.6814018}, to: {osm:node:40717585 lat,lng=45.5308214,-122.68140480000001}, props: {}",
+                "from: {osm:node:40717585 lat,lng=45.5308214,-122.68140480000001}, to: {osm:node:1703316710 lat,lng=45.5308835,-122.68140700000001}, props: {}",
+                "from: {osm:node:1703316710 lat,lng=45.5308835,-122.68140700000001}, to: {osm:node:1703316719 lat,lng=45.531460700000004,-122.68142820000001}, props: {}",
+                "from: {osm:node:1703316719 lat,lng=45.531460700000004,-122.68142820000001}, to: {osm:node:40707678 lat,lng=45.5315309,-122.6814307}, props: {}"
+              ],
               "elevation": "",
               "lat": 45.5302432,
               "lon": -122.6813836,
@@ -6087,6 +6937,36 @@ org.opentripplanner.routing.algorithm.mapping.TransitSnapshotTest.test_trip_plan
               "area": false,
               "bogusName": false,
               "distance": 1470.24,
+              "edges": [
+                "from: {osm:node:40707678 lat,lng=45.5315309,-122.6814307}, to: {osm:node:40707680 lat,lng=45.5315251,-122.6815298}, props: {}",
+                "from: {osm:node:40707680 lat,lng=45.5315251,-122.6815298}, to: {osm:node:40538109 lat,lng=45.5315117,-122.68244770000001}, props: {}",
+                "from: {osm:node:40538109 lat,lng=45.5315117,-122.68244770000001}, to: {osm:node:1703267063 lat,lng=45.5315105,-122.68251070000001}, props: {}",
+                "from: {osm:node:1703267063 lat,lng=45.5315105,-122.68251070000001}, to: {osm:node:479697573 lat,lng=45.531501000000006,-122.68300140000001}, props: {}",
+                "from: {osm:node:479697573 lat,lng=45.531501000000006,-122.68300140000001}, to: {osm:node:1703267060 lat,lng=45.531494200000004,-122.68335830000001}, props: {}",
+                "from: {osm:node:1703267060 lat,lng=45.531494200000004,-122.68335830000001}, to: {osm:node:40689970 lat,lng=45.531492300000004,-122.68345590000001}, props: {}",
+                "from: {osm:node:40689970 lat,lng=45.531492300000004,-122.68345590000001}, to: {osm:node:40527883 lat,lng=45.5314757,-122.6844856}, props: {}",
+                "from: {osm:node:40527883 lat,lng=45.5314757,-122.6844856}, to: {osm:node:1703288023 lat,lng=45.531474800000005,-122.68456880000001}, props: {}",
+                "from: {osm:node:1703288023 lat,lng=45.531474800000005,-122.68456880000001}, to: {osm:node:1392981359 lat,lng=45.5314588,-122.68538980000001}, props: {}",
+                "from: {osm:node:1392981359 lat,lng=45.5314588,-122.68538980000001}, to: {osm:node:40675767 lat,lng=45.5314582,-122.6854847}, props: {}",
+                "from: {osm:node:40675767 lat,lng=45.5314582,-122.6854847}, to: {osm:node:40493552 lat,lng=45.531441400000006,-122.6865235}, props: {}",
+                "from: {osm:node:40493552 lat,lng=45.531441400000006,-122.6865235}, to: {osm:node:40707690 lat,lng=45.5314241,-122.68751400000001}, props: {}",
+                "from: {osm:node:40707690 lat,lng=45.5314241,-122.68751400000001}, to: {osm:node:40536217 lat,lng=45.5314008,-122.6885311}, props: {}",
+                "from: {osm:node:40536217 lat,lng=45.5314008,-122.6885311}, to: {osm:node:1703288003 lat,lng=45.5313992,-122.68861620000001}, props: {}",
+                "from: {osm:node:1703288003 lat,lng=45.5313992,-122.68861620000001}, to: {osm:node:1393110517 lat,lng=45.531383700000006,-122.6894513}, props: {}",
+                "from: {osm:node:1393110517 lat,lng=45.531383700000006,-122.6894513}, to: {osm:node:40686585 lat,lng=45.531381700000004,-122.6895695}, props: {}",
+                "from: {osm:node:40686585 lat,lng=45.531381700000004,-122.6895695}, to: {osm:node:662765006 lat,lng=45.5313639,-122.6905679}, props: {}",
+                "from: {osm:node:662765006 lat,lng=45.5313639,-122.6905679}, to: {osm:node:40652719 lat,lng=45.5313262,-122.69258130000001}, props: {}",
+                "from: {osm:node:40652719 lat,lng=45.5313262,-122.69258130000001}, to: {osm:node:1703302526 lat,lng=45.531324600000005,-122.69268930000001}, props: {}",
+                "from: {osm:node:1703302526 lat,lng=45.531324600000005,-122.69268930000001}, to: {osm:node:1391859417 lat,lng=45.5312962,-122.6945187}, props: {}",
+                "from: {osm:node:1391859417 lat,lng=45.5312962,-122.6945187}, to: {osm:node:40639708 lat,lng=45.5312952,-122.6946111}, props: {}",
+                "from: {osm:node:40639708 lat,lng=45.5312952,-122.6946111}, to: {osm:node:1391859416 lat,lng=45.531294200000005,-122.69470460000001}, props: {}",
+                "from: {osm:node:1391859416 lat,lng=45.531294200000005,-122.69470460000001}, to: {osm:node:1703374679 lat,lng=45.5312531,-122.6965349}, props: {}",
+                "from: {osm:node:1703374679 lat,lng=45.5312531,-122.6965349}, to: {osm:node:40707697 lat,lng=45.5312508,-122.69663860000001}, props: {}",
+                "from: {osm:node:40707697 lat,lng=45.5312508,-122.69663860000001}, to: {osm:node:1367502008 lat,lng=45.5312229,-122.6980922}, props: {}",
+                "from: {osm:node:1367502008 lat,lng=45.5312229,-122.6980922}, to: {osm:node:40577082 lat,lng=45.531218800000005,-122.69866750000001}, props: {}",
+                "from: {osm:node:40577082 lat,lng=45.531218800000005,-122.69866750000001}, to: {osm:node:1703374657 lat,lng=45.5312184,-122.698768}, props: {highway: residential, }",
+                "from: null, to: null, props: {}"
+              ],
               "elevation": "",
               "lat": 45.5315309,
               "lon": -122.6814307,

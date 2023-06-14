@@ -12,6 +12,7 @@ import java.util.stream.Collectors;
 import org.opentripplanner.api.model.ApiWalkStep;
 import org.opentripplanner.graph_builder.module.osm.AccessibilityPropertySet;
 import org.opentripplanner.model.plan.WalkStep;
+import org.opentripplanner.routing.edgetype.StreetEdge;
 import org.opentripplanner.routing.graph.Edge;
 import org.opentripplanner.routing.graph.Vertex;
 
@@ -96,11 +97,30 @@ public class WalkStepMapper {
     var bevCtrast = accessibilityProperties.getBevCtrast();
     api.bevCtrast = bevCtrast.isPresent() ? bevCtrast.getAsTyped() : null;
 
-    api.edges = domain.getEdges().stream().map((Function<? super Edge, String>) edge -> {
-      Vertex fromVertex = edge.getFromVertex();
-      Vertex toVertex = edge.getToVertex();
-      return "from: " + (fromVertex != null ? fromVertex.toString() : "null") + ", " +
-        "to: " + (toVertex != null ? toVertex.toString() : "null");
-    }).toList();
+    api.edges =
+      domain
+        .getEdges()
+        .stream()
+        .map(
+          (Function<? super Edge, String>) edge -> {
+            Vertex fromVertex = edge.getFromVertex();
+            Vertex toVertex = edge.getToVertex();
+            AccessibilityPropertySet props = null;
+            if (edge instanceof StreetEdge streetEdge) {
+              props = streetEdge.getAccessibilityProperties();
+            }
+            return (
+              "from: " +
+              (fromVertex != null ? fromVertex.toString() : "null") +
+              ", " +
+              "to: " +
+              (toVertex != null ? toVertex.toString() : "null") +
+              ", " +
+              "props: " +
+              (props != null ? props.toString() : "null")
+            );
+          }
+        )
+        .toList();
   }
 }

@@ -77,6 +77,9 @@ org.opentripplanner.routing.algorithm.mapping.BikeRentalSnapshotTest.accessBikeR
               "area": false,
               "bogusName": false,
               "distance": 78.53,
+              "edges": [
+                "from: null, to: null, props: {}"
+              ],
               "elevation": "",
               "lat": 45.5283199,
               "lon": -122.7005963,
@@ -90,6 +93,9 @@ org.opentripplanner.routing.algorithm.mapping.BikeRentalSnapshotTest.accessBikeR
               "area": false,
               "bogusName": false,
               "distance": 14.7,
+              "edges": [
+                "from: {osm:node:40549868 lat,lng=45.527613800000005,-122.70058100000001}, to: {osm:node:-102449 lat,lng=45.5276173,-122.7003923}, props: {highway: residential, }"
+              ],
               "elevation": "",
               "highway": "residential",
               "lat": 45.5276138,
@@ -104,6 +110,9 @@ org.opentripplanner.routing.algorithm.mapping.BikeRentalSnapshotTest.accessBikeR
               "area": false,
               "bogusName": true,
               "distance": 13.36,
+              "edges": [
+                "from: {osm:node:-102449 lat,lng=45.5276173,-122.7003923}, to: {osm:node:-102447 lat,lng=45.5277374,-122.70038790000001}, props: {highway: footway, }"
+              ],
               "elevation": "",
               "highway": "footway",
               "lat": 45.5276173,
@@ -165,6 +174,9 @@ org.opentripplanner.routing.algorithm.mapping.BikeRentalSnapshotTest.accessBikeR
               "area": false,
               "bogusName": true,
               "distance": 13.36,
+              "edges": [
+                "from: {osm:node:-102447 lat,lng=45.5277374,-122.70038790000001}, to: {osm:node:-102449 lat,lng=45.5276173,-122.7003923}, props: {highway: footway, }"
+              ],
               "elevation": "",
               "highway": "footway",
               "lat": 45.5277374,
@@ -179,6 +191,13 @@ org.opentripplanner.routing.algorithm.mapping.BikeRentalSnapshotTest.accessBikeR
               "area": false,
               "bogusName": false,
               "distance": 480.08,
+              "edges": [
+                "from: {osm:node:-102449 lat,lng=45.5276173,-122.7003923}, to: {osm:node:40549865 lat,lng=45.5276519,-122.6985374}, props: {highway: residential, }",
+                "from: {osm:node:40549865 lat,lng=45.5276519,-122.6985374}, to: {osm:node:40549861 lat,lng=45.527689800000005,-122.6965055}, props: {highway: residential, }",
+                "from: {osm:node:40549861 lat,lng=45.527689800000005,-122.6965055}, to: {osm:node:1596970657 lat,lng=45.5277194,-122.69491880000001}, props: {highway: residential, }",
+                "from: {osm:node:1596970657 lat,lng=45.5277194,-122.69491880000001}, to: {osm:node:40549859 lat,lng=45.527727600000006,-122.69447930000001}, props: {highway: residential, }",
+                "from: {osm:node:40549859 lat,lng=45.527727600000006,-122.69447930000001}, to: {split_2126 lat,lng=45.52773220198921,-122.69423177172958}, props: {}"
+              ],
               "elevation": "",
               "highway": "residential",
               "lat": 45.5276173,
@@ -240,6 +259,9 @@ org.opentripplanner.routing.algorithm.mapping.BikeRentalSnapshotTest.accessBikeR
               "area": false,
               "bogusName": false,
               "distance": 19.29,
+              "edges": [
+                "from: {split_2127 lat,lng=45.52773220198921,-122.69423177172958}, to: {osm:node:40549859 lat,lng=45.527727600000006,-122.69447930000001}, props: {}"
+              ],
               "elevation": "",
               "lat": 45.5277322,
               "lon": -122.6942318,
@@ -253,6 +275,9 @@ org.opentripplanner.routing.algorithm.mapping.BikeRentalSnapshotTest.accessBikeR
               "area": false,
               "bogusName": false,
               "distance": 10.17,
+              "edges": [
+                "from: {osm:node:40549859 lat,lng=45.527727600000006,-122.69447930000001}, to: {split_1963 lat,lng=45.52781905412901,-122.69448276595631}, props: {}"
+              ],
               "elevation": "",
               "lat": 45.5277276,
               "lon": -122.6944793,
@@ -448,6 +473,13 @@ org.opentripplanner.routing.algorithm.mapping.BikeRentalSnapshotTest.accessBikeR
               "area": false,
               "bogusName": false,
               "distance": 188.36,
+              "edges": [
+                "from: {split_1654 lat,lng=45.52518265861028,-122.6776666369647}, to: {osm:node:40450458 lat,lng=45.525185400000005,-122.67750190000001}, props: {}",
+                "from: {osm:node:40450458 lat,lng=45.525185400000005,-122.67750190000001}, to: {osm:node:40450456 lat,lng=45.525202900000004,-122.6765342}, props: {}",
+                "from: {osm:node:40450456 lat,lng=45.525202900000004,-122.6765342}, to: {split_120 lat,lng=45.525221795740755,-122.67559553383863}, props: {}",
+                "from: {split_120 lat,lng=45.525221795740755,-122.67559553383863}, to: {osm:node:40450455 lat,lng=45.525224200000004,-122.67548060000001}, props: {}",
+                "from: null, to: null, props: {}"
+              ],
               "elevation": "",
               "lat": 45.5251827,
               "lon": -122.6776666,
@@ -554,6 +586,13 @@ org.opentripplanner.routing.algorithm.mapping.BikeRentalSnapshotTest.accessBikeR
               "area": false,
               "bogusName": false,
               "distance": 317.41,
+              "edges": [
+                "from: null, to: null, props: {}",
+                "from: {osm:node:40549868 lat,lng=45.527613800000005,-122.70058100000001}, to: {osm:node:40677811 lat,lng=45.526915300000006,-122.70055540000001}, props: {highway: residential, }",
+                "from: {osm:node:40677811 lat,lng=45.526915300000006,-122.70055540000001}, to: {osm:node:40677810 lat,lng=45.5261994,-122.70053360000001}, props: {highway: residential, }",
+                "from: {osm:node:40677810 lat,lng=45.5261994,-122.70053360000001}, to: {osm:node:1222453389 lat,lng=45.526155,-122.70051020000001}, props: {highway: residential, }",
+                "from: {osm:node:1222453389 lat,lng=45.526155,-122.70051020000001}, to: {osm:node:40442506 lat,lng=45.525472400000005,-122.7004445}, props: {highway: residential, }"
+              ],
               "elevation": "",
               "lat": 45.5283199,
               "lon": -122.7005963,
@@ -567,6 +606,9 @@ org.opentripplanner.routing.algorithm.mapping.BikeRentalSnapshotTest.accessBikeR
               "area": false,
               "bogusName": false,
               "distance": 15.26,
+              "edges": [
+                "from: {osm:node:40442506 lat,lng=45.525472400000005,-122.7004445}, to: {osm:node:1318429891 lat,lng=45.5253583,-122.70033570000001}, props: {}"
+              ],
               "elevation": "",
               "lat": 45.5254724,
               "lon": -122.7004445,
@@ -580,6 +622,10 @@ org.opentripplanner.routing.algorithm.mapping.BikeRentalSnapshotTest.accessBikeR
               "area": false,
               "bogusName": false,
               "distance": 176.41,
+              "edges": [
+                "from: {osm:node:1318429891 lat,lng=45.5253583,-122.70033570000001}, to: {osm:node:40442537 lat,lng=45.524647200000004,-122.7008244}, props: {}",
+                "from: {osm:node:40442537 lat,lng=45.524647200000004,-122.7008244}, to: {osm:node:40516386 lat,lng=45.5239733,-122.701384}, props: {}"
+              ],
               "elevation": "",
               "lat": 45.5253583,
               "lon": -122.7003357,
@@ -593,6 +639,9 @@ org.opentripplanner.routing.algorithm.mapping.BikeRentalSnapshotTest.accessBikeR
               "area": false,
               "bogusName": false,
               "distance": 45.17,
+              "edges": [
+                "from: {osm:node:40516386 lat,lng=45.5239733,-122.701384}, to: {osm:node:1291114599 lat,lng=45.5238426,-122.70083500000001}, props: {}"
+              ],
               "elevation": "",
               "lat": 45.5239733,
               "lon": -122.701384,
@@ -606,6 +655,9 @@ org.opentripplanner.routing.algorithm.mapping.BikeRentalSnapshotTest.accessBikeR
               "area": false,
               "bogusName": true,
               "distance": 11.71,
+              "edges": [
+                "from: {osm:node:1291114599 lat,lng=45.5238426,-122.70083500000001}, to: {split_1786 lat,lng=45.52374528735511,-122.70089257313768}, props: {}"
+              ],
               "elevation": "",
               "lat": 45.5238426,
               "lon": -122.700835,
@@ -840,6 +892,10 @@ org.opentripplanner.routing.algorithm.mapping.BikeRentalSnapshotTest.accessBikeR
               "area": false,
               "bogusName": false,
               "distance": 45.56,
+              "edges": [
+                "from: {split_1438 lat,lng=45.52303774853131,-122.6748017088418}, to: {osm:node:3291922155 lat,lng=45.5230319,-122.67508210000001}, props: {}",
+                "from: {osm:node:3291922155 lat,lng=45.5230319,-122.67508210000001}, to: {osm:node:567256149 lat,lng=45.5230254,-122.67538630000001}, props: {}"
+              ],
               "elevation": "",
               "lat": 45.5230377,
               "lon": -122.6748017,
@@ -853,6 +909,9 @@ org.opentripplanner.routing.algorithm.mapping.BikeRentalSnapshotTest.accessBikeR
               "area": false,
               "bogusName": false,
               "distance": 12.94,
+              "edges": [
+                "from: {osm:node:567256149 lat,lng=45.5230254,-122.67538630000001}, to: {osm:node:40516276 lat,lng=45.523141200000005,-122.67540310000001}, props: {}"
+              ],
               "elevation": "",
               "lat": 45.5230254,
               "lon": -122.6753863,
@@ -866,6 +925,14 @@ org.opentripplanner.routing.algorithm.mapping.BikeRentalSnapshotTest.accessBikeR
               "area": false,
               "bogusName": false,
               "distance": 231.75,
+              "edges": [
+                "from: {osm:node:40516276 lat,lng=45.523141200000005,-122.67540310000001}, to: {osm:node:40602151 lat,lng=45.5237963,-122.6754339}, props: {}",
+                "from: {osm:node:40602151 lat,lng=45.5237963,-122.6754339}, to: {osm:node:1392884741 lat,lng=45.5238561,-122.67543470000001}, props: {}",
+                "from: {osm:node:1392884741 lat,lng=45.5238561,-122.67543470000001}, to: {osm:node:1403740808 lat,lng=45.5244547,-122.6754576}, props: {}",
+                "from: {osm:node:1403740808 lat,lng=45.5244547,-122.6754576}, to: {osm:node:40508554 lat,lng=45.5245076,-122.6754511}, props: {}",
+                "from: {osm:node:40508554 lat,lng=45.5245076,-122.6754511}, to: {split_1776 lat,lng=45.524613643608966,-122.67545503700205}, props: {}",
+                "from: {split_1776 lat,lng=45.524613643608966,-122.67545503700205}, to: {osm:node:40450455 lat,lng=45.525224200000004,-122.67548060000001}, props: {}"
+              ],
               "elevation": "",
               "lat": 45.5231412,
               "lon": -122.6754031,
@@ -879,6 +946,9 @@ org.opentripplanner.routing.algorithm.mapping.BikeRentalSnapshotTest.accessBikeR
               "area": false,
               "bogusName": false,
               "distance": 17.98,
+              "edges": [
+                "from: null, to: null, props: {}"
+              ],
               "elevation": "",
               "lat": 45.5252242,
               "lon": -122.6754806,
@@ -985,6 +1055,11 @@ org.opentripplanner.routing.algorithm.mapping.BikeRentalSnapshotTest.accessBikeR
               "area": false,
               "bogusName": false,
               "distance": 159.62,
+              "edges": [
+                "from: null, to: null, props: {}",
+                "from: {osm:node:40677816 lat,lng=45.5283327,-122.70059660000001}, to: {osm:node:40638137 lat,lng=45.5290495,-122.70061810000001}, props: {highway: residential, }",
+                "from: {osm:node:40638137 lat,lng=45.5290495,-122.70061810000001}, to: {osm:node:40648323 lat,lng=45.529755,-122.70064880000001}, props: {highway: residential, }"
+              ],
               "elevation": "",
               "lat": 45.5283199,
               "lon": -122.7005963,
@@ -998,6 +1073,9 @@ org.opentripplanner.routing.algorithm.mapping.BikeRentalSnapshotTest.accessBikeR
               "area": false,
               "bogusName": false,
               "distance": 60.52,
+              "edges": [
+                "from: {osm:node:40648323 lat,lng=45.529755,-122.70064880000001}, to: {split_980 lat,lng=45.52974297137793,-122.70142555503911}, props: {}"
+              ],
               "elevation": "",
               "lat": 45.529755,
               "lon": -122.7006488,
@@ -1206,6 +1284,9 @@ org.opentripplanner.routing.algorithm.mapping.BikeRentalSnapshotTest.accessBikeR
               "area": false,
               "bogusName": false,
               "distance": 49.94,
+              "edges": [
+                "from: null, to: null, props: {}"
+              ],
               "elevation": "",
               "lat": 45.5252397,
               "lon": -122.6746091,
@@ -1312,6 +1393,9 @@ org.opentripplanner.routing.algorithm.mapping.BikeRentalSnapshotTest.accessBikeR
               "area": false,
               "bogusName": false,
               "distance": 78.53,
+              "edges": [
+                "from: null, to: null, props: {}"
+              ],
               "elevation": "",
               "lat": 45.5283199,
               "lon": -122.7005963,
@@ -1325,6 +1409,9 @@ org.opentripplanner.routing.algorithm.mapping.BikeRentalSnapshotTest.accessBikeR
               "area": false,
               "bogusName": false,
               "distance": 14.7,
+              "edges": [
+                "from: {osm:node:40549868 lat,lng=45.527613800000005,-122.70058100000001}, to: {osm:node:-102449 lat,lng=45.5276173,-122.7003923}, props: {highway: residential, }"
+              ],
               "elevation": "",
               "highway": "residential",
               "lat": 45.5276138,
@@ -1339,6 +1426,9 @@ org.opentripplanner.routing.algorithm.mapping.BikeRentalSnapshotTest.accessBikeR
               "area": false,
               "bogusName": true,
               "distance": 13.36,
+              "edges": [
+                "from: {osm:node:-102449 lat,lng=45.5276173,-122.7003923}, to: {osm:node:-102447 lat,lng=45.5277374,-122.70038790000001}, props: {highway: footway, }"
+              ],
               "elevation": "",
               "highway": "footway",
               "lat": 45.5276173,
@@ -1400,6 +1490,9 @@ org.opentripplanner.routing.algorithm.mapping.BikeRentalSnapshotTest.accessBikeR
               "area": false,
               "bogusName": true,
               "distance": 13.36,
+              "edges": [
+                "from: {osm:node:-102447 lat,lng=45.5277374,-122.70038790000001}, to: {osm:node:-102449 lat,lng=45.5276173,-122.7003923}, props: {highway: footway, }"
+              ],
               "elevation": "",
               "highway": "footway",
               "lat": 45.5277374,
@@ -1414,6 +1507,13 @@ org.opentripplanner.routing.algorithm.mapping.BikeRentalSnapshotTest.accessBikeR
               "area": false,
               "bogusName": false,
               "distance": 480.08,
+              "edges": [
+                "from: {osm:node:-102449 lat,lng=45.5276173,-122.7003923}, to: {osm:node:40549865 lat,lng=45.5276519,-122.6985374}, props: {highway: residential, }",
+                "from: {osm:node:40549865 lat,lng=45.5276519,-122.6985374}, to: {osm:node:40549861 lat,lng=45.527689800000005,-122.6965055}, props: {highway: residential, }",
+                "from: {osm:node:40549861 lat,lng=45.527689800000005,-122.6965055}, to: {osm:node:1596970657 lat,lng=45.5277194,-122.69491880000001}, props: {highway: residential, }",
+                "from: {osm:node:1596970657 lat,lng=45.5277194,-122.69491880000001}, to: {osm:node:40549859 lat,lng=45.527727600000006,-122.69447930000001}, props: {highway: residential, }",
+                "from: {osm:node:40549859 lat,lng=45.527727600000006,-122.69447930000001}, to: {split_2126 lat,lng=45.52773220198921,-122.69423177172958}, props: {}"
+              ],
               "elevation": "",
               "highway": "residential",
               "lat": 45.5276173,
@@ -1475,6 +1575,9 @@ org.opentripplanner.routing.algorithm.mapping.BikeRentalSnapshotTest.accessBikeR
               "area": false,
               "bogusName": false,
               "distance": 19.29,
+              "edges": [
+                "from: {split_2127 lat,lng=45.52773220198921,-122.69423177172958}, to: {osm:node:40549859 lat,lng=45.527727600000006,-122.69447930000001}, props: {}"
+              ],
               "elevation": "",
               "lat": 45.5277322,
               "lon": -122.6942318,
@@ -1488,6 +1591,9 @@ org.opentripplanner.routing.algorithm.mapping.BikeRentalSnapshotTest.accessBikeR
               "area": false,
               "bogusName": false,
               "distance": 10.17,
+              "edges": [
+                "from: {osm:node:40549859 lat,lng=45.527727600000006,-122.69447930000001}, to: {split_1963 lat,lng=45.52781905412901,-122.69448276595631}, props: {}"
+              ],
               "elevation": "",
               "lat": 45.5277276,
               "lon": -122.6944793,
@@ -1683,6 +1789,13 @@ org.opentripplanner.routing.algorithm.mapping.BikeRentalSnapshotTest.accessBikeR
               "area": false,
               "bogusName": false,
               "distance": 188.36,
+              "edges": [
+                "from: {split_1654 lat,lng=45.52518265861028,-122.6776666369647}, to: {osm:node:40450458 lat,lng=45.525185400000005,-122.67750190000001}, props: {}",
+                "from: {osm:node:40450458 lat,lng=45.525185400000005,-122.67750190000001}, to: {osm:node:40450456 lat,lng=45.525202900000004,-122.6765342}, props: {}",
+                "from: {osm:node:40450456 lat,lng=45.525202900000004,-122.6765342}, to: {split_120 lat,lng=45.525221795740755,-122.67559553383863}, props: {}",
+                "from: {split_120 lat,lng=45.525221795740755,-122.67559553383863}, to: {osm:node:40450455 lat,lng=45.525224200000004,-122.67548060000001}, props: {}",
+                "from: null, to: null, props: {}"
+              ],
               "elevation": "",
               "lat": 45.5251827,
               "lon": -122.6776666,
@@ -1789,6 +1902,9 @@ org.opentripplanner.routing.algorithm.mapping.BikeRentalSnapshotTest.accessBikeR
               "area": false,
               "bogusName": false,
               "distance": 78.53,
+              "edges": [
+                "from: null, to: null, props: {}"
+              ],
               "elevation": "",
               "lat": 45.5283199,
               "lon": -122.7005963,
@@ -1802,6 +1918,9 @@ org.opentripplanner.routing.algorithm.mapping.BikeRentalSnapshotTest.accessBikeR
               "area": false,
               "bogusName": false,
               "distance": 14.7,
+              "edges": [
+                "from: {osm:node:40549868 lat,lng=45.527613800000005,-122.70058100000001}, to: {osm:node:-102449 lat,lng=45.5276173,-122.7003923}, props: {highway: residential, }"
+              ],
               "elevation": "",
               "highway": "residential",
               "lat": 45.5276138,
@@ -1816,6 +1935,9 @@ org.opentripplanner.routing.algorithm.mapping.BikeRentalSnapshotTest.accessBikeR
               "area": false,
               "bogusName": true,
               "distance": 13.36,
+              "edges": [
+                "from: {osm:node:-102449 lat,lng=45.5276173,-122.7003923}, to: {osm:node:-102447 lat,lng=45.5277374,-122.70038790000001}, props: {highway: footway, }"
+              ],
               "elevation": "",
               "highway": "footway",
               "lat": 45.5276173,
@@ -1877,6 +1999,9 @@ org.opentripplanner.routing.algorithm.mapping.BikeRentalSnapshotTest.accessBikeR
               "area": false,
               "bogusName": true,
               "distance": 13.36,
+              "edges": [
+                "from: {osm:node:-102447 lat,lng=45.5277374,-122.70038790000001}, to: {osm:node:-102449 lat,lng=45.5276173,-122.7003923}, props: {highway: footway, }"
+              ],
               "elevation": "",
               "highway": "footway",
               "lat": 45.5277374,
@@ -1891,6 +2016,13 @@ org.opentripplanner.routing.algorithm.mapping.BikeRentalSnapshotTest.accessBikeR
               "area": false,
               "bogusName": false,
               "distance": 480.08,
+              "edges": [
+                "from: {osm:node:-102449 lat,lng=45.5276173,-122.7003923}, to: {osm:node:40549865 lat,lng=45.5276519,-122.6985374}, props: {highway: residential, }",
+                "from: {osm:node:40549865 lat,lng=45.5276519,-122.6985374}, to: {osm:node:40549861 lat,lng=45.527689800000005,-122.6965055}, props: {highway: residential, }",
+                "from: {osm:node:40549861 lat,lng=45.527689800000005,-122.6965055}, to: {osm:node:1596970657 lat,lng=45.5277194,-122.69491880000001}, props: {highway: residential, }",
+                "from: {osm:node:1596970657 lat,lng=45.5277194,-122.69491880000001}, to: {osm:node:40549859 lat,lng=45.527727600000006,-122.69447930000001}, props: {highway: residential, }",
+                "from: {osm:node:40549859 lat,lng=45.527727600000006,-122.69447930000001}, to: {split_2126 lat,lng=45.52773220198921,-122.69423177172958}, props: {}"
+              ],
               "elevation": "",
               "highway": "residential",
               "lat": 45.5276173,
@@ -1952,6 +2084,9 @@ org.opentripplanner.routing.algorithm.mapping.BikeRentalSnapshotTest.accessBikeR
               "area": false,
               "bogusName": false,
               "distance": 19.29,
+              "edges": [
+                "from: {split_2127 lat,lng=45.52773220198921,-122.69423177172958}, to: {osm:node:40549859 lat,lng=45.527727600000006,-122.69447930000001}, props: {}"
+              ],
               "elevation": "",
               "lat": 45.5277322,
               "lon": -122.6942318,
@@ -1965,6 +2100,9 @@ org.opentripplanner.routing.algorithm.mapping.BikeRentalSnapshotTest.accessBikeR
               "area": false,
               "bogusName": false,
               "distance": 10.17,
+              "edges": [
+                "from: {osm:node:40549859 lat,lng=45.527727600000006,-122.69447930000001}, to: {split_1963 lat,lng=45.52781905412901,-122.69448276595631}, props: {}"
+              ],
               "elevation": "",
               "lat": 45.5277276,
               "lon": -122.6944793,
@@ -2160,6 +2298,13 @@ org.opentripplanner.routing.algorithm.mapping.BikeRentalSnapshotTest.accessBikeR
               "area": false,
               "bogusName": false,
               "distance": 188.36,
+              "edges": [
+                "from: {split_1654 lat,lng=45.52518265861028,-122.6776666369647}, to: {osm:node:40450458 lat,lng=45.525185400000005,-122.67750190000001}, props: {}",
+                "from: {osm:node:40450458 lat,lng=45.525185400000005,-122.67750190000001}, to: {osm:node:40450456 lat,lng=45.525202900000004,-122.6765342}, props: {}",
+                "from: {osm:node:40450456 lat,lng=45.525202900000004,-122.6765342}, to: {split_120 lat,lng=45.525221795740755,-122.67559553383863}, props: {}",
+                "from: {split_120 lat,lng=45.525221795740755,-122.67559553383863}, to: {osm:node:40450455 lat,lng=45.525224200000004,-122.67548060000001}, props: {}",
+                "from: null, to: null, props: {}"
+              ],
               "elevation": "",
               "lat": 45.5251827,
               "lon": -122.6776666,
@@ -2266,6 +2411,11 @@ org.opentripplanner.routing.algorithm.mapping.BikeRentalSnapshotTest.accessBikeR
               "area": false,
               "bogusName": false,
               "distance": 159.62,
+              "edges": [
+                "from: null, to: null, props: {}",
+                "from: {osm:node:40677816 lat,lng=45.5283327,-122.70059660000001}, to: {osm:node:40638137 lat,lng=45.5290495,-122.70061810000001}, props: {highway: residential, }",
+                "from: {osm:node:40638137 lat,lng=45.5290495,-122.70061810000001}, to: {osm:node:40648323 lat,lng=45.529755,-122.70064880000001}, props: {highway: residential, }"
+              ],
               "elevation": "",
               "lat": 45.5283199,
               "lon": -122.7005963,
@@ -2279,6 +2429,9 @@ org.opentripplanner.routing.algorithm.mapping.BikeRentalSnapshotTest.accessBikeR
               "area": false,
               "bogusName": false,
               "distance": 60.52,
+              "edges": [
+                "from: {osm:node:40648323 lat,lng=45.529755,-122.70064880000001}, to: {split_980 lat,lng=45.52974297137793,-122.70142555503911}, props: {}"
+              ],
               "elevation": "",
               "lat": 45.529755,
               "lon": -122.7006488,
@@ -2487,6 +2640,9 @@ org.opentripplanner.routing.algorithm.mapping.BikeRentalSnapshotTest.accessBikeR
               "area": false,
               "bogusName": false,
               "distance": 49.94,
+              "edges": [
+                "from: null, to: null, props: {}"
+              ],
               "elevation": "",
               "lat": 45.5252397,
               "lon": -122.6746091,
@@ -2565,6 +2721,9 @@ org.opentripplanner.routing.algorithm.mapping.BikeRentalSnapshotTest.directBikeR
               "area": false,
               "bogusName": false,
               "distance": 78.53,
+              "edges": [
+                "from: null, to: null, props: {}"
+              ],
               "elevation": "",
               "lat": 45.5283199,
               "lon": -122.7005963,
@@ -2578,6 +2737,9 @@ org.opentripplanner.routing.algorithm.mapping.BikeRentalSnapshotTest.directBikeR
               "area": false,
               "bogusName": false,
               "distance": 14.7,
+              "edges": [
+                "from: {osm:node:40549868 lat,lng=45.527613800000005,-122.70058100000001}, to: {osm:node:-102449 lat,lng=45.5276173,-122.7003923}, props: {highway: residential, }"
+              ],
               "elevation": "",
               "highway": "residential",
               "lat": 45.5276138,
@@ -2592,6 +2754,9 @@ org.opentripplanner.routing.algorithm.mapping.BikeRentalSnapshotTest.directBikeR
               "area": false,
               "bogusName": true,
               "distance": 13.36,
+              "edges": [
+                "from: {osm:node:-102449 lat,lng=45.5276173,-122.7003923}, to: {osm:node:-102447 lat,lng=45.5277374,-122.70038790000001}, props: {highway: footway, }"
+              ],
               "elevation": "",
               "highway": "footway",
               "lat": 45.5276173,
@@ -2653,6 +2818,9 @@ org.opentripplanner.routing.algorithm.mapping.BikeRentalSnapshotTest.directBikeR
               "area": false,
               "bogusName": true,
               "distance": 13.36,
+              "edges": [
+                "from: {osm:node:-102447 lat,lng=45.5277374,-122.70038790000001}, to: {osm:node:-102449 lat,lng=45.5276173,-122.7003923}, props: {highway: footway, }"
+              ],
               "elevation": "",
               "highway": "footway",
               "lat": 45.5277374,
@@ -2667,6 +2835,13 @@ org.opentripplanner.routing.algorithm.mapping.BikeRentalSnapshotTest.directBikeR
               "area": false,
               "bogusName": false,
               "distance": 480.08,
+              "edges": [
+                "from: {osm:node:-102449 lat,lng=45.5276173,-122.7003923}, to: {osm:node:40549865 lat,lng=45.5276519,-122.6985374}, props: {highway: residential, }",
+                "from: {osm:node:40549865 lat,lng=45.5276519,-122.6985374}, to: {osm:node:40549861 lat,lng=45.527689800000005,-122.6965055}, props: {highway: residential, }",
+                "from: {osm:node:40549861 lat,lng=45.527689800000005,-122.6965055}, to: {osm:node:1596970657 lat,lng=45.5277194,-122.69491880000001}, props: {highway: residential, }",
+                "from: {osm:node:1596970657 lat,lng=45.5277194,-122.69491880000001}, to: {osm:node:40549859 lat,lng=45.527727600000006,-122.69447930000001}, props: {highway: residential, }",
+                "from: {osm:node:40549859 lat,lng=45.527727600000006,-122.69447930000001}, to: {split_2126 lat,lng=45.52773220198921,-122.69423177172958}, props: {}"
+              ],
               "elevation": "",
               "highway": "residential",
               "lat": 45.5276173,
@@ -2728,6 +2903,9 @@ org.opentripplanner.routing.algorithm.mapping.BikeRentalSnapshotTest.directBikeR
               "area": false,
               "bogusName": false,
               "distance": 138.31,
+              "edges": [
+                "from: {split_2126 lat,lng=45.52773220198921,-122.69423177172958}, to: {osm:node:40549854 lat,lng=45.527765200000005,-122.69245690000001}, props: {}"
+              ],
               "elevation": "",
               "lat": 45.5277322,
               "lon": -122.6942318,
@@ -2741,6 +2919,9 @@ org.opentripplanner.routing.algorithm.mapping.BikeRentalSnapshotTest.directBikeR
               "area": false,
               "bogusName": false,
               "distance": 78.79,
+              "edges": [
+                "from: {osm:node:40549854 lat,lng=45.527765200000005,-122.69245690000001}, to: {osm:node:40425136 lat,lng=45.527057000000006,-122.6924259}, props: {highway: residential, }"
+              ],
               "elevation": "",
               "highway": "residential",
               "lat": 45.5277652,
@@ -2755,6 +2936,9 @@ org.opentripplanner.routing.algorithm.mapping.BikeRentalSnapshotTest.directBikeR
               "area": false,
               "bogusName": false,
               "distance": 1.97,
+              "edges": [
+                "from: null, to: null, props: {}"
+              ],
               "elevation": "",
               "lat": 45.527057,
               "lon": -122.6924259,
@@ -2833,6 +3017,9 @@ org.opentripplanner.routing.algorithm.mapping.BikeRentalSnapshotTest.directBikeR
               "area": false,
               "bogusName": false,
               "distance": 78.53,
+              "edges": [
+                "from: null, to: null, props: {}"
+              ],
               "elevation": "",
               "lat": 45.5283199,
               "lon": -122.7005963,
@@ -2846,6 +3033,9 @@ org.opentripplanner.routing.algorithm.mapping.BikeRentalSnapshotTest.directBikeR
               "area": false,
               "bogusName": false,
               "distance": 14.7,
+              "edges": [
+                "from: {osm:node:40549868 lat,lng=45.527613800000005,-122.70058100000001}, to: {osm:node:-102449 lat,lng=45.5276173,-122.7003923}, props: {highway: residential, }"
+              ],
               "elevation": "",
               "highway": "residential",
               "lat": 45.5276138,
@@ -2860,6 +3050,9 @@ org.opentripplanner.routing.algorithm.mapping.BikeRentalSnapshotTest.directBikeR
               "area": false,
               "bogusName": true,
               "distance": 13.36,
+              "edges": [
+                "from: {osm:node:-102449 lat,lng=45.5276173,-122.7003923}, to: {osm:node:-102447 lat,lng=45.5277374,-122.70038790000001}, props: {highway: footway, }"
+              ],
               "elevation": "",
               "highway": "footway",
               "lat": 45.5276173,
@@ -2921,6 +3114,9 @@ org.opentripplanner.routing.algorithm.mapping.BikeRentalSnapshotTest.directBikeR
               "area": false,
               "bogusName": true,
               "distance": 13.36,
+              "edges": [
+                "from: {osm:node:-102447 lat,lng=45.5277374,-122.70038790000001}, to: {osm:node:-102449 lat,lng=45.5276173,-122.7003923}, props: {highway: footway, }"
+              ],
               "elevation": "",
               "highway": "footway",
               "lat": 45.5277374,
@@ -2935,6 +3131,9 @@ org.opentripplanner.routing.algorithm.mapping.BikeRentalSnapshotTest.directBikeR
               "area": false,
               "bogusName": false,
               "distance": 144.55,
+              "edges": [
+                "from: {osm:node:-102449 lat,lng=45.5276173,-122.7003923}, to: {osm:node:40549865 lat,lng=45.5276519,-122.6985374}, props: {highway: residential, }"
+              ],
               "elevation": "",
               "highway": "residential",
               "lat": 45.5276173,
@@ -2949,6 +3148,10 @@ org.opentripplanner.routing.algorithm.mapping.BikeRentalSnapshotTest.directBikeR
               "area": false,
               "bogusName": false,
               "distance": 77.98,
+              "edges": [
+                "from: {osm:node:40549865 lat,lng=45.5276519,-122.6985374}, to: {split_2003 lat,lng=45.52754185679561,-122.69853317514944}, props: {}",
+                "from: {split_2003 lat,lng=45.52754185679561,-122.69853317514944}, to: {osm:node:40577067 lat,lng=45.5269509,-122.69851030000001}, props: {}"
+              ],
               "elevation": "",
               "lat": 45.5276519,
               "lon": -122.6985374,
@@ -2962,6 +3165,13 @@ org.opentripplanner.routing.algorithm.mapping.BikeRentalSnapshotTest.directBikeR
               "area": false,
               "bogusName": false,
               "distance": 476.09,
+              "edges": [
+                "from: {osm:node:40577067 lat,lng=45.5269509,-122.69851030000001}, to: {osm:node:40730558 lat,lng=45.526986300000004,-122.696481}, props: {highway: residential, }",
+                "from: {osm:node:40730558 lat,lng=45.526986300000004,-122.696481}, to: {osm:node:-102445 lat,lng=45.5269896,-122.69628940000001}, props: {highway: residential, }",
+                "from: {osm:node:-102445 lat,lng=45.5269896,-122.69628940000001}, to: {osm:node:40639693 lat,lng=45.527021700000006,-122.69445420000001}, props: {highway: residential, }",
+                "from: {osm:node:40639693 lat,lng=45.527021700000006,-122.69445420000001}, to: {osm:node:40425136 lat,lng=45.527057000000006,-122.6924259}, props: {highway: residential, }",
+                "from: null, to: null, props: {}"
+              ],
               "elevation": "",
               "highway": "residential",
               "lat": 45.5269509,
@@ -3041,6 +3251,9 @@ org.opentripplanner.routing.algorithm.mapping.BikeRentalSnapshotTest.directBikeR
               "area": false,
               "bogusName": false,
               "distance": 78.53,
+              "edges": [
+                "from: null, to: null, props: {}"
+              ],
               "elevation": "",
               "lat": 45.5283199,
               "lon": -122.7005963,
@@ -3054,6 +3267,9 @@ org.opentripplanner.routing.algorithm.mapping.BikeRentalSnapshotTest.directBikeR
               "area": false,
               "bogusName": false,
               "distance": 14.7,
+              "edges": [
+                "from: {osm:node:40549868 lat,lng=45.527613800000005,-122.70058100000001}, to: {osm:node:-102449 lat,lng=45.5276173,-122.7003923}, props: {highway: residential, }"
+              ],
               "elevation": "",
               "highway": "residential",
               "lat": 45.5276138,
@@ -3068,6 +3284,9 @@ org.opentripplanner.routing.algorithm.mapping.BikeRentalSnapshotTest.directBikeR
               "area": false,
               "bogusName": true,
               "distance": 13.36,
+              "edges": [
+                "from: {osm:node:-102449 lat,lng=45.5276173,-122.7003923}, to: {osm:node:-102447 lat,lng=45.5277374,-122.70038790000001}, props: {highway: footway, }"
+              ],
               "elevation": "",
               "highway": "footway",
               "lat": 45.5276173,
@@ -3129,6 +3348,9 @@ org.opentripplanner.routing.algorithm.mapping.BikeRentalSnapshotTest.directBikeR
               "area": false,
               "bogusName": true,
               "distance": 13.36,
+              "edges": [
+                "from: {osm:node:-102447 lat,lng=45.5277374,-122.70038790000001}, to: {osm:node:-102449 lat,lng=45.5276173,-122.7003923}, props: {highway: footway, }"
+              ],
               "elevation": "",
               "highway": "footway",
               "lat": 45.5277374,
@@ -3143,6 +3365,14 @@ org.opentripplanner.routing.algorithm.mapping.BikeRentalSnapshotTest.directBikeR
               "area": false,
               "bogusName": false,
               "distance": 618.39,
+              "edges": [
+                "from: {osm:node:-102449 lat,lng=45.5276173,-122.7003923}, to: {osm:node:40549865 lat,lng=45.5276519,-122.6985374}, props: {highway: residential, }",
+                "from: {osm:node:40549865 lat,lng=45.5276519,-122.6985374}, to: {osm:node:40549861 lat,lng=45.527689800000005,-122.6965055}, props: {highway: residential, }",
+                "from: {osm:node:40549861 lat,lng=45.527689800000005,-122.6965055}, to: {osm:node:1596970657 lat,lng=45.5277194,-122.69491880000001}, props: {highway: residential, }",
+                "from: {osm:node:1596970657 lat,lng=45.5277194,-122.69491880000001}, to: {osm:node:40549859 lat,lng=45.527727600000006,-122.69447930000001}, props: {highway: residential, }",
+                "from: {osm:node:40549859 lat,lng=45.527727600000006,-122.69447930000001}, to: {split_2126 lat,lng=45.52773220198921,-122.69423177172958}, props: {}",
+                "from: {split_2126 lat,lng=45.52773220198921,-122.69423177172958}, to: {osm:node:40549854 lat,lng=45.527765200000005,-122.69245690000001}, props: {}"
+              ],
               "elevation": "",
               "highway": "residential",
               "lat": 45.5276173,
@@ -3157,6 +3387,9 @@ org.opentripplanner.routing.algorithm.mapping.BikeRentalSnapshotTest.directBikeR
               "area": false,
               "bogusName": false,
               "distance": 78.79,
+              "edges": [
+                "from: {osm:node:40549854 lat,lng=45.527765200000005,-122.69245690000001}, to: {osm:node:40425136 lat,lng=45.527057000000006,-122.6924259}, props: {highway: residential, }"
+              ],
               "elevation": "",
               "highway": "residential",
               "lat": 45.5277652,
@@ -3171,6 +3404,9 @@ org.opentripplanner.routing.algorithm.mapping.BikeRentalSnapshotTest.directBikeR
               "area": false,
               "bogusName": false,
               "distance": 1.97,
+              "edges": [
+                "from: null, to: null, props: {}"
+              ],
               "elevation": "",
               "lat": 45.527057,
               "lon": -122.6924259,
@@ -3283,6 +3519,9 @@ org.opentripplanner.routing.algorithm.mapping.BikeRentalSnapshotTest.egressBikeR
               "area": false,
               "bogusName": false,
               "distance": 17.98,
+              "edges": [
+                "from: null, to: null, props: {}"
+              ],
               "elevation": "",
               "lat": 45.5252279,
               "lon": -122.6752499,
@@ -3296,6 +3535,9 @@ org.opentripplanner.routing.algorithm.mapping.BikeRentalSnapshotTest.egressBikeR
               "area": false,
               "bogusName": false,
               "distance": 78.51,
+              "edges": [
+                "from: {osm:node:40450455 lat,lng=45.525224200000004,-122.67548060000001}, to: {osm:node:40602155 lat,lng=45.52593,-122.6755097}, props: {}"
+              ],
               "elevation": "",
               "lat": 45.5252242,
               "lon": -122.6754806,
@@ -3309,6 +3551,9 @@ org.opentripplanner.routing.algorithm.mapping.BikeRentalSnapshotTest.egressBikeR
               "area": false,
               "bogusName": false,
               "distance": 71.38,
+              "edges": [
+                "from: {osm:node:40602155 lat,lng=45.52593,-122.6755097}, to: {split_1774 lat,lng=45.52591272529904,-122.67642554829555}, props: {}"
+              ],
               "elevation": "",
               "lat": 45.52593,
               "lon": -122.6755097,
@@ -3530,6 +3775,9 @@ org.opentripplanner.routing.algorithm.mapping.BikeRentalSnapshotTest.egressBikeR
               "area": false,
               "bogusName": false,
               "distance": 8.97,
+              "edges": [
+                "from: {split_1964 lat,lng=45.52764696458245,-122.69447686508221}, to: {osm:node:40549859 lat,lng=45.527727600000006,-122.69447930000001}, props: {}"
+              ],
               "elevation": "",
               "lat": 45.527647,
               "lon": -122.6944769,
@@ -3543,6 +3791,9 @@ org.opentripplanner.routing.algorithm.mapping.BikeRentalSnapshotTest.egressBikeR
               "area": false,
               "bogusName": false,
               "distance": 19.29,
+              "edges": [
+                "from: {osm:node:40549859 lat,lng=45.527727600000006,-122.69447930000001}, to: {split_2126 lat,lng=45.52773220198921,-122.69423177172958}, props: {}"
+              ],
               "elevation": "",
               "lat": 45.5277276,
               "lon": -122.6944793,
@@ -3603,6 +3854,13 @@ org.opentripplanner.routing.algorithm.mapping.BikeRentalSnapshotTest.egressBikeR
               "area": false,
               "bogusName": false,
               "distance": 480.08,
+              "edges": [
+                "from: {split_2127 lat,lng=45.52773220198921,-122.69423177172958}, to: {osm:node:40549859 lat,lng=45.527727600000006,-122.69447930000001}, props: {}",
+                "from: {osm:node:40549859 lat,lng=45.527727600000006,-122.69447930000001}, to: {osm:node:1596970657 lat,lng=45.5277194,-122.69491880000001}, props: {highway: residential, }",
+                "from: {osm:node:1596970657 lat,lng=45.5277194,-122.69491880000001}, to: {osm:node:40549861 lat,lng=45.527689800000005,-122.6965055}, props: {highway: residential, }",
+                "from: {osm:node:40549861 lat,lng=45.527689800000005,-122.6965055}, to: {osm:node:40549865 lat,lng=45.5276519,-122.6985374}, props: {highway: residential, }",
+                "from: {osm:node:40549865 lat,lng=45.5276519,-122.6985374}, to: {osm:node:-102449 lat,lng=45.5276173,-122.7003923}, props: {highway: residential, }"
+              ],
               "elevation": "",
               "lat": 45.5277322,
               "lon": -122.6942318,
@@ -3616,6 +3874,9 @@ org.opentripplanner.routing.algorithm.mapping.BikeRentalSnapshotTest.egressBikeR
               "area": false,
               "bogusName": true,
               "distance": 13.36,
+              "edges": [
+                "from: {osm:node:-102449 lat,lng=45.5276173,-122.7003923}, to: {osm:node:-102447 lat,lng=45.5277374,-122.70038790000001}, props: {highway: footway, }"
+              ],
               "elevation": "",
               "highway": "footway",
               "lat": 45.5276173,
@@ -3677,6 +3938,9 @@ org.opentripplanner.routing.algorithm.mapping.BikeRentalSnapshotTest.egressBikeR
               "area": false,
               "bogusName": true,
               "distance": 13.36,
+              "edges": [
+                "from: {osm:node:-102447 lat,lng=45.5277374,-122.70038790000001}, to: {osm:node:-102449 lat,lng=45.5276173,-122.7003923}, props: {highway: footway, }"
+              ],
               "elevation": "",
               "highway": "footway",
               "lat": 45.5277374,
@@ -3691,6 +3955,9 @@ org.opentripplanner.routing.algorithm.mapping.BikeRentalSnapshotTest.egressBikeR
               "area": false,
               "bogusName": false,
               "distance": 14.7,
+              "edges": [
+                "from: {osm:node:-102449 lat,lng=45.5276173,-122.7003923}, to: {osm:node:40549868 lat,lng=45.527613800000005,-122.70058100000001}, props: {highway: residential, }"
+              ],
               "elevation": "",
               "highway": "residential",
               "lat": 45.5276173,
@@ -3705,6 +3972,9 @@ org.opentripplanner.routing.algorithm.mapping.BikeRentalSnapshotTest.egressBikeR
               "area": false,
               "bogusName": false,
               "distance": 78.53,
+              "edges": [
+                "from: null, to: null, props: {}"
+              ],
               "elevation": "",
               "lat": 45.5276138,
               "lon": -122.700581,
@@ -3811,6 +4081,9 @@ org.opentripplanner.routing.algorithm.mapping.BikeRentalSnapshotTest.egressBikeR
               "area": false,
               "bogusName": false,
               "distance": 17.98,
+              "edges": [
+                "from: null, to: null, props: {}"
+              ],
               "elevation": "",
               "lat": 45.5252279,
               "lon": -122.6752499,
@@ -3824,6 +4097,14 @@ org.opentripplanner.routing.algorithm.mapping.BikeRentalSnapshotTest.egressBikeR
               "area": false,
               "bogusName": false,
               "distance": 231.76,
+              "edges": [
+                "from: {osm:node:40450455 lat,lng=45.525224200000004,-122.67548060000001}, to: {split_1777 lat,lng=45.524613643608966,-122.67545503700205}, props: {}",
+                "from: {split_1777 lat,lng=45.524613643608966,-122.67545503700205}, to: {osm:node:40508554 lat,lng=45.5245076,-122.6754511}, props: {}",
+                "from: {osm:node:40508554 lat,lng=45.5245076,-122.6754511}, to: {osm:node:1403740808 lat,lng=45.5244547,-122.6754576}, props: {}",
+                "from: {osm:node:1403740808 lat,lng=45.5244547,-122.6754576}, to: {osm:node:1392884741 lat,lng=45.5238561,-122.67543470000001}, props: {}",
+                "from: {osm:node:1392884741 lat,lng=45.5238561,-122.67543470000001}, to: {osm:node:40602151 lat,lng=45.5237963,-122.6754339}, props: {}",
+                "from: {osm:node:40602151 lat,lng=45.5237963,-122.6754339}, to: {osm:node:40516276 lat,lng=45.523141200000005,-122.67540310000001}, props: {}"
+              ],
               "elevation": "",
               "lat": 45.5252242,
               "lon": -122.6754806,
@@ -3837,6 +4118,9 @@ org.opentripplanner.routing.algorithm.mapping.BikeRentalSnapshotTest.egressBikeR
               "area": false,
               "bogusName": false,
               "distance": 38.08,
+              "edges": [
+                "from: {osm:node:40516276 lat,lng=45.523141200000005,-122.67540310000001}, to: {split_1441 lat,lng=45.52313235891676,-122.67589172473919}, props: {}"
+              ],
               "elevation": "",
               "lat": 45.5231412,
               "lon": -122.6754031,
@@ -4071,6 +4355,10 @@ org.opentripplanner.routing.algorithm.mapping.BikeRentalSnapshotTest.egressBikeR
               "area": false,
               "bogusName": false,
               "distance": 54.63,
+              "edges": [
+                "from: {split_2112 lat,lng=45.523815597641374,-122.70071990797962}, to: {osm:node:1291114599 lat,lng=45.5238426,-122.70083500000001}, props: {}",
+                "from: {osm:node:1291114599 lat,lng=45.5238426,-122.70083500000001}, to: {osm:node:40516386 lat,lng=45.5239733,-122.701384}, props: {}"
+              ],
               "elevation": "",
               "lat": 45.5238156,
               "lon": -122.7007199,
@@ -4084,6 +4372,10 @@ org.opentripplanner.routing.algorithm.mapping.BikeRentalSnapshotTest.egressBikeR
               "area": false,
               "bogusName": false,
               "distance": 176.41,
+              "edges": [
+                "from: {osm:node:40516386 lat,lng=45.5239733,-122.701384}, to: {osm:node:40442537 lat,lng=45.524647200000004,-122.7008244}, props: {}",
+                "from: {osm:node:40442537 lat,lng=45.524647200000004,-122.7008244}, to: {osm:node:1318429891 lat,lng=45.5253583,-122.70033570000001}, props: {}"
+              ],
               "elevation": "",
               "lat": 45.5239733,
               "lon": -122.701384,
@@ -4097,6 +4389,9 @@ org.opentripplanner.routing.algorithm.mapping.BikeRentalSnapshotTest.egressBikeR
               "area": false,
               "bogusName": false,
               "distance": 15.26,
+              "edges": [
+                "from: {osm:node:1318429891 lat,lng=45.5253583,-122.70033570000001}, to: {osm:node:40442506 lat,lng=45.525472400000005,-122.7004445}, props: {}"
+              ],
               "elevation": "",
               "lat": 45.5253583,
               "lon": -122.7003357,
@@ -4110,6 +4405,13 @@ org.opentripplanner.routing.algorithm.mapping.BikeRentalSnapshotTest.egressBikeR
               "area": false,
               "bogusName": false,
               "distance": 317.41,
+              "edges": [
+                "from: {osm:node:40442506 lat,lng=45.525472400000005,-122.7004445}, to: {osm:node:1222453389 lat,lng=45.526155,-122.70051020000001}, props: {highway: residential, }",
+                "from: {osm:node:1222453389 lat,lng=45.526155,-122.70051020000001}, to: {osm:node:40677810 lat,lng=45.5261994,-122.70053360000001}, props: {highway: residential, }",
+                "from: {osm:node:40677810 lat,lng=45.5261994,-122.70053360000001}, to: {osm:node:40677811 lat,lng=45.526915300000006,-122.70055540000001}, props: {highway: residential, }",
+                "from: {osm:node:40677811 lat,lng=45.526915300000006,-122.70055540000001}, to: {osm:node:40549868 lat,lng=45.527613800000005,-122.70058100000001}, props: {highway: residential, }",
+                "from: null, to: null, props: {}"
+              ],
               "elevation": "",
               "highway": "residential",
               "lat": 45.5254724,
@@ -4217,6 +4519,9 @@ org.opentripplanner.routing.algorithm.mapping.BikeRentalSnapshotTest.egressBikeR
               "area": false,
               "bogusName": false,
               "distance": 17.98,
+              "edges": [
+                "from: null, to: null, props: {}"
+              ],
               "elevation": "",
               "lat": 45.5252279,
               "lon": -122.6752499,
@@ -4230,6 +4535,10 @@ org.opentripplanner.routing.algorithm.mapping.BikeRentalSnapshotTest.egressBikeR
               "area": false,
               "bogusName": false,
               "distance": 158.01,
+              "edges": [
+                "from: {osm:node:40450455 lat,lng=45.525224200000004,-122.67548060000001}, to: {osm:node:40602155 lat,lng=45.52593,-122.6755097}, props: {}",
+                "from: {osm:node:40602155 lat,lng=45.52593,-122.6755097}, to: {osm:node:40602156 lat,lng=45.526644700000006,-122.67553910000001}, props: {}"
+              ],
               "elevation": "",
               "lat": 45.5252242,
               "lon": -122.6754806,
@@ -4243,6 +4552,11 @@ org.opentripplanner.routing.algorithm.mapping.BikeRentalSnapshotTest.egressBikeR
               "area": false,
               "bogusName": false,
               "distance": 74.23,
+              "edges": [
+                "from: {osm:node:40602156 lat,lng=45.526644700000006,-122.67553910000001}, to: {osm:node:1393021921 lat,lng=45.526642200000005,-122.6756349}, props: {}",
+                "from: {osm:node:1393021921 lat,lng=45.526642200000005,-122.6756349}, to: {osm:node:1728428793 lat,lng=45.5266382,-122.67578610000001}, props: {}",
+                "from: {osm:node:1728428793 lat,lng=45.5266382,-122.67578610000001}, to: {osm:node:1393021919 lat,lng=45.5266303,-122.67649170000001}, props: {}"
+              ],
               "elevation": "",
               "lat": 45.5266447,
               "lon": -122.6755391,
@@ -4256,6 +4570,9 @@ org.opentripplanner.routing.algorithm.mapping.BikeRentalSnapshotTest.egressBikeR
               "area": false,
               "bogusName": true,
               "distance": 2.66,
+              "edges": [
+                "from: {osm:node:1393021919 lat,lng=45.5266303,-122.67649170000001}, to: {split_1645 lat,lng=45.526654166394415,-122.67649300728847}, props: {}"
+              ],
               "elevation": "",
               "lat": 45.5266303,
               "lon": -122.6764917,
@@ -4464,6 +4781,10 @@ org.opentripplanner.routing.algorithm.mapping.BikeRentalSnapshotTest.egressBikeR
               "area": false,
               "bogusName": false,
               "distance": 24.9,
+              "edges": [
+                "from: {split_618 lat,lng=45.53215782420268,-122.69870264831422}, to: {split_1956 lat,lng=45.53203011005053,-122.69869819057767}, props: {}",
+                "from: {split_1956 lat,lng=45.53203011005053,-122.69869819057767}, to: {osm:node:40577086 lat,lng=45.531934,-122.698695}, props: {}"
+              ],
               "elevation": "",
               "lat": 45.5321578,
               "lon": -122.6987026,
@@ -4477,6 +4798,9 @@ org.opentripplanner.routing.algorithm.mapping.BikeRentalSnapshotTest.egressBikeR
               "area": false,
               "bogusName": false,
               "distance": 158.45,
+              "edges": [
+                "from: {osm:node:40577086 lat,lng=45.531934,-122.698695}, to: {osm:node:40601548 lat,lng=45.5318916,-122.70072830000001}, props: {highway: residential, }"
+              ],
               "elevation": "",
               "highway": "residential",
               "lat": 45.531934,
@@ -4491,6 +4815,14 @@ org.opentripplanner.routing.algorithm.mapping.BikeRentalSnapshotTest.egressBikeR
               "area": false,
               "bogusName": false,
               "distance": 397.28,
+              "edges": [
+                "from: {osm:node:40601548 lat,lng=45.5318916,-122.70072830000001}, to: {osm:node:40677827 lat,lng=45.531181000000004,-122.70070630000001}, props: {highway: residential, }",
+                "from: {osm:node:40677827 lat,lng=45.531181000000004,-122.70070630000001}, to: {osm:node:40677822 lat,lng=45.530474100000006,-122.70067780000001}, props: {highway: residential, }",
+                "from: {osm:node:40677822 lat,lng=45.530474100000006,-122.70067780000001}, to: {osm:node:40648323 lat,lng=45.529755,-122.70064880000001}, props: {highway: residential, }",
+                "from: {osm:node:40648323 lat,lng=45.529755,-122.70064880000001}, to: {osm:node:40638137 lat,lng=45.5290495,-122.70061810000001}, props: {highway: residential, }",
+                "from: {osm:node:40638137 lat,lng=45.5290495,-122.70061810000001}, to: {osm:node:40677816 lat,lng=45.5283327,-122.70059660000001}, props: {highway: residential, }",
+                "from: null, to: null, props: {}"
+              ],
               "elevation": "",
               "highway": "residential",
               "lat": 45.5318916,
@@ -4598,6 +4930,9 @@ org.opentripplanner.routing.algorithm.mapping.BikeRentalSnapshotTest.egressBikeR
               "area": false,
               "bogusName": false,
               "distance": 17.98,
+              "edges": [
+                "from: null, to: null, props: {}"
+              ],
               "elevation": "",
               "lat": 45.5252279,
               "lon": -122.6752499,
@@ -4611,6 +4946,9 @@ org.opentripplanner.routing.algorithm.mapping.BikeRentalSnapshotTest.egressBikeR
               "area": false,
               "bogusName": false,
               "distance": 78.51,
+              "edges": [
+                "from: {osm:node:40450455 lat,lng=45.525224200000004,-122.67548060000001}, to: {osm:node:40602155 lat,lng=45.52593,-122.6755097}, props: {}"
+              ],
               "elevation": "",
               "lat": 45.5252242,
               "lon": -122.6754806,
@@ -4624,6 +4962,9 @@ org.opentripplanner.routing.algorithm.mapping.BikeRentalSnapshotTest.egressBikeR
               "area": false,
               "bogusName": false,
               "distance": 71.38,
+              "edges": [
+                "from: {osm:node:40602155 lat,lng=45.52593,-122.6755097}, to: {split_1774 lat,lng=45.52591272529904,-122.67642554829555}, props: {}"
+              ],
               "elevation": "",
               "lat": 45.52593,
               "lon": -122.6755097,
@@ -4845,6 +5186,9 @@ org.opentripplanner.routing.algorithm.mapping.BikeRentalSnapshotTest.egressBikeR
               "area": false,
               "bogusName": false,
               "distance": 8.97,
+              "edges": [
+                "from: {split_1964 lat,lng=45.52764696458245,-122.69447686508221}, to: {osm:node:40549859 lat,lng=45.527727600000006,-122.69447930000001}, props: {}"
+              ],
               "elevation": "",
               "lat": 45.527647,
               "lon": -122.6944769,
@@ -4858,6 +5202,9 @@ org.opentripplanner.routing.algorithm.mapping.BikeRentalSnapshotTest.egressBikeR
               "area": false,
               "bogusName": false,
               "distance": 19.29,
+              "edges": [
+                "from: {osm:node:40549859 lat,lng=45.527727600000006,-122.69447930000001}, to: {split_2126 lat,lng=45.52773220198921,-122.69423177172958}, props: {}"
+              ],
               "elevation": "",
               "lat": 45.5277276,
               "lon": -122.6944793,
@@ -4918,6 +5265,13 @@ org.opentripplanner.routing.algorithm.mapping.BikeRentalSnapshotTest.egressBikeR
               "area": false,
               "bogusName": false,
               "distance": 480.08,
+              "edges": [
+                "from: {split_2127 lat,lng=45.52773220198921,-122.69423177172958}, to: {osm:node:40549859 lat,lng=45.527727600000006,-122.69447930000001}, props: {}",
+                "from: {osm:node:40549859 lat,lng=45.527727600000006,-122.69447930000001}, to: {osm:node:1596970657 lat,lng=45.5277194,-122.69491880000001}, props: {highway: residential, }",
+                "from: {osm:node:1596970657 lat,lng=45.5277194,-122.69491880000001}, to: {osm:node:40549861 lat,lng=45.527689800000005,-122.6965055}, props: {highway: residential, }",
+                "from: {osm:node:40549861 lat,lng=45.527689800000005,-122.6965055}, to: {osm:node:40549865 lat,lng=45.5276519,-122.6985374}, props: {highway: residential, }",
+                "from: {osm:node:40549865 lat,lng=45.5276519,-122.6985374}, to: {osm:node:-102449 lat,lng=45.5276173,-122.7003923}, props: {highway: residential, }"
+              ],
               "elevation": "",
               "lat": 45.5277322,
               "lon": -122.6942318,
@@ -4931,6 +5285,9 @@ org.opentripplanner.routing.algorithm.mapping.BikeRentalSnapshotTest.egressBikeR
               "area": false,
               "bogusName": true,
               "distance": 13.36,
+              "edges": [
+                "from: {osm:node:-102449 lat,lng=45.5276173,-122.7003923}, to: {osm:node:-102447 lat,lng=45.5277374,-122.70038790000001}, props: {highway: footway, }"
+              ],
               "elevation": "",
               "highway": "footway",
               "lat": 45.5276173,
@@ -4992,6 +5349,9 @@ org.opentripplanner.routing.algorithm.mapping.BikeRentalSnapshotTest.egressBikeR
               "area": false,
               "bogusName": true,
               "distance": 13.36,
+              "edges": [
+                "from: {osm:node:-102447 lat,lng=45.5277374,-122.70038790000001}, to: {osm:node:-102449 lat,lng=45.5276173,-122.7003923}, props: {highway: footway, }"
+              ],
               "elevation": "",
               "highway": "footway",
               "lat": 45.5277374,
@@ -5006,6 +5366,9 @@ org.opentripplanner.routing.algorithm.mapping.BikeRentalSnapshotTest.egressBikeR
               "area": false,
               "bogusName": false,
               "distance": 14.7,
+              "edges": [
+                "from: {osm:node:-102449 lat,lng=45.5276173,-122.7003923}, to: {osm:node:40549868 lat,lng=45.527613800000005,-122.70058100000001}, props: {highway: residential, }"
+              ],
               "elevation": "",
               "highway": "residential",
               "lat": 45.5276173,
@@ -5020,6 +5383,9 @@ org.opentripplanner.routing.algorithm.mapping.BikeRentalSnapshotTest.egressBikeR
               "area": false,
               "bogusName": false,
               "distance": 78.53,
+              "edges": [
+                "from: null, to: null, props: {}"
+              ],
               "elevation": "",
               "lat": 45.5276138,
               "lon": -122.700581,
@@ -5126,6 +5492,9 @@ org.opentripplanner.routing.algorithm.mapping.BikeRentalSnapshotTest.egressBikeR
               "area": false,
               "bogusName": false,
               "distance": 17.98,
+              "edges": [
+                "from: null, to: null, props: {}"
+              ],
               "elevation": "",
               "lat": 45.5252279,
               "lon": -122.6752499,
@@ -5139,6 +5508,14 @@ org.opentripplanner.routing.algorithm.mapping.BikeRentalSnapshotTest.egressBikeR
               "area": false,
               "bogusName": false,
               "distance": 231.76,
+              "edges": [
+                "from: {osm:node:40450455 lat,lng=45.525224200000004,-122.67548060000001}, to: {split_1777 lat,lng=45.524613643608966,-122.67545503700205}, props: {}",
+                "from: {split_1777 lat,lng=45.524613643608966,-122.67545503700205}, to: {osm:node:40508554 lat,lng=45.5245076,-122.6754511}, props: {}",
+                "from: {osm:node:40508554 lat,lng=45.5245076,-122.6754511}, to: {osm:node:1403740808 lat,lng=45.5244547,-122.6754576}, props: {}",
+                "from: {osm:node:1403740808 lat,lng=45.5244547,-122.6754576}, to: {osm:node:1392884741 lat,lng=45.5238561,-122.67543470000001}, props: {}",
+                "from: {osm:node:1392884741 lat,lng=45.5238561,-122.67543470000001}, to: {osm:node:40602151 lat,lng=45.5237963,-122.6754339}, props: {}",
+                "from: {osm:node:40602151 lat,lng=45.5237963,-122.6754339}, to: {osm:node:40516276 lat,lng=45.523141200000005,-122.67540310000001}, props: {}"
+              ],
               "elevation": "",
               "lat": 45.5252242,
               "lon": -122.6754806,
@@ -5152,6 +5529,9 @@ org.opentripplanner.routing.algorithm.mapping.BikeRentalSnapshotTest.egressBikeR
               "area": false,
               "bogusName": false,
               "distance": 38.08,
+              "edges": [
+                "from: {osm:node:40516276 lat,lng=45.523141200000005,-122.67540310000001}, to: {split_1441 lat,lng=45.52313235891676,-122.67589172473919}, props: {}"
+              ],
               "elevation": "",
               "lat": 45.5231412,
               "lon": -122.6754031,
@@ -5386,6 +5766,10 @@ org.opentripplanner.routing.algorithm.mapping.BikeRentalSnapshotTest.egressBikeR
               "area": false,
               "bogusName": false,
               "distance": 54.63,
+              "edges": [
+                "from: {split_2112 lat,lng=45.523815597641374,-122.70071990797962}, to: {osm:node:1291114599 lat,lng=45.5238426,-122.70083500000001}, props: {}",
+                "from: {osm:node:1291114599 lat,lng=45.5238426,-122.70083500000001}, to: {osm:node:40516386 lat,lng=45.5239733,-122.701384}, props: {}"
+              ],
               "elevation": "",
               "lat": 45.5238156,
               "lon": -122.7007199,
@@ -5399,6 +5783,10 @@ org.opentripplanner.routing.algorithm.mapping.BikeRentalSnapshotTest.egressBikeR
               "area": false,
               "bogusName": false,
               "distance": 176.41,
+              "edges": [
+                "from: {osm:node:40516386 lat,lng=45.5239733,-122.701384}, to: {osm:node:40442537 lat,lng=45.524647200000004,-122.7008244}, props: {}",
+                "from: {osm:node:40442537 lat,lng=45.524647200000004,-122.7008244}, to: {osm:node:1318429891 lat,lng=45.5253583,-122.70033570000001}, props: {}"
+              ],
               "elevation": "",
               "lat": 45.5239733,
               "lon": -122.701384,
@@ -5412,6 +5800,9 @@ org.opentripplanner.routing.algorithm.mapping.BikeRentalSnapshotTest.egressBikeR
               "area": false,
               "bogusName": false,
               "distance": 15.26,
+              "edges": [
+                "from: {osm:node:1318429891 lat,lng=45.5253583,-122.70033570000001}, to: {osm:node:40442506 lat,lng=45.525472400000005,-122.7004445}, props: {}"
+              ],
               "elevation": "",
               "lat": 45.5253583,
               "lon": -122.7003357,
@@ -5425,6 +5816,13 @@ org.opentripplanner.routing.algorithm.mapping.BikeRentalSnapshotTest.egressBikeR
               "area": false,
               "bogusName": false,
               "distance": 317.41,
+              "edges": [
+                "from: {osm:node:40442506 lat,lng=45.525472400000005,-122.7004445}, to: {osm:node:1222453389 lat,lng=45.526155,-122.70051020000001}, props: {highway: residential, }",
+                "from: {osm:node:1222453389 lat,lng=45.526155,-122.70051020000001}, to: {osm:node:40677810 lat,lng=45.5261994,-122.70053360000001}, props: {highway: residential, }",
+                "from: {osm:node:40677810 lat,lng=45.5261994,-122.70053360000001}, to: {osm:node:40677811 lat,lng=45.526915300000006,-122.70055540000001}, props: {highway: residential, }",
+                "from: {osm:node:40677811 lat,lng=45.526915300000006,-122.70055540000001}, to: {osm:node:40549868 lat,lng=45.527613800000005,-122.70058100000001}, props: {highway: residential, }",
+                "from: null, to: null, props: {}"
+              ],
               "elevation": "",
               "highway": "residential",
               "lat": 45.5254724,
@@ -5532,6 +5930,9 @@ org.opentripplanner.routing.algorithm.mapping.BikeRentalSnapshotTest.egressBikeR
               "area": false,
               "bogusName": false,
               "distance": 17.98,
+              "edges": [
+                "from: null, to: null, props: {}"
+              ],
               "elevation": "",
               "lat": 45.5252279,
               "lon": -122.6752499,
@@ -5545,6 +5946,10 @@ org.opentripplanner.routing.algorithm.mapping.BikeRentalSnapshotTest.egressBikeR
               "area": false,
               "bogusName": false,
               "distance": 158.01,
+              "edges": [
+                "from: {osm:node:40450455 lat,lng=45.525224200000004,-122.67548060000001}, to: {osm:node:40602155 lat,lng=45.52593,-122.6755097}, props: {}",
+                "from: {osm:node:40602155 lat,lng=45.52593,-122.6755097}, to: {osm:node:40602156 lat,lng=45.526644700000006,-122.67553910000001}, props: {}"
+              ],
               "elevation": "",
               "lat": 45.5252242,
               "lon": -122.6754806,
@@ -5558,6 +5963,11 @@ org.opentripplanner.routing.algorithm.mapping.BikeRentalSnapshotTest.egressBikeR
               "area": false,
               "bogusName": false,
               "distance": 74.23,
+              "edges": [
+                "from: {osm:node:40602156 lat,lng=45.526644700000006,-122.67553910000001}, to: {osm:node:1393021921 lat,lng=45.526642200000005,-122.6756349}, props: {}",
+                "from: {osm:node:1393021921 lat,lng=45.526642200000005,-122.6756349}, to: {osm:node:1728428793 lat,lng=45.5266382,-122.67578610000001}, props: {}",
+                "from: {osm:node:1728428793 lat,lng=45.5266382,-122.67578610000001}, to: {osm:node:1393021919 lat,lng=45.5266303,-122.67649170000001}, props: {}"
+              ],
               "elevation": "",
               "lat": 45.5266447,
               "lon": -122.6755391,
@@ -5571,6 +5981,9 @@ org.opentripplanner.routing.algorithm.mapping.BikeRentalSnapshotTest.egressBikeR
               "area": false,
               "bogusName": true,
               "distance": 2.66,
+              "edges": [
+                "from: {osm:node:1393021919 lat,lng=45.5266303,-122.67649170000001}, to: {split_1645 lat,lng=45.526654166394415,-122.67649300728847}, props: {}"
+              ],
               "elevation": "",
               "lat": 45.5266303,
               "lon": -122.6764917,
@@ -5779,6 +6192,10 @@ org.opentripplanner.routing.algorithm.mapping.BikeRentalSnapshotTest.egressBikeR
               "area": false,
               "bogusName": false,
               "distance": 24.9,
+              "edges": [
+                "from: {split_618 lat,lng=45.53215782420268,-122.69870264831422}, to: {split_1956 lat,lng=45.53203011005053,-122.69869819057767}, props: {}",
+                "from: {split_1956 lat,lng=45.53203011005053,-122.69869819057767}, to: {osm:node:40577086 lat,lng=45.531934,-122.698695}, props: {}"
+              ],
               "elevation": "",
               "lat": 45.5321578,
               "lon": -122.6987026,
@@ -5792,6 +6209,9 @@ org.opentripplanner.routing.algorithm.mapping.BikeRentalSnapshotTest.egressBikeR
               "area": false,
               "bogusName": false,
               "distance": 158.45,
+              "edges": [
+                "from: {osm:node:40577086 lat,lng=45.531934,-122.698695}, to: {osm:node:40601548 lat,lng=45.5318916,-122.70072830000001}, props: {highway: residential, }"
+              ],
               "elevation": "",
               "highway": "residential",
               "lat": 45.531934,
@@ -5806,6 +6226,14 @@ org.opentripplanner.routing.algorithm.mapping.BikeRentalSnapshotTest.egressBikeR
               "area": false,
               "bogusName": false,
               "distance": 397.28,
+              "edges": [
+                "from: {osm:node:40601548 lat,lng=45.5318916,-122.70072830000001}, to: {osm:node:40677827 lat,lng=45.531181000000004,-122.70070630000001}, props: {highway: residential, }",
+                "from: {osm:node:40677827 lat,lng=45.531181000000004,-122.70070630000001}, to: {osm:node:40677822 lat,lng=45.530474100000006,-122.70067780000001}, props: {highway: residential, }",
+                "from: {osm:node:40677822 lat,lng=45.530474100000006,-122.70067780000001}, to: {osm:node:40648323 lat,lng=45.529755,-122.70064880000001}, props: {highway: residential, }",
+                "from: {osm:node:40648323 lat,lng=45.529755,-122.70064880000001}, to: {osm:node:40638137 lat,lng=45.5290495,-122.70061810000001}, props: {highway: residential, }",
+                "from: {osm:node:40638137 lat,lng=45.5290495,-122.70061810000001}, to: {osm:node:40677816 lat,lng=45.5283327,-122.70059660000001}, props: {highway: residential, }",
+                "from: null, to: null, props: {}"
+              ],
               "elevation": "",
               "highway": "residential",
               "lat": 45.5318916,
