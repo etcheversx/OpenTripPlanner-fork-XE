@@ -7,10 +7,13 @@ import static org.opentripplanner.api.mapping.RelativeDirectionMapper.mapRelativ
 import java.util.Collection;
 import java.util.List;
 import java.util.Locale;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 import org.opentripplanner.api.model.ApiWalkStep;
 import org.opentripplanner.graph_builder.module.osm.AccessibilityPropertySet;
 import org.opentripplanner.model.plan.WalkStep;
+import org.opentripplanner.routing.graph.Edge;
+import org.opentripplanner.routing.graph.Vertex;
 
 public class WalkStepMapper {
 
@@ -51,14 +54,12 @@ public class WalkStepMapper {
     api.walkingBike = domain.isWalkingBike();
     api.alerts = alertsMapper.mapToApi(domain.getStreetNotes());
 
-    enrichWithAccessibilityProperties(api, domain.getAccessibilityProperties());
+    enrichWithAccessibilityProperties(api, domain);
     return api;
   }
 
-  private static void enrichWithAccessibilityProperties(
-    ApiWalkStep api,
-    AccessibilityPropertySet accessibilityProperties
-  ) {
+  private static void enrichWithAccessibilityProperties(ApiWalkStep api, WalkStep domain) {
+    AccessibilityPropertySet accessibilityProperties = domain.getAccessibilityProperties();
     var width = accessibilityProperties.getWidth();
     api.width = width.isPresent() ? width.getAsTyped() : null;
 
@@ -94,5 +95,12 @@ public class WalkStepMapper {
 
     var bevCtrast = accessibilityProperties.getBevCtrast();
     api.bevCtrast = bevCtrast.isPresent() ? bevCtrast.getAsTyped() : null;
+
+    api.edges = domain.getEdges().stream().map((Function<? super Edge, String>) edge -> {
+      Vertex fromVertex = edge.getFromVertex();
+      Vertex toVertex = edge.getToVertex();
+      return "from: " + (fromVertex != null ? fromVertex.toString() : "null") + ", " +
+        "to: " + (toVertex != null ? toVertex.toString() : "null");
+    }).toList();
   }
 }

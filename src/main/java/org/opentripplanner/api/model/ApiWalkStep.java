@@ -1,6 +1,7 @@
 package org.opentripplanner.api.model;
 
 import java.util.List;
+import org.opentripplanner.routing.graph.Edge;
 
 /**
  * Represents one instruction in walking directions. Three examples from New York City:
@@ -98,6 +99,7 @@ public class ApiWalkStep {
   public Double ressautMin;
   public String bevEtat;
   public Boolean bevCtrast;
+  public List<String> edges;
 
   public String toString() {
     String direction = absoluteDirection.toString();
