@@ -201,6 +201,9 @@ public class OpenStreetMapModule implements GraphBuilderModule {
     }
     osmdb.postLoad();
 
+    logNode(osmdb, 331615645L);
+    logNode(osmdb, 331615640L);
+
     LOG.info("Using OSM way configuration from {}.", osmTagMapper.getClass().getSimpleName());
 
     LOG.info("Building street graph from OSM");
@@ -208,6 +211,11 @@ public class OpenStreetMapModule implements GraphBuilderModule {
     graph.hasStreets = true;
     //Calculates envelope for OSM
     graph.calculateEnvelope();
+  }
+
+  public static void logNode(OSMDatabase osmdb, long nodeId) {
+    OSMNode n = osmdb.getNode(nodeId);
+    LOG.info("XET: node{id=" + n.getId() + ", lat=" + n.lat + ", lon=" + n.lon + "}");
   }
 
   public Map<Vertex, Double> elevationDataOutput() {

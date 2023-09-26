@@ -14,6 +14,8 @@ import org.opentripplanner.openstreetmap.model.OSMRelation;
 import org.opentripplanner.openstreetmap.model.OSMRelationMember;
 import org.opentripplanner.openstreetmap.model.OSMTag;
 import org.opentripplanner.openstreetmap.model.OSMWay;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Parser for the OpenStreetMap PBF Format.
@@ -21,6 +23,8 @@ import org.opentripplanner.openstreetmap.model.OSMWay;
  * @since 0.4
  */
 public class OpenStreetMapParser extends BinaryParser {
+
+  private static final Logger LOG = LoggerFactory.getLogger(OpenStreetMapParser.class);
 
   private final OSMDatabase osmdb;
   private final Map<String, String> stringTable = new HashMap<>();
@@ -30,6 +34,7 @@ public class OpenStreetMapParser extends BinaryParser {
   public OpenStreetMapParser(OSMDatabase osmdb, OSMProvider provider) {
     this.osmdb = Objects.requireNonNull(osmdb);
     this.provider = Objects.requireNonNull(provider);
+    LOG.info("XET: yes");
   }
 
   // The strings are already being pulled from a string table in the PBF file,
@@ -140,6 +145,12 @@ public class OpenStreetMapParser extends BinaryParser {
           String value = internalize(getStringById(valid));
           tag.setK(key);
           tag.setV(value);
+          if ("level".equals(key)) {
+            int level = Integer.parseInt(value);
+            double levelPart = level / 100000000.0;
+            tmp.lat += (latf >= 0 ? levelPart : -levelPart);
+            tmp.lon += (lonf >= 0 ? levelPart : -levelPart);
+          }
           tmp.addTag(tag);
         }
         j++; // Skip over the '0' delimiter.
@@ -151,6 +162,7 @@ public class OpenStreetMapParser extends BinaryParser {
 
   @Override
   protected void parseNodes(List<Osmformat.Node> nodes) {
+    LOG.info("XET: => parseNodes: nodes=" + nodes);
     if (parsePhase != OsmParserPhase.Nodes) {
       return;
     }
@@ -161,6 +173,7 @@ public class OpenStreetMapParser extends BinaryParser {
       tmp.setOsmProvider(provider);
       tmp.lat = parseLat(i.getLat());
       tmp.lon = parseLon(i.getLon());
+      LOG.info("XET: tmp={" + i.getId() + ", " + i.getLat() + ", " + i.getLon() + "}");
 
       for (int j = 0; j < i.getKeysCount(); j++) {
         String key = internalize(getStringById(i.getKeys(j)));
