@@ -215,7 +215,9 @@ public class OpenStreetMapModule implements GraphBuilderModule {
 
   public static void logNode(OSMDatabase osmdb, long nodeId) {
     OSMNode n = osmdb.getNode(nodeId);
-    LOG.info("XET: node{id=" + n.getId() + ", lat=" + n.lat + ", lon=" + n.lon + "}");
+    if (n != null) {
+      LOG.info("XET: node{id=" + n.getId() + ", lat=" + n.lat + ", lon=" + n.lon + "}");
+    }
   }
 
   public Map<Vertex, Double> elevationDataOutput() {
