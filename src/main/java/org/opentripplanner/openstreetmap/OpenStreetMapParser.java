@@ -146,10 +146,12 @@ public class OpenStreetMapParser extends BinaryParser {
           tag.setK(key);
           tag.setV(value);
           if ("level".equals(key)) {
-            int level = Integer.parseInt(value);
-            double levelPart = level / 100000000.0;
-            tmp.lat += (latf >= 0 ? levelPart : -levelPart);
-            tmp.lon += (lonf >= 0 ? levelPart : -levelPart);
+            try {
+              int level = Integer.parseInt(value);
+              double levelPart = level / 100000000.0;
+              tmp.lat += (latf >= 0 ? levelPart : -levelPart);
+              tmp.lon += (lonf >= 0 ? levelPart : -levelPart);
+            } catch (Exception ignored) {}
           }
           tmp.addTag(tag);
         }
