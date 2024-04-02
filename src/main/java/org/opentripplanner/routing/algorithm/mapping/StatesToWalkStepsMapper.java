@@ -32,7 +32,7 @@ public class StatesToWalkStepsMapper {
    * Tolerance for how many meters can be between two consecutive turns will be merged into a singe
    * walk step. See {@link StatesToWalkStepsMapper#removeZag(WalkStep, WalkStep)}
    */
-  private static final double MAX_ZAG_DISTANCE = 30;
+  private static final double MAX_ZAG_DISTANCE = 0;
 
   private final double ellipsoidToGeoidDifference;
   private final StreetNotesService streetNotesService;
